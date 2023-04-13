@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         GameManager.InputManager.InputAction += JumpBtn;
+        
+        GameManager.UIManager.UiImages[(int)Define.Images.flowerImg].sprite = GameManager.ResourceManager.Load<Sprite>("Sprites/img");
 
     }
 
@@ -19,9 +21,4 @@ public class PlayerController : MonoBehaviour
 
     } 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
