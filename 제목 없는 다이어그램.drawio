@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-24T06:21:08.253Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="NA51eHKsFy28DaUFobBU" version="21.1.8" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-04-24T06:25:43.369Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="_-PcUK_fqEvfbsBvafDR" version="21.1.8" type="github" pages="2">
   <diagram name="페이지-1" id="2NNPLGp1lm4Bou1OKYgu">
     <mxGraphModel dx="558" dy="1702" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -48,8 +48,11 @@
         <mxCell id="vxW5jV2-u_op8l1EexH3-1" value="&lt;div&gt;스토리? 미연시 느낌?&lt;/div&gt;&lt;div&gt;여러 해석 여지가 있음&lt;/div&gt;&lt;div&gt;1. 아래 어두운 배경에 글이 나오고 화자의&lt;/div&gt;&lt;div&gt;그림이 있는 것인가?&lt;/div&gt;&lt;div&gt;: excel -&amp;gt; json -&amp;gt; C#&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ 분기가 존재해서 트리구조로 내용이 파생되는가?&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. 인트로처럼 모든 스토리가 만화 형식인가?&lt;/div&gt;&lt;div&gt;: 이미지임으로 text 처리가 전혀 필요 없음&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;3. 스토리형 (+ 분기형) 이라면 스토리를 어디까지 봤는지 저장해야하는가? 그렇다면 그 정확도는? (챕터별로 기억, 문장별로 기억, 마지막 프린트 한 단어끝을 기억, 이전 분기점까지를 기억 후 거기서 부터 시작)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
           <mxGeometry x="60" y="-120" width="330" height="330" as="geometry" />
         </mxCell>
-        <mxCell id="c4mtQoEK8RKiTdaHSyYI-1" value="아이템의 갯수, 종류, 등은 모두 확정 된 것인가?&lt;br&gt;(100% 확정인지 아닌지는 확실히 해야함 모르겠으면 무조껀 확정이 아닌것으로 )&lt;br&gt;&lt;br&gt;터치(사용)후 사라지는 1회용 아이템 뿐인가?&lt;br&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp;" style="html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
-          <mxGeometry x="60" y="250" width="280" height="270" as="geometry" />
+        <mxCell id="c4mtQoEK8RKiTdaHSyYI-1" value="아이템의 갯수, 종류, 등은 모두 확정 된 것인가?&lt;br&gt;(100% 확정인지 아닌지는 확실히 해야함 모르겠으면 무조껀 확정이 아닌것으로 )&lt;br&gt;&lt;br&gt;터치(사용)후 사라지는 1회용 아이템 뿐인가?" style="html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="250" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="-kiMU_W7l64KUKlPNzyu-1" value="수집한 꽃나무가 뭐지?" style="html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="390" width="290" height="140" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
