@@ -10,6 +10,10 @@ using Unity.VisualScripting;
 public class EventTriggerEX : MonoBehaviour
 {
     EventTrigger eventTrigger;
+    /// <summary>
+    /// 버튼에 이벤트 트리거를 추가하고 연결하는 함수 
+    /// 굳이 init()으로 빼야하나? 아니면 그냥 Start로 만들어야 하나는 구현하는 사람이 결정하기를 바람.
+    /// </summary>
     protected void init()
     {
         transform.AddComponent<EventTrigger>();
@@ -50,7 +54,10 @@ public class EventTriggerEX : MonoBehaviour
         */
 
     }
-
+    /// <summary>
+    /// 버튼을 누르면 발생할 일을 넣어주는 함수 
+    /// </summary>
+    /// <param name="data"></param>
     protected virtual void OnPointerClick(PointerEventData data) { }
     /*
     // 누른 순간
