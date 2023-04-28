@@ -24,6 +24,7 @@ public class UIManager
 
         _uibuttons = new GameObject[(int)Define.Buttons.MaxCount];
         string[] _uibuttonsstr = Enum.GetNames(typeof(Define.Buttons));
+
         for (int i = 0; i < (int)Define.Buttons.MaxCount; i++)
         {
             _uibuttons[i] = GameObject.Find(_uibuttonsstr[i]);

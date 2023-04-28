@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SoundManager
 {
+    /// <summary> 캐싱을 이용하면 효율적 </summary>
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sounds.MaxCount];
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 

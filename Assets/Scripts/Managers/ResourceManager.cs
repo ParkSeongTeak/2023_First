@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager 
 {
     /// <summary>
     /// 굳이 Pooling까지 해야하나..... 고민중

@@ -9,11 +9,21 @@ using UnityEngine;
 /// </summary>
 public class InGameDataManager 
 {
+    #region JsonData
+    ScenarioHandler _scenarioHandler = new ScenarioHandler();       //자료구조
+    public ScenarioHandler ScenarioHandler { get { return _scenarioHandler; } }       //자료구조
+    
+    #endregion
+
     // Start is called before the first frame update
     public void init()
     {
         //그냥....시작했다는 의미로 한번 넣어본
         GameManager.ResourceManager.Instantiate("Player");
+        _scenarioHandler = Util.ParseJson<ScenarioHandler>();       //Json data를 자료구조로 가지고 오기
+
+        Debug.Log(_scenarioHandler[$"{1}_{0}"].Dialogue);           //
+
     }
 
     // Update is called once per frame

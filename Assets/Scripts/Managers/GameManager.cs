@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
     static GameManager _instance;
     static GameManager Instance { get { init(); return _instance; } }
 
-
-
     #region Managers
     InputManager _inputManager = new InputManager();
     SceneManager _sceneManager = new SceneManager();

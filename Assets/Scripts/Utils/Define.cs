@@ -9,14 +9,15 @@ using UnityEngine;
 public class Define 
 {
     /// <summary>
-    /// State Machine 0.2% 만 함유시켜봅시다.
+    /// State 
     /// </summary>
     public enum States
     {
+
+        Lose,
         Play,
         Pause,
         Win,
-        Lose,
         MaxCount
     }
     /// <summary>
@@ -26,7 +27,9 @@ public class Define
     /// </summary>
     public enum Buttons
     {
+
         JumpBtn,
+
         MaxCount
     }
     /// <summary>
@@ -64,7 +67,7 @@ public class Define
     /// </summary>
     public enum BGM
     {
-
+        BlockBgm,
         MaxCount
     }
 
@@ -76,7 +79,7 @@ public class Define
     /// </summary>
     public enum SFX
     {
-
+        BlockClear,
         MaxCount
     }
 

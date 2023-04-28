@@ -1,0 +1,49 @@
+[
+    {
+     "Progress": "0_0",
+     "Name": "박성택",
+     "Dialogue": "즐거운 Text parsing 공부시간이에요~",
+     "Picture": "성택1",
+     "Background": "학교1"
+    },
+    {
+     "Progress": "0_1",
+     "Name": "박성택",
+     "Dialogue": "모두 공부는 열심히 해오셨나요?",
+     "Picture": "성택1"
+    },
+    {
+     "Progress": "0_2",
+     "Name": "일동",
+     "Picture": "일동1",
+     "Action": "선택지1"
+    },
+    null,
+    {
+     "Progress": "1_0",
+     "Name": "박성택",
+     "Dialogue": "그럼 바로 코딩으로 들어갈게요~",
+     "Picture": "성택2",
+     "Background": "학교2"
+    },
+    {
+     "Progress": "1_1",
+     "Name": "일동",
+     "Dialogue": "네~",
+     "Picture": "일동1"
+    },
+    null,
+    {
+     "Progress": "2_0",
+     "Name": "박성택",
+     "Dialogue": "….... 슬프네요",
+     "Picture": "성택3",
+     "Background": "학교2"
+    },
+    {
+     "Progress": "2_1",
+     "Name": "일동",
+     "Dialogue": "모르겠고 거 밥이나 먹고 합시다.",
+     "Picture": "일동2"
+    }
+   ]
