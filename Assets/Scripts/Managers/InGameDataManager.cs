@@ -12,7 +12,13 @@ public class InGameDataManager
     #region JsonData
     ScenarioHandler _scenarioHandler = new ScenarioHandler();       //자료구조
     public ScenarioHandler ScenarioHandler { get { return _scenarioHandler; } }       //자료구조
-    
+
+    #endregion
+
+    #region JsonData
+    NormalQuestHandler _normalquestHandler = new NormalQuestHandler();       //자료구조
+    public NormalQuestHandler NormalQuestHandler { get { return _normalquestHandler; } }       //자료구조
+
     #endregion
 
     // Start is called before the first frame update
@@ -24,6 +30,8 @@ public class InGameDataManager
 
         Debug.Log(_scenarioHandler[$"{1}_{0}"].Dialogue);           //
 
+        _normalquestHandler = Util.ParseJson<NormalQuestHandler>();
+        Debug.Log(_normalquestHandler[1].Skip);
     }
 
     // Update is called once per frame
