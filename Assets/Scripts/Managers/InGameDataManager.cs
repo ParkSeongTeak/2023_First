@@ -12,8 +12,13 @@ public class InGameDataManager
     #region JsonData
     ScenarioHandler _scenarioHandler = new ScenarioHandler();       //자료구조
     public ScenarioHandler ScenarioHandler { get { return _scenarioHandler; } }       //자료구조
-    
+
     #endregion
+    public int _jumpCnt = 0;
+    public int JumpCnt 
+    { 
+        get { return _jumpCnt; } set { _jumpCnt = value; GameManager.UIManager.UIUpdate();}                                
+    }
 
     // Start is called before the first frame update
     public void init()
