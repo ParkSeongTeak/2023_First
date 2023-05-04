@@ -40,6 +40,7 @@ public class Define
     public enum Texts
     {
         ScoreTxt,
+        JumpCnt,
         MaxCount
     }
 

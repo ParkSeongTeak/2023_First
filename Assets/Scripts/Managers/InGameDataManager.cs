@@ -14,6 +14,11 @@ public class InGameDataManager
     public ScenarioHandler ScenarioHandler { get { return _scenarioHandler; } }       //자료구조
 
     #endregion
+    public int _jumpCnt = 0;
+    public int JumpCnt 
+    { 
+        get { return _jumpCnt; } set { _jumpCnt = value; GameManager.UIManager.UIUpdate();}                                
+    }
 
     // Start is called before the first frame update
     GameObject _player;

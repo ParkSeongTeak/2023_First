@@ -54,4 +54,10 @@ public class UIManager
     {
 
     }
+
+    public void UIUpdate()
+    {
+        UiTexts[(int)Define.Texts.JumpCnt].text = GameManager.InGameDataManager.JumpCnt.ToString();
+    }
+
 }
