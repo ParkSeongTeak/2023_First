@@ -12,6 +12,9 @@ public class JumpBtn : EventTriggerEX
 
     protected override void OnPointerClick(PointerEventData data)
     {
+
         Debug.Log("JumpBtn눌림");
+        //이 부분을 작성 안해주심
+        GameManager.InGameDataManager.JumpCnt++;
     }
 }

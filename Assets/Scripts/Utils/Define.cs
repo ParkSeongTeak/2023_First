@@ -41,6 +41,7 @@ public class Define
     {
         ScoreTxt,
         JumpCnt,
+        SkipCnt,
         MaxCount
     }
 

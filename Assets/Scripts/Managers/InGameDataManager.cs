@@ -13,13 +13,24 @@ public class InGameDataManager
     ScenarioHandler _scenarioHandler = new ScenarioHandler();       //자료구조
     public ScenarioHandler ScenarioHandler { get { return _scenarioHandler; } }       //자료구조
 
+    NormalQuestHandler _normalQuestHandler = new NormalQuestHandler();
+    public NormalQuestHandler NormalQuestHandler { get { return _normalQuestHandler; } }       //자료구조
+
+
+
     #endregion
-    public int _jumpCnt = 0;
+    int _jumpCnt = 0;
     public int JumpCnt 
     { 
-        get { return _jumpCnt; } set { _jumpCnt = value; GameManager.UIManager.UIUpdate();}                                
+        get { return _jumpCnt; } 
+        set { _jumpCnt = value; GameManager.UIManager.UIUpdate();}                                
     }
-
+    int _skipCnt = 0;
+    public int SkipCnt
+    {
+        get { return _skipCnt; }
+        set { _skipCnt = value; GameManager.UIManager.UIUpdate(); }
+    }
     // Start is called before the first frame update
     GameObject _player;
     public GameObject Player { get { return _player; } }
@@ -28,8 +39,12 @@ public class InGameDataManager
         //그냥....시작했다는 의미로 한번 넣어본
         _player = GameManager.ResourceManager.Instantiate("Player");
         _scenarioHandler = Util.ParseJson<ScenarioHandler>();       //Json data를 자료구조로 가지고 오기
+        _normalQuestHandler = Util.ParseJson<NormalQuestHandler>();
 
-        Debug.Log(_scenarioHandler[$"{1}_{0}"].Dialogue);           //
+        
+        Debug.Log(_normalQuestHandler[1].Quest +" "+ _normalQuestHandler[1].Jump + " " + _normalQuestHandler[1].Skip + " " + _normalQuestHandler[1].Bloom);           //
+
+       // Debug.Log(_scenarioHandler[$"{1}_{0}"].Dialogue);           //
 
     }
 

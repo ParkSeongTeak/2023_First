@@ -16,6 +16,8 @@ public class SkipBtn : EventTriggerEX
     {
         Debug.Log("SkipBtn´­¸²");
         GameManager.InGameDataManager.Player.transform.position += new Vector3(1, 0, 0);
+
+        GameManager.InGameDataManager.SkipCnt++;
     }
             
          
