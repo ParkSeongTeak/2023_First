@@ -14,7 +14,7 @@ public class JumpBtn : EventTriggerEX
     {
 
         Debug.Log("JumpBtn눌림");
-        //이 부분을 작성 안해주심
+        
         GameManager.InGameDataManager.JumpCnt++;
     }
 }

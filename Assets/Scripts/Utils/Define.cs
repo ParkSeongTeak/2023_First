@@ -29,7 +29,7 @@ public class Define
     {
 
         JumpBtn,
-
+        SkipBtn,
         MaxCount
     }
     /// <summary>
