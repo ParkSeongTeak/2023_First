@@ -42,6 +42,7 @@ public class Define
         ScoreTxt,
         JumpCnt,
         SkipCnt,
+        PlayRwrd,
         MaxCount
     }
 

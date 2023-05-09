@@ -16,7 +16,8 @@ public class InGameDataManager
     NormalQuestHandler _normalQuestHandler = new NormalQuestHandler();
     public NormalQuestHandler NormalQuestHandler { get { return _normalQuestHandler; } }       //자료구조
 
-
+    ClearRwrdHandler _clearRwrdHandler = new ClearRwrdHandler();
+    public ClearRwrdHandler ClearRwrdHandler { get { return _clearRwrdHandler; } }
 
     #endregion
     int _jumpCnt = 0;
@@ -31,6 +32,16 @@ public class InGameDataManager
         get { return _skipCnt; }
         set { _skipCnt = value; GameManager.UIManager.UIUpdate(); }
     }
+
+    int _playRwrd = 0;
+    public int PlayRwrd
+    {
+       
+        get { _playRwrd = (SkipCnt* 1) + (JumpCnt* 2); return _playRwrd;}  //플레이 보상 계산 임시 수식 //아직 BloomCnt가 변수 선언되지 않아서 계산이 불가능해 수식에서 뺐습니다. 어차피 임시 수식이니까...
+        set { _playRwrd = value; }
+
+    }
+
     // Start is called before the first frame update
     GameObject _player;
     public GameObject Player { get { return _player; } }
@@ -40,13 +51,15 @@ public class InGameDataManager
         _player = GameManager.ResourceManager.Instantiate("Player");
         _scenarioHandler = Util.ParseJson<ScenarioHandler>();       //Json data를 자료구조로 가지고 오기
         _normalQuestHandler = Util.ParseJson<NormalQuestHandler>();
+        _clearRwrdHandler = Util.ParseJson<ClearRwrdHandler>();
 
-        
         Debug.Log(_normalQuestHandler[1].Quest +" "+ _normalQuestHandler[1].Jump + " " + _normalQuestHandler[1].Skip + " " + _normalQuestHandler[1].Bloom);           //
 
        // Debug.Log(_scenarioHandler[$"{1}_{0}"].Dialogue);           //
 
     }
+
+    
 
     // Update is called once per frame
     public void Clear()
