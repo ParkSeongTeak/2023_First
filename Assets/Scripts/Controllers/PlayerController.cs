@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _myRgbd2D;
     float _jumpForce = 10f;
     bool _canJump;
+    Tile OnTile;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
             _canJump = false;
             GameManager.InGameDataManager.JumpCnt++;
             _myRgbd2D.AddForce(new Vector3(0, 1f, 0) * _jumpForce, ForceMode2D.Impulse);
+            OnTile.JumpOnMe();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.tag == "Flower")
         {
             _canJump = true;
+            OnTile = collision.transform.GetComponent<Tile>();
         }
     }
 
