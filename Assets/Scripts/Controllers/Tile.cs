@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
-        Cnt = 4;
+        Cnt = GameManager.InGameDataManager.NormalQuestHandler[1].Jump;
     }
     public void JumpOnMe() 
     {

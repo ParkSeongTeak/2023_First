@@ -45,10 +45,13 @@ public class InGameDataManager
     // Start is called before the first frame update
     GameObject _player;
     public GameObject Player { get { return _player; } }
+    GameObject _flower;
+    public GameObject Flower { get { return _flower; } }
     public void init()
     {
         //그냥....시작했다는 의미로 한번 넣어본
         _player = GameManager.ResourceManager.Instantiate("Player");
+        _flower = GameManager.ResourceManager.Instantiate("Flower");
         _scenarioHandler = Util.ParseJson<ScenarioHandler>();       //Json data를 자료구조로 가지고 오기
         _normalQuestHandler = Util.ParseJson<NormalQuestHandler>();
         _clearRwrdHandler = Util.ParseJson<ClearRwrdHandler>();
