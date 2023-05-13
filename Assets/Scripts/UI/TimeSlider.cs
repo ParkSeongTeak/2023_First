@@ -16,15 +16,22 @@ public class TimeSlider : MonoBehaviour
     {
         // Get the current value of the slider
         float currentValue = GetComponent<Slider>().value;
+        currentValue -= 0.1f * Time.deltaTime;
 
         // If the slider value is greater than 0, decrease it by 1 every second
         if (currentValue > 0)
         {
-            currentValue -= Time.deltaTime;
-            // Make sure the value does not go below 0
-            currentValue = Mathf.Max(currentValue, 0f);
+            GetComponent<GameOver>().DisableGameOverMenu();
             // Set the new value of the slider
             GetComponent<Slider>().value = currentValue;
+        }
+        else
+        {
+            currentValue= 0;
+            Debug.Log("Game Over!");
+            //GameOver Screen ¶ç¿ì±â
+            GetComponent<GameOver>().EnableGameOverMenu();                        //GameOverÃ¢ ¶ç¿ì±â
+
         }
     }
 }

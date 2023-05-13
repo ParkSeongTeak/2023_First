@@ -10,6 +10,7 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
+        //Cnt = 3;
         Cnt = GameManager.InGameDataManager.NormalQuestHandler[1].Jump;
     }
     public void JumpOnMe() 
@@ -25,6 +26,7 @@ public class Tile : MonoBehaviour
         {
             Destroy(gameObject);
             //GameManager.Á×À½! 
+            //GetComponent<GameOver>().EnableGameOverMenu();
         }
     }
 

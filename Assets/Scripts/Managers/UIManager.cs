@@ -59,8 +59,29 @@ public class UIManager
     public void UIUpdate()
     {
         //UiTexts[(int)Define.Texts.JumpCnt].text = GameManager.InGameDataManager.JumpCnt.ToString();
-        UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : {GameManager.InGameDataManager.NormalQuestHandler[1].Jump - GameManager.InGameDataManager.JumpCnt}";
-        UiTexts[(int)Define.Texts.SkipCnt].text = $"SkipCnt : {GameManager.InGameDataManager.NormalQuestHandler[1].Skip - GameManager.InGameDataManager.SkipCnt}";
+        if (GameManager.InGameDataManager.NormalQuestHandler[1].Jump > GameManager.InGameDataManager.JumpCnt)
+        {
+            UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : {GameManager.InGameDataManager.NormalQuestHandler[1].Jump - GameManager.InGameDataManager.JumpCnt}";
+            //UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : {4 - GameManager.InGameDataManager.JumpCnt}";
+        }
+        if (GameManager.InGameDataManager.NormalQuestHandler[1].Jump <= GameManager.InGameDataManager.JumpCnt)
+        {
+            UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : Clear!";
+        }
+
+        if (GameManager.InGameDataManager.NormalQuestHandler[1].Skip > GameManager.InGameDataManager.SkipCnt)
+        {
+            UiTexts[(int)Define.Texts.SkipCnt].text = $"SkipCnt : {GameManager.InGameDataManager.NormalQuestHandler[1].Skip - GameManager.InGameDataManager.SkipCnt}";
+        }
+        if (GameManager.InGameDataManager.NormalQuestHandler[1].Skip <= GameManager.InGameDataManager.SkipCnt)
+        {
+            UiTexts[(int)Define.Texts.SkipCnt].text = $"SkipCnt : Clear!";
+        }
+
+
+        UiTexts[(int)Define.Texts.JumpScore].text = $"Jump Score : {GameManager.InGameDataManager.JumpCnt}";
+        UiTexts[(int)Define.Texts.SkipScore].text = $"Skip Score : {GameManager.InGameDataManager.SkipCnt}";
+        //UiTexts[(int)Define.Texts.BloomScore].text = $"Bloom Score : {GameManager.InGameDataManager.BloomCnt}";
 
     }
 

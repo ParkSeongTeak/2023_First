@@ -43,6 +43,9 @@ public class Define
         JumpCnt,
         SkipCnt,
         PlayRwrd,
+        JumpScore,
+        SkipScore,
+        BloomScore,
         MaxCount
     }
 
