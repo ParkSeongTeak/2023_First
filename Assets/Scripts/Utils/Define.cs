@@ -89,4 +89,39 @@ public class Define
         MaxCount
     }
 
+    /// <summary>
+    /// 采豪坷府 鸥老 :   FlowerBudTile
+    /// 蕾 鸥老 :         LeafTile 
+    /// 矫电 采 鸥老 :    WitheredFlowersTile
+    /// 焊呈胶 鸥老 :     BonusTile
+    /// </summary>
+    public enum TileType
+    {
+        FlowerBudTile,
+        LeafTile,
+        WitheredFlowersTile,
+        BonusTile,
+        MaxCount
+
+    }
+    public enum FlowerType
+    {
+        
+
+    }
+    public enum LeafType
+    {
+
+
+    }
+    public enum WitheredFlowersTileType
+    { 
+    
+    }
+    public enum BonusTileType 
+    { 
+    
+    }
+
+
 }

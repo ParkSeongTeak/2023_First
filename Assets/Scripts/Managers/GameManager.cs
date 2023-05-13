@@ -54,13 +54,22 @@ public class GameManager : MonoBehaviour
             _instance._inGameDataManager.init();
 
 
-           
-
-
         }
     }
 
-    
+
+    public static void GameStart()
+    {
+        //게임에 들어갈 꽃 이미지를 결정하고 들어가야겠죠?
+
+    }
+
+    public static void GameOver()
+    {
+        //게임에 들어갈 꽃 이미지를 결정하고 들어가야겠죠?
+
+    }
+
 
     // Update is called once per frame
     void Update()

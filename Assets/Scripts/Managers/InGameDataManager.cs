@@ -20,6 +20,8 @@ public class InGameDataManager
     public ClearRwrdHandler ClearRwrdHandler { get { return _clearRwrdHandler; } }
 
     #endregion
+
+    
     int _jumpCnt = 0;
     public int JumpCnt 
     { 
@@ -42,6 +44,20 @@ public class InGameDataManager
 
     }
 
+    #region Tile관련 Data
+    /// <summary>
+    /// 현재 생성되어있는 타일 관리 아마 7개 내외
+    /// </summary>
+    List<Tile> _tiles = new List<Tile>();
+    public List<Tile> TileList { get { return _tiles;  } }
+
+    public const int useFlowerNum = 3;
+    FlowerBudTile[] _useFlowerList = new FlowerBudTile[useFlowerNum];
+    public FlowerBudTile[] UseFlowerList { get { return _useFlowerList;  } set { _useFlowerList = value; } }
+
+    #endregion
+
+
     // Start is called before the first frame update
     GameObject _player;
     public GameObject Player { get { return _player; } }
@@ -56,10 +72,6 @@ public class InGameDataManager
             _player = GameManager.ResourceManager.Instantiate("Player");
         }
         
-
-
-
-
 
         _flower = GameManager.ResourceManager.Instantiate("Flower");
         _scenarioHandler = Util.ParseJson<ScenarioHandler>();       //Json data를 자료구조로 가지고 오기
