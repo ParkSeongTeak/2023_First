@@ -49,8 +49,18 @@ public class InGameDataManager
     public GameObject Flower { get { return _flower; } }
     public void init()
     {
-        //그냥....시작했다는 의미로 한번 넣어본
-        _player = GameManager.ResourceManager.Instantiate("Player");
+        //시작시 Player가 존재함을 보장(Scene에 Player가 있다면 만들지 않는다.)
+        _player = GameObject.Find("Player");
+        if(_player == null)
+        {
+            _player = GameManager.ResourceManager.Instantiate("Player");
+        }
+        
+
+
+
+
+
         _flower = GameManager.ResourceManager.Instantiate("Flower");
         _scenarioHandler = Util.ParseJson<ScenarioHandler>();       //Json data를 자료구조로 가지고 오기
         _normalQuestHandler = Util.ParseJson<NormalQuestHandler>();

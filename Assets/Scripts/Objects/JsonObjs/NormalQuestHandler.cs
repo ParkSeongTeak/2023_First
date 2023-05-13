@@ -34,4 +34,5 @@ public class NormalQuestData
     public int Jump;
     public int Skip;
     public int Bloom;
+    
 }
