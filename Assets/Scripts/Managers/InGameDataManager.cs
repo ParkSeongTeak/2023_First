@@ -34,7 +34,12 @@ public class InGameDataManager
         get { return _skipCnt; }
         set { _skipCnt = value; GameManager.UIManager.UIUpdate(); }
     }
-
+    int _bloomCnt = 0;
+    public int BloomCnt
+    {
+        get { return _bloomCnt; }
+        set { _bloomCnt = value; GameManager.UIManager.UIUpdate(); }
+    }
     int _playRwrd = 0;
     public int PlayRwrd
     {
