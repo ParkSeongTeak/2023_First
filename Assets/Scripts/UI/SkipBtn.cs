@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class SkipBtn : EventTriggerEX
 {
     void Start()
-    {
+    { 
         init();
     }
 
@@ -14,8 +16,8 @@ public class SkipBtn : EventTriggerEX
     {
         Debug.Log("SkipBtn´­¸²");
         GameManager.InGameDataManager.Player.transform.position += new Vector3(1, 0, 0);
-
         GameManager.InGameDataManager.SkipCnt++;
+        GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
     }
    
 }
