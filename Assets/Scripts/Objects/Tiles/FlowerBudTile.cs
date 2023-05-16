@@ -12,7 +12,6 @@ public class FlowerBudTile : Tile
     {
         //내가 상속한 함수(base == Tile)의 JumpOnMe() 실행
         base.JumpOnMe();
-        
 
     }
     public override void SkipOnMe()
