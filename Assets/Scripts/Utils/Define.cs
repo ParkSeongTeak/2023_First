@@ -98,30 +98,36 @@ public class Define
     /// </summary>
     public enum TileType
     {
-        FlowerBudTile,
-        LeafTile,
-        WitheredFlowersTile,
-        BonusTile,
+        FlowerTypes,
+        LeafTypes,
+        WitheredFlowersTileTypes,
+        BonusTileTypes,
         MaxCount
 
     }
-    public enum FlowerType
+    public enum FlowerTypes
     {
-        
-
+        ÄÚ½º¸ð½º,
+        °³³ª¸®,
+        ¹«±ÃÈ­,
+        MaxCount
     }
-    public enum LeafType
+    public enum LeafTypes
     {
-
-
+        ¹Ð¾ç²¢ÀÙ,
+        »óÃß,
+        MaxCount
     }
-    public enum WitheredFlowersTileType
-    { 
-    
+    public enum WitheredFlowersTileTypes
+    {
+        ½Ãµç²É,
+        ½Ãµç²É2,
+        MaxCount
     }
-    public enum BonusTileType 
-    { 
-    
+    public enum BonusTileTypes 
+    {
+        Bonus,
+        MaxCount
     }
 
 

@@ -78,14 +78,12 @@ public class InGameDataManager
         }
         
 
-        _flower = GameManager.ResourceManager.Instantiate("Flower");
+        //_flower = GameManager.ResourceManager.Instantiate("Flower");
         _scenarioHandler = Util.ParseJson<ScenarioHandler>();       //Json data를 자료구조로 가지고 오기
         _normalQuestHandler = Util.ParseJson<NormalQuestHandler>();
         _clearRwrdHandler = Util.ParseJson<ClearRwrdHandler>();
 
         Debug.Log(_normalQuestHandler[1].Quest +" "+ _normalQuestHandler[1].Jump + " " + _normalQuestHandler[1].Skip + " " + _normalQuestHandler[1].Bloom);           //
-
-       // Debug.Log(_scenarioHandler[$"{1}_{0}"].Dialogue);           //
 
     }
 
