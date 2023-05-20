@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1372214853749421017}
   m_Layer: 0
   m_Name: BonusTileTypes
-  m_TagString: Untagged
+  m_TagString: Flower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,3 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileType: 3
+  _tilePosititon: 0

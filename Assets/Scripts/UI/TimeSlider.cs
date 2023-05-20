@@ -16,7 +16,7 @@ public class TimeSlider : MonoBehaviour
     {
         // Get the current value of the slider
         float currentValue = GetComponent<Slider>().value;
-        currentValue -= 0.1f * Time.deltaTime;
+        currentValue -= 0.05f * Time.deltaTime;
 
         // If the slider value is greater than 0, decrease it by 1 every second
         if (currentValue > 0)
