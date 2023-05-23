@@ -1,14 +1,14 @@
 [
  {
   "Quest": 1,
-  "Jump": 10,
-  "Skip": 100,
-  "Bloom": 1000
+  "Jump": 3,
+  "Skip": 3,
+  "Bloom": 3
  },
  {
   "Quest": 2,
-  "Jump": 20,
-  "Skip": 200,
-  "Bloom": 2000
+  "Jump": 4,
+  "Skip": 4,
+  "Bloom": 4
  }
 ]

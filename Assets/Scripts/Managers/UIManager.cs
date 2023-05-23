@@ -77,11 +77,20 @@ public class UIManager
         {
             UiTexts[(int)Define.Texts.SkipCnt].text = $"SkipCnt : Clear!";
         }
+        if (GameManager.InGameDataManager.NormalQuestHandler[1].Bloom > GameManager.InGameDataManager.BloomCnt)
+        {
+            UiTexts[(int)Define.Texts.BloomCnt].text = $"BloomCnt : {GameManager.InGameDataManager.NormalQuestHandler[1].Bloom - GameManager.InGameDataManager.BloomCnt}";
+        }
+        if (GameManager.InGameDataManager.NormalQuestHandler[1].Bloom <= GameManager.InGameDataManager.BloomCnt)
+        {
+            UiTexts[(int)Define.Texts.BloomCnt].text = $"BloomCnt : Clear!";
+        }
+
 
 
         UiTexts[(int)Define.Texts.JumpScore].text = $"Jump Score : {GameManager.InGameDataManager.JumpCnt}";
         UiTexts[(int)Define.Texts.SkipScore].text = $"Skip Score : {GameManager.InGameDataManager.SkipCnt}";
-        //UiTexts[(int)Define.Texts.BloomScore].text = $"Bloom Score : {GameManager.InGameDataManager.BloomCnt}";
+        UiTexts[(int)Define.Texts.BloomScore].text = $"Bloom Score : {GameManager.InGameDataManager.BloomCnt}";
 
     }
 
