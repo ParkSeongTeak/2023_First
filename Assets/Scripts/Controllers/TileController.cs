@@ -5,6 +5,7 @@ using UnityEditor.Build.Content;
 using UnityEngine;
 using static Define;
 
+
 public class TileController : MonoBehaviour
 {
     /// <summary>
@@ -37,7 +38,6 @@ public class TileController : MonoBehaviour
     
     Vector3 _referenceTile = new Vector3(-12,-5,0);
     float _referenceDist = 3f;
-
     #endregion
 
 
@@ -48,7 +48,7 @@ public class TileController : MonoBehaviour
     /// »Ò∏¡¿∫ LinkedList
     /// </summary>
     /// 
-    [SerializeField]
+    //[SerializeField]
     List<Tile> _nowGeneratedTiles = new List<Tile>();
     public List<Tile> NowGeneratedTiles { get { return _nowGeneratedTiles; } }
 
