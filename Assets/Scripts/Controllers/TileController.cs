@@ -20,11 +20,14 @@ public class TileController : MonoBehaviour
     Sprite[] _leafSprites;
     Sprite[] _witheredFlowersTileSprites;
     Sprite[] _bonusSprites;
+    Sprite[] _cosmosFlowerSprites;
 
     public Sprite[] FlowerSprites { get { return _flowerSprites; } }
     public Sprite[] LeafSprites { get { return _leafSprites; } }
     public Sprite[] WitheredFlowersTileSprites { get { return _witheredFlowersTileSprites; } }
     public Sprite[] BonusSprites { get { return _bonusSprites; } }
+    public Sprite[] CosmosFlowerSprites { get { return _cosmosFlowerSprites; } }
+
 
     #endregion 받아온 이미지들
 
@@ -69,13 +72,13 @@ public class TileController : MonoBehaviour
     {
         if (_instance == null)
         {
-            GameObject fowerControl = GameObject.Find("TileController");
-            if (fowerControl == null)
+            GameObject flowerControl = GameObject.Find("TileController");
+            if (flowerControl == null)
             {
-                fowerControl = new GameObject { name = "TileController" };
-                fowerControl.AddComponent<TileController>();
+                flowerControl = new GameObject { name = "TileController" };
+                flowerControl.AddComponent<TileController>();
             }
-            _instance = fowerControl.GetComponent<TileController>();
+            _instance = flowerControl.GetComponent<TileController>();
 
             #region PoolingGenerate
 
@@ -129,6 +132,18 @@ public class TileController : MonoBehaviour
                 if (_instance._bonusSprites[i] == null)
                 {
                     Debug.Log("_instance.BonusTileTypesStr[(int)i] NULL");
+                }
+
+            }
+
+            string[] cosmosFlowersSpritesStr = Enum.GetNames(typeof(Define.CosmosFlower));
+            _instance._cosmosFlowerSprites = new Sprite[(int)Define.CosmosFlower.MaxCount];
+            for (int i = 0; i < (int)Define.CosmosFlower.MaxCount; i++)
+            {
+                _instance._cosmosFlowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{cosmosFlowersSpritesStr[i]}");
+                if (_instance._cosmosFlowerSprites[i] == null)
+                {
+                    Debug.Log("_instance._cosmosFlowerSprites[(int)i] NULL");
                 }
 
             }
@@ -199,6 +214,10 @@ public class TileController : MonoBehaviour
     {
         return (Define.BonusTileTypes)UnityEngine.Random.RandomRange(0, (int)Define.BonusTileTypes.MaxCount);
     }
+    public Define.CosmosFlower SetCosmosFlowerType()
+    {
+        return (Define.CosmosFlower)UnityEngine.Random.RandomRange(0, (int)Define.CosmosFlower.MaxCount);
+    }
 
 
     public void MoveTiles()
@@ -212,7 +231,7 @@ public class TileController : MonoBehaviour
             }
         }
         //맨 앞 지워줌
-        _instance.DistoryTile(_instance._nowGeneratedTiles[0]);
+        _instance.DestoryTile(_instance._nowGeneratedTiles[0]);
         
         GeneratedTile();
         
@@ -220,11 +239,10 @@ public class TileController : MonoBehaviour
     }
     
     
-    public void DistoryTile(Tile tile)
+    public void DestoryTile(Tile tile)
     {
         tile.gameObject.SetActive(false);
         PoolingStack[tile.TileType].Push(tile);
-        Debug.Log("여기 지금 접근을 못하고있니?");
         _instance._nowGeneratedTiles.RemoveAt(0);
     }
 }

@@ -112,6 +112,16 @@ public class Define
         ¹«±ÃÈ­,
         MaxCount
     }
+    public enum CosmosFlower
+    {
+        CosmosOne,
+        CosmosTwo,
+        CosmosThree,
+        CosmosFour,
+        CosmosFive,
+        CosmosSix,
+        MaxCount
+    }
     public enum LeafTypes
     {
         ¹Ð¾ç²¢ÀÙ,
