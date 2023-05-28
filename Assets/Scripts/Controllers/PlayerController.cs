@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("???");
         }
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
 
     }
-
-
+    
     public void Jump()
     {
         if (_canJump)
@@ -55,7 +55,22 @@ public class PlayerController : MonoBehaviour
             OnTile = collision.transform.GetComponent<Tile>();
         }
     }
+    public float thresholdHeight;
+    public Sprite imageUnderThreshold;
+    public Sprite defaultImage;
+    private SpriteRenderer spriteRenderer;
 
+    private void Update()
+    {
+        if (transform.position.y < -3)
+        {
+            transform.GetComponent<SpriteRenderer>().sprite = imageUnderThreshold;
+        }
+        else
+        {
+        }
+    }
+    
 
-
+   
 }
