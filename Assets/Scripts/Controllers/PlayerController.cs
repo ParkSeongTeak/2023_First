@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             GetComponent<GameOver>().DisableGameOverMenu();
         }*/
 
-        if (transform.position.y < -3)
+        if (transform.position.y < -9)
         {
             transform.GetComponent<SpriteRenderer>().sprite = imageUnderThreshold;
         }
