@@ -28,10 +28,8 @@ public class TimeSlider : MonoBehaviour
         else
         {
             currentValue= 0;
-            Debug.Log("Game Over!");
             //GameOver Screen ¶ç¿ì±â
             GetComponent<GameOver>().EnableGameOverMenu();                        //GameOverÃ¢ ¶ç¿ì±â
-
         }
     }
 }

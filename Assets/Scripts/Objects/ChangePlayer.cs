@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChangePlayer: MonoBehaviour
 {
 
-    public float thresholdHeight = -6;
+    public float thresholdHeight = -6f;
     public Sprite imageUnderThreshold;
     public Sprite defaultImage;
 

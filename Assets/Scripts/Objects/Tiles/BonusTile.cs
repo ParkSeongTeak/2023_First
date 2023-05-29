@@ -14,7 +14,7 @@ public class BonusTile : Tile
     }
     public override void JumpOnMe()
     {
-
+       
     }
     public override void SkipOnMe()
     {

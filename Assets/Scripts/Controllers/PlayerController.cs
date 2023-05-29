@@ -10,6 +10,11 @@ public class PlayerController : MonoBehaviour
     bool _canJump;
     Tile OnTile;
     Animator animator;
+
+    public Sprite imageUnderThreshold;
+    public Sprite defaultImage;
+
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +26,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("???");
         }
-
-
-
     }
 
 
@@ -56,6 +58,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        /*if (transform.position.y < -4f)
+        {
+            GetComponent<GameOver>().EnableGameOverMenu();
+        }
+        else
+        {
+            GetComponent<GameOver>().DisableGameOverMenu();
+        }*/
 
+        if (transform.position.y < -3)
+        {
+            transform.GetComponent<SpriteRenderer>().sprite = imageUnderThreshold;
+        }
+        else
+        {
+
+        }
+    }
 
 }

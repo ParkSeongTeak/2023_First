@@ -39,7 +39,7 @@ public class Tile : MonoBehaviour
     private void Start()
     {
         //Cnt = 3;
-        JumpCnt = GameManager.InGameDataManager.NormalQuestHandler[1].Jump;              //나중에 타일 별 jump수로 바꿔야함
+        JumpCnt = GameManager.InGameDataManager.NormalQuestHandler[1].Jump;           
         Init();
     }
 
@@ -59,7 +59,6 @@ public class Tile : MonoBehaviour
         }
         else
         {
-            Debug.Log($"만개!");
             Destroy(gameObject);
         }
     }
