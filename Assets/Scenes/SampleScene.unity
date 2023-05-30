@@ -3088,7 +3088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81ff6e663a668b44a7232d1801623e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSliderValue: 10
+  _deltaTime: 0.01
 --- !u!114 &1569929883
 MonoBehaviour:
   m_ObjectHideFlags: 0
