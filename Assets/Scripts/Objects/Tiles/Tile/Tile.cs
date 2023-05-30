@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Build.Content;
 using UnityEngine;
 using static Define;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Tile : MonoBehaviour
 {
@@ -67,7 +69,7 @@ public class Tile : MonoBehaviour
     {
         
     }
-    public bool MoveNext()
+    public bool MoveNext(int i)
     {
         TilePosititon -= 1;
 
@@ -77,8 +79,11 @@ public class Tile : MonoBehaviour
         }
         else
         {
-            //transform.position = TileController.Instance.TilePosition[TilePosititon];
+            //transform.position = TileController.Instance.TilePosition[i - 1];
+            StartCoroutine(TileController.Instance.SmoothMove(transform, transform.position, TileController.Instance.TilePosition[i - 1], TileController.OVERTIME));
             return true;
         }
     }
+    
+    
 }

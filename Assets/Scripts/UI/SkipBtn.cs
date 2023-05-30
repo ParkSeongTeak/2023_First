@@ -14,11 +14,15 @@ public class SkipBtn : EventTriggerEX
 
     protected override void OnPointerClick(PointerEventData data)
     {
-        Debug.Log("SkipBtn����");
-        //GameManager.InGameDataManager.Player.transform.position += new Vector3(1, 0, 0);
 
-        GameManager.InGameDataManager.SkipCnt++;
-        TileController.Instance.MoveTiles();
+        if (!TileController.IsMoving)
+        {
+            //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
+            TileController.Instance.BackGroundMove?.Invoke();
+
+            GameManager.InGameDataManager.SkipCnt++;
+            TileController.Instance.MoveTiles();
+        }
     }
    
 }

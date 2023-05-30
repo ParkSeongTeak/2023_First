@@ -42,9 +42,12 @@ public class FlowerBudTile : Tile
         }
         else
         {
+            GameManager.GameOver(2f);
             Destroy(gameObject);
         }
     }
+
+
     public override void SkipOnMe()
     {
          

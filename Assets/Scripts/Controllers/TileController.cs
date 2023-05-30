@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Build.Content;
 using UnityEngine;
 using static Define;
@@ -32,18 +33,15 @@ public class TileController : MonoBehaviour
 
     #endregion 받아온 이미지들
 
-
     #region Tile 위치정보 관련
-    const int _tileNum = 8;
+    const int _tileNum = 15;
     Vector3[] _tilePosition = new Vector3[_tileNum];
     public Vector3[] TilePosition { get { return _tilePosition; } }
 
     
-    Vector3 _referenceTile = new Vector3(-12,-5,0);
+    Vector3 _referenceTile = new Vector3(-12f,-3.5f,0);
     float _referenceDist = 3f;
     #endregion
-
-
 
     #region 지금Generated Tile들
 
@@ -57,6 +55,17 @@ public class TileController : MonoBehaviour
 
     #endregion 지금Generated Tile들
 
+    #region BackGround 통제
+    public Action BackGroundMove { get; set; }
+    public Vector3 DeltaMove { get; set; }
+    #endregion
+
+    #region TileSmoothMove
+
+    public const float OVERTIME = 0.33f;
+    public static bool IsMoving { get; set; }
+
+    #endregion
 
 
     static Dictionary<TileType, Stack<Tile>> _poolingStack = new Dictionary<TileType, Stack<Tile>>();
@@ -163,10 +172,15 @@ public class TileController : MonoBehaviour
             }
 
             #endregion
-        }
+
+            #region TileSmoothMove
+            _instance.DeltaMove = new Vector3(0.5f, 0, 0);
+            IsMoving = false;
+            #endregion
+}
     }
 
-    GameObject GeneratedTile(int tilePos = 7)
+    GameObject GeneratedTile(int tilePos = _tileNum-1)
     {
         TileType generateType = (TileType)UnityEngine.Random.RandomRange(0, (int)TileType.MaxCount);
         if (_poolingStack[generateType].Count != 0)
@@ -222,20 +236,19 @@ public class TileController : MonoBehaviour
 
     public void MoveTiles()
     {
+        IsMoving = true;
         
         for(int i = 1; i < _tileNum; i++)
         {
-            if(_instance._nowGeneratedTiles[i].MoveNext())
-            {
-                _instance._nowGeneratedTiles[i].transform.position = _instance._tilePosition[i-1];
-            }
+            _instance._nowGeneratedTiles[i].MoveNext(i);
+            
         }
         //맨 앞 지워줌
         _instance.DestoryTile(_instance._nowGeneratedTiles[0]);
-        
+        StartCoroutine(WaitTime());
         GeneratedTile();
         
-       
+        
     }
     
     
@@ -245,4 +258,24 @@ public class TileController : MonoBehaviour
         PoolingStack[tile.TileType].Push(tile);
         _instance._nowGeneratedTiles.RemoveAt(0);
     }
+    public IEnumerator SmoothMove(Transform transform, Vector3 start, Vector3 end, float overTime = OVERTIME)
+    {
+        float startTime = Time.time;
+        float endTime = startTime + overTime;
+        while (Time.time < endTime)
+        {
+            float t = (Time.time - startTime) / overTime;
+            transform.position = Vector3.Lerp(start, end, t);
+            yield return null;
+        }
+
+        transform.position = end;
+
+    }
+    public IEnumerator WaitTime(float overTime = OVERTIME)
+    {
+        yield return new WaitForSeconds(overTime);
+        IsMoving = false;
+    }
+
 }

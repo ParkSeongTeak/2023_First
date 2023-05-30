@@ -56,7 +56,10 @@ public class GameManager : MonoBehaviour
 
         }
     }
-
+    private void Awake()
+    {
+        init();
+    }
 
     public static void GameStart()
     {
@@ -64,12 +67,15 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public static void GameOver()
+    public static void GameOver(float timer)
     {
-        //게임에 들어갈 꽃 이미지를 결정하고 들어가야겠죠?
-
+        _instance.Invoke("GameOver", timer);
     }
-
+    void GameOver()
+    {
+        Debug.Log("GameOver");
+        //UIManager.PopUpUI[(int)Define.PopUpUI.GameOverMenu].SetActive(true);
+    }
 
     // Update is called once per frame
     void Update()

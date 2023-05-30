@@ -6,28 +6,29 @@ using UnityEngine.UI;
 
 public class TimeSlider : MonoBehaviour
 {
-    public float maxSliderValue = 10f;
+    [SerializeField]
+    float _deltaTime = 0.01f;
     void Start()
     {
-        // Set the starting value of the Slider to match the maximum value
-        GetComponent<Slider>().value = maxSliderValue;
+        //GetComponent<Slider>().value 는 0~1 사잇값입니다 이 이상의 값이 들어가 봐야 최댓값인 1이 됩니다.
+        GetComponent<Slider>().value = 1.0f;
     }
     void Update()
     {
         // Get the current value of the slider
-        float currentValue = GetComponent<Slider>().value;
-        currentValue -= 0.05f * Time.deltaTime;
+        //GetComponent<Slider>().value;
+        GetComponent<Slider>().value -= _deltaTime * Time.deltaTime;
 
         // If the slider value is greater than 0, decrease it by 1 every second
-        if (currentValue > 0)
+        if (GetComponent<Slider>().value > 0)
         {
             GetComponent<GameOver>().DisableGameOverMenu();
             // Set the new value of the slider
-            GetComponent<Slider>().value = currentValue;
         }
         else
         {
-            currentValue= 0;
+            // 0이상 작아지지 않습니다.
+            //currentValue= 0;
             //GameOver Screen 띄우기
             GetComponent<GameOver>().EnableGameOverMenu();                        //GameOver창 띄우기
         }

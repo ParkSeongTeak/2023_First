@@ -78,6 +78,12 @@ public class Define
         MaxCount
     }
 
+
+    public enum PopUpUI
+    {
+        GameOverMenu,
+        MaxCount
+    }
     /// <summary>
     /// SFX(효과음) 음악들을 넣어주는 공간
     /// ***반드시****
@@ -110,6 +116,7 @@ public class Define
         코스모스,
         개나리,
         무궁화,
+
         MaxCount
     }
     public enum CosmosFlower

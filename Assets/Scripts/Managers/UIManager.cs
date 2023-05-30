@@ -8,17 +8,21 @@ using System;
 /// <summary>
 /// UI는...... 좀 나중에 빡세게 잡고 해야 하나 대충이래도 되나 고민 중입니다.
 /// </summary>
-public class UIManager 
+public class UIManager
 {
     #region UI
     GameObject[] _uibuttons;
     TextMeshProUGUI[] _uiTexts;
     Image[] _uiImages;
+    GameObject[] _popUpUI;
+
     #endregion
     public GameObject[] UiButtons { get { return _uibuttons; } }
     public TextMeshProUGUI[] UiTexts { get { return _uiTexts; } }
     public Image[] UiImages { get { return _uiImages; } }
-    
+
+    public GameObject[] PopUpUI { get{ return _popUpUI; } }
+
     public void init()
     {
 
@@ -43,6 +47,15 @@ public class UIManager
         {
             _uiImages[i] = GameObject.Find(_ImagesFieldsstr[i]).GetComponent<Image>();
         }
+
+
+        _popUpUI = new GameObject[(int)Define.PopUpUI.MaxCount];
+        string[] _popUpUIstr = Enum.GetNames(typeof(Define.PopUpUI));
+        for (int i = 0; i < (int)Define.PopUpUI.MaxCount; i++)
+        {
+            _popUpUI[i] = GameObject.Find(_popUpUIstr[i]).GetComponent<GameObject>();
+        }
+
 
         //UI는 어떻게 바꿔야 하나? 이미지면 이미지 접근 후 내가 원하는 이미지를 UiImages[(int)Define.Images.원하는 이미지]로 접근 
         GameManager.UIManager.UiImages[(int)Define.Images.flowerImg].sprite = GameManager.ResourceManager.Load<Sprite>("Sprites/img");
