@@ -10,11 +10,16 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    #region Singleton
     /// <summary>
     /// 유일성 보장한 게임메니저
     /// </summary>
+
     static GameManager _instance;
     static GameManager Instance { get { init(); return _instance; } }
+
+    GameManager() {}
+    #endregion
 
     #region Managers
     InputManager _inputManager = new InputManager();
@@ -31,6 +36,8 @@ public class GameManager : MonoBehaviour
     public static ResourceManager ResourceManager { get { return Instance._resourceManager; } }
     #endregion
 
+
+    #region Initiate
     /// <summary>
     /// 유일성 보장해주는 함수
     /// </summary>
@@ -56,6 +63,8 @@ public class GameManager : MonoBehaviour
 
         }
     }
+    #endregion
+
     private void Awake()
     {
         init();

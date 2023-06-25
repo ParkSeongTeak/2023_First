@@ -15,8 +15,5 @@ public class JumpBtn : EventTriggerEX
 
         Debug.Log("JumpBtn´­¸²");
         GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
-        
-
-
     }
 }

@@ -21,7 +21,7 @@ public class InGameDataManager
 
     #endregion
 
-    
+    #region Quest관련 Data
     int _jumpCnt = 0;
     public int JumpCnt 
     { 
@@ -48,6 +48,7 @@ public class InGameDataManager
         set { _playRwrd = value; }
 
     }
+    #endregion
 
     #region Tile관련 Data
     /// <summary>
@@ -68,6 +69,7 @@ public class InGameDataManager
     public GameObject Player { get { return _player; } }
     GameObject _flower;
     public GameObject Flower { get { return _flower; } }
+    #region Initiate
     public void init()
     {
         //시작시 Player가 존재함을 보장(Scene에 Player가 있다면 만들지 않는다.)
@@ -87,7 +89,7 @@ public class InGameDataManager
 
     }
 
-    
+    #endregion
 
     // Update is called once per frame
     public void Clear()

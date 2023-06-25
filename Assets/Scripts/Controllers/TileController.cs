@@ -71,8 +71,8 @@ public class TileController : MonoBehaviour
     static Dictionary<TileType, Stack<Tile>> _poolingStack = new Dictionary<TileType, Stack<Tile>>();
     public static Dictionary<TileType, Stack<Tile>> PoolingStack { get { return _poolingStack; }}
 
-    /// TileType == TileType.Flower == > Stack<Tile>중 어떤 객체
-    /// 자동차 키 == BMW 16가 서울 6743 ==> 자동차 == BMW 16가 서울 6743 
+    /// TileType => TileType.Flower == > Stack<Tile>중 어떤 객체
+    /// 자동차 키 => BMW 16가 서울 6743 ==> 자동차 => BMW 16가 서울 6743 
 
     /// <summary>
     /// 존재함을 보장함

@@ -1,14 +1,82 @@
-[
- {
-  "Quest": 1,
-  "Jump": 3,
-  "Skip": 3,
-  "Bloom": 3
- },
- {
-  "Quest": 2,
-  "Jump": 4,
-  "Skip": 4,
-  "Bloom": 4
- }
-]
+#include<iostream>
+#include<string>
+#define MAXNUM 100000
+#define HASHINGNUM 500000
+#define PRIMENUM 97
+using namespace std;
+
+
+template <typename T>
+struct Node {
+	Node* next;
+	T data;
+
+
+};
+
+Node<int> hashBucket[MAXNUM];
+static int idx = 0;
+
+template <typename T>
+struct List {
+	Node<T>* head;
+	void add(T data) {
+		hashBucket[idx].data = data;
+		hashBucket[idx].next = head;
+		head = &hashBucket[idx];
+		idx++;
+	}
+	bool exist(T data) {
+		Node<T>* next = head;
+
+		while (next != 0) {
+			if (next->data == data)
+				return true;
+			else {
+				next = next->next;
+			}
+		}
+		return false;
+
+	}
+
+
+};
+
+List<int> hashList[HASHINGNUM];
+
+
+template <typename T>
+int hashFunc(T data) {
+	if (data < 0) data *= -1;
+	return (((data % HASHINGNUM) * PRIMENUM) + PRIMENUM) % HASHINGNUM;
+}
+
+
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int inputnum, data;
+	cin >> inputnum;
+	for (int i = 0; i < inputnum; i++) {
+		cin >> data;
+		hashList[hashFunc(data)].add(data);
+	}
+
+
+	cin >> inputnum;
+	for (int i = 0; i < inputnum; i++) {
+		cin >> data;
+		if (hashList[hashFunc(data)].exist(data)) {
+			cout << "1\n";
+		}
+		else {
+			cout << "0\n";
+		}
+	}
+
+
+}

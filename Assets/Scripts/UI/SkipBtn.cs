@@ -22,6 +22,7 @@ public class SkipBtn : EventTriggerEX
 
             GameManager.InGameDataManager.SkipCnt++;
             TileController.Instance.MoveTiles();
+
         }
     }
    

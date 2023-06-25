@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BackGround : MonoBehaviour
 {
-
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +12,6 @@ public class BackGround : MonoBehaviour
     }
     private void init()
     {
-
         Debug.Log("Init");
         TileController.Instance.BackGroundMove += ThisMove;
 
@@ -22,7 +19,6 @@ public class BackGround : MonoBehaviour
 
     void ThisMove()
     {
-        Debug.Log("?1?");
         StartCoroutine(TileController.Instance.SmoothMove(transform, transform.position, transform.position - TileController.Instance.DeltaMove));
 
     }
