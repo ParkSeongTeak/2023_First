@@ -4,9 +4,9 @@ using UnityEngine;
 
 
 
-public class NewBehaviourScript : MonoBehaviour
+public class Move : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
 
     void Start()
     {
