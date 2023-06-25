@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
+
     #region Initiate
     /// <summary>
     /// 유일성 보장해주는 함수
@@ -54,11 +55,11 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gm);
             _instance = gm.GetComponent<GameManager>();
 
+            _instance._inGameDataManager.init();
             _instance._inputManager.init();
             _instance._sceneManager.init();
             _instance._soundManager.init();
             _instance._uIManager.init();
-            _instance._inGameDataManager.init();
 
 
         }

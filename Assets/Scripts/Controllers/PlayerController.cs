@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         {
             //점프키 누르면 어쩌구 저쩌구
             _canJump = false;
-            GameManager.InGameDataManager.JumpCnt++;
+            GameManager.InGameDataManager.NowState.JumpCnt++;
             _myRgbd2D.AddForce(new Vector3(0, 1f, 0) * _jumpForce, ForceMode2D.Impulse);
             OnTile.JumpOnMe();
  

@@ -69,49 +69,43 @@ public class UIManager
 
     }
 
-    public void UIUpdate()
+    public void UIUpdate(int idx)
     {
         //UiTexts[(int)Define.Texts.JumpCnt].text = GameManager.InGameDataManager.JumpCnt.ToString();
-        if (GameManager.InGameDataManager.NormalQuestHandler[1].Jump > GameManager.InGameDataManager.JumpCnt)
+        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Jump > GameManager.InGameDataManager.NowState.JumpCnt)
         {
-            UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : {GameManager.InGameDataManager.NormalQuestHandler[1].Jump - GameManager.InGameDataManager.JumpCnt}";
+            UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : {GameManager.InGameDataManager.NowState.QuestHandler[idx].Jump - GameManager.InGameDataManager.NowState.JumpCnt}";
             //UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : {4 - GameManager.InGameDataManager.JumpCnt}";
         }
-        if (GameManager.InGameDataManager.NormalQuestHandler[1].Jump <= GameManager.InGameDataManager.JumpCnt)
+        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Jump <= GameManager.InGameDataManager.NowState.JumpCnt)
         {
             UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : Clear!";
         }
 
-        if (GameManager.InGameDataManager.NormalQuestHandler[1].Skip > GameManager.InGameDataManager.SkipCnt)
+        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Skip > GameManager.InGameDataManager.NowState.SkipCnt)
         {
-            UiTexts[(int)Define.Texts.SkipCnt].text = $"SkipCnt : {GameManager.InGameDataManager.NormalQuestHandler[1].Skip - GameManager.InGameDataManager.SkipCnt}";
+            UiTexts[(int)Define.Texts.SkipCnt].text = $"SkipCnt : {GameManager.InGameDataManager.NowState.QuestHandler[idx].Skip - GameManager.InGameDataManager.NowState.SkipCnt}";
         }
-        if (GameManager.InGameDataManager.NormalQuestHandler[1].Skip <= GameManager.InGameDataManager.SkipCnt)
+        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Skip <= GameManager.InGameDataManager.NowState.SkipCnt)
         {
             UiTexts[(int)Define.Texts.SkipCnt].text = $"SkipCnt : Clear!";
         }
-        if (GameManager.InGameDataManager.NormalQuestHandler[1].Bloom > GameManager.InGameDataManager.BloomCnt)
+        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Bloom > GameManager.InGameDataManager.NowState.BloomCnt)
         {
-            UiTexts[(int)Define.Texts.BloomCnt].text = $"BloomCnt : {GameManager.InGameDataManager.NormalQuestHandler[1].Bloom - GameManager.InGameDataManager.BloomCnt}";
+            UiTexts[(int)Define.Texts.BloomCnt].text = $"BloomCnt : {GameManager.InGameDataManager.NowState.QuestHandler[idx].Bloom - GameManager.InGameDataManager.NowState.BloomCnt}";
         }
-        if (GameManager.InGameDataManager.NormalQuestHandler[1].Bloom <= GameManager.InGameDataManager.BloomCnt)
+        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Bloom <= GameManager.InGameDataManager.NowState.BloomCnt)
         {
             UiTexts[(int)Define.Texts.BloomCnt].text = $"BloomCnt : Clear!";
         }
 
 
 
-        UiTexts[(int)Define.Texts.JumpScore].text = $"Jump Score : {GameManager.InGameDataManager.JumpCnt}";
-        UiTexts[(int)Define.Texts.SkipScore].text = $"Skip Score : {GameManager.InGameDataManager.SkipCnt}";
-        UiTexts[(int)Define.Texts.BloomScore].text = $"Bloom Score : {GameManager.InGameDataManager.BloomCnt}";
+        UiTexts[(int)Define.Texts.JumpScore].text = $"Jump Score : {GameManager.InGameDataManager.NowState.JumpCnt}";
+        UiTexts[(int)Define.Texts.SkipScore].text = $"Skip Score : {GameManager.InGameDataManager.NowState.SkipCnt}";
+        UiTexts[(int)Define.Texts.BloomScore].text = $"Bloom Score : {GameManager.InGameDataManager.NowState.BloomCnt}";
 
     }
 
-    int tmptmp()
-    {
-        int tmptmpttmp = GameManager.InGameDataManager.NormalQuestHandler[1].Jump - GameManager.InGameDataManager.JumpCnt;
-        
-        return tmptmpttmp;
-    }
-
+    
 }

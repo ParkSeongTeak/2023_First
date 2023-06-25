@@ -1,82 +1,51 @@
-#include<iostream>
-#include<string>
-#define MAXNUM 100000
-#define HASHINGNUM 500000
-#define PRIMENUM 97
-using namespace std;
-
-
-template <typename T>
-struct Node {
-	Node* next;
-	T data;
-
-
-};
-
-Node<int> hashBucket[MAXNUM];
-static int idx = 0;
-
-template <typename T>
-struct List {
-	Node<T>* head;
-	void add(T data) {
-		hashBucket[idx].data = data;
-		hashBucket[idx].next = head;
-		head = &hashBucket[idx];
-		idx++;
+[
+	{
+	 "Quest": 1,
+	 "Jump": 15,
+	 "Skip": 5,
+	 "Bloom": 2,
+	 "ClearReward_goldenstem": 1
+	},
+	{
+	 "Quest": 2,
+	 "Jump": 24,
+	 "Skip": 8,
+	 "Bloom": 3,
+	 "ClearReward_goldenstem": 1
+	},
+	{
+	 "Quest": 3,
+	 "Jump": 36,
+	 "Skip": 12,
+	 "Bloom": 4,
+	 "ClearReward_goldenstem": 1
+	},
+	{
+	 "Quest": 4,
+	 "Jump": 48,
+	 "Skip": 16,
+	 "Bloom": 5,
+	 "ClearReward_goldenstem": 1
+	},
+	{
+	 "Quest": 5,
+	 "Jump": 63,
+	 "Skip": 21,
+	 "Bloom": 7,
+	 "ClearReward_goldenstem": 1
+	},
+	{
+	 "Quest": 6,
+	 "Jump": 78,
+	 "Skip": 26,
+	 "Bloom": 9,
+	 "ClearReward_goldenstem": 1
+	},
+	{
+	 "Quest": 7,
+	 "Jump": 96,
+	 "Skip": 32,
+	 "Bloom": 11,
+	 "ClearReward_goldenstem": 1
 	}
-	bool exist(T data) {
-		Node<T>* next = head;
-
-		while (next != 0) {
-			if (next->data == data)
-				return true;
-			else {
-				next = next->next;
-			}
-		}
-		return false;
-
-	}
-
-
-};
-
-List<int> hashList[HASHINGNUM];
-
-
-template <typename T>
-int hashFunc(T data) {
-	if (data < 0) data *= -1;
-	return (((data % HASHINGNUM) * PRIMENUM) + PRIMENUM) % HASHINGNUM;
-}
-
-
-
-int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int inputnum, data;
-	cin >> inputnum;
-	for (int i = 0; i < inputnum; i++) {
-		cin >> data;
-		hashList[hashFunc(data)].add(data);
-	}
-
-
-	cin >> inputnum;
-	for (int i = 0; i < inputnum; i++) {
-		cin >> data;
-		if (hashList[hashFunc(data)].exist(data)) {
-			cout << "1\n";
-		}
-		else {
-			cout << "0\n";
-		}
-	}
-
-
-}
+   ]

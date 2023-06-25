@@ -14,7 +14,7 @@ public class LeafTile : Tile
     }
     public override void JumpOnMe()
     {
-        GameManager.InGameDataManager.JumpCnt--;
+        GameManager.InGameDataManager.NowState.JumpCnt--;
     }
     public override void SkipOnMe()
     {

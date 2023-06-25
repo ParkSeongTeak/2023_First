@@ -37,7 +37,7 @@ public class FlowerBudTile : Tile
             if (JumpLeft == -1)
             {
                 transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[(int)MyFlowerType];
-                GameManager.InGameDataManager.BloomCnt++;
+                GameManager.InGameDataManager.NowState.BloomCnt++;
             }
         }
         else

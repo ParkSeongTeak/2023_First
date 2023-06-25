@@ -41,7 +41,6 @@ public class Tile : MonoBehaviour
     private void Start()
     {
         //Cnt = 3;
-        JumpCnt = GameManager.InGameDataManager.NormalQuestHandler[1].Jump;           
         Init();
     }
 
@@ -51,18 +50,7 @@ public class Tile : MonoBehaviour
     }
     public virtual void JumpOnMe() 
     {
-        if (JumpCnt > 0)
-        {
-            JumpCnt--;
-            if (JumpCnt == 0)
-            {
-                GameManager.InGameDataManager.BloomCnt++;
-            }
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     public virtual void SkipOnMe()

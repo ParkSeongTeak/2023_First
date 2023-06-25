@@ -14,7 +14,7 @@ public class WitheredFlowersTile : Tile
     }
     public override void JumpOnMe()
     {
-        GameManager.InGameDataManager.JumpCnt--;
+        GameManager.InGameDataManager.NowState.JumpCnt--;
         Destroy(gameObject);
     }
     public override void SkipOnMe()
