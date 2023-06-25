@@ -11,9 +11,9 @@ public class NormalQuestHandler : Handler
     {
         get => _normalQuestDic[idx];
     }
+
     public override void ConvertToDic()
     {
-
         int idx = 0;
         while (idx < _normalQuestHandler.Count)
         {
@@ -25,6 +25,8 @@ public class NormalQuestHandler : Handler
         }
 
     }
+
+
 }
 
 [Serializable]
@@ -34,5 +36,5 @@ public class NormalQuestData
     public int Jump;
     public int Skip;
     public int Bloom;
-    
+    public int ClearReward_GoldBranch;
 }

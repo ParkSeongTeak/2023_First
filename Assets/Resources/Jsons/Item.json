@@ -1,0 +1,34 @@
+[
+ {
+  "Item_Ingame": "item1",
+  "OccuranceProbs": 4
+ },
+ {
+  "Item_Ingame": "item2",
+  "OccuranceProbs": 4
+ },
+ {
+  "Item_Ingame": "item3",
+  "OccuranceProbs": 4
+ },
+ {
+  "Item_Ingame": "item4",
+  "OccuranceProbs": 4
+ },
+ {
+  "Item_Ingame": "item5",
+  "OccuranceProbs": 4
+ },
+ {
+  "Item_Ingame": "item6",
+  "OccuranceProbs": 4
+ },
+ {
+  "Item_Ingame": "item7",
+  "OccuranceProbs": 4
+ },
+ {
+  "Item_Ingame": "item8",
+  "OccuranceProbs": 4
+ }
+]

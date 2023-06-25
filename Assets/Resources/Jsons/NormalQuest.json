@@ -1,51 +1,51 @@
 [
-	{
-	 "Quest": 1,
-	 "Jump": 15,
-	 "Skip": 5,
-	 "Bloom": 2,
-	 "ClearReward_goldenstem": 1
-	},
-	{
-	 "Quest": 2,
-	 "Jump": 24,
-	 "Skip": 8,
-	 "Bloom": 3,
-	 "ClearReward_goldenstem": 1
-	},
-	{
-	 "Quest": 3,
-	 "Jump": 36,
-	 "Skip": 12,
-	 "Bloom": 4,
-	 "ClearReward_goldenstem": 1
-	},
-	{
-	 "Quest": 4,
-	 "Jump": 48,
-	 "Skip": 16,
-	 "Bloom": 5,
-	 "ClearReward_goldenstem": 1
-	},
-	{
-	 "Quest": 5,
-	 "Jump": 63,
-	 "Skip": 21,
-	 "Bloom": 7,
-	 "ClearReward_goldenstem": 1
-	},
-	{
-	 "Quest": 6,
-	 "Jump": 78,
-	 "Skip": 26,
-	 "Bloom": 9,
-	 "ClearReward_goldenstem": 1
-	},
-	{
-	 "Quest": 7,
-	 "Jump": 96,
-	 "Skip": 32,
-	 "Bloom": 11,
-	 "ClearReward_goldenstem": 1
-	}
-   ]
+ {
+  "Quest": 1,
+  "Jump": 15,
+  "Skip": 5,
+  "Bloom": 2,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 2,
+  "Jump": 24,
+  "Skip": 8,
+  "Bloom": 3,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 3,
+  "Jump": 36,
+  "Skip": 12,
+  "Bloom": 4,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 4,
+  "Jump": 48,
+  "Skip": 16,
+  "Bloom": 5,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 5,
+  "Jump": 63,
+  "Skip": 21,
+  "Bloom": 7,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 6,
+  "Jump": 78,
+  "Skip": 26,
+  "Bloom": 9,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 7,
+  "Jump": 96,
+  "Skip": 32,
+  "Bloom": 11,
+  "ClearReward_GoldBranch": 1
+ }
+]

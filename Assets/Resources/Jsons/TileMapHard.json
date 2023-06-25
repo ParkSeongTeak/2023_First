@@ -1,0 +1,38 @@
+[
+ {
+  "Tile_Map": "bud_three",
+  "OccuranceProbs": 5
+ },
+ {
+  "Tile_Map": "bud_four",
+  "OccuranceProbs": 9
+ },
+ {
+  "Tile_Map": "bud_five",
+  "OccuranceProbs": 15
+ },
+ {
+  "Tile_Map": "bud_six",
+  "OccuranceProbs": 15
+ },
+ {
+  "Tile_Map": "bud_seven",
+  "OccuranceProbs": 9
+ },
+ {
+  "Tile_Map": "bud_eight",
+  "OccuranceProbs": 7
+ },
+ {
+  "Tile_Map": "deadflower1",
+  "OccuranceProbs": 17
+ },
+ {
+  "Tile_Map": "tile_leaf1",
+  "OccuranceProbs": 20
+ },
+ {
+  "Tile_Map": "pollenbox",
+  "OccuranceProbs": 3
+ }
+]
