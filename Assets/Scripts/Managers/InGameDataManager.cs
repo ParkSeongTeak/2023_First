@@ -19,10 +19,21 @@ public class InGameDataManager
     State _state;
     public State NowState { get { return _state; } }
 
+    public void SetNormalState()
+    {
+        GameManager.InGameDataManager._state = NormalState.normalState; 
+    }
+
+    public void SetHardState()
+    {
+        GameManager.InGameDataManager._state = HardState.hardState;
+    }
+
+
     #endregion
 
 
-    
+
     #region Tile관련 Data
     /// <summary>
     /// 현재 생성되어있는 타일 관리 아마 7개 내외
@@ -51,16 +62,13 @@ public class InGameDataManager
         {
             _player = GameManager.ResourceManager.Instantiate("Player");
         }
-        
+        SetNormalState();
 
-        _state = NormalState.normalState;
-        
         Debug.Log(_state.QuestHandler[1].Jump); 
 
 
 
     }
-
     #endregion
 
     // Update is called once per frame
