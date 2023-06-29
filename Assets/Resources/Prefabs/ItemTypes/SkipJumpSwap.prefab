@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5053097044357556090}
   - component: {fileID: 730168718437655106}
   - component: {fileID: 1185996993448087144}
+  - component: {fileID: 7234811379626076020}
   m_Layer: 0
   m_Name: SkipJumpSwap
   m_TagString: Untagged
@@ -97,3 +98,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b693f6694d95064abf47bea37dede53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &7234811379626076020
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260327993279036736}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.011504054, y: -0.23007631}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 5}
+    newSize: {x: 5, y: 5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.700901, y: 2.7452526}
+  m_EdgeRadius: 0

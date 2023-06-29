@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 267274120172340242}
   - component: {fileID: 6393561790061323462}
   - component: {fileID: -1086410079371628175}
+  - component: {fileID: 1549781442982214400}
   m_Layer: 0
   m_Name: Unbeatable
   m_TagString: Untagged
@@ -97,3 +98,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0a588148722734a875c31ae6f0f9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1549781442982214400
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8417064310415680983}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.034511447, y: 0.17255712}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 5}
+    newSize: {x: 5, y: 5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.51684, y: 3.4584894}
+  m_EdgeRadius: 0
