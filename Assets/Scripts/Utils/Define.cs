@@ -146,6 +146,17 @@ public class Define
         Bonus,
         MaxCount
     }
-
+    public enum Items
+    {
+        Jumper,
+        AllBloom,
+        TimeFreeze,
+        LeafToFlower,
+        Unbeatable,
+        PlusLife,
+        SkipJumpSwap,
+        HideRemainJump,
+        MaxCount
+    }
 
 }
