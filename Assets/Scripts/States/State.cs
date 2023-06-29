@@ -54,85 +54,93 @@ public class State
 
     int _rndNum = UnityEngine.Random.Range(0, 100);
     int _goldenBranch = 0;
+
+    List<string> rareTile = new List<string>() { "ÁÖ°Æ´ó°­³ª¹«", "È÷¾î¸®", "²¤²¤ÀÌÇ®", "»êÀÛ¾à", "³Êµµ¹Ù¶÷²É", "±İ»õ¿ì³­" };
+
     public int GoldenBranch
     {
-
-        get => _goldenBranch;
+        get { return _bloomCnt; }
         set 
         {
             if (_rndNum < 6)
             {
                 if (_rndNum == 0)
                 {
-                   
+                    rareTile.RemoveAt(0);
+                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : ÁÖ°Æ´ó°­³ª¹«";
                 }
 
                 else if (_rndNum == 1)
                 {
-
+                    rareTile.RemoveAt(1);
+                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : È÷¾î¸®";
                 }
 
                 else if (_rndNum == 2)
                 {
-
+                    rareTile.RemoveAt(2);
+                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : ²¤²¤ÀÌÇ®";
                 }
 
                 else if (_rndNum == 3)
                 {
-
+                    rareTile.RemoveAt(3);
+                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : »êÀÛ¾à";
                 }
 
                 else if (_rndNum == 4)
                 {
-
+                    rareTile.RemoveAt(4);
+                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : ³Êµµ¹Ù¶÷²É";
                 }
 
                 else
                 {
-
+                    rareTile.RemoveAt(5);
+                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : ±İ»õ¿ì³­";
                 }
             }
 
             else if (_rndNum >= 6 && _rndNum < 14)
             {
                 _goldenBranch += 1;
-                UiTexts[(int)Define.Texts.RndRwrd].text = $"È²±İ³ª¹µ°¡Áö : 1" ;
+                UiTexts[(int)Define.Texts.GoldenBranch].text = $"È²±İ³ª¹µ°¡Áö : 1" ;
             }
 
             else if (_rndNum >= 14 && _rndNum < 18)
             {
                 _goldenBranch += 2;
-                UiTexts[(int)Define.Texts.RndRwrd].text = $"È²±İ³ª¹µ°¡Áö : 2";
+                UiTexts[(int)Define.Texts.GoldenBranch].text = $"È²±İ³ª¹µ°¡Áö : 2";
             }
 
             else if (_rndNum >= 18 && _rndNum < 20)
             {
                 _goldenBranch += 3;
-                UiTexts[(int)Define.Texts.RndRwrd].text = $"È²±İ³ª¹µ°¡Áö : 3";
+                UiTexts[(int)Define.Texts.GoldenBranch].text = $"È²±İ³ª¹µ°¡Áö : 3";
             }
             
             else if (_rndNum >= 20 && _rndNum < 60)
             {
                 _branch += 5;
-                UiTexts[(int)Define.Texts.RndRwrd].text = $"³ª¹µ°¡Áö : 5";
+                UiTexts[(int)Define.Texts.Branch].text = $"³ª¹µ°¡Áö : 5";
             }
 
             else if (_rndNum >= 60 && _rndNum < 80)
             {
                 _branch += 10;
-                UiTexts[(int)Define.Texts.RndRwrd].text = $"³ª¹µ°¡Áö : 10";
+                UiTexts[(int)Define.Texts.Branch].text = $"³ª¹µ°¡Áö : 10";
             }
 
             else if (_rndNum >= 80 && _rndNum < 93)
             {
                 _branch += 15;
-                UiTexts[(int)Define.Texts.RndRwrd].text = $"³ª¹µ°¡Áö : 15";
+                UiTexts[(int)Define.Texts.Branch].text = $"³ª¹µ°¡Áö : 15";
             }
 
             else
             {
                 _branch += 20;
-                UiTexts[(int)Define.Texts.RndRwrd].text = $"³ª¹µ°¡Áö : 20";
+                UiTexts[(int)Define.Texts.Branch].text = $"³ª¹µ°¡Áö : 20";
             }
         }
     }
