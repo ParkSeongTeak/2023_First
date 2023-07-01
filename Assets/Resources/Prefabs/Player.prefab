@@ -156,6 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a896d27152e70764a8b1b37679a888f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imageUnderThreshold: {fileID: 0}
+  defaultImage: {fileID: 0}
 --- !u!61 &3209957392989845474
 BoxCollider2D:
   m_ObjectHideFlags: 0
