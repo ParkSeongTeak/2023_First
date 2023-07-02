@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeFreezeItem : MonoBehaviour
+public class TimeFreezeItem : Item
 {
     // Start is called before the first frame update
     void Start()
