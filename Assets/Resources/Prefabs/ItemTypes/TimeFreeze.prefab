@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5020484490674289138}
   m_Layer: 0
   m_Name: TimeFreeze
-  m_TagString: Untagged
+  m_TagString: stopTimeSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6e4943a169646469be1779597f6b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeSlider: 0
+  stopTimeSlider: 0
 --- !u!61 &-5020484490674289138
 BoxCollider2D:
   m_ObjectHideFlags: 0
