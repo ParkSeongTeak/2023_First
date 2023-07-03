@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class TimeFreezeItem : MonoBehaviour
 {
     public float timeSlider = 0f;
-    public bool stopTimeSlider = false;
+    public bool stopTimeSlider;
     public float stopDuration = 5f; // Duration in seconds to stop the time slider
     float _deltaTime = 0.01f;
     void Start()
@@ -28,6 +28,7 @@ public class TimeFreezeItem : MonoBehaviour
         }
     }
     private void Update()
+        
     {
         if (stopTimeSlider == false) 
 
@@ -37,7 +38,7 @@ public class TimeFreezeItem : MonoBehaviour
             stopTimeSlider = true;
         }
 
-        else if (stopTimeSlider == true)
+        else if(stopTimeSlider == true)
 
         {
             Time.timeScale = 1f; // Resume the game
