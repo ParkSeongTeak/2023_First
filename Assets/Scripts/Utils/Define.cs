@@ -133,8 +133,7 @@ public class Define
     }
     public enum LeafTypes
     {
-        π–æÁ≤¢¿Ÿ,
-        ªÛ√ﬂ,
+        Leaf,
         MaxCount
     }
     public enum WitheredFlowersTileTypes

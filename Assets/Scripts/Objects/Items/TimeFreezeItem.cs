@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class TimeFreezeItem : MonoBehaviour
+public class TimeFreezeItem : Item
 {
     public float timeSlider = 0f;
     public bool stopTimeSlider;

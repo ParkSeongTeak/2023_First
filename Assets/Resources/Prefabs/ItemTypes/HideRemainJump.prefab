@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3603099327292947183}
   - component: {fileID: -7551141860899906732}
-  - component: {fileID: -7202100004383992213}
   - component: {fileID: -646789505861719259}
+  - component: {fileID: 5257211196193592144}
   m_Layer: 0
   m_Name: HideRemainJump
   m_TagString: Untagged
@@ -86,18 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7202100004383992213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2244416806184677163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7b0439f9b2ec454387a4b96e7f1fdef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &-646789505861719259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108,7 +96,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.08052635, y: -0.034511566}
@@ -124,3 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.7345815, y: 3.2284126}
   m_EdgeRadius: 0
+--- !u!114 &5257211196193592144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244416806184677163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da4ae30728ac99458e03191452d83ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

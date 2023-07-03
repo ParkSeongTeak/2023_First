@@ -20,7 +20,7 @@ public class LeafTile : Tile
     {
         float probability = 0.2f;
 
-        if (UnityEngine.Random.value < probability)
+        //if (UnityEngine.Random.value < probability)
         {
             Define.Items randomItem = (Define.Items)UnityEngine.Random.Range(0, (int)Define.Items.MaxCount);
 
