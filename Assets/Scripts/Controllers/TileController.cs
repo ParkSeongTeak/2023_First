@@ -70,15 +70,45 @@ public class TileController : MonoBehaviour
 
     static Dictionary<TileType, Stack<Tile>> _poolingStack = new Dictionary<TileType, Stack<Tile>>();
     public static Dictionary<TileType, Stack<Tile>> PoolingStack { get { return _poolingStack; }}
-
+    
     /// TileType => TileType.Flower == > Stack<Tile>중 어떤 객체
     /// 자동차 키 => BMW 16가 서울 6743 ==> 자동차 => BMW 16가 서울 6743 
 
     /// <summary>
     /// 존재함을 보장함
     /// </summary>
+    /// 
+
     public static void init()
     {
+        #region 3개의 꽃 타일 지정
+        //3개 꽃 타일 이름 가져오는 부분 추후 구현해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        string cosmos1 = "Cosmos";
+        string cosmos2 = "cosmos2";
+        string cosmos3 = "cosmos3";
+
+        // 랜덤한 숫자 생성
+        //Random random = new Random();
+        //int randomNumber = random.Next(1, 4);
+        int randomNumber = 1;
+
+        // 랜덤한 숫자에 따라 문자열 선택
+        string randomFlower = "";
+        if (randomNumber == 1)
+        {
+            randomFlower = cosmos1;
+        }
+        else if (randomNumber == 2)
+        {
+            randomFlower = cosmos2;
+        }
+        else if (randomNumber == 3)
+        {
+            randomFlower = cosmos3;
+        }
+        #endregion
+
         if (_instance == null)
         {
             GameObject flowerControl = GameObject.Find("TileController");
@@ -149,7 +179,7 @@ public class TileController : MonoBehaviour
             _instance._cosmosFlowerSprites = new Sprite[(int)Define.CosmosFlower.MaxCount];
             for (int i = 0; i < (int)Define.CosmosFlower.MaxCount; i++)
             {
-                _instance._cosmosFlowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{cosmosFlowersSpritesStr[i]}");
+                _instance._cosmosFlowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{randomFlower}/{cosmosFlowersSpritesStr[i]}");
                 if (_instance._cosmosFlowerSprites[i] == null)
                 {
                     Debug.Log("_instance._cosmosFlowerSprites[(int)i] NULL");
@@ -232,7 +262,6 @@ public class TileController : MonoBehaviour
     {
         return (Define.CosmosFlower)UnityEngine.Random.RandomRange(0, (int)Define.CosmosFlower.MaxCount);
     }
-
 
     public void MoveTiles()
     {

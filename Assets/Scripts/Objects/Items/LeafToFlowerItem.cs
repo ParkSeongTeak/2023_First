@@ -4,8 +4,30 @@ using UnityEngine;
 
 public class LeafToFlowerItem : Item
 {
-    void Start()
+    public override void OnTriggerEnter2D(Collider2D collision)
     {
+        base.OnTriggerEnter2D(collision);
+        LeafToFlower();
+    }
 
+    private void LeafToFlower()
+    {
+        TileController tileController = TileController.Instance;
+
+        if (tileController != null)
+        {
+            List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
+
+            for (int i = 3; i <= 13; i++)
+            {
+                Tile tile = nowGeneratedTiles[i];
+
+                if (tile.TileType == Define.TileType.LeafTypes)
+                {
+                    ///여기서 leaftile을 flower tile로 바꿔야함
+                 
+                }
+            }
+        }
     }
 }

@@ -11,17 +11,11 @@ public class FlowerBudTile : Tile
     public override void Init()
     {
 
-        MyFlowerType = TileController.Instance.SetFlowerType();
-        if ((int)MyFlowerType == 0)
-        {
-            FlowerJumpType = TileController.Instance.SetCosmosFlowerType();
-            transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.CosmosFlowerSprites[(int)FlowerJumpType];
-            JumpLeft = (int)FlowerJumpType;
-        }
-        else
-        {
-            transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[(int)MyFlowerType];
-        }
+        MyFlowerType = TileController.Instance.SetFlowerType(); //나중에 3개 중 랜덤으로 갖고 오는 코드로 변경해야함
+
+        FlowerJumpType = TileController.Instance.SetCosmosFlowerType();
+        transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.CosmosFlowerSprites[(int)FlowerJumpType];
+        JumpLeft = (int)FlowerJumpType;
     }
     public override void JumpOnMe()
     {
@@ -52,5 +46,4 @@ public class FlowerBudTile : Tile
     {
          
     }
-    
 }

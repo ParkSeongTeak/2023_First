@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class TimeFreezeItem : Item
 {
+    /*
     public float timeSlider = 0f;
     public bool stopTimeSlider = false;
     public float stopDuration = 5f; // Duration in seconds to stop the time slider
@@ -47,7 +48,7 @@ public class TimeFreezeItem : Item
 
     }
     
-
+    */
 }
 
 

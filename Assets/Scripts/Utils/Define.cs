@@ -113,7 +113,7 @@ public class Define
         MaxCount
 
     }
-    public enum FlowerTypes
+    public enum FlowerTypes  //blm 파일들만 넣어놓기
     {
         코스모스,
         개나리,
@@ -131,6 +131,21 @@ public class Define
         CosmosSix,
         MaxCount
     }
+    #region 꽃 타일들
+    public enum tille_cherryblossom1
+    { 
+        tille_cherryblossom1_budOne,
+        tille_cherryblossom1_budTwo,
+        tille_cherryblossom1_budThree,
+        tille_cherryblossom1_budFour,
+        tille_cherryblossom1_budFive,
+        tille_cherryblossom1_budSix,
+        tille_cherryblossom1_budSeven,
+        tille_cherryblossom1_budEight,
+        tille_cherryblossom1_budNine,
+        MaxCount
+    }
+    #endregion
     public enum LeafTypes
     {
         Leaf,
@@ -138,8 +153,7 @@ public class Define
     }
     public enum WitheredFlowersTileTypes
     {
-        시든꽃,
-        시든꽃2,
+        tile_withered_flower_blm,
         MaxCount
     }
     public enum BonusTileTypes 
