@@ -32,7 +32,13 @@ public class ResourceManager
 
         return instance;
     }
+    public void Destroy(GameObject go)
+    {
+        if (go == null)
+            return;
 
+        Object.Destroy(go);
+    }
     public void Clear()
     {
 

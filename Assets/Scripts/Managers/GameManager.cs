@@ -59,8 +59,7 @@ public class GameManager : MonoBehaviour
             _instance._inputManager.init();
             _instance._sceneManager.init();
             _instance._soundManager.init();
-            _instance._uIManager.init();
-
+            
 
         }
     }

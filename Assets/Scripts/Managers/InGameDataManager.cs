@@ -57,6 +57,7 @@ public class InGameDataManager
     public void init()
     {
         //시작시 Player가 존재함을 보장(Scene에 Player가 있다면 만들지 않는다.)
+        /*
         _player = GameObject.Find("Player");
         if(_player == null)
         {
@@ -65,11 +66,23 @@ public class InGameDataManager
         SetNormalState();
 
         Debug.Log(_state.QuestHandler[1].Jump); 
-
+        */
 
 
     }
     #endregion
+
+    public void CreatePlayer()
+    {
+        _player = GameObject.Find("Player");
+        if (_player == null)
+        {
+            _player = GameManager.ResourceManager.Instantiate("Player");
+        }
+        SetNormalState();
+
+        Debug.Log(_state.QuestHandler[1].Jump);
+    }
 
     // Update is called once per frame
     public void Clear()

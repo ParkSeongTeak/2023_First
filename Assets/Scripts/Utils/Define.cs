@@ -8,6 +8,13 @@ using UnityEngine;
 /// </summary>
 public class Define 
 {
+
+    public enum UIEvent
+    {
+        Click,
+        Drag,
+    }
+
     /// <summary>
     /// State 
     /// </summary>

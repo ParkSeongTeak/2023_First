@@ -15,19 +15,19 @@ public class State
     public int JumpCnt 
     {
         get { return _jumpCnt; }
-        set { _jumpCnt = value; GameManager.UIManager.UIUpdate(QuestNum); }
+        set { _jumpCnt = value;  }
     }
     int _skipCnt = 0;
     public int SkipCnt
     {
         get { return _skipCnt; }
-        set { _skipCnt = value; GameManager.UIManager.UIUpdate(QuestNum); }
+        set { _skipCnt = value;  }
     }
     int _bloomCnt = 0;
     public int BloomCnt
     {
         get { return _bloomCnt; }
-        set { _bloomCnt = value; GameManager.UIManager.UIUpdate(QuestNum); }
+        set { _bloomCnt = value; }
     }
     int _branch = 0;
     public int Branch

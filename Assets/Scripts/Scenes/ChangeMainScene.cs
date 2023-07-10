@@ -11,7 +11,7 @@ public class ChangeMainScene : MonoBehaviour
         switch(this.gameObject.name)
         {
             case "GotoGameButton":
-                Application.LoadLevel("SampleScene");
+                Application.LoadLevel("Game");
                 break;
    
         }
