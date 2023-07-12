@@ -10,9 +10,5 @@ public class Init_StartSceneUI : MonoBehaviour
         GameManager.UIManager.ShowSceneUI<StartSceneUI>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

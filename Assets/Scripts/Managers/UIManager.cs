@@ -11,6 +11,12 @@ using System;
 public class UIManager
 {
 
+    /*
+     * Ã³À½:
+     * 
+     * 
+     */
+
     #region UI
     GameObject[] _uibuttons;
     TextMeshProUGUI[] _uiTexts;

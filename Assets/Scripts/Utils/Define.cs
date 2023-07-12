@@ -130,6 +130,13 @@ public class Define
     }
     public enum FlowerTypes  //blm 파일들만 넣어놓기
     {
+        icon_magnolia1,
+        icon_magnolia２,
+        icon_magnolia３,
+        tile_canola1_blm,
+        tile_canola2_blm,
+        tile_canola3_blm,
+
         코스모스,
         개나리,
         무궁화,

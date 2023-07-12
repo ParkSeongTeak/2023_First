@@ -16,8 +16,8 @@ public class TileController : MonoBehaviour
     public static TileController Instance { get { init(); return _instance; } }
 
 
-    #region 받아온 이미지들
-
+    #region 받아온 이미지들   
+    // 여기 있으면 안될듯?
     Sprite[] _flowerSprites;
     Sprite[] _leafSprites;
     Sprite[] _witheredFlowersTileSprites;
@@ -138,7 +138,6 @@ public class TileController : MonoBehaviour
                 {
                     Debug.Log("_instance._flowerSprites[(int)i] NULL");
                 }
-                    
             }
             string[] leavesSpritesStr = Enum.GetNames(typeof(Define.LeafTypes));
             _instance._leafSprites = new Sprite[(int)Define.LeafTypes.MaxCount];
@@ -244,7 +243,7 @@ public class TileController : MonoBehaviour
 
     public Define.FlowerTypes SetFlowerType()
     {
-        return (Define.FlowerTypes)UnityEngine.Random.RandomRange(0, (int)Define.FlowerTypes.MaxCount);
+        return GameManager.InGameDataManager.UseFlowerList[UnityEngine.Random.RandomRange(0, InGameDataManager.useFlowerNum)];
     }
     public Define.LeafTypes SetLeafType()
     {

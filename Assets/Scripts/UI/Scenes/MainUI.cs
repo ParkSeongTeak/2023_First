@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class MainUI : UI_Scene
 {
@@ -30,6 +31,13 @@ public class MainUI : UI_Scene
         GoldBranch,
         MaxPoint,
     }
+    enum Images
+    {
+        Flower1,
+        Flower2,
+        Flower3,
+
+    }
 
     void Start()
     {
@@ -41,7 +49,10 @@ public class MainUI : UI_Scene
         base.Init();
 
         Bind<Button>(typeof(Buttons));
+
         Bind<TMP_Text>(typeof(Texts));
+        
+        Bind<Image>(typeof(Images));
 
 
         BindEvent(GetButton((int)Buttons.GardenTab).gameObject, ToGarden);
@@ -52,8 +63,13 @@ public class MainUI : UI_Scene
         GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
         GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.GoldBranch}";
         GetText((int)Texts.MaxPoint).text = $"{GameManager.InGameDataManager.MaxPoint}";
+
         
-        
+
+        GetImage((int)Images.Flower1).sprite = GameManager.InGameDataManager.UseFlowerSprites[0];
+        GetImage((int)Images.Flower2).sprite = GameManager.InGameDataManager.UseFlowerSprites[1];
+        GetImage((int)Images.Flower3).sprite = GameManager.InGameDataManager.UseFlowerSprites[2];
+
         GameManager.InGameDataManager.UpdateBranchAndPointAction -= UpdateBranchAndPoint;
         GameManager.InGameDataManager.UpdateBranchAndPointAction += UpdateBranchAndPoint;
 

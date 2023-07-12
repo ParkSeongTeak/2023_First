@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
+using Unity.VisualScripting;
 using UnityEngine;
-
+using static Define;
 
 /// <summary>
 /// 소위.....짬통 
@@ -41,8 +43,12 @@ public class InGameDataManager
     public List<Tile> TileList { get { return _tiles;  } }
 
     public const int useFlowerNum = 3;
-    FlowerBudTile[] _useFlowerList = new FlowerBudTile[useFlowerNum];
-    public FlowerBudTile[] UseFlowerList { get { return _useFlowerList;  } set { _useFlowerList = value; } }
+    FlowerTypes[] _useFlowerList = new FlowerTypes[useFlowerNum];
+    public FlowerTypes[] UseFlowerList { get { return _useFlowerList;  } set { _useFlowerList = value; } }
+
+    Sprite[] _useFlowerSprites = new Sprite[useFlowerNum];
+    public Sprite[] UseFlowerSprites { get { return _useFlowerSprites; } }
+
 
     #endregion
 
@@ -64,6 +70,14 @@ public class InGameDataManager
     }
     #endregion
 
+    #region FlowersBook 관련 Data
+
+    public bool SelectMode { get; set; }
+
+
+    #endregion
+
+
     // Start is called before the first frame update
     GameObject _player;
     public GameObject Player { get { return _player; } }
@@ -75,6 +89,26 @@ public class InGameDataManager
         Branch = PlayerPrefs.GetInt("Branch", 500);
         GoldBranch = PlayerPrefs.GetInt("GoldBranch", 40);
         MaxPoint = PlayerPrefs.GetInt("MaxPoint", 460);
+        SelectMode = false;
+
+        UseFlowerList[0] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[0]", (int)FlowerTypes.개나리);
+        UseFlowerList[1] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[1]", (int)FlowerTypes.무궁화); 
+        UseFlowerList[2] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[2]", (int)FlowerTypes.코스모스);
+
+        string[] flowersSpritesStr = new string[useFlowerNum];
+
+        for(int i = 0; i< useFlowerNum; i++)
+        {
+            flowersSpritesStr[i] = Enum.GetName(typeof(FlowerTypes), UseFlowerList[i]);
+        }
+        for (int i = 0; i < useFlowerNum; i++)
+        {
+            _useFlowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{flowersSpritesStr[i]}");
+            if (_useFlowerSprites[i] == null)
+            {
+                Debug.Log("_instance._flowerSprites[(int)i] NULL");
+            }
+        }
 
         UpdateBranchAndPointAction -= saveData;
         UpdateBranchAndPointAction += saveData;
