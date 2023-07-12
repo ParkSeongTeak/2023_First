@@ -8,6 +8,14 @@ using UnityEngine;
 /// </summary>
 public class Define 
 {
+    public enum Scenes
+    {
+        Start,
+        Main,
+        Game,
+        Garden,
+        FlowersBook,
+    }
 
     public enum UIEvent
     {
@@ -134,8 +142,8 @@ public class Define
         CosmosTwo,
         CosmosThree,
         CosmosFour,
-        CosmosFive,
-        CosmosSix,
+        //CosmosFive,
+        //CosmosSix,
         MaxCount
     }
     #region ≤… ≈∏¿œµÈ

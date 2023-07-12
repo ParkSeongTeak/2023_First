@@ -7,8 +7,8 @@ public class Init_Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.UIManager.ShowSceneUI<GameUI>();
         GameManager.InGameDataManager.CreatePlayer();
+        GameManager.UIManager.ShowSceneUI<GameUI>();
     }
 
     // Update is called once per frame

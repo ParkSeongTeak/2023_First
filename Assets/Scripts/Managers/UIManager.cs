@@ -30,45 +30,7 @@ public class UIManager
 
     }
 
-    public void UIUpdate(int idx)
-    {
-        //UiTexts[(int)Define.Texts.JumpCnt].text = GameManager.InGameDataManager.JumpCnt.ToString();
-        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Jump > GameManager.InGameDataManager.NowState.JumpCnt)
-        {
-            UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : {GameManager.InGameDataManager.NowState.QuestHandler[idx].Jump - GameManager.InGameDataManager.NowState.JumpCnt}";
-            //UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : {4 - GameManager.InGameDataManager.JumpCnt}";
-        }
-        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Jump <= GameManager.InGameDataManager.NowState.JumpCnt)
-        {
-            UiTexts[(int)Define.Texts.JumpCnt].text = $"JumpCnt : Clear!";
-        }
-
-        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Skip > GameManager.InGameDataManager.NowState.SkipCnt)
-        {
-            UiTexts[(int)Define.Texts.SkipCnt].text = $"SkipCnt : {GameManager.InGameDataManager.NowState.QuestHandler[idx].Skip - GameManager.InGameDataManager.NowState.SkipCnt}";
-        }
-        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Skip <= GameManager.InGameDataManager.NowState.SkipCnt)
-        {
-            UiTexts[(int)Define.Texts.SkipCnt].text = $"SkipCnt : Clear!";
-        }
-        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Bloom > GameManager.InGameDataManager.NowState.BloomCnt)
-        {
-            UiTexts[(int)Define.Texts.BloomCnt].text = $"BloomCnt : {GameManager.InGameDataManager.NowState.QuestHandler[idx].Bloom - GameManager.InGameDataManager.NowState.BloomCnt}";
-        }
-        if (GameManager.InGameDataManager.NowState.QuestHandler[idx].Bloom <= GameManager.InGameDataManager.NowState.BloomCnt)
-        {
-            UiTexts[(int)Define.Texts.BloomCnt].text = $"BloomCnt : Clear!";
-        }
-
-
-
-        UiTexts[(int)Define.Texts.JumpScore].text = $"Jump Score : {GameManager.InGameDataManager.NowState.JumpCnt}";
-        UiTexts[(int)Define.Texts.SkipScore].text = $"Skip Score : {GameManager.InGameDataManager.NowState.SkipCnt}";
-        UiTexts[(int)Define.Texts.BloomScore].text = $"Bloom Score : {GameManager.InGameDataManager.NowState.BloomCnt}";
-
-    }
-
-
+    
     int _order = 10;
 
     Stack<UI_PopUp> _popupStack = new Stack<UI_PopUp>();
@@ -186,4 +148,5 @@ public class UIManager
         while (_popupStack.Count > 0)
             ClosePopupUI();
     }
+
 }

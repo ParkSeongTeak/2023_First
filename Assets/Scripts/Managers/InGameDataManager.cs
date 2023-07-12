@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,8 +33,6 @@ public class InGameDataManager
 
     #endregion
 
-
-
     #region Tile관련 Data
     /// <summary>
     /// 현재 생성되어있는 타일 관리 아마 7개 내외
@@ -47,6 +46,23 @@ public class InGameDataManager
 
     #endregion
 
+    #region Branch and Point 관련 Data
+
+    public int Branch { get; set; }
+    public int GoldBranch { get; set; }
+    public int MaxPoint { get; set; }
+    Action _updateBranchAndPoint = null; 
+
+    public Action UpdateBranchAndPointAction { get { return _updateBranchAndPoint; } set { _updateBranchAndPoint = value; } }
+    public void UpdateBranchAndPoint() { UpdateBranchAndPointAction?.Invoke(); }
+
+    void saveData() 
+    {
+        PlayerPrefs.SetInt("Branch", Branch);
+        PlayerPrefs.SetInt("GoldBranch", GoldBranch);
+        PlayerPrefs.SetInt("MaxPoint", MaxPoint);
+    }
+    #endregion
 
     // Start is called before the first frame update
     GameObject _player;
@@ -56,17 +72,13 @@ public class InGameDataManager
     #region Initiate
     public void init()
     {
-        //시작시 Player가 존재함을 보장(Scene에 Player가 있다면 만들지 않는다.)
-        /*
-        _player = GameObject.Find("Player");
-        if(_player == null)
-        {
-            _player = GameManager.ResourceManager.Instantiate("Player");
-        }
-        SetNormalState();
+        Branch = PlayerPrefs.GetInt("Branch", 500);
+        GoldBranch = PlayerPrefs.GetInt("GoldBranch", 40);
+        MaxPoint = PlayerPrefs.GetInt("MaxPoint", 460);
 
-        Debug.Log(_state.QuestHandler[1].Jump); 
-        */
+        UpdateBranchAndPointAction -= saveData;
+        UpdateBranchAndPointAction += saveData;
+
 
 
     }
