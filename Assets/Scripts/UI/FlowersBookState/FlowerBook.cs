@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class tile_cherryblossom1_blm : UI_PopUp
-
+public class FlowerBook : UI_PopUp
 {
     enum Buttons
     {
@@ -37,5 +36,4 @@ public class tile_cherryblossom1_blm : UI_PopUp
     }
 
     #endregion
-
 }

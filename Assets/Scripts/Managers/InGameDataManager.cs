@@ -73,6 +73,9 @@ public class InGameDataManager
     #region FlowersBook ฐüทร Data
 
     public bool SelectMode { get; set; }
+    public BookState BookState { get; set; }
+    public BookSelect BookSelect { get; set; }
+    public BookInfo BookInfo { get; set; }
 
 
     #endregion
@@ -109,7 +112,7 @@ public class InGameDataManager
                 Debug.Log("_instance._flowerSprites[(int)i] NULL");
             }
         }
-
+        BookState = BookInfo;
         UpdateBranchAndPointAction -= saveData;
         UpdateBranchAndPointAction += saveData;
 

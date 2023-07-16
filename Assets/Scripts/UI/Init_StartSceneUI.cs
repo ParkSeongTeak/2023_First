@@ -8,6 +8,8 @@ public class Init_StartSceneUI : MonoBehaviour
     void Start()
     {
         GameManager.UIManager.ShowSceneUI<StartSceneUI>();
+
+
     }
 
     

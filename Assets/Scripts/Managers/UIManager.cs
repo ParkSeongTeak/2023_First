@@ -86,15 +86,7 @@ public class UIManager
     {
         if (string.IsNullOrEmpty(name))
             name = typeof(T).Name;
-        /*
-        GameObject go = GameManager.ResourceManager.Instantiate($"UI/Scene/{name}");
-        T sceneUI = Util.GetOrAddComponent<T>(go);
-        _sceneUI = sceneUI;
-
-        go.transform.SetParent(Root.transform);
-
-        return sceneUI;
-        */
+        
         T sceneUI = Util.FindChild<T>(Root, name);
         if (sceneUI == null)
         {
