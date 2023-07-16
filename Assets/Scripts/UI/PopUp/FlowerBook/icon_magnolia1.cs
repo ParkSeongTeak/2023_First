@@ -6,5 +6,5 @@ using UnityEngine.UI;
 
 public class icon_magnolia1 : FlowerBook
 {
-  
+    
 }

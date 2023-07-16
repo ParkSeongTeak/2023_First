@@ -18,7 +18,7 @@ public class FlowersBookUI : UI_Scene
     // Start is called before the first frame update
     void Start()
     {
-        
+        Init();
     }
 
     public override void Init()
@@ -38,15 +38,18 @@ public class FlowersBookUI : UI_Scene
     
     void Btn_Select(PointerEventData evt)
     {
-        GameManager.InGameDataManager.SelectMode = true;
+        GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookSelect;
+        Debug.Log("??");
     }
     void Btn_Save(PointerEventData evt)
     {
-        GameManager.InGameDataManager.SelectMode = true;
+        GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookInfo;
 
     }
     void Btn_Back(PointerEventData evt)
     {
+        GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookInfo;
+        GameManager.SceneManager.LoadScene(Define.Scenes.Game);
 
     }
     #endregion

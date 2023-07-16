@@ -48,13 +48,8 @@ public class Page3 : UI_PopUp
     }
     void Btn_Button(PointerEventData evt)
     {
-        FlowerBook Button_ = evt.selectedObject.GetComponent<FlowerButton>().GetFlowerUI();
-        System.Type tmpClassType = Button_.GetType();
-
-        GameManager.UIManager.ShowPopupUI<FlowerBook>(tmpClassType.Name);
+        GameManager.InGameDataManager.bookState.Btn_Button(evt);
     }
-
-   
 
     void Btn_Left(PointerEventData evt)
     {

@@ -50,7 +50,7 @@ public class Util
             return default(handler);
         }
         string json = jsonTxt.text;
-        Debug.Log(json);
+        
         handler parseJsonToList = JsonUtility.FromJson<handler>($"{{\"{handle}\" : {json} }}");
 
 

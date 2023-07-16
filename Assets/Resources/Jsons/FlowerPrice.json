@@ -1,0 +1,182 @@
+[
+ {
+  "FlowerName": "icon_magnolia1",
+  "Branch": 5,
+  "GoldBranch": 1
+ },
+ {
+  "FlowerName": "icon_magnolia2",
+  "Branch": 6,
+  "GoldBranch": 2
+ },
+ {
+  "FlowerName": "icon_magnolia3",
+  "Branch": 7,
+  "GoldBranch": 3
+ },
+ {
+  "FlowerName": "tile_canola1_blm",
+  "Branch": 8,
+  "GoldBranch": 4
+ },
+ {
+  "FlowerName": "tile_canola2_blm",
+  "Branch": 9,
+  "GoldBranch": 5
+ },
+ {
+  "FlowerName": "tile_canola3_blm",
+  "Branch": 10,
+  "GoldBranch": 6
+ },
+ {
+  "FlowerName": "tile_cherryblossom1_blm",
+  "Branch": 11,
+  "GoldBranch": 7
+ },
+ {
+  "FlowerName": "tile_cherryblossom2_blm",
+  "Branch": 12,
+  "GoldBranch": 8
+ },
+ {
+  "FlowerName": "tile_cherryblossom3_blm",
+  "Branch": 13,
+  "GoldBranch": 9
+ },
+ {
+  "FlowerName": "tile_mulmangcho1_blm",
+  "Branch": 14,
+  "GoldBranch": 10
+ },
+ {
+  "FlowerName": "tile_mulmangcho2_blm",
+  "Branch": 15,
+  "GoldBranch": 11
+ },
+ {
+  "FlowerName": "tile_mulmangcho3_blm",
+  "Branch": 16,
+  "GoldBranch": 12
+ },
+ {
+  "FlowerName": "tile_napal1_blm",
+  "Branch": 17,
+  "GoldBranch": 13
+ },
+ {
+  "FlowerName": "tile_napal2_blm",
+  "Branch": 18,
+  "GoldBranch": 14
+ },
+ {
+  "FlowerName": "tile_napal3_blm",
+  "Branch": 19,
+  "GoldBranch": 15
+ },
+ {
+  "FlowerName": "tile_rose1_blm",
+  "Branch": 20,
+  "GoldBranch": 16
+ },
+ {
+  "FlowerName": "tile_rose2_blm",
+  "Branch": 21,
+  "GoldBranch": 17
+ },
+ {
+  "FlowerName": "tile_rose3_blm",
+  "Branch": 22,
+  "GoldBranch": 18
+ },
+ {
+  "FlowerName": "tile_silverbell1_blm",
+  "Branch": 23,
+  "GoldBranch": 19
+ },
+ {
+  "FlowerName": "tile_silverbell2_blm",
+  "Branch": 24,
+  "GoldBranch": 20
+ },
+ {
+  "FlowerName": "tile_silverbell3_blm",
+  "Branch": 25,
+  "GoldBranch": 21
+ },
+ {
+  "FlowerName": "tile_sumflower1_blm",
+  "Branch": 26,
+  "GoldBranch": 22
+ },
+ {
+  "FlowerName": "tile_sumflower2_blm",
+  "Branch": 27,
+  "GoldBranch": 23
+ },
+ {
+  "FlowerName": "tile_sumflower3_blm",
+  "Branch": 28,
+  "GoldBranch": 24
+ },
+ {
+  "FlowerName": "tile_tulip_1",
+  "Branch": 29,
+  "GoldBranch": 25
+ },
+ {
+  "FlowerName": "tile_tulip_2",
+  "Branch": 30,
+  "GoldBranch": 26
+ },
+ {
+  "FlowerName": "tile_tulip_3",
+  "Branch": 31,
+  "GoldBranch": 27
+ },
+ {
+  "FlowerName": "tile_violet1_blm",
+  "Branch": 32,
+  "GoldBranch": 28
+ },
+ {
+  "FlowerName": "tile_violet2",
+  "Branch": 33,
+  "GoldBranch": 29
+ },
+ {
+  "FlowerName": "tile_violet3_blm",
+  "Branch": 34,
+  "GoldBranch": 30
+ },
+ {
+  "FlowerName": "tile_rare1_blm",
+  "Branch": -1,
+  "GoldBranch": -1
+ },
+ {
+  "FlowerName": "tile_rare2_blm",
+  "Branch": -1,
+  "GoldBranch": -1
+ },
+ {
+  "FlowerName": "tile_rare3_blm",
+  "Branch": -1,
+  "GoldBranch": -1
+ },
+ {
+  "FlowerName": "tile_rare4_blm",
+  "Branch": -1,
+  "GoldBranch": -1
+ },
+ {
+  "FlowerName": "tile_rare5_blm",
+  "Branch": -1,
+  "GoldBranch": -1
+ },
+ {
+  "FlowerName": "tile_rare6_blm",
+  "Branch": -1,
+  "GoldBranch": -1
+ }
+]

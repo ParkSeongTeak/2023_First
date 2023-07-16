@@ -15,6 +15,10 @@ public class InGameDataManager
     #region JsonData
     ClearRwrdHandler _clearRwrdHandler = new ClearRwrdHandler();
     public ClearRwrdHandler ClearRwrdHandler { get { return _clearRwrdHandler; } }
+
+    FlowerPriceHandler _flowerPriceHandler = new FlowerPriceHandler();
+    public FlowerPriceHandler FlowerPriceHandler { get { return _flowerPriceHandler; } }
+
     #endregion
 
     #region State
@@ -73,9 +77,9 @@ public class InGameDataManager
     #region FlowersBook 관련 Data
 
     public bool SelectMode { get; set; }
-    public BookState BookState { get; set; }
-    public BookSelect BookSelect { get; set; }
-    public BookInfo BookInfo { get; set; }
+    public BookState bookState { get; set; }
+    public BookSelect bookSelect { get; set; }
+    public BookInfo bookInfo { get; set; }
 
 
     #endregion
@@ -92,6 +96,7 @@ public class InGameDataManager
         Branch = PlayerPrefs.GetInt("Branch", 500);
         GoldBranch = PlayerPrefs.GetInt("GoldBranch", 40);
         MaxPoint = PlayerPrefs.GetInt("MaxPoint", 460);
+        _flowerPriceHandler = Util.ParseJson<FlowerPriceHandler>();
         SelectMode = false;
 
         UseFlowerList[0] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[0]", (int)FlowerTypes.개나리);
@@ -112,7 +117,9 @@ public class InGameDataManager
                 Debug.Log("_instance._flowerSprites[(int)i] NULL");
             }
         }
-        BookState = BookInfo;
+        bookInfo = new BookInfo();
+        bookSelect = new BookSelect();
+        bookState = bookInfo;
         UpdateBranchAndPointAction -= saveData;
         UpdateBranchAndPointAction += saveData;
 
