@@ -9,18 +9,18 @@ public class Page2 : UI_PopUp
 
     enum Buttons
     {
-        Button1,
-        Button2,
-        Button3,
-        Button4,
-        Button5,
-        Button6,
-        Button7,
-        Button8,
-        Button9,
-        Button10,
-        Button11,
-        Button12,
+        tile_napal1_blm,
+        tile_napal2_blm,
+        tile_napal3_blm,
+        tile_rose1_blm,
+        tile_rose2_blm,
+        tile_rose3_blm,
+        tile_silverbell1_blm,
+        tile_silverbell2_blm,
+        tile_silverbell3_blm,
+        tile_sumflower1_blm,
+        tile_sumflower2_blm,
+        tile_sumflower3_blm,
         Right,
         Left,
     }
@@ -38,7 +38,7 @@ public class Page2 : UI_PopUp
 
         //Object πŸ¿ŒµÂ
         Bind<Button>(typeof(Buttons));
-        for (int Button = 0; Button <= (int)Buttons.Button12; Button++)
+        for (int Button = 0; Button < 12; Button++)
         {
             BindEvent(GetButton(Button).gameObject, Btn_Button);
 

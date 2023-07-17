@@ -6,5 +6,9 @@ using UnityEngine.UI;
 
 public class tile_napal3_blm : FlowerBook
 {
-   
+    public override Define.FlowerTypes GetFlowerType()
+    {
+
+        return Define.FlowerTypes.tile_napal3_blm;
+    }
 }

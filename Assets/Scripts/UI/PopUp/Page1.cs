@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Define;
@@ -13,24 +14,24 @@ public class Page1 : UI_PopUp
 
     enum Buttons 
     {
-        Button1,
-        Button2,
-        Button3,
-        Button4,
-        Button5,
-        Button6,
-        Button7,    
-        Button8,
-        Button9,
-        Button10,
-        Button11,
-        Button12,
+        icon_magnolia1,
+        icon_magnolia2,
+        icon_magnolia3,
+        tile_canola1_blm,
+        tile_canola2_blm,
+        tile_canola3_blm,
+        tile_cherryblossom1_blm,    
+        tile_cherryblossom2_blm,
+        tile_cherryblossom3_blm,
+        tile_mulmangcho1_blm,
+        tile_mulmangcho2_blm,
+        tile_mulmangcho3_blm,
         Right,
     }
 
    
 
-    void Start()
+    void Awake()
     {
         Init();
 
@@ -42,14 +43,18 @@ public class Page1 : UI_PopUp
 
         //Object πŸ¿ŒµÂ
         Bind<Button>(typeof(Buttons));
-        
-        for (int Button = 0; Button <= (int)Buttons.Button12; Button++)
+
+        PlayerPrefs.SetInt($"icon_magnolia1Have", 1);
+        PlayerPrefs.SetInt($"icon_magnolia2Have", 1);
+        PlayerPrefs.SetInt($"icon_magnolia3Have", 1);
+
+
+
+        for (int Button = 0; Button < 12; Button++)
         {
             BindEvent(GetButton(Button).gameObject, Btn_Button);
-
         }
 
-        
         BindEvent(GetButton((int)Buttons.Right).gameObject, Btn_Right);
 
     }

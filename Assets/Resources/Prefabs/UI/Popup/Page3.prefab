@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5913401173890389672}
   - component: {fileID: 7058788475672707680}
   m_Layer: 5
-  m_Name: Button9
+  m_Name: tile_rare3_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5913401174032882184}
   - component: {fileID: 3894860655834202692}
   m_Layer: 5
-  m_Name: Button7
+  m_Name: tile_rare1_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 5913401174058744191}
   - component: {fileID: 7552627008259252592}
   m_Layer: 5
-  m_Name: Button12
+  m_Name: tile_rare6_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 5913401174064185604}
   - component: {fileID: 3018268588751262309}
   m_Layer: 5
-  m_Name: Button8
+  m_Name: tile_rare2_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 5913401174263277118}
   - component: {fileID: 1970842346595870354}
   m_Layer: 5
-  m_Name: Button4
+  m_Name: tile_violet1_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 27a4077dfc1927f49a67da1f55cebd0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d40f66a1783be14faafb05d7b941eb7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 5913401174657407894}
   - component: {fileID: 333027588650086943}
   m_Layer: 5
-  m_Name: Button10
+  m_Name: tile_rare4_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -984,7 +984,7 @@ GameObject:
   - component: {fileID: 5913401174681469944}
   - component: {fileID: 5222575003061410156}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: tile_tulip_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 654e5a36e243b7f4d9728942cff5ced9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd036b7cb62dc0b45930b7f9eb908da0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1177,7 +1177,7 @@ GameObject:
   - component: {fileID: 5913401174885732940}
   - component: {fileID: 2164985131138570210}
   m_Layer: 5
-  m_Name: Button11
+  m_Name: tile_rare5_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1312,7 +1312,7 @@ GameObject:
   - component: {fileID: 5913401174897496963}
   - component: {fileID: 5553643694222802629}
   m_Layer: 5
-  m_Name: Button6
+  m_Name: tile_violet3_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f133a7dd32bc9024daff49664c5199df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f2754271a875694fb719fdab00cf483, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1704,7 +1704,7 @@ GameObject:
   - component: {fileID: 5913401175413663849}
   - component: {fileID: 6819759800836916249}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: tile_tulip_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b5f885068b7f0214da355d6ce02eabcc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00d0ac4c6ab16c54fb9e5fe6420ea12e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1839,7 +1839,7 @@ GameObject:
   - component: {fileID: 5913401175622054336}
   - component: {fileID: 1642239106046744732}
   m_Layer: 5
-  m_Name: Button5
+  m_Name: tile_violet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1893,7 +1893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a62966df28ff9849855a701b20a7dd5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 689d3699dd483f44191ee157dc63c489, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1974,7 +1974,7 @@ GameObject:
   - component: {fileID: 5913401175825907283}
   - component: {fileID: 7223047649509628483}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: tile_tulip_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2028,7 +2028,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 613dfb88c1f684449b043d4a4af340c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a129e1d41a5c13e45bd071e2eaf2e7fe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

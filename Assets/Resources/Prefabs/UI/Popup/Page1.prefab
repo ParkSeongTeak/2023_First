@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1297972598484843243}
   - component: {fileID: 1297972598484843235}
   m_Layer: 5
-  m_Name: Button4
+  m_Name: tile_canola1_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 1297972598514817652}
   - component: {fileID: 1297972598514817643}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: icon_magnolia3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df5b8e4226bfa0a4e8115f7cffe75e02, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40f65adc1bad18845adae3d895e5a7e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 1297972598548483908}
   - component: {fileID: 1297972598548484027}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: icon_magnolia2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dfea28647fd75f84bba21c1cc3a13edc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68b372d91e42c5141acfa294509818d1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 1297972598559492820}
   - component: {fileID: 1297972598559492811}
   m_Layer: 5
-  m_Name: Button9
+  m_Name: tile_cherryblossom3_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 77daaf72a9d34a34d80f3c1fd25a4f13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c8e7cb3bf75c4a8449e031b8bc7d000d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 1297972598652479035}
   - component: {fileID: 1297972598652479027}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: icon_magnolia1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 81923255c93313e47a95e184786323f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5eb219e65f0ca064686160383c23985e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 1297972598852282027}
   - component: {fileID: 1297972598852282019}
   m_Layer: 5
-  m_Name: Button11
+  m_Name: tile_mulmangcho2_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -923,7 +923,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0c93318cd7537b44fbced7f467856336, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1bde79a5d139bc146839e63542932a07, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1119,7 +1119,7 @@ GameObject:
   - component: {fileID: 1297972599299597334}
   - component: {fileID: 1297972599299597323}
   m_Layer: 5
-  m_Name: Button7
+  m_Name: tile_cherryblossom1_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a1a52f74849791643adb295e8f0e2044, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14eefa3d67eb4324bb5c8659400dc17f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1254,7 +1254,7 @@ GameObject:
   - component: {fileID: 1297972599531900020}
   - component: {fileID: 1297972599531900011}
   m_Layer: 5
-  m_Name: Button5
+  m_Name: tile_canola2_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1389,7 +1389,7 @@ GameObject:
   - component: {fileID: 1297972599650780192}
   - component: {fileID: 1297972599650780199}
   m_Layer: 5
-  m_Name: Button8
+  m_Name: tile_cherryblossom2_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 10353d3b042f618489498fb1b80b8aa7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 845c96fde59ffd443a2710d57bd7ee61, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1524,7 +1524,7 @@ GameObject:
   - component: {fileID: 1297972599884991633}
   - component: {fileID: 1297972599884991342}
   m_Layer: 5
-  m_Name: Button10
+  m_Name: tile_mulmangcho1_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1578,7 +1578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6018938eafe025641bcd193ad27e4e30, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e38a67044d390084296158058c7ae586, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1659,7 +1659,7 @@ GameObject:
   - component: {fileID: 1297972600159276537}
   - component: {fileID: 1297972600159276534}
   m_Layer: 5
-  m_Name: Button12
+  m_Name: tile_mulmangcho3_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15672587beae1c14f8be7547387e8710, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82d3acc843752b94a84e8ca0ddb737dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1839,7 +1839,7 @@ GameObject:
   - component: {fileID: 1297972600390914020}
   - component: {fileID: 1297972600390914011}
   m_Layer: 5
-  m_Name: Button6
+  m_Name: tile_canola3_blm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

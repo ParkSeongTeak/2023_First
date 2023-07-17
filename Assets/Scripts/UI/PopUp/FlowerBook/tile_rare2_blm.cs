@@ -6,5 +6,9 @@ using UnityEngine.UI;
 
 public class tile_rare2_blm : FlowerBook
 {
-  
+    public override Define.FlowerTypes GetFlowerType()
+    {
+
+        return Define.FlowerTypes.tile_rare2_blm;
+    }
 }

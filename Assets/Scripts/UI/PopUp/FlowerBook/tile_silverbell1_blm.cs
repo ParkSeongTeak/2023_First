@@ -7,5 +7,10 @@ using UnityEngine.UI;
 
 
 public class tile_silverbell1_blm : FlowerBook 
-{ 
+{
+    public override Define.FlowerTypes GetFlowerType()
+    {
+
+        return Define.FlowerTypes.tile_silverbell1_blm;
+    }
 }

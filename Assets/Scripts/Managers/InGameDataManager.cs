@@ -66,11 +66,29 @@ public class InGameDataManager
     public Action UpdateBranchAndPointAction { get { return _updateBranchAndPoint; } set { _updateBranchAndPoint = value; } }
     public void UpdateBranchAndPoint() { UpdateBranchAndPointAction?.Invoke(); }
 
-    void saveData() 
+    public void saveData() 
     {
         PlayerPrefs.SetInt("Branch", Branch);
         PlayerPrefs.SetInt("GoldBranch", GoldBranch);
         PlayerPrefs.SetInt("MaxPoint", MaxPoint);
+        PlayerPrefs.SetInt("UseFlowerList[0]", (int)UseFlowerList[0]);
+        PlayerPrefs.SetInt("UseFlowerList[1]", (int)UseFlowerList[1]);
+        PlayerPrefs.SetInt("UseFlowerList[2]", (int)UseFlowerList[2]);
+
+        string[] flowersSpritesStr = new string[useFlowerNum];
+
+        for (int i = 0; i < useFlowerNum; i++)
+        {
+            flowersSpritesStr[i] = Enum.GetName(typeof(FlowerTypes), UseFlowerList[i]);
+        }
+        for (int i = 0; i < useFlowerNum; i++)
+        {
+            _useFlowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{flowersSpritesStr[i]}");
+            if (_useFlowerSprites[i] == null)
+            {
+                Debug.Log("_instance._flowerSprites[(int)i] NULL");
+            }
+        }
     }
     #endregion
 
@@ -99,9 +117,9 @@ public class InGameDataManager
         _flowerPriceHandler = Util.ParseJson<FlowerPriceHandler>();
         SelectMode = false;
 
-        UseFlowerList[0] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[0]", (int)FlowerTypes.개나리);
-        UseFlowerList[1] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[1]", (int)FlowerTypes.무궁화); 
-        UseFlowerList[2] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[2]", (int)FlowerTypes.코스모스);
+        UseFlowerList[0] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[0]", (int)FlowerTypes.icon_magnolia1);
+        UseFlowerList[1] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[1]", (int)FlowerTypes.icon_magnolia2); 
+        UseFlowerList[2] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[2]", (int)FlowerTypes.icon_magnolia3);
 
         string[] flowersSpritesStr = new string[useFlowerNum];
 

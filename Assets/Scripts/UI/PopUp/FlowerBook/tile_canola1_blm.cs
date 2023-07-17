@@ -9,6 +9,10 @@ using UnityEngine.UI;
 public class tile_canola1_blm : FlowerBook
 
 {
-    
 
+    public override Define.FlowerTypes GetFlowerType()
+    {
+
+        return Define.FlowerTypes.tile_canola1_blm;
+    }
 }
