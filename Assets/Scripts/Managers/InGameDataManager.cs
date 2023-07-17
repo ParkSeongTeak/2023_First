@@ -6,10 +6,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static Define;
 
-/// <summary>
-/// ¼ÒÀ§.....Â«Åë 
-/// Áß¾Ó ÅëÁ¦´Â ÇÊ¿äÇÑµ¥ ¾Ö¸ÅÇÑ ¾Öµé ´Ù ¿©±â·Î ¸ğ¾Æ¼­ Ã³¸®ÇÏÀÚ
-/// </summary>
 public class InGameDataManager
 {
     #region JsonData
@@ -39,9 +35,9 @@ public class InGameDataManager
 
     #endregion
 
-    #region Tile°ü·Ã Data
+    #region Tileê´€ë ¨ Data
     /// <summary>
-    /// ÇöÀç »ı¼ºµÇ¾îÀÖ´Â Å¸ÀÏ °ü¸® ¾Æ¸¶ 7°³ ³»¿Ü
+    /// í˜„ì¬ ìƒì„±ë˜ì–´ìˆëŠ” íƒ€ì¼ ê´€ë¦¬ ì•„ë§ˆ 7ê°œ ë‚´ì™¸
     /// </summary>
     List<Tile> _tiles = new List<Tile>();
     public List<Tile> TileList { get { return _tiles;  } }
@@ -56,7 +52,7 @@ public class InGameDataManager
 
     #endregion
 
-    #region Branch and Point °ü·Ã Data
+    #region Branch and Point ê´€ë ¨ Data
 
     public int Branch { get; set; }
     public int GoldBranch { get; set; }
@@ -92,7 +88,7 @@ public class InGameDataManager
     }
     #endregion
 
-    #region FlowersBook °ü·Ã Data
+    #region FlowersBook ê´€ë ¨ Data
 
     public bool SelectMode { get; set; }
     public BookState bookState { get; set; }
