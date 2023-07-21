@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class JumperItem : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        base.OnTriggerEnter2D(collision);
+        Jumper();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Jumper()
     {
-        
+        TileController tileController = TileController.Instance;
+
+        if (tileController != null)
+        {
+            List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
+
+            for (int i = 3; i <= 13; i++)
+            {
+                Tile tile = nowGeneratedTiles[i];
+
+                if (tile.TileType == Define.TileType.FlowerTypes)
+                {
+                    GameManager.InGameDataManager.NowState.BloomCnt++;
+                }
+                else if (tile.TileType == Define.TileType.BonusTileTypes)
+                {
+                    //after confirm
+                }
+                TileController.Instance.MoveTiles();
+            }
+        }
     }
 }

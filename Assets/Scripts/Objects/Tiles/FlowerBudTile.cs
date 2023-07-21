@@ -8,10 +8,12 @@ public class FlowerBudTile : Tile
     int JumpLeft;
     public Define.FlowerTypes MyFlowerType { get; set; }
     public Define.CosmosFlower FlowerJumpType { get; set; }
+    
+
     public override void Init()
     {
 
-        MyFlowerType = TileController.Instance.SetFlowerType(); //³ªÁß¿¡ 3°³ Áß ·£´ýÀ¸·Î °®°í ¿À´Â ÄÚµå·Î º¯°æÇØ¾ßÇÔ
+        MyFlowerType = TileController.Instance.SetFlowerType(); //ï¿½ï¿½ï¿½ß¿ï¿½ 3ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 
         FlowerJumpType = TileController.Instance.SetCosmosFlowerType();
         transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.CosmosFlowerSprites[(int)FlowerJumpType];
@@ -19,7 +21,7 @@ public class FlowerBudTile : Tile
     }
     public override void JumpOnMe()
     {
-        //³»°¡ »ó¼ÓÇÑ ÇÔ¼ö(base == Tile)ÀÇ JumpOnMe() ½ÇÇà
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½(base == Tile)ï¿½ï¿½ JumpOnMe() ï¿½ï¿½ï¿½ï¿½
         //base.JumpOnMe();
         if (JumpLeft >= 0)
         {
@@ -45,5 +47,11 @@ public class FlowerBudTile : Tile
     public override void SkipOnMe()
     {
          
+    }
+
+    public override void AllBloom()
+    {
+        transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[(int)MyFlowerType];
+        GameManager.InGameDataManager.NowState.BloomCnt++;
     }
 }

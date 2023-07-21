@@ -24,10 +24,11 @@ public class LeafToFlowerItem : Item
 
                 if (tile.TileType == Define.TileType.LeafTypes)
                 {
-                    ///여기서 leaftile을 flower tile로 바꿔야함
-                 
+                    tile.ChangeFlower(i);      
                 }
             }
         }
     }
+
+    
 }

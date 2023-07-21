@@ -9,14 +9,14 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class Tile : MonoBehaviour
 {
     /// <summary>
-    /// Á¡ÇÁ ¼ö 
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
     /// </summary>
     int _jumpcnt;
 
     public int JumpCnt { get { return _jumpcnt; } set { _jumpcnt = value; } }
 
     /// <summary>
-    /// ¹«½¼ Å¸ÀÔÀÎ°¡?
+    /// ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½Î°ï¿½?
     /// </summary>
     [SerializeField]
     TileType _tileType;
@@ -26,14 +26,14 @@ public class Tile : MonoBehaviour
     int _tilePosititon;
 
     /// <summary>
-    /// Å¸ÀÏ À§Ä¡ index (idx) ·Î Ç¥Çö 
+    /// Å¸ï¿½ï¿½ ï¿½ï¿½Ä¡ index (idx) ï¿½ï¿½ Ç¥ï¿½ï¿½ 
     /// </summary>
 
 
     public int TilePosititon { get { return _tilePosititon;  } set { _tilePosititon = value; } }
 
     /// <summary>
-    /// ÀÌ¹ÌÁö ¹¹ ¾µ²¨¾ß?
+    /// ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
     /// </summary>
     public Sprite TileSprite { get; set; }
     
@@ -72,6 +72,15 @@ public class Tile : MonoBehaviour
             return true;
         }
     }
+
+    public virtual void AllBloom()
+    {
+
+    }
     
+    public virtual void ChangeFlower(int leafposition)
+    {
+        //Destroy(gameObject);
+    }
     
 }
