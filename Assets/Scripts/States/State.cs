@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class State 
 {
-    #region Quest°ü·Ã Data
+    #region Questê´€ë ¨ Data
     public int QuestNum { get; set; }
 
     int _jumpCnt = 0;
@@ -37,6 +37,12 @@ public class State
         set { _branch = value; }
 
     }
+    int _lifeCnt = 1;
+    public int LifeCnt
+    {
+        get { return _lifeCnt; }
+        set { _lifeCnt = value; }
+    }
 
 
     TextMeshProUGUI[] _uiTexts;
@@ -55,7 +61,7 @@ public class State
     int _rndNum = UnityEngine.Random.Range(0, 100);
     int _goldenBranch = 0;
 
-    List<string> rareTile = new List<string>() { "ÁÖ°Æ´ó°­³ª¹«", "È÷¾î¸®", "²¤²¤ÀÌÇ®", "»êÀÛ¾à", "³Êµµ¹Ù¶÷²É", "±Ý»õ¿ì³­" };
+    List<string> rareTile = new List<string>() { "ì£¼ê±±ëŒ•ê°•ë‚˜ë¬´", "ížˆì–´ë¦¬", "ê¹½ê¹½ì´í’€", "ì‚°ìž‘ì•½", "ë„ˆë„ë°”ëžŒê½ƒ", "ê¸ˆìƒˆìš°ë‚œ" };
 
     public int GoldenBranch
     {
@@ -67,80 +73,80 @@ public class State
                 if (_rndNum == 0)
                 {
                     rareTile.RemoveAt(0);
-                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : ÁÖ°Æ´ó°­³ª¹«";
+                    UiTexts[(int)Define.Texts.RareTile].text = $"í¬ê·€íƒ€ì¼ : ì£¼ê±±ëŒ•ê°•ë‚˜ë¬´";
                 }
 
                 else if (_rndNum == 1)
                 {
                     rareTile.RemoveAt(1);
-                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : È÷¾î¸®";
+                    UiTexts[(int)Define.Texts.RareTile].text = $"í¬ê·€íƒ€ì¼ : ížˆì–´ë¦¬";
                 }
 
                 else if (_rndNum == 2)
                 {
                     rareTile.RemoveAt(2);
-                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : ²¤²¤ÀÌÇ®";
+                    UiTexts[(int)Define.Texts.RareTile].text = $"í¬ê·€íƒ€ì¼ : ê¹½ê¹½ì´í’€";
                 }
 
                 else if (_rndNum == 3)
                 {
                     rareTile.RemoveAt(3);
-                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : »êÀÛ¾à";
+                    UiTexts[(int)Define.Texts.RareTile].text = $"í¬ê·€íƒ€ì¼ : ì‚°ìž‘ì•½";
                 }
 
                 else if (_rndNum == 4)
                 {
                     rareTile.RemoveAt(4);
-                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : ³Êµµ¹Ù¶÷²É";
+                    UiTexts[(int)Define.Texts.RareTile].text = $"í¬ê·€íƒ€ì¼ : ë„ˆë„ë°”ëžŒê½ƒ";
                 }
 
                 else
                 {
                     rareTile.RemoveAt(5);
-                    UiTexts[(int)Define.Texts.RareTile].text = $"Èñ±ÍÅ¸ÀÏ : ±Ý»õ¿ì³­";
+                    UiTexts[(int)Define.Texts.RareTile].text = $"í¬ê·€íƒ€ì¼ : ê¸ˆìƒˆìš°ë‚œ";
                 }
             }
 
             else if (_rndNum >= 6 && _rndNum < 14)
             {
                 _goldenBranch += 1;
-                UiTexts[(int)Define.Texts.GoldenBranch].text = $"È²±Ý³ª¹µ°¡Áö : 1" ;
+                UiTexts[(int)Define.Texts.GoldenBranch].text = $"í™©ê¸ˆë‚˜ë­‡ê°€ì§€ : 1" ;
             }
 
             else if (_rndNum >= 14 && _rndNum < 18)
             {
                 _goldenBranch += 2;
-                UiTexts[(int)Define.Texts.GoldenBranch].text = $"È²±Ý³ª¹µ°¡Áö : 2";
+                UiTexts[(int)Define.Texts.GoldenBranch].text = $"í™©ê¸ˆë‚˜ë­‡ê°€ì§€ : 2";
             }
 
             else if (_rndNum >= 18 && _rndNum < 20)
             {
                 _goldenBranch += 3;
-                UiTexts[(int)Define.Texts.GoldenBranch].text = $"È²±Ý³ª¹µ°¡Áö : 3";
+                UiTexts[(int)Define.Texts.GoldenBranch].text = $"í™©ê¸ˆë‚˜ë­‡ê°€ì§€ : 3";
             }
             
             else if (_rndNum >= 20 && _rndNum < 60)
             {
                 _branch += 5;
-                UiTexts[(int)Define.Texts.Branch].text = $"³ª¹µ°¡Áö : 5";
+                UiTexts[(int)Define.Texts.Branch].text = $"ë‚˜ë­‡ê°€ì§€ : 5";
             }
 
             else if (_rndNum >= 60 && _rndNum < 80)
             {
                 _branch += 10;
-                UiTexts[(int)Define.Texts.Branch].text = $"³ª¹µ°¡Áö : 10";
+                UiTexts[(int)Define.Texts.Branch].text = $"ë‚˜ë­‡ê°€ì§€ : 10";
             }
 
             else if (_rndNum >= 80 && _rndNum < 93)
             {
                 _branch += 15;
-                UiTexts[(int)Define.Texts.Branch].text = $"³ª¹µ°¡Áö : 15";
+                UiTexts[(int)Define.Texts.Branch].text = $"ë‚˜ë­‡ê°€ì§€ : 15";
             }
 
             else
             {
                 _branch += 20;
-                UiTexts[(int)Define.Texts.Branch].text = $"³ª¹µ°¡Áö : 20";
+                UiTexts[(int)Define.Texts.Branch].text = $"ë‚˜ë­‡ê°€ì§€ : 20";
             }
         }
     }
@@ -149,7 +155,7 @@ public class State
     #endregion
 
     protected QuestHandler _questHandler = new QuestHandler();
-    public QuestHandler QuestHandler { get { return _questHandler; } }       //ÀÚ·á±¸Á¶
+    public QuestHandler QuestHandler { get { return _questHandler; } }       //ìžë£Œêµ¬ì¡°
 
 
 }
