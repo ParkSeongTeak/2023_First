@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 
 public class TimeSlider : MonoBehaviour
+
 {
     [SerializeField]
     float _deltaTime = 0.01f;
