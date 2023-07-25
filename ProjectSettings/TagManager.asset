@@ -8,6 +8,7 @@ TagManager:
   - Leaf
   - WingWing
   - stopTimeSlider
+  - Life
   layers:
   - Default
   - TransparentFX

@@ -59,6 +59,7 @@ public class Define
         SkipCnt,
         BloomCnt,
         GoldenBranch,
+        LifeCnt,
         Branch,
         RareTile,
         JumpScore,
