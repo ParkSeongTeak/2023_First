@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ResourceManager 
 {
-    /// <summary>
-    /// 굳이 Pooling까지 해야하나..... 고민중
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="path"></param>
-    /// <returns></returns>
+    Dictionary<string, UnityEngine.Object> Pool = new Dictionary<string, UnityEngine.Object>(); 
     public T Load<T>(string path) where T : Object
     {
-        return Resources.Load<T>(path);
+        if (!Pool.ContainsKey(path))
+        {
+            Pool.Add(path, Resources.Load<T>(path));
+        }
+
+        return Pool[path] as T;
     }
 
     /// <summary> GameObject 생성 </summary>
@@ -41,6 +41,6 @@ public class ResourceManager
     }
     public void Clear()
     {
-
+        Pool.Clear();
     }
 }

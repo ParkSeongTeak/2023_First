@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,6 +10,8 @@ using UnityEngine.UI;
 
 public class GameUI : UI_Scene
 {
+    public static GameUI Instance { get; private set; }
+
     enum Buttons
     {
         JumpBtn,
@@ -23,7 +26,7 @@ public class GameUI : UI_Scene
         BloomCnt,
     }
 
-    void Start()
+    void Awake()
     {
         Init();
     }
@@ -32,6 +35,10 @@ public class GameUI : UI_Scene
     {
         base.Init();
 
+        if (Instance == null)
+        {
+            Instance = this;
+        }
         //Object 바인드
         Bind<Button>(typeof(Buttons));
         Bind<TMP_Text>(typeof(Texts));
@@ -47,9 +54,14 @@ public class GameUI : UI_Scene
     public bool isSkipActive { get; set; } = true;
 
 
+    GameObject Lifeicon;
+    public GameObject LifeIcon { get { return Lifeicon; } set { Lifeicon = value; } }
+
+
+
     void Btn_Jump(PointerEventData evt)
     {
-        
+
         if (isJumpActive)
         {
             Debug.Log("JumpBtn눌림");
@@ -69,13 +81,13 @@ public class GameUI : UI_Scene
 
             }
         }
-        
+
 
     }
     void Btn_Skip(PointerEventData evt)
     {
-        
-        if(isSkipActive)
+
+        if (isSkipActive)
         {
             if (!TileController.IsMoving)
             {
@@ -94,8 +106,124 @@ public class GameUI : UI_Scene
             GetText((int)Texts.JumpCnt).text = $"Jump: {GameManager.InGameDataManager.NowState.JumpCnt++}";
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
         }
-        
+
     }
 
- 
+    #region ItemEffect Area
+
+
+    #region TimeFreezeItem
+
+    public float freezeDuration = 5f;
+    private bool isTimeFrozen = false;
+    Coroutine TimeFreezeCoroutine;
+
+    public void TimeFreeze()
+    {
+        Debug.Log("TimeFreezeSTart");
+        if (isTimeFrozen == false) //만약 istumefrozen이 작동할 수 없다면
+        {
+            TimeSlider.StopTimer();
+            isTimeFrozen = true;// 시간을 얼리는 조건 true로 변경
+            TimeFreezeCoroutine = StartCoroutine(ResumeTimeAfterDelay(freezeDuration));//코루틴 실행
+
+        }
+        else //갱신 지금부터 4초
+        {
+            StopCoroutine(TimeFreezeCoroutine);
+            TimeFreezeCoroutine = StartCoroutine(ResumeTimeAfterDelay(freezeDuration));//코루틴 실행
+        }
+
+    }
+
+    private IEnumerator ResumeTimeAfterDelay(float delay)//5초 뒤에 작동
+    {
+        yield return new WaitForSeconds(delay);  //  변경된 부분>> WaitForSeconds를 사용하도록 변경/
+                                                 //  WaitForSeconds(5.0f); >5초 동안 멈춘 후 메세지 출력(timescale의 영향 받지X)
+
+        //originalValue = slider.value;//s.v를 o.v값에 대입>>그러므로 ov는 슬라이더가 멈춰도 이전의 값을 기억하게 됨.
+        //
+        //slider.interactable = false; //아이템 작동 기간 동안 Slider의 상호작용 중지(슬라이더 멈추는 것)
+        isTimeFrozen = false; // 변경된 부분>> 시간멈춤을 해제할 때 isTimeFrozen을 false로 변경
+        //slider.interactable = true;//아이템 작동 후 다시 Slider 상호작용0
+
+        TimeSlider.ResetSpeed();
+
+        Debug.Log("END TimeFreezeItem ");
+
+    }
+
+    #endregion TimeFreezeItem
+
+
+    #region SkipJumpSwapItem
+
+    private bool isEffectActive = false;
+    private Coroutine SkipJumpSwapItemCoroutine;
+    GameObject SkipJumpSwapItemIcon;
+
+    float _swapTime = 10.0f;
+
+
+    public void SkipJumpSwapItem()
+    {
+        if (isEffectActive == false)    //효과 적용중아님  
+        {
+            isEffectActive = true;
+            isJumpActive = false;
+            isSkipActive = false;
+
+            SkipJumpSwapItemCoroutine = StartCoroutine(isCounting());
+        }
+        else
+        {
+
+            StopCoroutine(SkipJumpSwapItemCoroutine);
+
+            Debug.Log("재시작");
+
+            isEffectActive = true;
+            isJumpActive = false;
+            isSkipActive = false;
+
+            SkipJumpSwapItemCoroutine = StartCoroutine(isCounting());
+
+        }
+    }
+
+
+    /// <summary>
+    /// 버튼 기능 10초? 간 바뀜
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator isCounting()
+
+    {
+        Debug.Log("시작");
+
+        SkipJumpSwapItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_SkipJumpSwap");
+
+        SkipJumpSwapItemIcon.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(_swapTime);
+
+        Debug.Log("끝");
+        isEffectActive = false;
+
+
+        isJumpActive = true;
+        isSkipActive = true;
+
+        SkipJumpSwapItemIcon.SetActive(false);
+
+    }
+
+    #endregion SkipJumpSwapItem
+
+    #endregion ItemEffect Area
+
+
+
+
+
 }

@@ -9,6 +9,8 @@ TagManager:
   - WingWing
   - stopTimeSlider
   - Life
+  - AllBloom
+  - HideRemainJump
   layers:
   - Default
   - TransparentFX

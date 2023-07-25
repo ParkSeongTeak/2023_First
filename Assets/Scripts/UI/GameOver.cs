@@ -26,6 +26,18 @@ public class GameOver : MonoBehaviour
         if (_gameOverMenu != null)
         {
             _gameOverMenu.SetActive(false);
+
         }
     }
+
+    void GameOverNow()
+    {
+        GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);
+        GameManager.InGameDataManager.NowState.LifeCnt--;
+
+
+
+    }
+
+    
 }

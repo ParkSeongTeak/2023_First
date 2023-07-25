@@ -10,11 +10,25 @@ public class PlusLifeItem : Item
 
     public GameObject Icon;
     GameObject icon;
+    static GameUI gameUI;
 
     void Start()
     {
-        icon = Instantiate(Icon);
-        icon.SetActive(false);
+        //icon = Instantiate(Icon);
+        if(gameUI == null)
+        {
+            gameUI = GameManager.UIManager.ShowSceneUI<GameUI>();
+        }
+        if (gameUI.LifeIcon == null)
+        {
+            gameUI.LifeIcon = Instantiate(Icon);
+        }
+        gameUI.LifeIcon.SetActive(false);
+        //gameUI.LifeIcon = icon;
+
+
+
+
     }
     
 
@@ -26,8 +40,8 @@ public class PlusLifeItem : Item
         {
             if (GameManager.InGameDataManager.NowState.LifeCnt == 1)    //¸ñ¼û µðÆúÆ® 1°³ »óÅÂÀÏ¶§¸¸ ¸ñ¼û Ãß°¡ È¹µæ °¡´É
             {
-                GameManager.InGameDataManager.NowState.LifeCnt++;
-                icon.SetActive(true);
+                GameManager.InGameDataManager.NowState.LifeCnt++ ;
+                gameUI.LifeIcon.SetActive(true);
             }
             
         }

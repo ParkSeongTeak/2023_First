@@ -11,7 +11,7 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.tag == "WingWing")
         {
-          Destroy(gameObject);
+           Destroy(gameObject);
         }
     }
 
