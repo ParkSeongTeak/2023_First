@@ -223,7 +223,63 @@ public class GameUI : UI_Scene
     #endregion ItemEffect Area
 
 
+    ///
+    #region HideRemainJumpItem
 
+    private bool isHideActive = false;
+    Coroutine HideRemainJumpItemCoroutine;
+    GameObject HideRemainJumpItemIcon;
+    GameObject Obstacle;
+
+    float _hideTime = 5.0f;
+
+
+    public void HideRemainJumpItem()
+    {
+        if (isHideActive == false)    //효과 적용중아님  
+        {
+            isHideActive = true;
+
+            HideRemainJumpItemCoroutine = StartCoroutine(HideTile());
+        }
+        else    //효과 적용 중
+        {
+
+            StopCoroutine(HideRemainJumpItemCoroutine);
+            HideRemainJumpItemCoroutine = StartCoroutine(HideTile());
+
+        }
+    }
+
+
+    /// <summary>
+    /// 시야 방해물이 5초간 나타남
+    /// </summary>
+    private IEnumerator HideTile()
+
+    {
+
+        HideRemainJumpItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_HideRemainJump");
+
+        if (Obstacle == null)   //중복 생성 방지
+        {
+            Obstacle = GameManager.ResourceManager.Instantiate("ItemTypes/obstacle");
+        }
+
+        HideRemainJumpItemIcon.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(_hideTime);
+
+        isHideActive = false;
+        HideRemainJumpItemIcon.SetActive(false);
+
+        if (Obstacle != null)
+        {
+            Destroy(Obstacle);
+        }
+    }
 
 
 }
+
+#endregion HideRemainJumpItem

@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class HideRemainJumpItem : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
+        base.OnTriggerEnter2D(collision);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.tag == "WingWing")
+        {
+            GameUI.Instance.HideRemainJumpItem();
+        }
+
     }
 }
