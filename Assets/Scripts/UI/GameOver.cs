@@ -30,14 +30,13 @@ public class GameOver : MonoBehaviour
         }
     }
 
-    void GameOverNow()
+    /*
+    public void GameOverNow()
     {
         GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);
         GameManager.InGameDataManager.NowState.LifeCnt--;
-
-
-
     }
+    */
 
     
 }

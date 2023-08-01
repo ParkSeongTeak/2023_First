@@ -214,6 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1257636055}
     m_Modifications:
+    - target: {fileID: 1467973715696066736, guid: b451f6cd54e06eb4daca3cfe95938600, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3099955454329127272, guid: b451f6cd54e06eb4daca3cfe95938600, type: 3}
       propertyPath: m_Name
       value: FlowersBookUI

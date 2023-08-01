@@ -201,7 +201,10 @@ public class GameUI : UI_Scene
     {
         Debug.Log("시작");
 
-        SkipJumpSwapItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_SkipJumpSwap");
+        if (SkipJumpSwapItemIcon == null)   //중복 생성 방지
+        {
+            SkipJumpSwapItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_SkipJumpSwap");
+        }
 
         SkipJumpSwapItemIcon.SetActive(true);
 
@@ -259,19 +262,15 @@ public class GameUI : UI_Scene
 
     {
 
-        HideRemainJumpItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_HideRemainJump");
-
         if (Obstacle == null)   //중복 생성 방지
         {
             Obstacle = GameManager.ResourceManager.Instantiate("ItemTypes/obstacle");
         }
 
-        HideRemainJumpItemIcon.SetActive(true);
 
         yield return new WaitForSecondsRealtime(_hideTime);
 
         isHideActive = false;
-        HideRemainJumpItemIcon.SetActive(false);
 
         if (Obstacle != null)
         {

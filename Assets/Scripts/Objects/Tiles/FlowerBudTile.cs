@@ -38,8 +38,15 @@ public class FlowerBudTile : Tile
         }
         else
         {
-            GameManager.GameOver(2f);
-            Destroy(gameObject);
+            if (GameManager.InGameDataManager.NowState.LifeCnt != 1)
+            {
+                GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //목숨 아이템 소모 : 아이콘 해제
+                GameManager.InGameDataManager.NowState.LifeCnt--;                       //목숨 깎임
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
