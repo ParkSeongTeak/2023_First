@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
         //animator = transform.GetChild(0).GetComponent<Animator>();
         _animator = Util.FindChild<Animator>(gameObject, "PlayerAnim");
 
+       
     }
 
 
@@ -42,7 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             //점프키 누르면 어쩌구 저쩌구
             _canJump = false;
-            GameManager.InGameDataManager.NowState.JumpCnt++;
+            //GameManager.InGameDataManager.NowState.JumpCnt++;
             _myRgbd2D.AddForce(new Vector3(0, 1f, 0) * _jumpForce, ForceMode2D.Impulse);
             StartCoroutine(AnimPlay(anims.Jump));
             _onTile.JumpOnMe();
@@ -53,8 +56,6 @@ public class PlayerController : MonoBehaviour
     public void Skip()
     {
         StartCoroutine(AnimPlay(anims.Skip));
-
-
     }
 
 
@@ -66,22 +67,36 @@ public class PlayerController : MonoBehaviour
             _canJump = true;
             _onTile = collision.transform.GetComponent<Tile>();
         }
+
     }
+
+    GameObject newTile;
 
     void Update()
     {
-        
-        if (transform.position.y < -9)
-        {
-            //transform.GetComponent<SpriteRenderer>().sprite = imageUnderThreshold;
-        }
-        else
-        {
+       
+    }
 
+    private void Restart()
+    {
+        TileController tileController = TileController.Instance;
+
+        if (tileController != null)
+        {
+          
+            List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
+
+            for (int i = 3; i <= 13; i++)
+            {
+                Tile tile = nowGeneratedTiles[i];
+
+                TileController.Instance.MoveTiles();
+            }
         }
     }
-    
-    IEnumerator AnimPlay(anims anim,float time = 0.33f)
+
+
+IEnumerator AnimPlay(anims anim,float time = 0.33f)
     {
         if (!isAnim)
         {
@@ -97,5 +112,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+   
 
 }

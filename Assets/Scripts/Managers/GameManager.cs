@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-
+ 
     #region Initiate
     /// <summary>
     /// 유일성 보장해주는 함수
@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         init();
+        
     }
 
     public static void GameStart()
@@ -83,7 +84,7 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         Debug.Log("GameOver");
-        //UIManager.PopUpUI[(int)Define.PopUpUI.GameOverMenu].SetActive(true);
+       
     }
 
     // Update is called once per frame

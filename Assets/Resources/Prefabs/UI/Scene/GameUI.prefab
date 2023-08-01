@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81ff6e663a668b44a7232d1801623e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deltaTime: 0.01
+  freezeDuration: 5
 --- !u!114 &4447020520293546184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2966,6 +2966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08069ae79b6f54147885ae59249724c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freezeDuration: 5
 --- !u!1 &4447020521838113224
 GameObject:
   m_ObjectHideFlags: 0
