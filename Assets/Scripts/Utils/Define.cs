@@ -169,14 +169,14 @@ public class Define
         tile_rare6_blm,
         MaxCount
     }
-    public enum CosmosFlower
+    public enum BudFlower
     {
-        CosmosOne,
-        CosmosTwo,
-        CosmosThree,
-        CosmosFour,
-        //CosmosFive,
-        //CosmosSix,
+        BudOne,
+        BudTwo,
+        BudThree,
+        BudFour,
+        BudFive,
+        BudSix,
         MaxCount
     }
     #region ≤… ≈∏¿œµÈ
@@ -206,7 +206,7 @@ public class Define
     }
     public enum BonusTileTypes 
     {
-        Bonus,
+        BonusTileTypes,
         MaxCount
     }
     public enum Items

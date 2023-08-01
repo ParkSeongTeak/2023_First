@@ -174,9 +174,9 @@ public class TileController : MonoBehaviour
 
             }
 
-            string[] cosmosFlowersSpritesStr = Enum.GetNames(typeof(Define.CosmosFlower));
-            _instance._cosmosFlowerSprites = new Sprite[(int)Define.CosmosFlower.MaxCount];
-            for (int i = 0; i < (int)Define.CosmosFlower.MaxCount; i++)
+            string[] cosmosFlowersSpritesStr = Enum.GetNames(typeof(Define.BudFlower));
+            _instance._cosmosFlowerSprites = new Sprite[(int)Define.BudFlower.MaxCount];
+            for (int i = 0; i < (int)Define.BudFlower.MaxCount; i++)
             {
                 _instance._cosmosFlowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{randomFlower}/{cosmosFlowersSpritesStr[i]}");
                 if (_instance._cosmosFlowerSprites[i] == null)
@@ -211,7 +211,28 @@ public class TileController : MonoBehaviour
 
     GameObject GeneratedTile(int tilePos = _tileNum-1)
     {
-        TileType generateType = (TileType)UnityEngine.Random.RandomRange(0, (int)TileType.MaxCount);
+        //TileType generateType = (TileType)UnityEngine.Random.RandomRange(0, (int)TileType.MaxCount);
+        TileType generateType;
+        int Random = UnityEngine.Random.RandomRange(0,100);
+
+        if(Random < 60)
+        {
+            generateType = TileType.FlowerTypes;
+        }
+        else if(Random < 77)
+        {
+            generateType = TileType.WitheredFlowersTileTypes;
+        }
+        else if (Random < 97)
+        {
+            generateType = TileType.LeafTypes;
+        }
+        else
+        {
+            generateType = TileType.BonusTileTypes;
+        }
+
+
         if (_poolingStack[generateType].Count != 0)
         {
             Tile generateTile = _poolingStack[generateType].Pop();
@@ -257,9 +278,36 @@ public class TileController : MonoBehaviour
     {
         return (Define.BonusTileTypes)UnityEngine.Random.RandomRange(0, (int)Define.BonusTileTypes.MaxCount);
     }
-    public Define.CosmosFlower SetCosmosFlowerType()
+    public Define.BudFlower SetCosmosFlowerType()
     {
-        return (Define.CosmosFlower)UnityEngine.Random.RandomRange(0, (int)Define.CosmosFlower.MaxCount);
+        int Random = UnityEngine.Random.RandomRange(0, 60);
+
+        if (Random < 5)
+        {
+            return BudFlower.BudOne;
+        }
+        else if (Random < 14)
+        {
+            return BudFlower.BudTwo;
+
+        }
+        else if (Random < 29)
+        {
+            return BudFlower.BudThree;
+        }
+        else if (Random < 44)
+        {
+            return BudFlower.BudFour;
+        }
+        else if (Random < 53)
+        {
+            return BudFlower.BudFive;
+        }
+        else
+        {
+            return BudFlower.BudSix;
+        }
+
     }
 
     public void MoveTiles()

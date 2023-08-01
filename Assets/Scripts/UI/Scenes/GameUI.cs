@@ -293,25 +293,25 @@ public class GameUI : UI_Scene
         {
             isUnbeatable = true;
 
-            WingWingRigidbody = GetComponent<Rigidbody2D>();
+            WingWingRigidbody = GameManager.InGameDataManager.Player.GetComponent<Rigidbody2D>();
             originalGravityScale = WingWingRigidbody.gravityScale; //originalGravityScale은 Unbeatable() 함수의 처음에 wingWingRigidbody.gravityScale 값을 저장하는데 사용
 
             Debug.Log("FreezeYPosition() 실행");
             FreezeYPosition();// FreezeYPosition함수 실행
 
             Debug.Log("코루틴 시작");
-            WingWingRigidbody.gravityScale = 0f;//윙윙이 중력 0으로 설정
-            StartCoroutine(ResumeUnbeatableAfterDelay(unbeatableDuration));
+            //WingWingRigidbody.gravityScale = 0f;//윙윙이 중력 0으로 설정
+            //StartCoroutine(ResumeUnbeatableAfterDelay(unbeatableDuration));
             //10초 뒤에 코루틴 실행
         }
 
     }
 
-    public void FreezeYPosition()
+    public void FreezeYPosition()//너무나도 이상한 함수 다시 만들기 바람
     {
-        Vector3 currentPosition = transform.position; //윙윙이의 현재 위치
+        Vector3 currentPosition = GameManager.InGameDataManager.Player.transform.position; //윙윙이의 현재 위치
         currentPosition.y = -1.483448f;//위치 고정
-        transform.position = currentPosition;
+        GameManager.InGameDataManager.Player.transform.position = currentPosition;
     }//is Unbeatable=false가 되면 y축 고정도 같이 해제됨
    
 
@@ -326,6 +326,7 @@ public class GameUI : UI_Scene
         UnbeatableItemIcon.SetActive(false);//아이콘 제거
     }
 
+    /*
     public void OnTriggerStay2D(Collider2D collision)
     {
         // Unbeatable 아이템이 다른 아이템보다 우선 적용되는 경우
@@ -338,6 +339,8 @@ public class GameUI : UI_Scene
             }
         }
     }
+
+    */
 
     public void PlusTime()
     { 
