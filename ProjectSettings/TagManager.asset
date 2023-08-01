@@ -11,6 +11,8 @@ TagManager:
   - Life
   - AllBloom
   - HideRemainJump
+  - Unbeatable
+  - BonusTile
   layers:
   - Default
   - TransparentFX

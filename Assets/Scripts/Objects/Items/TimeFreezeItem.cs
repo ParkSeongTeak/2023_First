@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class TimeFreezeItem : Item
 {
-    float _deltaTime = 0.01f;
+    
     public float freezeDuration = 5f;
     private Slider slider;
     private float originalValue;
@@ -21,7 +21,7 @@ public class TimeFreezeItem : Item
         //base.OnTriggerEnter2D(collision);
         if (collision.gameObject.tag == "WingWing")
         {
-            //TimeFreeze(); //À®À®ÀÌ¶û Ãæµ¹ÇÏ¸é ÀÌ ÇÔ¼ö ÀÛµ¿
+           
             
             GameUI.Instance.TimeFreeze();
             Destroy(gameObject);

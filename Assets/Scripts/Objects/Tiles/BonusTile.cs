@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BonusTile : Tile
 {
@@ -14,10 +15,34 @@ public class BonusTile : Tile
     }
     public override void JumpOnMe()
     {
-       
+         
     }
+
+
     public override void SkipOnMe()
     {
 
     }
+
+    private bool isJumping;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "WingWing")
+        {
+            if (isJumping == true)
+            {
+                GameUI.Instance.PlusTime();
+                
+            }
+        }
+    }
+
 }
+
+
+
+
+
+
+            
+     
