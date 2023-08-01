@@ -1,33 +1,34 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnbeatableItem : Item
 {
     public float unbeatableDuration = 10f;
-    private bool isUnbeatable = false;
+    private bool isUnbeatable;
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
+        Debug.Log("윙윙이랑 충돌");
         if (collision.gameObject.tag == "WingWing")
+
         {
-            if (!isUnbeatable)
-            {
-                Unbeatable();
-            }
+            GameUI.Instance.Unbeatable();
+           
+
+            Destroy(gameObject); //아이템 오브젝트를 제거
+
+
         }
     }
-
-    private void Unbeatable()
-    {
-        isUnbeatable = true;
-        StartCoroutine(ResumeUnbeatableAfterDelay(unbeatableDuration));
-    }
-
-    private IEnumerator ResumeUnbeatableAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        isUnbeatable = false;
-    }
 }
+
+
+    
+
+
+
+
+
+
 

@@ -12,7 +12,6 @@ public class BackGround : MonoBehaviour
     }
     private void init()
     {
-        Debug.Log("Init");
         TileController.Instance.BackGroundMove += ThisMove;
 
     }

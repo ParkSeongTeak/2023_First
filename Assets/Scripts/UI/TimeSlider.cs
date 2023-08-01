@@ -11,8 +11,10 @@ public class TimeSlider : MonoBehaviour
     static float _deltaTime = 0.01f;
     public float freezeDuration = 5f;
     private bool isTimeFrozen;
+
     private bool gameOver = false;
     private GameObject player;
+
 
     void Start()
     {
@@ -95,4 +97,18 @@ public class TimeSlider : MonoBehaviour
         Debug.Log("END TimeFreezeItem ");
 
     }
+
+    private void SomeFunction()
+    {
+        // 현재 슬라이더의 값 가져오기
+        //float currentValue = TimeSlider.value;
+
+        // 슬라이더에 2초(1.0f)를 더한 값으로 설정하기
+        //float newValue = currentValue + 1.0f;
+        //TimeSlider.value = Mathf.Clamp01(newValue); // 슬라이더의 값이 0.0에서 1.0 사이로 제한됨
+    }
+
+
+
+
 }

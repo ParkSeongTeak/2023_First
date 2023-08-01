@@ -254,7 +254,6 @@ public class GameUI : UI_Scene
         }
     }
 
-
     /// <summary>
     /// 시야 방해물이 5초간 나타남
     /// </summary>
@@ -279,6 +278,77 @@ public class GameUI : UI_Scene
     }
 
 
+    #region UnbeatableItem
+
+    public float unbeatableDuration = 10f; // 무적 지속 시간
+    private bool isUnbeatable;//bool 설정
+    private float originalGravityScale;
+    private Rigidbody2D WingWingRigidbody;
+    GameObject UnbeatableItemIcon;
+
+    public void Unbeatable()
+    {
+        Debug.Log("Unbeatable() 시작");
+        if (isUnbeatable == false)
+        {
+            isUnbeatable = true;
+
+            WingWingRigidbody = GetComponent<Rigidbody2D>();
+            originalGravityScale = WingWingRigidbody.gravityScale; //originalGravityScale은 Unbeatable() 함수의 처음에 wingWingRigidbody.gravityScale 값을 저장하는데 사용
+
+            Debug.Log("FreezeYPosition() 실행");
+            FreezeYPosition();// FreezeYPosition함수 실행
+
+            Debug.Log("코루틴 시작");
+            WingWingRigidbody.gravityScale = 0f;//윙윙이 중력 0으로 설정
+            StartCoroutine(ResumeUnbeatableAfterDelay(unbeatableDuration));
+            //10초 뒤에 코루틴 실행
+        }
+
+    }
+
+    public void FreezeYPosition()
+    {
+        Vector3 currentPosition = transform.position; //윙윙이의 현재 위치
+        currentPosition.y = -1.483448f;//위치 고정
+        transform.position = currentPosition;
+    }//is Unbeatable=false가 되면 y축 고정도 같이 해제됨
+   
+
+    private IEnumerator ResumeUnbeatableAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        WingWingRigidbody.gravityScale = originalGravityScale;//윙윙이 원래 중력(4)으로 복구
+        UnbeatableItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_Unbeatable");//아이콘 띄우기
+        UnbeatableItemIcon.SetActive(true);
+
+        isUnbeatable = false;
+        UnbeatableItemIcon.SetActive(false);//아이콘 제거
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        // Unbeatable 아이템이 다른 아이템보다 우선 적용되는 경우
+        if (isUnbeatable == true)
+        {
+            // 해당 아이템이 Unbeatable 아이템이 아니라면
+            if (!collision.gameObject.CompareTag("Unbeatable"))
+            {
+                collision.enabled = false; // 해당 아이템 효과 X
+            }
+        }
+    }
+
+    public void PlusTime()
+    { 
+
+
+    }
+
 }
+
+
+#endregion  UnbeatableItem
+
 
 #endregion HideRemainJumpItem
