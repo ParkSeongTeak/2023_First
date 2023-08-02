@@ -10,7 +10,9 @@ using UnityEngine.UI;
 
 public class GameUI : UI_Scene
 {
+
     public static GameUI Instance { get; private set; }
+    GameUI() { }
 
     enum Buttons
     {
@@ -65,8 +67,8 @@ public class GameUI : UI_Scene
         if (isJumpActive)
         {
             Debug.Log("JumpBtn눌림");
-
-            GetText((int)Texts.JumpCnt).text = $"Jump: {GameManager.InGameDataManager.NowState.JumpCnt++}";
+            GameManager.InGameDataManager.NowState.JumpCnt++;
+            GetText((int)Texts.JumpCnt).text = $"Jump: {GameManager.InGameDataManager.NowState.JumpCnt}";
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
         }
         else
@@ -76,7 +78,8 @@ public class GameUI : UI_Scene
                 //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
                 TileController.Instance.BackGroundMove?.Invoke();
                 GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
-                GetText((int)Texts.SkipCnt).text = $"Skip: {GameManager.InGameDataManager.NowState.SkipCnt++}";
+                GameManager.InGameDataManager.NowState.SkipCnt++;
+                GetText((int)Texts.SkipCnt).text = $"Skip: {GameManager.InGameDataManager.NowState.SkipCnt}";
                 TileController.Instance.MoveTiles();
 
             }
@@ -94,7 +97,8 @@ public class GameUI : UI_Scene
                 //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
                 TileController.Instance.BackGroundMove?.Invoke();
                 GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
-                GetText((int)Texts.SkipCnt).text = $"Skip: {GameManager.InGameDataManager.NowState.SkipCnt++}";
+                GameManager.InGameDataManager.NowState.SkipCnt++;
+                GetText((int)Texts.SkipCnt).text = $"Skip: {GameManager.InGameDataManager.NowState.SkipCnt}";
                 TileController.Instance.MoveTiles();
 
             }
@@ -103,9 +107,17 @@ public class GameUI : UI_Scene
         {
             Debug.Log("JumpBtn눌림");
 
-            GetText((int)Texts.JumpCnt).text = $"Jump: {GameManager.InGameDataManager.NowState.JumpCnt++}";
+            GameManager.InGameDataManager.NowState.JumpCnt++;
+            GetText((int)Texts.JumpCnt).text = $"Jump: {GameManager.InGameDataManager.NowState.JumpCnt}";
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
         }
+
+    }
+
+    public void BloomCnt()
+    {
+        GameManager.InGameDataManager.NowState.BloomCnt++;
+        GetText((int)Texts.BloomCnt).text = $"BloomCnt: {GameManager.InGameDataManager.NowState.BloomCnt}";
 
     }
 

@@ -11,10 +11,9 @@ public class UnbeatableItem : Item
     {
         Debug.Log("윙윙이랑 충돌");
         if (collision.gameObject.tag == "WingWing")
-
         {
             GameUI.Instance.Unbeatable();
-           
+
 
             Destroy(gameObject); //아이템 오브젝트를 제거
 

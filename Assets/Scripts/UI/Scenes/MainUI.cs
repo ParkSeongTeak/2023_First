@@ -13,13 +13,10 @@ public class MainUI : UI_Scene
 
     enum Buttons
     {
-        ModeButton,
         InfoButton,
         SettingButton,
         GotoGameButton,
-        GardenTab,
         SkinTab,
-        SelectTileButton,
     }
 
     enum Texts
@@ -55,7 +52,7 @@ public class MainUI : UI_Scene
         Bind<Image>(typeof(Images));
 
 
-        BindEvent(GetButton((int)Buttons.GardenTab).gameObject, ToGarden);
+        //BindEvent(GetButton((int)Buttons.GardenTab).gameObject, ToGarden);
         BindEvent(GetButton((int)Buttons.GotoGameButton).gameObject, ToGame);
         BindEvent(GetButton((int)Buttons.SkinTab).gameObject, ToFlowersBook);
 

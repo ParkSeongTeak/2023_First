@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ResourceManager 
 {
-    Dictionary<string, UnityEngine.Object> Pool = new Dictionary<string, UnityEngine.Object>(); 
+
+    Dictionary<string, UnityEngine.Object> Pool = new Dictionary<string, UnityEngine.Object>();
+
     public T Load<T>(string path) where T : Object
     {
+        
         if (!Pool.ContainsKey(path))
         {
             Pool.Add(path, Resources.Load<T>(path));
@@ -43,4 +46,5 @@ public class ResourceManager
     {
         Pool.Clear();
     }
+
 }

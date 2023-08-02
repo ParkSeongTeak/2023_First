@@ -16,14 +16,14 @@ public class FlowerBudTile : Tile
 
     public override void Init()
     {
-        
-        _animator = GetComponent<Animator>();
+                   // 나의 .// 자전거를 가지고 온다
+        _animator = gameObject.GetComponent<Animator>();
         _animator.enabled= true;
         FlowerJumpType = TileController.Instance.SetCosmosFlowerType();
         MyFlowerType = TileController.Instance.SetFlowerType(); //���߿� 3�� �� �������� ���� ���� �ڵ�� �����ؾ���
         _animator.speed = 1.0f;
 
-        JumpLeft = (int)FlowerJumpType;
+        JumpLeft = (int)FlowerJumpType + 1;
         string AnimName = $"{Enum.GetName(typeof(Define.FlowerTypes), MyFlowerType)}{JumpLeft}";
 
         if (_animator == null)
@@ -51,9 +51,9 @@ public class FlowerBudTile : Tile
         }
         else
         {
-            StartCoroutine(Bloom());
-            //transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[(int)MyFlowerType];
+            Debug.Log("????????????????????????????!!!!!!!!!!!!!!?????????????????????????????????????????????");
         }
+       
 
     }
     public override void JumpOnMe()
@@ -107,10 +107,10 @@ public class FlowerBudTile : Tile
     IEnumerator Bloom()
     {
         _animator.enabled = false;
-
+        GameUI.Instance.BloomCnt();
         yield return new WaitForSeconds(0.02f);
         
         transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[(int)MyFlowerType];
-        GameManager.InGameDataManager.NowState.BloomCnt++;
+        //GameManager.InGameDataManager.NowState.BloomCnt++;
     }
 }

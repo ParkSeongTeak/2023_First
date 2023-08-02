@@ -158,4 +158,11 @@ public class State
     public QuestHandler QuestHandler { get { return _questHandler; } }       //자료구조
 
 
+    public void GameDataClear()
+    {
+        JumpCnt = 0;
+        SkipCnt = 0;
+        BloomCnt = 0;
+    }
+
 }

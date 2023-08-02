@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
 {
 
     Rigidbody2D _myRgbd2D;
-    float _jumpForce = 10f;
+    float _jumpForce = 16f;
+    public const float SPEED = 0.15f; 
     bool _canJump;
     Tile _onTile;
     [SerializeField]

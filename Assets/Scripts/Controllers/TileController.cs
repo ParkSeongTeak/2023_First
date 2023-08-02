@@ -61,8 +61,8 @@ public class TileController : MonoBehaviour
     #endregion
 
     #region TileSmoothMove
-
-    public const float OVERTIME = 0.33f;
+    //윙윙이 움직이는 속도
+    public const float OVERTIME = PlayerController.SPEED;
     public static bool IsMoving { get; set; }
 
     #endregion
