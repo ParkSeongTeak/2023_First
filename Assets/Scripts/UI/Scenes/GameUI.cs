@@ -13,6 +13,37 @@ public class GameUI : UI_Scene
 
     public static GameUI Instance { get; private set; }
     GameUI() { }
+    ClearRwrdData clearRwrdData = new ClearRwrdData();
+    bool _clear = false;
+    public bool Clear { get { return _clear; } }
+
+    int jump { get { return clearRwrdData.Jump; } set { clearRwrdData.Jump = value > 0 ? value : 0; ClearCheck(); } }
+    int skip { get { return clearRwrdData.Skip; } set { clearRwrdData.Skip = value > 0 ? value : 0; ClearCheck(); } }
+    int bloom { get { return clearRwrdData.Bloom; } set { clearRwrdData.Bloom = value > 0 ? value : 0; ClearCheck(); } }
+    public int ClearReward_GoldBranch { get { return clearRwrdData.ClearReward_GoldBranch; } }
+    void JsonDeepCopy()
+    {
+        clearRwrdData.Quest = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Quest;
+        clearRwrdData.Jump = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Jump;
+        clearRwrdData.Skip = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Skip;
+        clearRwrdData.Bloom = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Bloom;
+        clearRwrdData.ClearReward_GoldBranch = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].ClearReward_GoldBranch;
+
+    }
+
+
+
+    void ClearCheck()
+    {
+        if (!_clear)
+        {
+            if (jump == 0 && skip == 0 && bloom == 0)
+            {
+                _clear = true;
+                GameManager.InGameDataManager.QuestIDX++;
+            }
+        }
+    }
 
     enum Buttons
     {
@@ -49,6 +80,13 @@ public class GameUI : UI_Scene
         BindEvent(GetButton((int)Buttons.JumpBtn).gameObject, Btn_Jump);
         BindEvent(GetButton((int)Buttons.SkipBtn).gameObject, Btn_Skip);
 
+        JsonDeepCopy();
+
+        GetText((int)Texts.ScoreTxt).text = $"QUEST: {clearRwrdData.Quest}";
+        GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
+        GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
+        GetText((int)Texts.BloomCnt).text = $"Bloom: {bloom}";
+
 
     }
 
@@ -68,7 +106,8 @@ public class GameUI : UI_Scene
         {
             Debug.Log("JumpBtn눌림");
             GameManager.InGameDataManager.NowState.JumpCnt++;
-            GetText((int)Texts.JumpCnt).text = $"Jump: {GameManager.InGameDataManager.NowState.JumpCnt}";
+            jump--;
+            GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
         }
         else
@@ -79,7 +118,9 @@ public class GameUI : UI_Scene
                 TileController.Instance.BackGroundMove?.Invoke();
                 GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
                 GameManager.InGameDataManager.NowState.SkipCnt++;
-                GetText((int)Texts.SkipCnt).text = $"Skip: {GameManager.InGameDataManager.NowState.SkipCnt}";
+                skip--;
+                GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
+
                 TileController.Instance.MoveTiles();
 
             }
@@ -98,7 +139,9 @@ public class GameUI : UI_Scene
                 TileController.Instance.BackGroundMove?.Invoke();
                 GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
                 GameManager.InGameDataManager.NowState.SkipCnt++;
-                GetText((int)Texts.SkipCnt).text = $"Skip: {GameManager.InGameDataManager.NowState.SkipCnt}";
+                skip--;
+                GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
+
                 TileController.Instance.MoveTiles();
 
             }
@@ -108,7 +151,8 @@ public class GameUI : UI_Scene
             Debug.Log("JumpBtn눌림");
 
             GameManager.InGameDataManager.NowState.JumpCnt++;
-            GetText((int)Texts.JumpCnt).text = $"Jump: {GameManager.InGameDataManager.NowState.JumpCnt}";
+            jump--;
+            GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
         }
 
@@ -117,7 +161,8 @@ public class GameUI : UI_Scene
     public void BloomCnt()
     {
         GameManager.InGameDataManager.NowState.BloomCnt++;
-        GetText((int)Texts.BloomCnt).text = $"BloomCnt: {GameManager.InGameDataManager.NowState.BloomCnt}";
+        bloom--;
+        GetText((int)Texts.BloomCnt).text = $"BloomCnt: {bloom}";
 
     }
 

@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class TimeSlider : MonoBehaviour
 
 {
-    //[SerializeField]
-    static float _deltaTime = 0.01f;
+    const float IDLETIME = 0.03f;
+    static float _deltaTime = 0.03f;
     public float freezeDuration = 5f;
     private bool isTimeFrozen;
 
@@ -20,6 +20,7 @@ public class TimeSlider : MonoBehaviour
     {
         //GetComponent<Slider>().value 는 0~1 사잇값입니다 이 이상의 값이 들어가 봐야 최댓값인 1이 됩니다.
         GetComponent<Slider>().value = 1.0f;
+        _deltaTime = IDLETIME;
         gameOver = false;
         player = GameObject.FindWithTag("WingWing");
     }

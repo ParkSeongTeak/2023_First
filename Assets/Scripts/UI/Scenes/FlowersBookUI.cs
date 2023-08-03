@@ -126,6 +126,7 @@ public class FlowersBookUI : UI_Scene
         PlayerPrefs.SetInt("UseFlowerList[0]", (int)FlowerTypes.icon_magnolia1);
         PlayerPrefs.SetInt("UseFlowerList[1]", (int)FlowerTypes.icon_magnolia2);
         PlayerPrefs.SetInt("UseFlowerList[2]", (int)FlowerTypes.icon_magnolia3);
+        PlayerPrefs.SetInt("QUESTINDEX", 1);
 
 
     }

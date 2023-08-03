@@ -49,6 +49,8 @@ public class GameOverUI : UI_PopUp
         GetText((int)Texts.JumpScore).text = $"{GameManager.InGameDataManager.NowState.JumpCnt}";
         GetText((int)Texts.SkipScore).text = $"{GameManager.InGameDataManager.NowState.SkipCnt}";
         GetText((int)Texts.BloomScore).text = $"{GameManager.InGameDataManager.NowState.BloomCnt}";
+        Reward();
+
     }
 
     #region Button
@@ -62,5 +64,22 @@ public class GameOverUI : UI_PopUp
         GameManager.SceneManager.LoadScene(Define.Scenes.Main);
 
     }
+    #endregion
+
+    #region Reward
+
+    void Reward()
+    {
+        if (GameUI.Instance.Clear)
+        {
+            GameManager.InGameDataManager.GoldBranch += GameUI.Instance.ClearReward_GoldBranch;
+            
+        }
+
+        // ÀÏ¹Ý ºê·»Ä¡;
+        GameManager.InGameDataManager.Branch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
+        GameManager.InGameDataManager.saveData();
+    }
+
     #endregion
 }

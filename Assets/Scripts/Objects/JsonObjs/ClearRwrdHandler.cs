@@ -17,9 +17,9 @@ public class ClearRwrdHandler : Handler
         int idx = 0;
         while (idx < _clearRwrdHandler.Count)
         {
-            if (_clearRwrdHandler[idx].Clear != 0)
+            if (_clearRwrdHandler[idx].Quest != 0)
             {
-                _clearRwrdDic.Add(_clearRwrdHandler[idx].Clear, _clearRwrdHandler[idx]);
+                _clearRwrdDic.Add(_clearRwrdHandler[idx].Quest, _clearRwrdHandler[idx]);
             }
             idx++;
         }
@@ -30,5 +30,10 @@ public class ClearRwrdHandler : Handler
 [Serializable]
 public class ClearRwrdData
 {
-    public int Clear;
+    public int Quest;
+    public int Jump;
+    public int Skip;
+    public int Bloom;
+    public int ClearReward_GoldBranch;
+
 }

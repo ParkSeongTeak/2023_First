@@ -29,6 +29,8 @@ public class State
         get { return _bloomCnt; }
         set { _bloomCnt = value; }
     }
+    public const float Reward_Bloom_Weight = 0.2f;
+
     int _branch = 0;
     public int Branch
     {

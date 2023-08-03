@@ -7,8 +7,14 @@ public class GameScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.InGameDataManager.NowState.GameDataClear();
+
+        GameManager.InGameDataManager.CreatePlayer();
+        
         TileController.init();
+
+        GameManager.InGameDataManager.NowState.GameDataClear();
+
+
     }
 
     // Update is called once per frame

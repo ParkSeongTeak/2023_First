@@ -10,6 +10,8 @@ public class InGameDataManager
 {
     #region JsonData
     ClearRwrdHandler _clearRwrdHandler = new ClearRwrdHandler();
+    
+
     public ClearRwrdHandler ClearRwrdHandler { get { return _clearRwrdHandler; } }
 
     FlowerPriceHandler _flowerPriceHandler = new FlowerPriceHandler();
@@ -98,6 +100,7 @@ public class InGameDataManager
 
     #endregion
 
+    public int QuestIDX { get { return PlayerPrefs.GetInt("QUESTINDEX",1); }  set { PlayerPrefs.SetInt("QUESTINDEX", value);} }
 
     // Start is called before the first frame update
     GameObject _player;
@@ -111,6 +114,7 @@ public class InGameDataManager
         GoldBranch = PlayerPrefs.GetInt("GoldBranch", 40);
         MaxPoint = PlayerPrefs.GetInt("MaxPoint", 460);
         _flowerPriceHandler = Util.ParseJson<FlowerPriceHandler>();
+        _clearRwrdHandler = Util.ParseJson<ClearRwrdHandler>();
         SelectMode = false;
 
         UseFlowerList[0] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[0]", (int)FlowerTypes.icon_magnolia1);
@@ -150,8 +154,6 @@ public class InGameDataManager
             _player = GameManager.ResourceManager.Instantiate("Player");
         }
         SetNormalState();
-
-        Debug.Log(_state.QuestHandler[1].Jump);
     }
 
     // Update is called once per frame

@@ -1,5 +1,352 @@
 [
  {
-  "Clear": 1
+  "Quest": 1,
+  "Jump": 16,
+  "Skip": 5,
+  "Bloom": 5,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 2,
+  "Jump": 18,
+  "Skip": 6,
+  "Bloom": 6,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 3,
+  "Jump": 19,
+  "Skip": 6,
+  "Bloom": 6,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 4,
+  "Jump": 21,
+  "Skip": 7,
+  "Bloom": 7,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 5,
+  "Jump": 23,
+  "Skip": 7,
+  "Bloom": 7,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 6,
+  "Jump": 25,
+  "Skip": 8,
+  "Bloom": 8,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 7,
+  "Jump": 28,
+  "Skip": 9,
+  "Bloom": 9,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 8,
+  "Jump": 31,
+  "Skip": 10,
+  "Bloom": 10,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 9,
+  "Jump": 34,
+  "Skip": 11,
+  "Bloom": 11,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 10,
+  "Jump": 37,
+  "Skip": 12,
+  "Bloom": 12,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 11,
+  "Jump": 41,
+  "Skip": 13,
+  "Bloom": 13,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 12,
+  "Jump": 45,
+  "Skip": 15,
+  "Bloom": 15,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 13,
+  "Jump": 49,
+  "Skip": 16,
+  "Bloom": 16,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 14,
+  "Jump": 54,
+  "Skip": 18,
+  "Bloom": 18,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 15,
+  "Jump": 59,
+  "Skip": 19,
+  "Bloom": 19,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 16,
+  "Jump": 64,
+  "Skip": 21,
+  "Bloom": 21,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 17,
+  "Jump": 71,
+  "Skip": 23,
+  "Bloom": 23,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 18,
+  "Jump": 78,
+  "Skip": 26,
+  "Bloom": 26,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 19,
+  "Jump": 85,
+  "Skip": 28,
+  "Bloom": 28,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 20,
+  "Jump": 93,
+  "Skip": 31,
+  "Bloom": 31,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 21,
+  "Jump": 102,
+  "Skip": 34,
+  "Bloom": 34,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 22,
+  "Jump": 112,
+  "Skip": 37,
+  "Bloom": 37,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 23,
+  "Jump": 123,
+  "Skip": 41,
+  "Bloom": 41,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 24,
+  "Jump": 135,
+  "Skip": 45,
+  "Bloom": 45,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 25,
+  "Jump": 148,
+  "Skip": 49,
+  "Bloom": 49,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 26,
+  "Jump": 162,
+  "Skip": 54,
+  "Bloom": 54,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 27,
+  "Jump": 178,
+  "Skip": 59,
+  "Bloom": 59,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 28,
+  "Jump": 195,
+  "Skip": 65,
+  "Bloom": 65,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 29,
+  "Jump": 213,
+  "Skip": 71,
+  "Bloom": 71,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 30,
+  "Jump": 234,
+  "Skip": 78,
+  "Bloom": 78,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 31,
+  "Jump": 256,
+  "Skip": 85,
+  "Bloom": 85,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 32,
+  "Jump": 281,
+  "Skip": 93,
+  "Bloom": 93,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 33,
+  "Jump": 308,
+  "Skip": 102,
+  "Bloom": 102,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 34,
+  "Jump": 338,
+  "Skip": 112,
+  "Bloom": 112,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 35,
+  "Jump": 370,
+  "Skip": 123,
+  "Bloom": 123,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 36,
+  "Jump": 406,
+  "Skip": 135,
+  "Bloom": 135,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 37,
+  "Jump": 445,
+  "Skip": 148,
+  "Bloom": 148,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 38,
+  "Jump": 487,
+  "Skip": 162,
+  "Bloom": 162,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 39,
+  "Jump": 534,
+  "Skip": 178,
+  "Bloom": 178,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 40,
+  "Jump": 585,
+  "Skip": 195,
+  "Bloom": 195,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 41,
+  "Jump": 602,
+  "Skip": 267,
+  "Bloom": 267,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 42,
+  "Jump": 620,
+  "Skip": 280,
+  "Bloom": 280,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 43,
+  "Jump": 640,
+  "Skip": 294,
+  "Bloom": 294,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 44,
+  "Jump": 661,
+  "Skip": 310,
+  "Bloom": 310,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 45,
+  "Jump": 684,
+  "Skip": 327,
+  "Bloom": 327,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 46,
+  "Jump": 708,
+  "Skip": 345,
+  "Bloom": 345,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 47,
+  "Jump": 734,
+  "Skip": 365,
+  "Bloom": 365,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 48,
+  "Jump": 762,
+  "Skip": 387,
+  "Bloom": 387,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 49,
+  "Jump": 792,
+  "Skip": 411,
+  "Bloom": 411,
+  "ClearReward_GoldBranch": 1
+ },
+ {
+  "Quest": 50,
+  "Jump": 825,
+  "Skip": 436,
+  "Bloom": 436,
+  "ClearReward_GoldBranch": 1
  }
 ]
