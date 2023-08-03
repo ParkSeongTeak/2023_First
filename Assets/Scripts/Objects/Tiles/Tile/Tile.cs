@@ -67,7 +67,6 @@ public class Tile : MonoBehaviour
         }
         else
         {
-            //transform.position = TileController.Instance.TilePosition[i - 1];
             StartCoroutine(TileController.Instance.SmoothMove(transform, transform.position, TileController.Instance.TilePosition[i - 1], TileController.OVERTIME));
             return true;
         }

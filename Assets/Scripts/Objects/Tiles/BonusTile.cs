@@ -15,7 +15,7 @@ public class BonusTile : Tile
     }
     public override void JumpOnMe()
     {
-         
+        GameUI.Instance.timeSlider.PlusTime(0.2f);
     }
 
 

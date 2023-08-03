@@ -13,6 +13,7 @@ public class FlowerBudTile : Tile
     Animator _animator;
     [SerializeField]
     AnimationClip _animationClip;
+    float plusTime_bloom = 0.05f; 
 
     public override void Init()
     {
@@ -87,7 +88,7 @@ public class FlowerBudTile : Tile
             }
             else
             {
-                Destroy(gameObject);
+                TileController.Instance.DestoryTile(this);
             }
         }
     }
@@ -108,9 +109,10 @@ public class FlowerBudTile : Tile
     {
         _animator.enabled = false;
         GameUI.Instance.BloomCnt();
+        GameUI.Instance.timeSlider.PlusTime(plusTime_bloom);
+
         yield return new WaitForSeconds(0.02f);
         
         transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[(int)MyFlowerType];
-        //GameManager.InGameDataManager.NowState.BloomCnt++;
     }
 }

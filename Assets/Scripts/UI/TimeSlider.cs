@@ -8,7 +8,7 @@ public class TimeSlider : MonoBehaviour
 
 {
     const float IDLETIME = 0.03f;
-    static float _deltaTime = 0.03f;
+    float _deltaTime = 0.03f;
     public float freezeDuration = 5f;
     private bool isTimeFrozen;
 
@@ -25,15 +25,21 @@ public class TimeSlider : MonoBehaviour
         player = GameObject.FindWithTag("WingWing");
     }
 
-    public static void StopTimer()
+    public void StopTimer()
     {
         _deltaTime = 0f;
     }
     
-    public static void ResetSpeed()
+    public void ResetSpeed()
     {
-        _deltaTime = 0.01f;
+        _deltaTime = IDLETIME;
     }
+    public void PlusTime(float plustime)
+    {
+        GetComponent<Slider>().value += plustime;
+    }
+    
+
 
     void Update()
     {
@@ -76,7 +82,7 @@ public class TimeSlider : MonoBehaviour
         {
             StopTimer();
             isTimeFrozen = true;// 시간을 얼리는 조건 true로 변경 
-            this.StartCoroutine(ResumeTimeAfterDelay(freezeDuration));//코루틴 실행
+            StartCoroutine(ResumeTimeAfterDelay(freezeDuration));//코루틴 실행
 
         }
 
@@ -93,21 +99,13 @@ public class TimeSlider : MonoBehaviour
         //isTimeFrozen = false; // 변경된 부분>> 시간멈춤을 해제할 때 isTimeFrozen을 false로 변경
         //slider.interactable = true;//아이템 작동 후 다시 Slider 상호작용0
 
-        TimeSlider.ResetSpeed();
+        ResetSpeed();
 
         Debug.Log("END TimeFreezeItem ");
 
     }
 
-    private void SomeFunction()
-    {
-        // 현재 슬라이더의 값 가져오기
-        //float currentValue = TimeSlider.value;
-
-        // 슬라이더에 2초(1.0f)를 더한 값으로 설정하기
-        //float newValue = currentValue + 1.0f;
-        //TimeSlider.value = Mathf.Clamp01(newValue); // 슬라이더의 값이 0.0에서 1.0 사이로 제한됨
-    }
+   
 
 
 

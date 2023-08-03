@@ -316,7 +316,10 @@ public class TileController : MonoBehaviour
         
         for(int i = 1; i < _tileNum; i++)
         {
-            _instance._nowGeneratedTiles[i].MoveNext(i);
+            if (_instance._nowGeneratedTiles[i] != null)
+            {
+                _instance._nowGeneratedTiles[i].MoveNext(i);
+            }
             
         }
         //¸Ç ¾Õ Áö¿öÁÜ
@@ -332,7 +335,8 @@ public class TileController : MonoBehaviour
     {
         tile.gameObject.SetActive(false);
         PoolingStack[tile.TileType].Push(tile);
-        _instance._nowGeneratedTiles.RemoveAt(0);
+        int idx = _instance._nowGeneratedTiles.IndexOf(tile);
+        _instance._nowGeneratedTiles.RemoveAt(idx);
     }
     public IEnumerator SmoothMove(Transform transform, Vector3 start, Vector3 end, float overTime = OVERTIME)
     {

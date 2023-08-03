@@ -13,9 +13,16 @@ public class GameUI : UI_Scene
 
     public static GameUI Instance { get; private set; }
     GameUI() { }
+
+
+
     ClearRwrdData clearRwrdData = new ClearRwrdData();
     bool _clear = false;
     public bool Clear { get { return _clear; } }
+    
+    GameObject UnbeatBlock;
+    TimeSlider _timeSlider;
+    public TimeSlider timeSlider { get { return _timeSlider; } }
 
     int jump { get { return clearRwrdData.Jump; } set { clearRwrdData.Jump = value > 0 ? value : 0; ClearCheck(); } }
     int skip { get { return clearRwrdData.Skip; } set { clearRwrdData.Skip = value > 0 ? value : 0; ClearCheck(); } }
@@ -86,8 +93,9 @@ public class GameUI : UI_Scene
         GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
         GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
         GetText((int)Texts.BloomCnt).text = $"Bloom: {bloom}";
-
-
+        UnbeatBlock = GameObject.Find("UnbeatBlock");
+        UnbeatBlock.SetActive(false);
+        _timeSlider = Util.FindChild(gameObject, "Timeslider", true).GetComponent<TimeSlider>();
     }
 
     public bool isJumpActive { get; set; } = true;
@@ -180,7 +188,7 @@ public class GameUI : UI_Scene
         Debug.Log("TimeFreezeSTart");
         if (isTimeFrozen == false) //만약 istumefrozen이 작동할 수 없다면
         {
-            TimeSlider.StopTimer();
+            _timeSlider.StopTimer();
             isTimeFrozen = true;// 시간을 얼리는 조건 true로 변경
             TimeFreezeCoroutine = StartCoroutine(ResumeTimeAfterDelay(freezeDuration));//코루틴 실행
 
@@ -204,7 +212,7 @@ public class GameUI : UI_Scene
         isTimeFrozen = false; // 변경된 부분>> 시간멈춤을 해제할 때 isTimeFrozen을 false로 변경
         //slider.interactable = true;//아이템 작동 후 다시 Slider 상호작용0
 
-        TimeSlider.ResetSpeed();
+        _timeSlider.ResetSpeed();
 
         Debug.Log("END TimeFreezeItem ");
 
@@ -280,8 +288,6 @@ public class GameUI : UI_Scene
 
     #endregion SkipJumpSwapItem
 
-    #endregion ItemEffect Area
-
 
     ///
     #region HideRemainJumpItem
@@ -335,6 +341,8 @@ public class GameUI : UI_Scene
     }
 
 
+    #endregion HideRemainJumpItem
+
     #region UnbeatableItem
 
     public float unbeatableDuration = 10f; // 무적 지속 시간
@@ -342,6 +350,7 @@ public class GameUI : UI_Scene
     private float originalGravityScale;
     private Rigidbody2D WingWingRigidbody;
     GameObject UnbeatableItemIcon;
+    Coroutine UnbeatCoroutine;
 
     public void Unbeatable()
     {
@@ -349,55 +358,34 @@ public class GameUI : UI_Scene
         if (isUnbeatable == false)
         {
             isUnbeatable = true;
-
-            WingWingRigidbody = GameManager.InGameDataManager.Player.GetComponent<Rigidbody2D>();
-            originalGravityScale = WingWingRigidbody.gravityScale; //originalGravityScale은 Unbeatable() 함수의 처음에 wingWingRigidbody.gravityScale 값을 저장하는데 사용
-
-            Debug.Log("FreezeYPosition() 실행");
-            FreezeYPosition();// FreezeYPosition함수 실행
-
-            Debug.Log("코루틴 시작");
-            //WingWingRigidbody.gravityScale = 0f;//윙윙이 중력 0으로 설정
-            //StartCoroutine(ResumeUnbeatableAfterDelay(unbeatableDuration));
+            UnbeatBlock.SetActive(true);
+            UnbeatCoroutine = StartCoroutine(ResumeUnbeatableAfterDelay());
             //10초 뒤에 코루틴 실행
+        }
+        else
+        {
+            StopCoroutine(UnbeatCoroutine);
+            isUnbeatable = true;
+            UnbeatBlock.SetActive(true);
+            UnbeatCoroutine = StartCoroutine(ResumeUnbeatableAfterDelay());
+
         }
 
     }
 
-    public void FreezeYPosition()//너무나도 이상한 함수 다시 만들기 바람
-    {
-        Vector3 currentPosition = GameManager.InGameDataManager.Player.transform.position; //윙윙이의 현재 위치
-        currentPosition.y = -1.483448f;//위치 고정
-        GameManager.InGameDataManager.Player.transform.position = currentPosition;
-    }//is Unbeatable=false가 되면 y축 고정도 같이 해제됨
-   
 
-    private IEnumerator ResumeUnbeatableAfterDelay(float delay)
+    private IEnumerator ResumeUnbeatableAfterDelay(float delay = 10f)
     {
-        yield return new WaitForSeconds(delay);
-        WingWingRigidbody.gravityScale = originalGravityScale;//윙윙이 원래 중력(4)으로 복구
         UnbeatableItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_Unbeatable");//아이콘 띄우기
         UnbeatableItemIcon.SetActive(true);
 
+        yield return new WaitForSeconds(delay);
+
         isUnbeatable = false;
+        UnbeatBlock.SetActive(false);
         UnbeatableItemIcon.SetActive(false);//아이콘 제거
     }
 
-    /*
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        // Unbeatable 아이템이 다른 아이템보다 우선 적용되는 경우
-        if (isUnbeatable == true)
-        {
-            // 해당 아이템이 Unbeatable 아이템이 아니라면
-            if (!collision.gameObject.CompareTag("Unbeatable"))
-            {
-                collision.enabled = false; // 해당 아이템 효과 X
-            }
-        }
-    }
-
-    */
 
     public void PlusTime()
     { 
@@ -411,4 +399,5 @@ public class GameUI : UI_Scene
 #endregion  UnbeatableItem
 
 
-#endregion HideRemainJumpItem
+
+#endregion ItemEffect Area

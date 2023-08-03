@@ -73,11 +73,7 @@ public class PlayerController : MonoBehaviour
 
     GameObject newTile;
 
-    void Update()
-    {
-       
-    }
-
+ 
     private void Restart()
     {
         TileController tileController = TileController.Instance;
