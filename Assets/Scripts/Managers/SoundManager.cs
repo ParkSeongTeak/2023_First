@@ -47,27 +47,27 @@ public class SoundManager
     /// SFX용 PlayOneShot으로 구현 
     /// </summary>
     /// <param name="SFXSound"> Define.SFX Enum 에서 가져오기를 바람 </param>
-    /// <param name="pitch"></param>
+    /// <param name="volume"></param>
 
-    public void Play(Define.SFX SFXSound, float pitch = 1.0f)
+    public void Play(Define.SFX SFXSound, float volume = 1.0f)
     {
         string path = Enum.GetName(typeof(Define.SFX), SFXSound);
         AudioClip audioClip = GetOrAddAudioClip(path, Define.Sounds.SFX);
-        Play(audioClip, Define.Sounds.SFX, pitch);
+        Play(audioClip, Define.Sounds.SFX, volume);
     }
     /// <summary>
     /// BGM용 Play로 구현
     /// </summary>
     /// <param name="BGMSound">Define.BGM Enum 에서 가져오기를 바람 </param>
-    /// <param name="pitch"></param>
-    public void Play(Define.BGM BGMSound, float pitch = 1.0f)
+    /// <param name="volume"></param>
+    public void Play(Define.BGM BGMSound, float volume = 1.0f)
     {
         string path = Enum.GetName(typeof(Define.BGM), BGMSound);
         AudioClip audioClip = GetOrAddAudioClip(path, Define.Sounds.BGM);
-        Play(audioClip, Define.Sounds.BGM, pitch);
+        Play(audioClip, Define.Sounds.BGM, volume);
     }
 
-    public void Play(AudioClip audioClip, Define.Sounds type = Define.Sounds.SFX, float pitch = 1.0f)
+    public void Play(AudioClip audioClip, Define.Sounds type = Define.Sounds.SFX, float volume = 1.0f)
     {
         if (audioClip == null)
             return;
@@ -78,14 +78,14 @@ public class SoundManager
             if (audioSource.isPlaying)
                 audioSource.Stop();
 
-            audioSource.pitch = pitch;
+            audioSource.volume = volume;
             audioSource.clip = audioClip;
             audioSource.Play();
         }
         else
         {
             AudioSource audioSource = _audioSources[(int)Define.Sounds.SFX];
-            audioSource.pitch = pitch;
+            audioSource.volume = volume;
             audioSource.PlayOneShot(audioClip);
         }
     }

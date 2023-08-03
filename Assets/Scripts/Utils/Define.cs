@@ -77,6 +77,12 @@ public class Define
         flowerImg,
         MaxCount
     }
+
+
+
+    /// <summary>
+    /// 건들지 말것
+    /// </summary>
     public enum Sounds
     {
         BGM,
@@ -84,36 +90,43 @@ public class Define
         MaxCount
     }
 
+
+    //////////////////////////////////////////////////////////////////////
     /// <summary>
     /// BGM 음악들을 넣어주는 공간
     /// ***반드시****
     /// 노래가 
     /// Assets/Resources/Sounds에 있는지 확인하고 추가하자
     /// </summary>
-    public enum BGM
+    
+    public enum BGM //loop O
     {
-        BlockBgm,
+        Skip_01,
+        블라썸컴퍼니_01,
         MaxCount
     }
 
-
-    public enum PopUpUI
-    {
-        GameOverMenu,
-        MaxCount
-    }
     /// <summary>
     /// SFX(효과음) 음악들을 넣어주는 공간
     /// ***반드시****
     /// 노래가 
     /// Assets/Resources/Sounds에 있는지 확인하고 추가하자
     /// </summary>
-    public enum SFX
+    public enum SFX // loop X
     {
-        BlockClear,
+        Skip_01,
+        Jump_01,
         MaxCount
     }
 
+    //////////////////////////////////////////////////////////////////////
+
+    public enum PopUpUI
+    {
+        GameOverMenu,
+        MaxCount
+    }
+    
     /// <summary>
     /// 꽃봉오리 타일 :   FlowerBudTile
     /// 잎 타일 :         LeafTile 

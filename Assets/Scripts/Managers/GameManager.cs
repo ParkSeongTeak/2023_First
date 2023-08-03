@@ -68,6 +68,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         init();
+
+        //BGM을 위한 코드입니다.
+        GameManager.SoundManager.Play(Define.BGM.블라썸컴퍼니_01);
         
     }
 

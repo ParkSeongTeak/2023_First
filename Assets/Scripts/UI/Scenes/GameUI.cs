@@ -96,6 +96,10 @@ public class GameUI : UI_Scene
         UnbeatBlock = GameObject.Find("UnbeatBlock");
         UnbeatBlock.SetActive(false);
         _timeSlider = Util.FindChild(gameObject, "Timeslider", true).GetComponent<TimeSlider>();
+
+
+
+
     }
 
     public bool isJumpActive { get; set; } = true;
@@ -109,6 +113,12 @@ public class GameUI : UI_Scene
 
     void Btn_Jump(PointerEventData evt)
     {
+
+        // 실제로 점프가 되는 상황 에서만! 점프 사운드가 나는게 맞냐?
+        // 버튼을 누르면 무조껀 사운드는 나고 점프가 되냐 마냐는 사운드 알바는 아니다. 
+
+        GameManager.SoundManager.Play(Define.SFX.Jump_01);
+
 
         if (isJumpActive)
         {
@@ -138,6 +148,8 @@ public class GameUI : UI_Scene
     }
     void Btn_Skip(PointerEventData evt)
     {
+
+        GameManager.SoundManager.Play(Define.SFX.Skip_01);
 
         if (isSkipActive)
         {

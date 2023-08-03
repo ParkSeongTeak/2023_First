@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class BonusTile : Tile
 {
     public Define.BonusTileTypes MyBonusType { get; set; }
-
+    public static int num = 0;
+    
     public override void Init()
     {
         MyBonusType = TileController.Instance.SetBonusType();
@@ -15,7 +16,12 @@ public class BonusTile : Tile
     }
     public override void JumpOnMe()
     {
-        GameUI.Instance.timeSlider.PlusTime(0.2f);
+        if(num == 0)
+        {
+            GameUI.Instance.timeSlider.PlusTime(0.2f);
+            num = 1;
+        }
+
     }
 
 
