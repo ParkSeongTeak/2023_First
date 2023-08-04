@@ -45,11 +45,7 @@ public class TileController : MonoBehaviour
 
     #region Áö±ÝGenerated Tileµé
 
-    /// <summary>
-    /// Èñ¸ÁÀº LinkedList
-    /// </summary>
-    /// 
-    //[SerializeField]
+ 
     List<Tile> _nowGeneratedTiles = new List<Tile>();
     public List<Tile> NowGeneratedTiles { get { return _nowGeneratedTiles; } }
 

@@ -21,7 +21,7 @@ public class AllBloomItem : Item
         {
             List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
 
-            for (int i = 5; i < 15; i++)
+            for (int i = 1; i < 15; i++)
             {
                 Tile tile = nowGeneratedTiles[i];
 

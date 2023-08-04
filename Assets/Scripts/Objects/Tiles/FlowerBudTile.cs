@@ -97,13 +97,13 @@ public class FlowerBudTile : Tile
 
     public override void AllBloom()
     {
-        transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[(int)MyFlowerType];
-        GameManager.InGameDataManager.NowState.BloomCnt++;
+        StartCoroutine(Bloom());
     }
 
     IEnumerator Bloom()
     {
         _animator.enabled = false;
+        JumpLeft = 0;
         GameUI.Instance.BloomCnt();
 
         yield return new WaitForSeconds(0.02f);
