@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
     public static ResourceManager ResourceManager { get { return Instance._resourceManager; } }
     #endregion
 
-
- 
     #region Initiate
     /// <summary>
     /// 유일성 보장해주는 함수
@@ -70,7 +68,7 @@ public class GameManager : MonoBehaviour
         init();
 
         //BGM을 위한 코드입니다.
-        GameManager.SoundManager.Play(Define.BGM.블라썸컴퍼니_01);
+        GameManager.SoundManager.Play(Define.BGM.블라썸컴퍼니_01,0.1f);
         
     }
 

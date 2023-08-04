@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class LeafToFlowerItem : Item
 {
-    public override void OnTriggerEnter2D(Collider2D collision)
+    public override void OnTriggerStay2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-        LeafToFlower();
+        base.OnTriggerStay2D(collision);
+        //LeafToFlower();
+        if (collision.gameObject.tag == "WingWing")
+        {
+            LeafToFlower();
+        }
     }
 
     private void LeafToFlower()

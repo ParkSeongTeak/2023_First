@@ -4,34 +4,15 @@ using UnityEngine;
 
 public class JumperItem : Item
 {
-    public override void OnTriggerEnter2D(Collider2D collision)
+    public override void OnTriggerStay2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-        Jumper();
-    }
-
-    private void Jumper()
-    {
-        TileController tileController = TileController.Instance;
-
-        if (tileController != null)
+        base.OnTriggerStay2D(collision);
+        if (collision.gameObject.tag == "WingWing")
         {
-            List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
-
-            for (int i = 3; i <= 13; i++)
-            {
-                Tile tile = nowGeneratedTiles[i];
-
-                if (tile.TileType == Define.TileType.FlowerTypes)
-                {
-                    GameManager.InGameDataManager.NowState.BloomCnt++;
-                }
-                else if (tile.TileType == Define.TileType.BonusTileTypes)
-                {
-                    //after confirm
-                }
-                TileController.Instance.MoveTiles();
-            }
+            GameUI.Instance.Jumper();
         }
+        
     }
+
+    
 }

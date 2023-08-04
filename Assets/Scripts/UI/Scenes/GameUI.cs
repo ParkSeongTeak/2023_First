@@ -20,7 +20,7 @@ public class GameUI : UI_Scene
     bool _clear = false;
     public bool Clear { get { return _clear; } }
     
-    GameObject UnbeatBlock;
+    
     TimeSlider _timeSlider;
     public TimeSlider timeSlider { get { return _timeSlider; } }
 
@@ -35,7 +35,6 @@ public class GameUI : UI_Scene
         clearRwrdData.Skip = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Skip;
         clearRwrdData.Bloom = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Bloom;
         clearRwrdData.ClearReward_GoldBranch = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].ClearReward_GoldBranch;
-
     }
 
 
@@ -93,13 +92,8 @@ public class GameUI : UI_Scene
         GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
         GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
         GetText((int)Texts.BloomCnt).text = $"Bloom: {bloom}";
-        UnbeatBlock = GameObject.Find("UnbeatBlock");
-        UnbeatBlock.SetActive(false);
+        
         _timeSlider = Util.FindChild(gameObject, "Timeslider", true).GetComponent<TimeSlider>();
-
-
-
-
     }
 
     public bool isJumpActive { get; set; } = true;
@@ -178,8 +172,14 @@ public class GameUI : UI_Scene
 
     }
 
-    public void BloomCnt()
+    /// <summary>
+    /// Quest UI적용 + 전체 Data 적용 + Bloom시 시간 추가 
+    /// </summary>
+    /// <param name="plusTime_bloom"></param>
+    public void BloomCnt(float plusTime_bloom = 0.05f)
     {
+
+        GameUI.Instance.timeSlider.PlusTime(plusTime_bloom);
         GameManager.InGameDataManager.NowState.BloomCnt++;
         bloom--;
         GetText((int)Texts.BloomCnt).text = $"BloomCnt: {bloom}";
@@ -359,18 +359,17 @@ public class GameUI : UI_Scene
 
     public float unbeatableDuration = 10f; // 무적 지속 시간
     private bool isUnbeatable;//bool 설정
-    private float originalGravityScale;
-    private Rigidbody2D WingWingRigidbody;
     GameObject UnbeatableItemIcon;
     Coroutine UnbeatCoroutine;
-
+    /// <summary>
+    /// 무적 아이템 활성화
+    /// </summary>
     public void Unbeatable()
     {
         Debug.Log("Unbeatable() 시작");
         if (isUnbeatable == false)
         {
             isUnbeatable = true;
-            UnbeatBlock.SetActive(true);
             UnbeatCoroutine = StartCoroutine(ResumeUnbeatableAfterDelay());
             //10초 뒤에 코루틴 실행
         }
@@ -378,7 +377,6 @@ public class GameUI : UI_Scene
         {
             StopCoroutine(UnbeatCoroutine);
             isUnbeatable = true;
-            UnbeatBlock.SetActive(true);
             UnbeatCoroutine = StartCoroutine(ResumeUnbeatableAfterDelay());
 
         }
@@ -388,13 +386,15 @@ public class GameUI : UI_Scene
 
     private IEnumerator ResumeUnbeatableAfterDelay(float delay = 10f)
     {
+
+        GameManager.InGameDataManager.NowUnbeat = true;
         UnbeatableItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_Unbeatable");//아이콘 띄우기
         UnbeatableItemIcon.SetActive(true);
 
         yield return new WaitForSeconds(delay);
 
         isUnbeatable = false;
-        UnbeatBlock.SetActive(false);
+        GameManager.InGameDataManager.NowUnbeat = false;
         UnbeatableItemIcon.SetActive(false);//아이콘 제거
     }
 
@@ -405,11 +405,72 @@ public class GameUI : UI_Scene
 
     }
 
+
+
+    #endregion  UnbeatableItem
+
+
+    #region JumperItem
+    Coroutine JumperItem;
+    public  void Jumper()
+    {
+
+        TileController tileController = TileController.Instance;
+
+        if (tileController != null)
+        {
+            List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
+            JumperItem = StartCoroutine(DontFall());
+            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
+            for (int i = 3; i <= 13; i++)
+            {
+                ///?? 왜 3번만 계속 적용하나요? 1) [3]은 윙윙이가 올라가 있는  tile + GoTo 2)
+                Tile tile = nowGeneratedTiles[3];
+
+                TileController.Instance.BackGroundMove?.Invoke();
+                GameManager.InGameDataManager.NowState.SkipCnt++;
+                skip--;
+                GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
+
+
+                if (tile.TileType == Define.TileType.FlowerTypes)
+                {
+                    // UI에도 적용 필요
+                    GameUI.Instance.BloomCnt();
+
+                }
+                else if (tile.TileType == Define.TileType.BonusTileTypes)
+                {
+                    //after confirm
+                }
+                // 2) 이 함수에서 List 의 맨 앞 [0]번을 삭제 즉 전체 List의 index 가 한칸 앞으로 이동 == 이 함수 호출 이후 다음에 올 [3]은 기존 list의 [4]
+                TileController.Instance.MoveTiles();    
+            }
+        }
+
+    }
+
+
+    IEnumerator DontFall()
+    {
+        GameManager.InGameDataManager.Player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        GameManager.InGameDataManager.Player.tag = "Untagged";
+        yield return new WaitForSeconds(PlayerController.SPEED + 0.1f);
+
+        
+        GameManager.InGameDataManager.Player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        //GameManager.InGameDataManager.Player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        GameManager.InGameDataManager.Player.tag = "WingWing";
+
+    }
+    #endregion JumperItem
+
+
+
+
+    #endregion ItemEffect Area
+
+
 }
 
-
-#endregion  UnbeatableItem
-
-
-
-#endregion ItemEffect Area

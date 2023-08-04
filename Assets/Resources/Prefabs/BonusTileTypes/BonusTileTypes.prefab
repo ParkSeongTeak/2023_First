@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7204899018446205370}
   - component: {fileID: 8015149439976491678}
   - component: {fileID: 1372214853749421017}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BonusTileTypes
   m_TagString: Flower
   m_Icon: {fileID: 0}
@@ -126,3 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileType: 3
   _tilePosititon: 0
+  num: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2880319601794526724}
   - component: {fileID: 4420669242242321631}
   - component: {fileID: 7879766344282009756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WitheredFlowersTileTypes
   m_TagString: Flower
   m_Icon: {fileID: 0}

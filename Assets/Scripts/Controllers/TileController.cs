@@ -81,34 +81,7 @@ public class TileController : MonoBehaviour
 
     public static void init()
     {
-        #region 3개의 꽃 타일 지정
-        //3개 꽃 타일 이름 가져오는 부분 추후 구현해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        string cosmos1 = "Cosmos";
-        string cosmos2 = "cosmos2";
-        string cosmos3 = "cosmos3";
-
-        // 랜덤한 숫자 생성
-        //Random random = new Random();
-        //int randomNumber = random.Next(1, 4);
-        int randomNumber = 1;
-
-        // 랜덤한 숫자에 따라 문자열 선택
-        string randomFlower = "";
-        if (randomNumber == 1)
-        {
-            randomFlower = cosmos1;
-        }
-        else if (randomNumber == 2)
-        {
-            randomFlower = cosmos2;
-        }
-        else if (randomNumber == 3)
-        {
-            randomFlower = cosmos3;
-        }
-        #endregion
-
+        
         if (_instance == null)
         {
             GameObject flowerControl = GameObject.Find("TileController");
@@ -136,7 +109,7 @@ public class TileController : MonoBehaviour
                 _instance._flowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{flowersSpritesStr[i]}"); 
                 if(_instance._flowerSprites[i] == null)
                 {
-                    Debug.Log("_instance._flowerSprites[(int)i] NULL");
+                    Debug.Log($"_instance.{flowersSpritesStr[i]} NULL");
                 }
             }
             string[] leavesSpritesStr = Enum.GetNames(typeof(Define.LeafTypes));
@@ -174,17 +147,7 @@ public class TileController : MonoBehaviour
 
             }
 
-            string[] cosmosFlowersSpritesStr = Enum.GetNames(typeof(Define.BudFlower));
-            _instance._cosmosFlowerSprites = new Sprite[(int)Define.BudFlower.MaxCount];
-            for (int i = 0; i < (int)Define.BudFlower.MaxCount; i++)
-            {
-                _instance._cosmosFlowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{randomFlower}/{cosmosFlowersSpritesStr[i]}");
-                if (_instance._cosmosFlowerSprites[i] == null)
-                {
-                    Debug.Log("_instance._cosmosFlowerSprites[(int)i] NULL");
-                }
-
-            }
+            
             #endregion GetTileSprites
 
             #region TileGenerateInit
@@ -261,7 +224,43 @@ public class TileController : MonoBehaviour
 
 
     }
+    public GameObject LeafToFlower(int tilePos = _tileNum - 1)
+    {
+        Tile tile = _nowGeneratedTiles[tilePos];
+        tile.gameObject.SetActive(false);
+        PoolingStack[tile.TileType].Push(tile);
 
+
+        TileType generateType = TileType.FlowerTypes; ;
+        
+        if (_poolingStack[generateType].Count != 0)
+        {
+            Tile generateTile = _poolingStack[generateType].Pop();
+
+            GameObject gameObject = generateTile.gameObject;
+            gameObject.SetActive(true);
+
+            generateTile.Init();
+            generateTile.TilePosititon = tilePos;
+            gameObject.transform.position = _instance._tilePosition[tilePos];
+            _nowGeneratedTiles[tilePos] = generateTile;
+            return gameObject;
+        }
+        else
+        {
+            Tile generateTile;
+            string generateTileStr = Enum.GetName(typeof(TileType), generateType);
+            GameObject gameObject = Instantiate(Resources.Load<GameObject>($"Prefabs/{generateTileStr}/{generateTileStr}"), _instance._tilePosition[tilePos], Quaternion.identity);
+            generateTile = gameObject.GetComponent<Tile>();
+            generateTile.Init();
+            generateTile.TilePosititon = tilePos;
+            gameObject.transform.position = _instance._tilePosition[tilePos];
+            _nowGeneratedTiles[tilePos] = generateTile;
+            return gameObject;
+        }
+
+
+    }
     public Define.FlowerTypes SetFlowerType()
     {
         return GameManager.InGameDataManager.UseFlowerList[UnityEngine.Random.RandomRange(0, InGameDataManager.useFlowerNum)];

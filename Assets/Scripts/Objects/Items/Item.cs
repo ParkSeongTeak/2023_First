@@ -7,7 +7,7 @@ using static Define;
 
 public class Item : MonoBehaviour
 {
-    public virtual void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "WingWing")
         {

@@ -17,7 +17,6 @@ public class FlowerBudTile : Tile
 
     public override void Init()
     {
-                   // 나의 .// 자전거를 가지고 온다
         _animator = gameObject.GetComponent<Animator>();
         _animator.enabled= true;
         FlowerJumpType = TileController.Instance.SetCosmosFlowerType();
@@ -32,9 +31,6 @@ public class FlowerBudTile : Tile
             Debug.Log($"null :: Animation/FlowerBudAnims/{AnimName}");
         }
 
-        //transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.CosmosFlowerSprites[(int)FlowerJumpType];
-
-        Debug.Log("AnimName = " + AnimName);
         if (JumpLeft != 0)
         {
             _animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/{AnimName}");
@@ -50,10 +46,7 @@ public class FlowerBudTile : Tile
             }
             Debug.Log(AnimName);
         }
-        else
-        {
-            Debug.Log("????????????????????????????!!!!!!!!!!!!!!?????????????????????????????????????????????");
-        }
+        
        
 
     }
@@ -88,7 +81,10 @@ public class FlowerBudTile : Tile
             }
             else
             {
-                TileController.Instance.DestoryTile(this);
+                if (!GameManager.InGameDataManager.NowUnbeat)
+                {
+                    TileController.Instance.DestoryTile(this);
+                }
             }
         }
     }
@@ -109,7 +105,6 @@ public class FlowerBudTile : Tile
     {
         _animator.enabled = false;
         GameUI.Instance.BloomCnt();
-        GameUI.Instance.timeSlider.PlusTime(plusTime_bloom);
 
         yield return new WaitForSeconds(0.02f);
         

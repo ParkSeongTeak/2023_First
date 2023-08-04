@@ -16,17 +16,13 @@ public class TimeFreezeItem : Item
         slider = GetComponent<Slider>(); //Slider컴포넌트찾아서slider변수에 할당하는 것
     }
 
-    public override void OnTriggerEnter2D(Collider2D collision)
+    public override void OnTriggerStay2D(Collider2D collision)
     {
-        //base.OnTriggerEnter2D(collision);
+        base.OnTriggerStay2D(collision);
         if (collision.gameObject.tag == "WingWing")
         {
-           
-            
             GameUI.Instance.TimeFreeze();
-            Destroy(gameObject);
-
-
+            
         }
     }
 

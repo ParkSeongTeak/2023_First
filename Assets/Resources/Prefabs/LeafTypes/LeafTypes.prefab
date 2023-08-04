@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8328762373859668639}
   - component: {fileID: 4664416925347387508}
   - component: {fileID: 2397900123336842312}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeafTypes
   m_TagString: Flower
   m_Icon: {fileID: 0}

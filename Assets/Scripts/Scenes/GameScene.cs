@@ -9,7 +9,6 @@ public class GameScene : MonoBehaviour
     {
 
         GameManager.InGameDataManager.CreatePlayer();
-        
         TileController.init();
 
         GameManager.InGameDataManager.NowState.GameDataClear();

@@ -23,7 +23,10 @@ public class WitheredFlowersTile : Tile
         }
         else
         {
-            Destroy(gameObject);
+            if (!GameManager.InGameDataManager.NowUnbeat)
+            {
+                TileController.Instance.DestoryTile(this);
+            }
         }
         
         //Destroy(gameObject);

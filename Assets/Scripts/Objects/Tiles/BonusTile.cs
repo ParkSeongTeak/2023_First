@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BonusTile : Tile
 {
     public Define.BonusTileTypes MyBonusType { get; set; }
-    public static int num = 0;
+    public int num = 0;
     
     public override void Init()
     {
@@ -30,6 +30,8 @@ public class BonusTile : Tile
 
     }
 
+
+    /*
     private bool isJumping;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,7 +44,7 @@ public class BonusTile : Tile
             }
         }
     }
-
+    */
 }
 
 

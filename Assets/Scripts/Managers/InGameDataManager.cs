@@ -54,6 +54,16 @@ public class InGameDataManager
 
     #endregion
 
+    #region Item관련 Data
+    /// <summary>
+    /// 현재 무적인가?
+    /// </summary>
+    public bool NowUnbeat { get; set; }
+
+    #endregion Item관련 Data
+
+
+
     #region Branch and Point 관련 Data
 
     public int Branch { get; set; }
@@ -103,8 +113,10 @@ public class InGameDataManager
     public int QuestIDX { get { return PlayerPrefs.GetInt("QUESTINDEX",1); }  set { PlayerPrefs.SetInt("QUESTINDEX", value);} }
 
     // Start is called before the first frame update
-    GameObject _player;
+    public GameObject _player;
     public GameObject Player { get { return _player; } }
+
+
     GameObject _flower;
     public GameObject Flower { get { return _flower; } }
     #region Initiate
@@ -140,7 +152,6 @@ public class InGameDataManager
         bookState = bookInfo;
         UpdateBranchAndPointAction -= saveData;
         UpdateBranchAndPointAction += saveData;
-
 
 
     }
