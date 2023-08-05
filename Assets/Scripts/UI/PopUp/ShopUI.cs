@@ -57,15 +57,18 @@ public class ShopUI : UI_PopUp
     void Btn_Buy(PointerEventData evt)
     {
 
-        if(GameManager.InGameDataManager.Branch >= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch
+        if (GameManager.InGameDataManager.Branch >= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch 
             && GameManager.InGameDataManager.GoldBranch >= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch)
         {
+            Debug.Log("you can buy it!");
             GameManager.InGameDataManager.Branch -= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch;
             GameManager.InGameDataManager.GoldBranch -= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch;
             GameManager.InGameDataManager.saveData();
             _flowerBook.BuyIt();
             ClosePopupUI();
         }
+        else
+            Debug.Log("you cant buy it...");
 
     }
 

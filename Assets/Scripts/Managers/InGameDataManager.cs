@@ -122,8 +122,8 @@ public class InGameDataManager
     #region Initiate
     public void init()
     {
-        Branch = PlayerPrefs.GetInt("Branch", 500);
-        GoldBranch = PlayerPrefs.GetInt("GoldBranch", 40);
+        Branch = PlayerPrefs.GetInt("Branch", 1000);
+        GoldBranch = PlayerPrefs.GetInt("GoldBranch", 1000);
         MaxPoint = PlayerPrefs.GetInt("MaxPoint", 460);
         _flowerPriceHandler = Util.ParseJson<FlowerPriceHandler>();
         _clearRwrdHandler = Util.ParseJson<ClearRwrdHandler>();

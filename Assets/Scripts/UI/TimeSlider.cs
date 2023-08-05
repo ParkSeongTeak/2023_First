@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TimeSlider : MonoBehaviour
 
 {
-    const float IDLETIME = 0.3f;
+    const float IDLETIME = 0.1f;
     float _deltaTime;
     public float freezeDuration = 5f;
     private bool isTimeFrozen;
