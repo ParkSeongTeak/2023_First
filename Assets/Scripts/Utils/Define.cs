@@ -101,7 +101,7 @@ public class Define
     
     public enum BGM //loop O
     {
-        Skip_01,
+        ºí¶ó½æ_²Éµµ°¨,
         ºí¶ó½æÄÄÆÛ´Ï_01,
         MaxCount
     }
@@ -116,6 +116,22 @@ public class Define
     {
         Skip_01,
         Jump_01,
+        Bee_01,
+        Bloom_01,
+        click_01,
+        click_02,
+        congrats_01,
+        congrats02_01,
+        congrats02_02,
+        congrats02_03,
+        Error_01,
+        Falling_01,
+        Falling_02,
+        GameOver_01,
+        GlassBreak,
+        Mumble_01,
+        Page_01,
+
         MaxCount
     }
 
