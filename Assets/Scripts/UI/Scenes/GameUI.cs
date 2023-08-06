@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class GameUI : UI_Scene
 {
@@ -14,8 +15,10 @@ public class GameUI : UI_Scene
     public static GameUI Instance { get; private set; }
     GameUI() { }
 
+    Animator _animator;
+    bool isAnim = false;
 
-
+   
     ClearRwrdData clearRwrdData = new ClearRwrdData();
     bool _clear = false;
     public bool Clear { get { return _clear; } }
@@ -38,6 +41,10 @@ public class GameUI : UI_Scene
     }
 
 
+    void Start()
+    {
+        _animator = Util.FindChild<Animator>(gameObject, "PlayerAnim");
+    }
 
     void ClearCheck()
     {
@@ -358,7 +365,9 @@ public class GameUI : UI_Scene
     #region UnbeatableItem
 
     public float unbeatableDuration = 10f; // 무적 지속 시간
-    private bool isUnbeatable;//bool 설정
+    //public bool isUnbeatable;//bool 설정
+    bool _isUnbeatable = false;
+    public bool isUnbeatable { get { return _isUnbeatable; } }
     GameObject UnbeatableItemIcon;
     Coroutine UnbeatCoroutine;
     /// <summary>
@@ -367,24 +376,23 @@ public class GameUI : UI_Scene
     public void Unbeatable()
     {
         Debug.Log("Unbeatable() 시작");
-        if (isUnbeatable == false)
+        if (_isUnbeatable == false)
         {
-            isUnbeatable = true;
+            _isUnbeatable = true;
             UnbeatCoroutine = StartCoroutine(ResumeUnbeatableAfterDelay());
+
             //10초 뒤에 코루틴 실행
         }
         else
         {
             StopCoroutine(UnbeatCoroutine);
-            isUnbeatable = true;
+            _isUnbeatable = true;
             UnbeatCoroutine = StartCoroutine(ResumeUnbeatableAfterDelay());
-
         }
 
     }
 
-
-    private IEnumerator ResumeUnbeatableAfterDelay(float delay = 10f)
+        private IEnumerator ResumeUnbeatableAfterDelay(float delay = 10f)
     {
 
         GameManager.InGameDataManager.NowUnbeat = true;
@@ -393,7 +401,7 @@ public class GameUI : UI_Scene
 
         yield return new WaitForSeconds(delay);
 
-        isUnbeatable = false;
+        _isUnbeatable = false;
         GameManager.InGameDataManager.NowUnbeat = false;
         UnbeatableItemIcon.SetActive(false);//아이콘 제거
     }

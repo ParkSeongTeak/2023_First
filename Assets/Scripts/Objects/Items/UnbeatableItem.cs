@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class UnbeatableItem : Item
 {
     public float unbeatableDuration = 10f;
-    private bool isUnbeatable;
 
     public override void OnTriggerStay2D(Collider2D collision)
     {
@@ -14,7 +13,7 @@ public class UnbeatableItem : Item
         if (collision.gameObject.tag == "WingWing")
         {
             GameUI.Instance.Unbeatable();
-
+            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Unbeatable();
         }
     }
 }

@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     Tile _onTile;
     [SerializeField]
     Animator _animator;
+    bool _isUnbeatable;
+
+
 
     //public Sprite imageUnderThreshold;
     //public Sprite defaultImage;
@@ -26,6 +29,9 @@ public class PlayerController : MonoBehaviour
         Idle,
         Jump,
         Skip,
+        Idle_unbeatable,
+        Jump_unbeatable,
+        Skip_unbeatable,
     }
 
     // Start is called before the first frame update
@@ -35,8 +41,8 @@ public class PlayerController : MonoBehaviour
         _myRgbd2D = GetComponent<Rigidbody2D>();
         //animator = transform.GetChild(0).GetComponent<Animator>();
         _animator = Util.FindChild<Animator>(gameObject, "PlayerAnim");
+        
 
-       
     }
 
 
@@ -48,17 +54,40 @@ public class PlayerController : MonoBehaviour
             _canJump = false;
             //GameManager.InGameDataManager.NowState.JumpCnt++;
             _myRgbd2D.AddForce(new Vector3(0, 1f, 0) * _jumpForce, ForceMode2D.Impulse);
-            StartCoroutine(AnimPlay(anims.Jump));
             _onTile.JumpOnMe();
- 
+            
+            if (GameUI.Instance.isUnbeatable == true)
+            {
+                StartCoroutine(AnimPlay(anims.Jump_unbeatable));
+            }
+            else
+            {
+                StartCoroutine(AnimPlay(anims.Jump));
+            }
+                
         }
     }
 
+
     public void Skip()
     {
-        StartCoroutine(AnimPlay(anims.Skip));
+        if (GameUI.Instance.isUnbeatable)
+        {
+            StartCoroutine(AnimPlay(anims.Skip_unbeatable));
+        }
+        else
+            StartCoroutine(AnimPlay(anims.Skip));
     }
 
+    Coroutine UnbeatCoroutine;
+    public void Unbeatable()
+    {
+        if (GameUI.Instance.isUnbeatable)
+        {
+            UnbeatCoroutine = StartCoroutine(UnbeatAnim(anims.Idle_unbeatable));
+        }
+       
+    }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,6 +99,8 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    
 
     GameObject newTile;
 
@@ -105,11 +136,22 @@ IEnumerator AnimPlay(anims anim,float time = 0.33f)
             isAnim = false;
 
         }
-
-
-
     }
 
-   
+    bool isUnbeatAnim = false;
+
+    IEnumerator UnbeatAnim(anims anim, float time = 10f)
+    {
+        if (!isUnbeatAnim)
+        {
+            isUnbeatAnim = true;
+            string str = Enum.GetName(typeof(anims), anim);
+            _animator.SetBool($"{str}Bool", true);
+            yield return new WaitForSeconds(time);
+            _animator.SetBool($"{str}Bool", false);
+            isUnbeatAnim = false;
+
+        }
+    }
 
 }
