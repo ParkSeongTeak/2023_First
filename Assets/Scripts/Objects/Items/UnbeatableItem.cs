@@ -13,6 +13,7 @@ public class UnbeatableItem : Item
         if (collision.gameObject.tag == "WingWing")
         {
             GameUI.Instance.Unbeatable();
+            GameUI.Instance.TimeFreeze();
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Unbeatable();
         }
     }

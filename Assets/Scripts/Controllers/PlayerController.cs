@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-IEnumerator AnimPlay(anims anim,float time = 0.33f)
+    IEnumerator AnimPlay(anims anim,float time = 0.33f)
     {
         if (!isAnim)
         {

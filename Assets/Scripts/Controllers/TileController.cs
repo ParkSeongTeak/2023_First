@@ -39,7 +39,7 @@ public class TileController : MonoBehaviour
     public Vector3[] TilePosition { get { return _tilePosition; } }
 
     
-    Vector3 _referenceTile = new Vector3(-12f,-3.5f,0);
+    Vector3 _referenceTile = new Vector3(-12f,-3.0f,0);
     float _referenceDist = 3f;
     #endregion
 

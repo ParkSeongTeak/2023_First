@@ -8,7 +8,7 @@ public class HideRemainJumpItem : Item
     {
         base.OnTriggerStay2D(collision);
 
-        if (collision.gameObject.tag == "WingWing")
+        if (collision.gameObject.tag == "WingWing" && !GameUI.Instance.isUnbeatable)
         {
             GameUI.Instance.HideRemainJumpItem();
         }

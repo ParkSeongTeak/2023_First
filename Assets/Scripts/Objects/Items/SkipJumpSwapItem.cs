@@ -7,7 +7,7 @@ public class SkipJumpSwapItem : Item
     private void OnTriggerStay2D(Collider2D collision)
     {
         base.OnTriggerStay2D(collision);
-        if (collision.gameObject.tag == "WingWing") 
+        if (collision.gameObject.tag == "WingWing" && !GameUI.Instance.isUnbeatable) 
         {
             GameUI.Instance.SkipJumpSwapItem();
         }

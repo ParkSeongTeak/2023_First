@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         init();
 
         //BGM을 위한 코드입니다.
-        GameManager.SoundManager.Play(Define.BGM.블라썸컴퍼니_01,0.1f);
+        GameManager.SoundManager.Play(Define.BGM.블라썸컴퍼니_01,1f);
         
     }
 

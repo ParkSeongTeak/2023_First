@@ -37,6 +37,9 @@ public class GameOverUI : UI_PopUp
 
         base.Init();
 
+        //게임 정지         // 이는 Scene을 이동한다고 풀리지 않음 InGameDataManager.CreatePlayer()에서 다시 TimeScale을 조정해줌
+        Time.timeScale = 0f;
+
         Bind<Button>(typeof(Buttons));
 
         Bind<TMP_Text>(typeof(Texts));

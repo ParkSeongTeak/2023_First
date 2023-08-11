@@ -92,8 +92,16 @@ public class SoundManager
 
     AudioClip GetOrAddAudioClip(string path, Define.Sounds type = Define.Sounds.SFX)
     {
-        if (path.Contains("Sounds/") == false)
-            path = $"Sounds/{path}";
+        if (type == Define.Sounds.SFX)
+        {
+            if (path.Contains("Sounds/SFX/") == false)
+                path = $"Sounds/SFX/{path}";
+        }
+        else
+        {
+            if (path.Contains("Sounds/BGM") == false)
+                path = $"Sounds/BGM/{path}";
+        }
 
         AudioClip audioClip = null;
 

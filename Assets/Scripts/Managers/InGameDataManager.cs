@@ -10,8 +10,6 @@ public class InGameDataManager
 {
     #region JsonData
     ClearRwrdHandler _clearRwrdHandler = new ClearRwrdHandler();
-    
-
     public ClearRwrdHandler ClearRwrdHandler { get { return _clearRwrdHandler; } }
 
     FlowerPriceHandler _flowerPriceHandler = new FlowerPriceHandler();
@@ -159,6 +157,7 @@ public class InGameDataManager
 
     public void CreatePlayer()
     {
+        Time.timeScale = 1.0f;
         _player = GameObject.Find("Player");
         if (_player == null)
         {
