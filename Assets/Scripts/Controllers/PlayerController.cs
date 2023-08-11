@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     Coroutine UnbeatCoroutine;
     public void Unbeatable()
     {
-        if (GameUI.Instance.isUnbeatable)
+        if (GameUI.Instance.isUnbeatable)   //true»óÅÂ
         {
             UnbeatCoroutine = StartCoroutine(UnbeatAnim(anims.Idle_unbeatable));
         }
