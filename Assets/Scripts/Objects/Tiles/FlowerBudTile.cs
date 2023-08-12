@@ -84,7 +84,7 @@ public class FlowerBudTile : Tile
                 if (!GameManager.InGameDataManager.NowUnbeat)
                 {
                     TileController.Instance.DestoryTile(this);
-                    GameManager.SoundManager.Play(Define.SFX.Falling_02);
+                    GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02효과음
                 }
             }
         }
@@ -105,7 +105,9 @@ public class FlowerBudTile : Tile
     {
         _animator.enabled = false;
         JumpLeft = 0;
+        GameManager.SoundManager.Play(Define.SFX.Bloom_01);//Bloom_01효과음
         GameUI.Instance.BloomCnt();
+        
 
         yield return new WaitForSeconds(0.02f);
         
