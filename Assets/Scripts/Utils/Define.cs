@@ -130,7 +130,7 @@ public class Define
         GameOver_01,//타임슬라이드 스크립트에서 사용 
         GlassBreak,//플러스라이프아이템 스크립트에서 사용
         Mumble_01,
-        Page_01,
+        Page_01,//Pag_01,02,03에서 사용
 
         MaxCount
     }

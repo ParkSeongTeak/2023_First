@@ -8,6 +8,7 @@ public class StartSceneUI : UI_Scene
     enum Buttons
     {
         PlayButton,
+
     }
 
     void Start()

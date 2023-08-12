@@ -68,6 +68,7 @@ public class Page1 : UI_PopUp
     {
 
         ClosePopupUI();
+        GameManager.SoundManager.Play(Define.SFX.Page_01);//Page_01È¿°úÀ½
         GameManager.UIManager.ShowPopupUI<Page2>();
     }
 }

@@ -59,6 +59,7 @@ public class Page2 : UI_PopUp
     {
 
         ClosePopupUI();
+        GameManager.SoundManager.Play(Define.SFX.Page_01);//Page_01효과음
         GameManager.UIManager.ShowPopupUI<Page3>();
 
     }
@@ -66,6 +67,7 @@ public class Page2 : UI_PopUp
     {
 
         ClosePopupUI();
+        GameManager.SoundManager.Play(Define.SFX.Page_01);//Page_01효과음
         GameManager.UIManager.ShowPopupUI<Page1>();
 
     }

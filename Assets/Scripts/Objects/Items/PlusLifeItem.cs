@@ -43,6 +43,7 @@ public class PlusLifeItem : Item
             {
                 GameManager.InGameDataManager.NowState.LifeCnt++ ;
                 gameUI.LifeIcon.SetActive(true);
+               
             }
             
         }

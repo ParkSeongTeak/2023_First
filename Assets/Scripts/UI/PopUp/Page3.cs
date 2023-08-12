@@ -54,7 +54,7 @@ public class Page3 : UI_PopUp
     void Btn_Left(PointerEventData evt)
     {
         ClosePopupUI();
-
+        GameManager.SoundManager.Play(Define.SFX.Page_01);//Page_01È¿°úÀ½
         GameManager.UIManager.ShowPopupUI<Page2>();
         
     }
