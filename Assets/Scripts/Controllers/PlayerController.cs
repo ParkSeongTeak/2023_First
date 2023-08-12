@@ -41,8 +41,12 @@ public class PlayerController : MonoBehaviour
         _myRgbd2D = GetComponent<Rigidbody2D>();
         //animator = transform.GetChild(0).GetComponent<Animator>();
         _animator = Util.FindChild<Animator>(gameObject, "PlayerAnim");
-        
 
+        ///
+        GameManager.벨런스용_차후삭제필요();
+        _myRgbd2D.gravityScale = Resources.Load<DataFix>("DataFix").Gravity_낙하속도;
+        _jumpForce = Resources.Load<DataFix>("DataFix").JumpPower_점프높이;
+        ///
     }
 
 

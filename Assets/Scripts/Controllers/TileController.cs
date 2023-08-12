@@ -143,10 +143,16 @@ public class TileController : MonoBehaviour
 
             }
 
-            
+
             #endregion GetTileSprites
 
             #region TileGenerateInit
+
+            ///
+            GameManager.벨런스용_차후삭제필요();
+            _instance._referenceTile.y = Resources.Load<DataFix>("DataFix").TileY_타일Y축높이;
+            ///
+
             float X = _instance._referenceTile.x;
             Vector3 now = _instance._referenceTile;
             for (int i = 0; i < _tileNum; i++)

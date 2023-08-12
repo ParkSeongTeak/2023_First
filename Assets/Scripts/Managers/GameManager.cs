@@ -93,4 +93,5 @@ public class GameManager : MonoBehaviour
     {
         InputManager.OnUpdate();
     }
+    public static void 벨런스용_차후삭제필요() { }
 }
