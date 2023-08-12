@@ -64,9 +64,11 @@ public class TimeSlider : MonoBehaviour
 
                 if (!gameOver)
                 {
+                    GameManager.SoundManager.Play(Define.SFX.GameOver_01);//GameOverÈ¿°úÀ½
                     GameManager.UIManager.ShowPopupUI<GameOverUI>();
 
                     gameOver = true;
+                   
                 }
 
             }

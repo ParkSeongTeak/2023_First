@@ -26,6 +26,7 @@ public class WitheredFlowersTile : Tile
             if (!GameManager.InGameDataManager.NowUnbeat)
             {
                 TileController.Instance.DestoryTile(this);
+                GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02È¿°úÀ½
             }
         }
         

@@ -114,21 +114,21 @@ public class Define
     /// </summary>
     public enum SFX // loop X
     {
-        Skip_01,
-        Jump_01,
-        Bee_01,
+        Skip_01,//게임UI 스크립트
+        Jump_01,//게임UI 스크립트
+        Bee_01,//
         Bloom_01,
         click_01,
         click_02,
         congrats_01,
-        congrats02_01,
-        congrats02_02,
+        /*congrats02_01,
+        congrats02_02,*///보류> 사용 예정X
         congrats02_03,
         Error_01,
-        Falling_01,
-        Falling_02,
-        GameOver_01,
-        GlassBreak,
+        Falling_01,//보류
+        Falling_02,//WitheredFlowerTile에서 사용
+        GameOver_01,//타임슬라이드 스크립트에서 사용 
+        GlassBreak,//플러스라이프아이템 스크립트에서 사용
         Mumble_01,
         Page_01,
 

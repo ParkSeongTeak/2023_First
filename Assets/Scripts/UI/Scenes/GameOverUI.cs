@@ -48,6 +48,7 @@ public class GameOverUI : UI_PopUp
 
         BindEvent(GetButton((int)Buttons.RetryBtn).gameObject, ToGame);
         BindEvent(GetButton((int)Buttons.MainBtn).gameObject, ToMain);
+        
 
         GetText((int)Texts.JumpScore).text = $"{GameManager.InGameDataManager.NowState.JumpCnt}";
         GetText((int)Texts.SkipScore).text = $"{GameManager.InGameDataManager.NowState.SkipCnt}";
@@ -59,11 +60,13 @@ public class GameOverUI : UI_PopUp
     #region Button
     void ToGame(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
         GameManager.SceneManager.LoadScene(Define.Scenes.Game);
 
     }
     void ToMain(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
         GameManager.SceneManager.LoadScene(Define.Scenes.Main);
 
     }

@@ -23,6 +23,7 @@ public class PlusLifeItem : Item
         {
             gameUI.LifeIcon = Instantiate(Icon);
         }
+        
         gameUI.LifeIcon.SetActive(false);
         //gameUI.LifeIcon = icon;
 
@@ -30,7 +31,7 @@ public class PlusLifeItem : Item
 
 
     }
-    
+
 
     public override void OnTriggerStay2D(Collider2D collision)
     {
