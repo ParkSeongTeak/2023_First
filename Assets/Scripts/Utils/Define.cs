@@ -119,6 +119,7 @@ public class Define
         Bee_01,//
         Bloom_01,
         click_01,
+        Start_01,//MainUI에서 사용
         click_02,
         congrats_01,
         /*congrats02_01,

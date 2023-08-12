@@ -87,16 +87,20 @@ public class MainUI : UI_Scene
     #region Button
     void ToGarden(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.SceneManager.LoadScene(Define.Scenes.Garden);
 
     }
     void ToGame(PointerEventData evt)
     {
+        
+        GameManager.SoundManager.Play(Define.SFX.Start_01);//Start_01효과음
         GameManager.SceneManager.LoadScene(Define.Scenes.Game);
 
     }
     void ToFlowersBook(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.SceneManager.LoadScene(Define.Scenes.FlowersBook);
 
     }

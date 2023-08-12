@@ -87,10 +87,12 @@ public class FlowersBookUI : UI_Scene
 
     void Btn_Select(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_02);//lick_02효과음
         GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookSelect;
     }
     void Btn_Save(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
         if (_selectQueue.Count == 3) {
             int idx = 0;
             foreach (FlowerTypes flowerType in _selectQueue)
@@ -108,6 +110,7 @@ public class FlowersBookUI : UI_Scene
     }
     void Btn_Back(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookInfo;
         GameManager.SceneManager.LoadScene(Define.Scenes.Main);
 
@@ -116,7 +119,8 @@ public class FlowersBookUI : UI_Scene
 
     void Btn_Reset(PointerEventData evt)
     {
-        for(FlowerTypes Flower = 0; Flower < FlowerTypes.MaxCount; Flower++)
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
+        for (FlowerTypes Flower = 0; Flower < FlowerTypes.MaxCount; Flower++)
         {
             PlayerPrefs.SetInt($"{Enum.GetName(typeof(FlowerTypes),Flower)}Have", 0);
         }

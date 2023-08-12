@@ -84,6 +84,7 @@ public class FlowerBudTile : Tile
                 if (!GameManager.InGameDataManager.NowUnbeat)
                 {
                     TileController.Instance.DestoryTile(this);
+                    GameManager.SoundManager.Play(Define.SFX.Falling_02);
                 }
             }
         }
