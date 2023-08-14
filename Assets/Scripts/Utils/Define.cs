@@ -199,6 +199,46 @@ public class Define
         tile_rare6_blm,
         MaxCount
     }
+    public enum FlowerBudConvert  //blm 파일들만 넣어놓기
+    {
+        icon_magnolia1,
+        icon_magnolia2,
+        icon_magnolia3,
+        tile_canola1_blm,
+        tile_canola2_blm,
+        tile_canola3_blm,
+        tile_cherryblossom1_blm,
+        tile_cherryblossom2_blm,
+        tile_cherryblossom3_blm,
+        tile_mulmangcho1_blm,
+        tile_mulmangcho2_blm,
+        tile_mulmangcho3_blm,
+        tile_napal1_blm,
+        tile_napal2_blm,
+        tile_napal3_blm,
+        tile_rose1_blm,
+        tile_rose2_blm,
+        tile_rose3_blm,
+        tile_silverbell1_blm,
+        tile_silverbell2_blm,
+        tile_silverbell3_blm,
+        tile_sumflower1_blm,
+        tile_sumflower2_blm,
+        tile_sumflower3_blm,
+        tile_tulip_1,
+        tile_tulip_2,
+        tile_tulip_3,
+        tile_violet1_blm,
+        tile_violet2,
+        tile_violet3_blm,
+        tile_rare1_blm,
+        tile_rare2_blm,
+        tile_rare3_blm,
+        tile_rare4_blm,
+        tile_rare5_blm,
+        tile_rare6_blm,
+        MaxCount
+    }
     public enum BudFlower
     {
         BudOne,

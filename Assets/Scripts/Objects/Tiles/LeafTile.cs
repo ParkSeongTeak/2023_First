@@ -6,8 +6,9 @@ using UnityEngine;
 public class LeafTile : Tile
 {
     public Define.LeafTypes MyLeafType { get; set; }
-    public GameObject[] prefabs;
+    //public GameObject[] prefabs { get; set; }
     private Vector3 itemPosition;
+    GameObject ItemOnMe;
     private bool itemworked;
     private int jumpnum;
     private int flowernum;
@@ -16,11 +17,14 @@ public class LeafTile : Tile
     {
         MyLeafType = TileController.Instance.SetLeafType();
         transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.LeafSprites[(int)MyLeafType];
-        itemPosition = transform.position;
+        
     }
 
-    void Start()
+    
+
+    void OnEnable()
     {
+        itemPosition = transform.position;
         float probability = 0.2f;
         itemworked = false;
 
@@ -28,24 +32,28 @@ public class LeafTile : Tile
         {
             Define.Items randomItem = (Define.Items)UnityEngine.Random.Range(0, (int)Define.Items.MaxCount);
 
-            GameObject prefab = GetPrefabByItem(randomItem);
+            ItemOnMe = GetPrefabByItem(randomItem);
 
-            if (prefab == null)
+            if (ItemOnMe == null)
             {
                 Debug.LogError("Prefab not found for item: " + randomItem);
             }
             itemPosition.y += 2.2f;
 
-            GameObject spawnedPrefab = Instantiate(prefab, itemPosition, Quaternion.identity);
+            GameObject spawnedPrefab = Instantiate(ItemOnMe, itemPosition, Quaternion.identity);
             spawnedPrefab.transform.parent = transform;
         }
     }
 
     private GameObject GetPrefabByItem(Define.Items item)
     {
-        string prefabPath = "Prefabs/ItemTypes/" + item.ToString();
-        GameObject prefab = Resources.Load<GameObject>(prefabPath);
-        return prefab;
+        if (ItemOnMe == null)
+        {
+            string prefabPath = "Prefabs/ItemTypes/" + item.ToString();
+            ItemOnMe = GameManager.ResourceManager.Load<GameObject>(prefabPath);
+        }
+        return ItemOnMe;
+
     }
 
     public override void JumpOnMe()

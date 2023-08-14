@@ -242,7 +242,7 @@ public class GameUI : UI_Scene
 
     #region SkipJumpSwapItem
 
-    private bool isEffectActive = false;
+    private bool isSkipJumpSwapEffectActive = false;
     private Coroutine SkipJumpSwapItemCoroutine;
     GameObject SkipJumpSwapItemIcon;
 
@@ -251,9 +251,9 @@ public class GameUI : UI_Scene
 
     public void SkipJumpSwapItem()
     {
-        if (isEffectActive == false)    //효과 적용중아님  
+        if (isSkipJumpSwapEffectActive == false)    //효과 적용중아님  
         {
-            isEffectActive = true;
+            isSkipJumpSwapEffectActive = true;
             isJumpActive = false;
             isSkipActive = false;
 
@@ -266,7 +266,7 @@ public class GameUI : UI_Scene
 
             Debug.Log("재시작");
 
-            isEffectActive = true;
+            isSkipJumpSwapEffectActive = true;
             isJumpActive = false;
             isSkipActive = false;
 
@@ -295,7 +295,7 @@ public class GameUI : UI_Scene
         yield return new WaitForSecondsRealtime(_swapTime);
 
         Debug.Log("끝");
-        isEffectActive = false;
+        isSkipJumpSwapEffectActive = false;
 
 
         isJumpActive = true;
@@ -306,7 +306,6 @@ public class GameUI : UI_Scene
     }
 
     #endregion SkipJumpSwapItem
-
 
     ///
     #region HideRemainJumpItem
@@ -392,7 +391,7 @@ public class GameUI : UI_Scene
 
     }
 
-        private IEnumerator ResumeUnbeatableAfterDelay(float delay = 10f)
+    private IEnumerator ResumeUnbeatableAfterDelay(float delay = 10f)
     {
 
         GameManager.InGameDataManager.NowUnbeat = true;
@@ -416,7 +415,6 @@ public class GameUI : UI_Scene
 
 
     #endregion  UnbeatableItem
-
 
     #region JumperItem
     Coroutine JumperItem;
@@ -461,6 +459,7 @@ public class GameUI : UI_Scene
 
     IEnumerator DontFall()
     {
+        GameManager.InGameDataManager.Player.transform.position = GameManager.InGameDataManager.Player.transform.position + new Vector3(0, 0.15f, 0);
         GameManager.InGameDataManager.Player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         GameManager.InGameDataManager.Player.tag = "Untagged";
         yield return new WaitForSeconds(PlayerController.SPEED + 0.1f);
@@ -474,8 +473,27 @@ public class GameUI : UI_Scene
     }
     #endregion JumperItem
 
+    #region PlusLifeItem
+    GameObject PlusLifeItemIcon;
+
+    public void PlusLifeItem()
+    {
+        if (GameManager.InGameDataManager.NowState.LifeCnt == 1)
+        {
+            if (PlusLifeItemIcon == null)   //중복 생성 방지
+            {
+                PlusLifeItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/Icon_pluslife");
+            }
+            GameManager.InGameDataManager.NowState.LifeCnt = 2;
+            PlusLifeItemIcon.SetActive(true);
 
 
+        }
+
+
+    }
+
+    #endregion PlusLifeItem
 
     #endregion ItemEffect Area
 

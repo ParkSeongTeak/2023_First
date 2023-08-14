@@ -13,8 +13,8 @@ public class SceneManager
 
     public void LoadScene(Define.Scenes scene)
     {
-        GameManager.UIManager.CloseAllPopupUI();
         Application.LoadLevel(Enum.GetName(typeof(Define.Scenes), scene));
+        GameManager.UIManager.CloseAllPopupUI();
 
     }
 

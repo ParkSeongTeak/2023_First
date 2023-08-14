@@ -165,6 +165,11 @@ public class TileController : MonoBehaviour
                 _instance.GeneratedTile(i);
             }
 
+            if (_instance.NowGeneratedTiles[3].TileType == TileType.LeafTypes)
+            {
+                _instance.LeafToFlower(3);
+            }
+
             #endregion
 
             #region TileSmoothMove
@@ -203,12 +208,13 @@ public class TileController : MonoBehaviour
             Tile generateTile = _poolingStack[generateType].Pop();
 
             GameObject gameObject = generateTile.gameObject;
-            gameObject.SetActive(true);
 
+            gameObject.SetActive(true);
             generateTile.Init();
             generateTile.TilePosititon = tilePos;
             _instance._nowGeneratedTiles.Add(generateTile);
             gameObject.transform.position = _instance._tilePosition[tilePos];
+            
             return gameObject;
         }
         else
@@ -241,11 +247,11 @@ public class TileController : MonoBehaviour
 
             GameObject gameObject = generateTile.gameObject;
             gameObject.SetActive(true);
-
             generateTile.Init();
             generateTile.TilePosititon = tilePos;
             gameObject.transform.position = _instance._tilePosition[tilePos];
             _nowGeneratedTiles[tilePos] = generateTile;
+            
             return gameObject;
         }
         else

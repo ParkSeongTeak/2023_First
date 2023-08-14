@@ -23,7 +23,6 @@ public class PlusLifeItem : Item
         {
             gameUI.LifeIcon = Instantiate(Icon);
         }
-        
         gameUI.LifeIcon.SetActive(false);
         //gameUI.LifeIcon = icon;
 
@@ -31,22 +30,17 @@ public class PlusLifeItem : Item
 
 
     }
-
+    
 
     public override void OnTriggerStay2D(Collider2D collision)
     {
-        base.OnTriggerStay2D(collision);
-
+        
         if (collision.gameObject.tag == "WingWing")
         {
-            if (GameManager.InGameDataManager.NowState.LifeCnt == 1)    //¸ñ¼û µðÆúÆ® 1°³ »óÅÂÀÏ¶§¸¸ ¸ñ¼û Ãß°¡ È¹µæ °¡´É
-            {
-                GameManager.InGameDataManager.NowState.LifeCnt++ ;
-                gameUI.LifeIcon.SetActive(true);
-               
-            }
-            
+            GameUI.Instance.PlusLifeItem();        
         }
+        base.OnTriggerStay2D(collision);
+
 
     }
 

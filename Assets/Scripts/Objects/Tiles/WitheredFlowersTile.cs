@@ -14,22 +14,20 @@ public class WitheredFlowersTile : Tile
     }
     public override void JumpOnMe()
     {
-        GameManager.InGameDataManager.NowState.JumpCnt--;
-
-        if (GameManager.InGameDataManager.NowState.LifeCnt != 1)
+        if (!GameManager.InGameDataManager.NowUnbeat)
         {
-            GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //¸ñ¼û ¾ÆÀÌÅÛ ¼Ò¸ð : ¾ÆÀÌÄÜ ÇØÁ¦
-            GameManager.InGameDataManager.NowState.LifeCnt--;                       //¸ñ¼û ±ðÀÓ
-        }
-        else
-        {
-            if (!GameManager.InGameDataManager.NowUnbeat)
+            if (GameManager.InGameDataManager.NowState.LifeCnt == 2)
+            {
+                GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //¸ñ¼û ¾ÆÀÌÅÛ ¼Ò¸ð : ¾ÆÀÌÄÜ ÇØÁ¦
+                GameManager.InGameDataManager.NowState.LifeCnt = 1;                       //¸ñ¼û ±ðÀÓ
+            }
+            else
             {
                 TileController.Instance.DestoryTile(this);
                 GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02È¿°úÀ½
             }
         }
-        
+
         //Destroy(gameObject);
     }
     public override void SkipOnMe()

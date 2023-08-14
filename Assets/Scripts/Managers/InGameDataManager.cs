@@ -56,8 +56,8 @@ public class InGameDataManager
     /// <summary>
     /// 현재 무적인가?
     /// </summary>
-    public bool NowUnbeat { get; set; }
-
+    public bool NowUnbeat { get; set; } = false;
+    public bool PlusLife { get; set; } = false;
     #endregion Item관련 Data
 
 

@@ -11,7 +11,6 @@ public class FlowerBudTile : Tile
     public Define.BudFlower FlowerJumpType { get; set; }
     
     Animator _animator;
-    [SerializeField]
     AnimationClip _animationClip;
     float plusTime_bloom = 0.05f; 
 
@@ -34,16 +33,13 @@ public class FlowerBudTile : Tile
         if (JumpLeft != 0)
         {
             _animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/{AnimName}");
-            _animator.Play(_animationClip?.name);
-            if (_animationClip == null)
-            {
-                Debug.Log($"null :: Animation/FlowerBudAnims/{AnimName}");
-            }
-            else
-            {
-                Debug.Log($"Get :: {_animationClip.name}");
+            //_animator.enabled = false;
+            //gameObject.GetComponent<SpriteRenderer>().sprite = GameManager.ResourceManager.Load<Sprite>($"Sprites/FlowerBudTiles/{AnimName}");
+            //Debug.Log($"Sprites/FlowerBudTiles/{AnimName}  //  {gameObject.GetComponent<SpriteRenderer>().sprite?.name}");
 
-            }
+
+            _animator.Play(_animationClip?.name);
+            
             Debug.Log(AnimName);
         }
         
@@ -52,6 +48,7 @@ public class FlowerBudTile : Tile
     }
     public override void JumpOnMe()
     {
+        
         //���� ����� �Լ�(base == Tile)�� JumpOnMe() ����
         //base.JumpOnMe();
         if (JumpLeft > 0)
@@ -74,19 +71,20 @@ public class FlowerBudTile : Tile
         }
         else
         {
-            if (GameManager.InGameDataManager.NowState.LifeCnt != 1)
+            if (!GameManager.InGameDataManager.NowUnbeat)
             {
-                GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //목숨 아이템 소모 : 아이콘 해제
-                GameManager.InGameDataManager.NowState.LifeCnt--;                       //목숨 깎임
-            }
-            else
-            {
-                if (!GameManager.InGameDataManager.NowUnbeat)
+                if (GameManager.InGameDataManager.NowState.LifeCnt == 2)
+                {
+                    GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //목숨 아이템 소모 : 아이콘 해제
+                    GameManager.InGameDataManager.NowState.LifeCnt = 1;                       //목숨 깎임
+                }
+                else
                 {
                     TileController.Instance.DestoryTile(this);
                     GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02효과음
                 }
             }
+
         }
     }
 
