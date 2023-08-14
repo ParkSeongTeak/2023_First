@@ -20,6 +20,8 @@ public class WitheredFlowersTile : Tile
             {
                 GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //格见 酒捞袍 家葛 : 酒捞能 秦力
                 GameManager.InGameDataManager.NowState.LifeCnt = 1;                       //格见 别烙
+                GameUI.Instance.PlusLifeItemIcon.SetActive(false);
+
             }
             else
             {

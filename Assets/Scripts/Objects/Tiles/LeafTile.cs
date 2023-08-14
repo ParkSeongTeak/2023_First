@@ -99,14 +99,7 @@ public class LeafTile : Tile
     }
     public override void ChangeFlower(int leafposition)
     {
-        /*
-        itemworked = true;
-        base.ChangeFlower(leafposition);
-        flowernum = UnityEngine.Random.RandomRange(0,2);
-        jumpnum = UnityEngine.Random.RandomRange(1,3);
-        transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.CosmosFlowerSprites[(int)jumpnum];
-        */
-
+        
         int idx = TileController.Instance.NowGeneratedTiles.IndexOf(this);
 
         TileController.Instance.LeafToFlower(idx);

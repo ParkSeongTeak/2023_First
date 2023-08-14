@@ -16,8 +16,10 @@ public class BookSelect : BookState
         if (Button_.GetHave())
         {
             FlowersBookUI.EnqueueSelectQueue(Button_.GetFlowerType());
-            
-            Color color = new Color(1, 1, 1, 0.5f);
+
+            //Color color = new Color(1, 1, 1, 0.5f);
+            Color color = new Color(0.6f, 0.6f, 0.6f, 1f);
+
             evt.selectedObject.GetComponent<Image>().color = color;
 
 

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
 
     Rigidbody2D _myRgbd2D;
-    float _jumpForce = 16f;
+    //const float _jumpForce = 17f;
     public const float SPEED = 0.15f; 
     bool _canJump;
     Tile _onTile;
@@ -43,21 +43,20 @@ public class PlayerController : MonoBehaviour
         _animator = Util.FindChild<Animator>(gameObject, "PlayerAnim");
 
         ///
-        GameManager.벨런스용_차후삭제필요();
-        _myRgbd2D.gravityScale = Resources.Load<DataFix>("DataFix").Gravity_낙하속도;
-        _jumpForce = Resources.Load<DataFix>("DataFix").JumpPower_점프높이;
+        _myRgbd2D.gravityScale = 18;
         ///
     }
 
 
-    public void Jump()
+    public void Jump(float jumpForce = 17f, bool isJumperItem = false)
     {
-        if (_canJump)
+        
+        if (_canJump | isJumperItem)
         {
             //점프키 누르면 어쩌구 저쩌구
             _canJump = false;
             //GameManager.InGameDataManager.NowState.JumpCnt++;
-            _myRgbd2D.AddForce(new Vector3(0, 1f, 0) * _jumpForce, ForceMode2D.Impulse);
+            _myRgbd2D.AddForce(new Vector3(0, 1f, 0) * jumpForce, ForceMode2D.Impulse);
             _onTile.JumpOnMe();
             
             if (GameUI.Instance.isUnbeatable == true)
@@ -84,15 +83,26 @@ public class PlayerController : MonoBehaviour
     }
 
     Coroutine UnbeatCoroutine;
-    public void Unbeatable()
+    public void Unbeatable(float time = 10f)
     {
         if (GameUI.Instance.isUnbeatable)   //true상태
         {
-            UnbeatCoroutine = StartCoroutine(UnbeatAnim(anims.Idle_unbeatable));
+            UnbeatCoroutine = StartCoroutine(UnbeatAnim(anims.Idle_unbeatable, time));
         }
        
     }
+    public void UnbeatableEnd()
+    {
+        if(UnbeatCoroutine != null)
+        {
+            StopCoroutine(UnbeatCoroutine);
+        }
+        string str = Enum.GetName(typeof(anims), anims.Idle_unbeatable);
+        _animator.SetBool($"{str}Bool", false);
+        //isUnbeatAnim = false;
 
+
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -142,20 +152,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool isUnbeatAnim = false;
+    //bool isUnbeatAnim = false;
 
     IEnumerator UnbeatAnim(anims anim, float time = 10f)
     {
-        if (!isUnbeatAnim)
-        {
-            isUnbeatAnim = true;
-            string str = Enum.GetName(typeof(anims), anim);
-            _animator.SetBool($"{str}Bool", true);
-            yield return new WaitForSeconds(time);
-            _animator.SetBool($"{str}Bool", false);
-            isUnbeatAnim = false;
+        //무적 중복 적용 시 코루틴을 끊고 재시작해야 하는데, 동시 출력을 막으려고 2~3중으로 if 문을 걸어 에러가 남
 
-        }
+        //if (!isUnbeatAnim)
+        //{
+        //isUnbeatAnim = true;
+        string str = Enum.GetName(typeof(anims), anim);
+        _animator.SetBool($"{str}Bool", true);
+        yield return new WaitForSeconds(time);
+        _animator.SetBool($"{str}Bool", false);
+        //isUnbeatAnim = false;
+
+        //}
     }
 
 }

@@ -131,6 +131,9 @@ public class FlowersBookUI : UI_Scene
         PlayerPrefs.SetInt("UseFlowerList[1]", (int)FlowerTypes.icon_magnolia2);
         PlayerPrefs.SetInt("UseFlowerList[2]", (int)FlowerTypes.icon_magnolia3);
         PlayerPrefs.SetInt("QUESTINDEX", 1);
+        GameManager.InGameDataManager.NeedToShowCutScene_prologue = true;
+        GameManager.InGameDataManager.NeedToShowCutScene_epilogue = true;
+
 
 
     }

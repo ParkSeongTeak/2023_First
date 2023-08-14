@@ -15,6 +15,7 @@ public class AllBloomItem : Item
 
     private void AllBloom()
     {
+        int cnt = 0;
         TileController tileController = TileController.Instance;
 
         if (tileController != null)
@@ -27,6 +28,11 @@ public class AllBloomItem : Item
 
                 if (tile.TileType == Define.TileType.FlowerTypes)
                 {
+                    if (cnt == 0)
+                    {
+                        GameUI.Instance.timeSlider.PlusTime();
+                        cnt++;
+                    }
                     tile.AllBloom();
                 }
             }

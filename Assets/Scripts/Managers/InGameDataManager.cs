@@ -60,6 +60,40 @@ public class InGameDataManager
     public bool PlusLife { get; set; } = false;
     #endregion Item관련 Data
 
+    #region CutScenes
+
+    public bool NeedToShowCutScene_prologue 
+    { 
+        get { return PlayerPrefs.GetInt("NeedToShowCutScene_prologue", 0) == 0; }
+        set 
+        { 
+            if(value)
+                PlayerPrefs.SetInt("NeedToShowCutScene_prologue", 0);
+            else
+            {
+                PlayerPrefs.SetInt("NeedToShowCutScene_prologue", 1);
+
+            }
+        }
+    }
+    public const int EPILOGUE = 3;
+    public bool NeedToShowCutScene_epilogue
+    {
+        get { return PlayerPrefs.GetInt("NeedToShowCutScene_epilogue", 0) == 0; }
+        set
+        {
+            if (value)
+            {
+                PlayerPrefs.SetInt("NeedToShowCutScene_epilogue", 0);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("NeedToShowCutScene_epilogue", 1);
+            }
+        }
+    }
+
+    #endregion CutScenes
 
 
     #region Branch and Point 관련 Data

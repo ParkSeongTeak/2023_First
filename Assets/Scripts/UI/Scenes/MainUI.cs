@@ -72,7 +72,14 @@ public class MainUI : UI_Scene
         GameManager.InGameDataManager.UpdateBranchAndPointAction -= UpdateBranchAndPoint;
         GameManager.InGameDataManager.UpdateBranchAndPointAction += UpdateBranchAndPoint;
 
-
+        if (GameManager.InGameDataManager.NeedToShowCutScene_prologue)
+        {
+            GameManager.UIManager.ShowPopupUI<CutScene_Prologue>();
+        }
+        if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue && GameManager.InGameDataManager.QuestIDX >= InGameDataManager.EPILOGUE)
+        {
+            GameManager.UIManager.ShowPopupUI<CutScene_Epilogue>();
+        }
 
     }
     void UpdateBranchAndPoint() 

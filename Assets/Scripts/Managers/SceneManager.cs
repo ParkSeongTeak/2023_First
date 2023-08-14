@@ -15,6 +15,7 @@ public class SceneManager
     {
         Application.LoadLevel(Enum.GetName(typeof(Define.Scenes), scene));
         GameManager.UIManager.CloseAllPopupUI();
+        Time.timeScale= 1.0f;
 
     }
 

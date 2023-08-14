@@ -283,12 +283,28 @@ public class Define
     {
         Jumper,
         AllBloom,
-        TimeFreeze,
+        //TimeFreeze,
         LeafToFlower,
         Unbeatable,
         PlusLife,
         SkipJumpSwap,
         HideRemainJump,
+        MaxCount
+    }
+    public enum CutScene_prologue
+    {
+        CutScene_prologue1_1,
+        CutScene_prologue1_2,
+        CutScene_prologue1_3,
+
+        CutScene_prologue2_1,
+        CutScene_prologue2_2,
+        CutScene_prologue2_3,
+
+        CutScene_prologue3_1,
+        CutScene_prologue3_2,
+        CutScene_prologue3_3,
+
         MaxCount
     }
 

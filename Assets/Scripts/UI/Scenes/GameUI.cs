@@ -11,22 +11,18 @@ using UnityEditor;
 
 public class GameUI : UI_Scene
 {
-
     public static GameUI Instance { get; private set; }
     GameUI() { }
 
+
+    #region Data
     Animator _animator;
     bool isAnim = false;
-
-   
     ClearRwrdData clearRwrdData = new ClearRwrdData();
     bool _clear = false;
     public bool Clear { get { return _clear; } }
-    
-    
     TimeSlider _timeSlider;
     public TimeSlider timeSlider { get { return _timeSlider; } }
-
     int jump { get { return clearRwrdData.Jump; } set { clearRwrdData.Jump = value > 0 ? value : 0; ClearCheck(); } }
     int skip { get { return clearRwrdData.Skip; } set { clearRwrdData.Skip = value > 0 ? value : 0; ClearCheck(); } }
     int bloom { get { return clearRwrdData.Bloom; } set { clearRwrdData.Bloom = value > 0 ? value : 0; ClearCheck(); } }
@@ -39,6 +35,14 @@ public class GameUI : UI_Scene
         clearRwrdData.Bloom = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Bloom;
         clearRwrdData.ClearReward_GoldBranch = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].ClearReward_GoldBranch;
     }
+
+    Vector3 jumpVec;
+    Vector3 skipVec;
+
+    #endregion Data
+
+
+
 
 
     void Start()
@@ -101,6 +105,10 @@ public class GameUI : UI_Scene
         GetText((int)Texts.BloomCnt).text = $"Bloom: {bloom}";
         
         _timeSlider = Util.FindChild(gameObject, "Timeslider", true).GetComponent<TimeSlider>();
+
+        jumpVec = GetButton((int)Buttons.JumpBtn).transform.position;
+        skipVec = GetButton((int)Buttons.SkipBtn).transform.position;
+
     }
 
     public bool isJumpActive { get; set; } = true;
@@ -121,6 +129,15 @@ public class GameUI : UI_Scene
         GameManager.SoundManager.Play(Define.SFX.Jump_01);
 
 
+
+        Debug.Log("JumpBtn눌림");
+        GameManager.InGameDataManager.NowState.JumpCnt++;
+        jump--;
+        GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
+        GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
+
+        //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
+        /*
         if (isJumpActive)
         {
             Debug.Log("JumpBtn눌림");
@@ -144,6 +161,7 @@ public class GameUI : UI_Scene
 
             }
         }
+        */
 
 
     }
@@ -152,6 +170,21 @@ public class GameUI : UI_Scene
 
         GameManager.SoundManager.Play(Define.SFX.Skip_01);
 
+        //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
+        if (!TileController.IsMoving)
+        {
+            //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
+            TileController.Instance.BackGroundMove?.Invoke();
+            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
+            GameManager.InGameDataManager.NowState.SkipCnt++;
+            skip--;
+            GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
+
+            TileController.Instance.MoveTiles();
+
+        }
+        //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
+        /*
         if (isSkipActive)
         {
             if (!TileController.IsMoving)
@@ -176,6 +209,7 @@ public class GameUI : UI_Scene
             GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
         }
+        */
 
     }
 
@@ -239,7 +273,6 @@ public class GameUI : UI_Scene
 
     #endregion TimeFreezeItem
 
-
     #region SkipJumpSwapItem
 
     private bool isSkipJumpSwapEffectActive = false;
@@ -254,8 +287,8 @@ public class GameUI : UI_Scene
         if (isSkipJumpSwapEffectActive == false)    //효과 적용중아님  
         {
             isSkipJumpSwapEffectActive = true;
-            isJumpActive = false;
-            isSkipActive = false;
+            //isJumpActive = false;
+            //isSkipActive = false;
 
             SkipJumpSwapItemCoroutine = StartCoroutine(isCounting());
         }
@@ -267,8 +300,8 @@ public class GameUI : UI_Scene
             Debug.Log("재시작");
 
             isSkipJumpSwapEffectActive = true;
-            isJumpActive = false;
-            isSkipActive = false;
+            //isJumpActive = false;
+            //isSkipActive = false;
 
             SkipJumpSwapItemCoroutine = StartCoroutine(isCounting());
 
@@ -281,28 +314,31 @@ public class GameUI : UI_Scene
     /// </summary>
     /// <returns></returns>
     private IEnumerator isCounting()
-
     {
-        Debug.Log("시작");
 
         if (SkipJumpSwapItemIcon == null)   //중복 생성 방지
         {
             SkipJumpSwapItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_SkipJumpSwap");
         }
 
+        GetButton((int)Buttons.JumpBtn).transform.position = skipVec;
+        GetButton((int)Buttons.SkipBtn).transform.position = jumpVec;
+
+
         SkipJumpSwapItemIcon.SetActive(true);
 
         yield return new WaitForSecondsRealtime(_swapTime);
 
-        Debug.Log("끝");
         isSkipJumpSwapEffectActive = false;
 
 
-        isJumpActive = true;
-        isSkipActive = true;
+        //isJumpActive = true;
+        //isSkipActive = true;
 
         SkipJumpSwapItemIcon.SetActive(false);
 
+        GetButton((int)Buttons.JumpBtn).transform.position = jumpVec;
+        GetButton((int)Buttons.SkipBtn).transform.position = skipVec;
     }
 
     #endregion SkipJumpSwapItem
@@ -367,7 +403,7 @@ public class GameUI : UI_Scene
     //public bool isUnbeatable;//bool 설정
     bool _isUnbeatable = false;
     public bool isUnbeatable { get { return _isUnbeatable; } }
-    GameObject UnbeatableItemIcon;
+    GameObject UnbeatableItemIcon { get; set; }
     Coroutine UnbeatCoroutine;
     /// <summary>
     /// 무적 아이템 활성화
@@ -384,6 +420,7 @@ public class GameUI : UI_Scene
         }
         else
         {
+
             StopCoroutine(UnbeatCoroutine);
             _isUnbeatable = true;
             UnbeatCoroutine = StartCoroutine(ResumeUnbeatableAfterDelay());
@@ -394,15 +431,22 @@ public class GameUI : UI_Scene
     private IEnumerator ResumeUnbeatableAfterDelay(float delay = 10f)
     {
 
+        _timeSlider.StopTimer();
+        GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Unbeatable(delay+3);
         GameManager.InGameDataManager.NowUnbeat = true;
-        UnbeatableItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_Unbeatable");//아이콘 띄우기
+        if(UnbeatableItemIcon== null)
+        {
+            UnbeatableItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_Unbeatable");//아이콘 띄우기
+        }
         UnbeatableItemIcon.SetActive(true);
 
         yield return new WaitForSeconds(delay);
 
+        _timeSlider.ResetSpeed();
         _isUnbeatable = false;
         GameManager.InGameDataManager.NowUnbeat = false;
         UnbeatableItemIcon.SetActive(false);//아이콘 제거
+        GameManager.InGameDataManager.Player.GetComponent<PlayerController>().UnbeatableEnd();
     }
 
 
@@ -425,6 +469,8 @@ public class GameUI : UI_Scene
 
         if (tileController != null)
         {
+            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump(35f,true);
+
             List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
             JumperItem = StartCoroutine(DontFall());
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
@@ -442,7 +488,7 @@ public class GameUI : UI_Scene
                 if (tile.TileType == Define.TileType.FlowerTypes)
                 {
                     // UI에도 적용 필요
-                    GameUI.Instance.BloomCnt();
+                    //GameUI.Instance.BloomCnt();
 
                 }
                 else if (tile.TileType == Define.TileType.BonusTileTypes)
@@ -459,8 +505,8 @@ public class GameUI : UI_Scene
 
     IEnumerator DontFall()
     {
-        GameManager.InGameDataManager.Player.transform.position = GameManager.InGameDataManager.Player.transform.position + new Vector3(0, 0.15f, 0);
-        GameManager.InGameDataManager.Player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        //GameManager.InGameDataManager.Player.transform.position = GameManager.InGameDataManager.Player.transform.position + new Vector3(0, 0.15f, 0);
+        GameManager.InGameDataManager.Player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;// | RigidbodyConstraints2D.FreezePositionY; 
         GameManager.InGameDataManager.Player.tag = "Untagged";
         yield return new WaitForSeconds(PlayerController.SPEED + 0.1f);
 
@@ -474,7 +520,7 @@ public class GameUI : UI_Scene
     #endregion JumperItem
 
     #region PlusLifeItem
-    GameObject PlusLifeItemIcon;
+    public GameObject PlusLifeItemIcon { get; set; }
 
     public void PlusLifeItem()
     {
