@@ -20,6 +20,11 @@ public class WitheredFlowersTile : Tile
             {
                 GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //목숨 아이템 소모 : 아이콘 해제
                 GameManager.InGameDataManager.NowState.LifeCnt = 1;                       //목숨 깎임
+
+                /// 라이프가 깎이는 소리가 나야 맞을까요?
+
+                GameManager.SoundManager.Play(Define.SFX.GlassBreak); 
+
                 GameUI.Instance.PlusLifeItemIcon.SetActive(false);
 
             }

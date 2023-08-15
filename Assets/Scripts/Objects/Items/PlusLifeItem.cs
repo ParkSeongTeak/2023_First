@@ -23,7 +23,10 @@ public class PlusLifeItem : Item
         {
             gameUI.LifeIcon = Instantiate(Icon);
         }
-        gameUI.LifeIcon.SetActive(false);
+        //gameUI.LifeIcon.SetActive(false);
+
+        //소리 코드 
+
         //gameUI.LifeIcon = icon;
 
 

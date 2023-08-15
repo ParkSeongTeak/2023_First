@@ -55,6 +55,13 @@ public class SoundManager
         AudioClip audioClip = GetOrAddAudioClip(path, Define.Sounds.SFX);
         Play(audioClip, Define.Sounds.SFX, volume);
     }
+
+    ///public void Stop(Define.Sounds ²ø²¨)
+    ///{
+    ///
+    ///}
+
+
     /// <summary>
     /// BGM¿ë Play·Î ±¸Çö
     /// </summary>

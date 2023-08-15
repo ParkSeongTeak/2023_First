@@ -99,7 +99,7 @@ public abstract class UI_Base : MonoBehaviour
 
     public void SetResolution()
     {
-        float setWidth = 3200; // 사용자 설정 너비
+        float setWidth = 3020; // 사용자 설정 너비
         float setHeight = 1440; // 사용자 설정 높이
 
         float deviceWidth = Screen.width; // 기기 너비 저장
@@ -116,7 +116,7 @@ public abstract class UI_Base : MonoBehaviour
         _canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         _canvasScaler.referenceResolution = new Vector2(setWidth, setHeight);
         _canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-        _canvasScaler.matchWidthOrHeight = 0.5f;
+        _canvasScaler.matchWidthOrHeight = 1f;
 
         if (targetAspectRatio < currentAspectRatio) // 기기의 해상도 비가 더 큰 경우
         {
