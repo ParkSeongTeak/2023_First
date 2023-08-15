@@ -7,6 +7,8 @@ public abstract class UI_PopUp : UI_Base
     public override void Init()
     {
         GameManager.UIManager.SetCanvas(gameObject, true);
+        SetResolution();
+
     }
 
     public virtual void ClosePopupUI()

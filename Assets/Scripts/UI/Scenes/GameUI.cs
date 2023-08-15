@@ -217,7 +217,7 @@ public class GameUI : UI_Scene
     /// Quest UI적용 + 전체 Data 적용 + Bloom시 시간 추가 
     /// </summary>
     /// <param name="plusTime_bloom"></param>
-    public void BloomCnt(float plusTime_bloom = 0.05f)
+    public void BloomCnt(float plusTime_bloom)
     {
 
         GameUI.Instance.timeSlider.PlusTime(plusTime_bloom);

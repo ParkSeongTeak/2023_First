@@ -37,6 +37,10 @@ public class ShopUI : UI_PopUp
 
         BindEvent(GetButton((int)Buttons.Delete).gameObject, Btn_Delete);
         BindEvent(GetButton((int)Buttons.Buy).gameObject, Btn_Buy);
+
+
+        
+        
     }
     public void SetUI(FlowerBook flowerBook)
     {
@@ -48,10 +52,21 @@ public class ShopUI : UI_PopUp
         Debug.Log(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch);
 
         Debug.Log(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch);
-
-        GetText((int)Texts.Branch).text = $"Branch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch}";
-        GetText((int)Texts.GoldBranch).text = $"GoldBranch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch}";
         
+
+        if(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch != -1 || GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch != -1)
+        {
+            GetText((int)Texts.Branch).text = $"Branch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch}";
+            GetText((int)Texts.GoldBranch).text = $"GoldBranch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch}";
+        }
+        else
+        {
+            GetText((int)Texts.Branch).text = "이 상품은 레어상품입니다.";
+            GetText((int)Texts.GoldBranch).text = "";
+
+            GetButton((int)Buttons.Buy).gameObject.SetActive(false);
+        }
+
 
     }
     void Btn_Buy(PointerEventData evt)

@@ -24,7 +24,7 @@ public class InGameDataManager
 
     public void SetNormalState()
     {
-        GameManager.InGameDataManager._state = NormalState.normalState; 
+        GameManager.InGameDataManager._state = NormalState.normalState;
     }
 
     public void SetHardState()
@@ -40,14 +40,29 @@ public class InGameDataManager
     /// 현재 생성되어있는 타일 관리 아마 7개 내외
     /// </summary>
     List<Tile> _tiles = new List<Tile>();
-    public List<Tile> TileList { get { return _tiles;  } }
+    public List<Tile> TileList { get { return _tiles; } }
 
     public const int useFlowerNum = 3;
     FlowerTypes[] _useFlowerList = new FlowerTypes[useFlowerNum];
-    public FlowerTypes[] UseFlowerList { get { return _useFlowerList;  } set { _useFlowerList = value; } }
+    public FlowerTypes[] UseFlowerList { get { return _useFlowerList; } set { _useFlowerList = value; } }
 
     Sprite[] _useFlowerSprites = new Sprite[useFlowerNum];
     public Sprite[] UseFlowerSprites { get { return _useFlowerSprites; } }
+
+    public int HasRareItem = -1; 
+    public bool GetRareList(int idx)
+    {
+        return PlayerPrefs.GetInt($"RareList{idx}", 0) == 1;
+    }
+
+    public void SetRareListTrue(int idx) 
+    {
+        PlayerPrefs.SetInt($"RareList{idx}", 1);
+
+    }
+
+
+
 
 
     #endregion
@@ -94,7 +109,6 @@ public class InGameDataManager
     }
 
     #endregion CutScenes
-
 
     #region Branch and Point 관련 Data
 
@@ -143,11 +157,10 @@ public class InGameDataManager
     #endregion
 
     public int QuestIDX { get { return PlayerPrefs.GetInt("QUESTINDEX",1); }  set { PlayerPrefs.SetInt("QUESTINDEX", value);} }
-
+    
     // Start is called before the first frame update
     public GameObject _player;
     public GameObject Player { get { return _player; } }
-
 
     GameObject _flower;
     public GameObject Flower { get { return _flower; } }

@@ -97,15 +97,15 @@ public class FlowerBudTile : Tile
 
     public override void AllBloom()
     {
-        StartCoroutine(Bloom());
+        StartCoroutine(Bloom(0));
     }
 
-    IEnumerator Bloom()
+    IEnumerator Bloom(float time = 0.05f)
     {
         _animator.enabled = false;
         JumpLeft = 0;
         GameManager.SoundManager.Play(Define.SFX.Bloom_01);//Bloom_01효과음
-        GameUI.Instance.BloomCnt(0);
+        GameUI.Instance.BloomCnt(time);
         
 
         yield return new WaitForSeconds(0.02f);

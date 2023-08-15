@@ -14,9 +14,10 @@ public class MainUI : UI_Scene
     enum Buttons
     {
         InfoButton,
-        SettingButton,
+        OptionButton,
         GotoGameButton,
         SkinTab,
+        Rare,
     }
 
     enum Texts
@@ -27,13 +28,14 @@ public class MainUI : UI_Scene
         Branch,
         GoldBranch,
         MaxPoint,
+        RandomRewardTxt,
     }
     enum Images
     {
         Flower1,
         Flower2,
         Flower3,
-
+        RandomReward,
     }
 
     void Start()
@@ -41,6 +43,16 @@ public class MainUI : UI_Scene
         Init();
     }
 
+    enum RareTileName
+    {
+        레어꽃이름은모름1,
+        레어꽃이름은모2름,
+        레어꽃이름은3모름,
+        레어꽃이름4은모름,
+        레어꽃5이름은모름,
+        레6어꽃이름은모름,
+
+    }
     public override void Init()
     {
         base.Init();
@@ -55,7 +67,8 @@ public class MainUI : UI_Scene
         //BindEvent(GetButton((int)Buttons.GardenTab).gameObject, ToGarden);
         BindEvent(GetButton((int)Buttons.GotoGameButton).gameObject, ToGame);
         BindEvent(GetButton((int)Buttons.SkinTab).gameObject, ToFlowersBook);
-
+        
+        BindEvent(GetButton((int)Buttons.OptionButton).gameObject, ShowOption);
 
         GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
         GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.GoldBranch}";
@@ -81,6 +94,34 @@ public class MainUI : UI_Scene
             GameManager.UIManager.ShowPopupUI<CutScene_Epilogue>();
         }
 
+        ///Random보상
+        System.Random random  = new System.Random();
+
+        GetImage((int)Images.RandomReward).gameObject.SetActive(false);
+        //있어
+        int rarenum = random.Next(0, 100);
+        if (rarenum < 50)
+        {
+            List<int> tmp = new List<int>();
+            for (int i = 0; i < 6; i++)
+            {
+                if (!GameManager.InGameDataManager.GetRareList(i))
+                {
+                    tmp.Add(i);
+                }
+            }
+            GameManager.InGameDataManager.HasRareItem = random.Next(0, tmp.Count);
+
+            BindEvent(GetButton((int)Buttons.Rare).gameObject, ShowRandomReward);
+        }
+        else if(rarenum < 100)
+        {
+            GetButton((int)Buttons.Rare).gameObject.SetActive(false);
+
+        }
+
+
+
     }
     void UpdateBranchAndPoint() 
     {
@@ -88,16 +129,10 @@ public class MainUI : UI_Scene
         GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.GoldBranch}";
         GetText((int)Texts.MaxPoint).text = $"{GameManager.InGameDataManager.MaxPoint}";
 
-
     }
 
     #region Button
-    void ToGarden(PointerEventData evt)
-    {
-        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
-        GameManager.SceneManager.LoadScene(Define.Scenes.Garden);
-
-    }
+    
     void ToGame(PointerEventData evt)
     {
         
@@ -111,5 +146,27 @@ public class MainUI : UI_Scene
         GameManager.SceneManager.LoadScene(Define.Scenes.FlowersBook);
 
     }
+    
+    void ShowRandomReward(PointerEventData evt)
+    {
+        if (!GetImage((int)Images.RandomReward).gameObject.activeSelf)
+        {
+            GetImage((int)Images.RandomReward).gameObject.SetActive(true);
+            GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RareTileName), GameManager.InGameDataManager.HasRareItem)}";
+
+        }
+        else
+        {
+            GetImage((int)Images.RandomReward).gameObject.SetActive(false);
+
+        }
+    }
+
+    void ShowOption(PointerEventData evt)
+    {
+        GameManager.UIManager.ShowPopupUI<Option>();
+    }
+
+
     #endregion
 }
