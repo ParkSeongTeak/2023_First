@@ -169,6 +169,7 @@ public class MainUI : UI_Scene
 
     void ShowOption(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_02);//click_02È¿°úÀ½
         GameManager.UIManager.ShowPopupUI<Option>();
     }
 

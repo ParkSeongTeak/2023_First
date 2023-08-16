@@ -17,6 +17,7 @@ public class BookInfo : BookState
         }
         else
         {
+            
             ShopUI shopUI = GameManager.UIManager.ShowPopupUI<ShopUI>();
             shopUI.SetUI(Button_);
         
