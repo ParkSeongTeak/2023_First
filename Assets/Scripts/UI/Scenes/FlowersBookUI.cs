@@ -10,7 +10,6 @@ using static Define;
 
 public class FlowersBookUI : UI_Scene
 {
-
     static Queue<FlowerTypes> _selectQueue = new Queue<FlowerTypes>();
 
     public static Queue<FlowerTypes> GetSelectQueue()
@@ -60,6 +59,8 @@ public class FlowersBookUI : UI_Scene
     void Start()
     {
         Init();
+        GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);//블라썸컴퍼니_01정지
+        GameManager.SoundManager.Play(Define.BGM.블라썸_꽃도감);//블라썸_꽃도감
     }
 
     public override void Init()
@@ -87,21 +88,15 @@ public class FlowersBookUI : UI_Scene
 
     void Btn_Select(PointerEventData evt)
     {
-        GameManager.SoundManager.Play(Define.SFX.click_02);//lick_02효과음 
-
-
-
+        GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
         GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookSelect;
-        
-
-
-
-        
     }
     void Btn_Save(PointerEventData evt)
     {
         GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
-        if (_selectQueue.Count == 3) {
+
+        if (_selectQueue.Count == 3) 
+        {
             int idx = 0;
             foreach (FlowerTypes flowerType in _selectQueue)
             {
@@ -120,6 +115,8 @@ public class FlowersBookUI : UI_Scene
     {
         GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
         GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookInfo;
+        GameManager.SoundManager.StopBGM(Define.BGM.블라썸_꽃도감);//블라썸_꽃도감정지
+        GameManager.SoundManager.Play(Define.BGM.블라썸컴퍼니_01);//블라썸컴퍼니_01
         GameManager.SceneManager.LoadScene(Define.Scenes.Main);
 
     }
@@ -132,11 +129,6 @@ public class FlowersBookUI : UI_Scene
         {
             PlayerPrefs.SetInt($"{Enum.GetName(typeof(FlowerTypes),Flower)}Have", 0);
         }
-        for(int i = 0; i < 6; i++)
-        {
-            PlayerPrefs.SetInt($"RareList{i}", 0);
-        }
-
         PlayerPrefs.SetInt("Branch", 500);
         PlayerPrefs.SetInt("GoldBranch", 40);
         PlayerPrefs.SetInt("MaxPoint", 360);
