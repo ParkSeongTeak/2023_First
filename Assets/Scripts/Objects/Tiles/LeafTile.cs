@@ -39,7 +39,7 @@ public class LeafTile : Tile
                 Debug.LogError("Prefab not found for item: " + randomItem);
             }
             itemPosition.y += 2.2f;
-
+            itemPosition.z -= 0.1f;
             GameObject spawnedPrefab = Instantiate(ItemOnMe, itemPosition, Quaternion.identity);
             spawnedPrefab.transform.parent = transform;
         }

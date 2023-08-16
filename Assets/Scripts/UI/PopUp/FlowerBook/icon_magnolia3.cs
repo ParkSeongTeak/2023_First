@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class icon_magnolia3 : FlowerBook
 {
+    public override string KoreanFlowerName { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     public override Define.FlowerTypes GetFlowerType()
     {

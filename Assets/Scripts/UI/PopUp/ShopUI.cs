@@ -18,6 +18,8 @@ public class ShopUI : UI_PopUp
 
     enum Texts
     {
+
+        KoreanName,
         Branch,
         GoldBranch,
     }
@@ -44,10 +46,13 @@ public class ShopUI : UI_PopUp
     }
     public void SetUI(FlowerBook flowerBook)
     {
+
+
         Init();
         _flowerBook = flowerBook;
         System.Type tmpClassType = flowerBook.GetType();
         _flowerName = tmpClassType.Name;
+        string KoreanName = flowerBook.KoreanFlowerName;
 
         Debug.Log(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch);
 
@@ -56,6 +61,8 @@ public class ShopUI : UI_PopUp
 
         if(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch != -1 || GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch != -1)
         {
+            GetText((int)Texts.KoreanName).text = $"한국어 이름: {KoreanName}";
+
             GetText((int)Texts.Branch).text = $"Branch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch}";
             GetText((int)Texts.GoldBranch).text = $"GoldBranch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch}";
         }
