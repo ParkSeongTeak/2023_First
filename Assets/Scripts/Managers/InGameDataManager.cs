@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Profiling.Memory.Experimental;
 using static Define;
 
 public class InGameDataManager
@@ -32,6 +33,10 @@ public class InGameDataManager
         GameManager.InGameDataManager._state = HardState.hardState;
     }
 
+    public float BGMVolume { get { return PlayerPrefs.GetFloat("BGMVolume", 1f); } set { PlayerPrefs.SetFloat("BGMVolume", value >= 1 ? 1 : value); } }
+    public float SFXVolume { get { return PlayerPrefs.GetFloat("SFXVolume", 1f); } set { PlayerPrefs.SetFloat("SFXVolume", value >= 1 ? 1 : value); } }
+
+
 
     #endregion
 
@@ -49,7 +54,6 @@ public class InGameDataManager
     Sprite[] _useFlowerSprites = new Sprite[useFlowerNum];
     public Sprite[] UseFlowerSprites { get { return _useFlowerSprites; } }
 
-    public int HasRareItem = -1; 
     public bool GetRareList(int idx)
     {
         return PlayerPrefs.GetInt($"RareList{idx}", 0) == 1;
@@ -57,6 +61,13 @@ public class InGameDataManager
 
     public void SetRareListTrue(int idx) 
     {
+        //tile_rare1_blm,
+        //return PlayerPrefs.GetInt($"{tmpClassType.Name}Have", 0) > 0;
+        //{ tmpClassType.Name}
+        //Have
+
+        string Raretile = Enum.GetName(typeof(FlowerTypes), Define.FlowerTypes.tile_rare1_blm + idx);
+        PlayerPrefs.SetInt($"{Raretile}Have", 1);
         PlayerPrefs.SetInt($"RareList{idx}", 1);
 
     }
@@ -110,10 +121,10 @@ public class InGameDataManager
 
     #endregion CutScenes
 
-    #region Branch and Point 관련 Data
+    #region Branch ,Point, Reward 관련 Data
 
-    public int Branch { get; set; }
-    public int GoldBranch { get; set; }
+    public int Branch { get { return PlayerPrefs.GetInt("Branch", 1000); } set { PlayerPrefs.SetInt("Branch", value); } }
+    public int GoldBranch { get { return PlayerPrefs.GetInt("GoldBranch", 1000); } set { PlayerPrefs.SetInt("GoldBranch", value); } }
     public int MaxPoint { get; set; }
     Action _updateBranchAndPoint = null; 
 
@@ -144,6 +155,108 @@ public class InGameDataManager
             }
         }
     }
+
+    public int RandomRewardData { get; set; } = -1;
+    public int GetRandomReward()
+    {
+        RandomRewardData = PlayerPrefs.GetInt("RandomRewardDecision", 6);
+        return PlayerPrefs.GetInt("RandomRewardDecision", 6);
+    }
+    public int SetRandomReward()
+    {
+
+        System.Random random = new System.Random();
+        int rarenum = random.Next(0, 100);
+        int setData = 0;
+        if (rarenum < 1)
+        {
+            setData = 0;
+        }
+        else if (rarenum < 2)
+        {
+            setData = 1;
+
+        }
+        else if (rarenum < 3)
+        {
+            setData = 2;
+
+        }
+        else if (rarenum < 4)
+        {
+            setData = 3;
+
+        }
+        else if (rarenum < 5)
+        {
+            setData = 4;
+
+        }
+        else if (rarenum < 6)
+        {
+            setData = 5;
+
+        }
+        else if (rarenum < 14)
+        {
+            setData = 6;
+
+        }
+        else if (rarenum < 18)
+        {
+            setData = 7;
+
+        }
+        else if (rarenum < 20)
+        {
+            setData = 8;
+
+        }
+        else if (rarenum < 60)
+        {
+            setData = 9;
+
+        }
+        else if (rarenum < 80)
+        {
+            setData = 10;
+
+        }
+        else if (rarenum < 93)
+        {
+            setData = 11;
+
+        }
+        else if (rarenum < 100)
+        {
+            setData = 12;
+        }
+
+        if(setData < 6)
+        {
+            if (GetRareList(setData))
+            {
+                setData = 0;
+                while (setData < 6)
+                {
+                    if (GetRareList(setData))
+                    {
+                        setData++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+        RandomRewardData = setData;
+        PlayerPrefs.SetInt("RandomRewardDecision", setData);
+        return setData;
+        
+    }
+
+
     #endregion
 
     #region FlowersBook 관련 Data
@@ -156,6 +269,8 @@ public class InGameDataManager
 
     #endregion
 
+
+
     public int QuestIDX { get { return PlayerPrefs.GetInt("QUESTINDEX",1); }  set { PlayerPrefs.SetInt("QUESTINDEX", value);} }
     
     // Start is called before the first frame update
@@ -167,8 +282,6 @@ public class InGameDataManager
     #region Initiate
     public void init()
     {
-        Branch = PlayerPrefs.GetInt("Branch", 1000);
-        GoldBranch = PlayerPrefs.GetInt("GoldBranch", 1000);
         MaxPoint = PlayerPrefs.GetInt("MaxPoint", 460);
         _flowerPriceHandler = Util.ParseJson<FlowerPriceHandler>();
         _clearRwrdHandler = Util.ParseJson<ClearRwrdHandler>();

@@ -87,8 +87,16 @@ public class FlowersBookUI : UI_Scene
 
     void Btn_Select(PointerEventData evt)
     {
-        GameManager.SoundManager.Play(Define.SFX.click_02);//lick_02효과음
+        GameManager.SoundManager.Play(Define.SFX.click_02);//lick_02효과음 
+
+
+
         GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookSelect;
+        
+
+
+
+        
     }
     void Btn_Save(PointerEventData evt)
     {
@@ -124,6 +132,11 @@ public class FlowersBookUI : UI_Scene
         {
             PlayerPrefs.SetInt($"{Enum.GetName(typeof(FlowerTypes),Flower)}Have", 0);
         }
+        for(int i = 0; i < 6; i++)
+        {
+            PlayerPrefs.SetInt($"RareList{i}", 0);
+        }
+
         PlayerPrefs.SetInt("Branch", 500);
         PlayerPrefs.SetInt("GoldBranch", 40);
         PlayerPrefs.SetInt("MaxPoint", 360);

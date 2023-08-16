@@ -6,10 +6,12 @@ using TMPro;
 using System;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
+using static Define;
+using static Unity.Burst.Intrinsics.X86.Avx;
+using Unity.Mathematics;
 
 public class MainUI : UI_Scene
 {
-    
 
     enum Buttons
     {
@@ -17,7 +19,7 @@ public class MainUI : UI_Scene
         OptionButton,
         GotoGameButton,
         SkinTab,
-        Rare,
+        Random,
     }
 
     enum Texts
@@ -44,16 +46,7 @@ public class MainUI : UI_Scene
         Init();
     }
 
-    enum RareTileName
-    {
-        레어꽃이름은모름1,
-        레어꽃이름은모2름,
-        레어꽃이름은3모름,
-        레어꽃이름4은모름,
-        레어꽃5이름은모름,
-        레6어꽃이름은모름,
-
-    }
+    
     public override void Init()
     {
         base.Init();
@@ -61,15 +54,16 @@ public class MainUI : UI_Scene
         Bind<Button>(typeof(Buttons));
 
         Bind<TMP_Text>(typeof(Texts));
-        
+
         Bind<Image>(typeof(Images));
 
 
         //BindEvent(GetButton((int)Buttons.GardenTab).gameObject, ToGarden);
         BindEvent(GetButton((int)Buttons.GotoGameButton).gameObject, ToGame);
         BindEvent(GetButton((int)Buttons.SkinTab).gameObject, ToFlowersBook);
-        
         BindEvent(GetButton((int)Buttons.OptionButton).gameObject, ShowOption);
+        BindEvent(GetButton((int)Buttons.Random).gameObject, ShowRandomReward);
+
 
         GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
         GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.GoldBranch}";
@@ -90,45 +84,27 @@ public class MainUI : UI_Scene
         GameManager.InGameDataManager.UpdateBranchAndPointAction -= UpdateBranchAndPoint;
         GameManager.InGameDataManager.UpdateBranchAndPointAction += UpdateBranchAndPoint;
 
+        ///Random보상
+        System.Random random = new System.Random();
         if (GameManager.InGameDataManager.NeedToShowCutScene_prologue)
         {
+            GameManager.InGameDataManager.SetRandomReward();
             GameManager.UIManager.ShowPopupUI<CutScene_Prologue>();
         }
         if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue && GameManager.InGameDataManager.QuestIDX >= InGameDataManager.EPILOGUE)
         {
             GameManager.UIManager.ShowPopupUI<CutScene_Epilogue>();
         }
-
-        ///Random보상
-        System.Random random  = new System.Random();
+            
+        GameManager.InGameDataManager.RandomRewardData = GameManager.InGameDataManager.GetRandomReward();
 
         GetImage((int)Images.RandomReward).gameObject.SetActive(false);
-        //있어
-        int rarenum = random.Next(0, 100);
-        if (rarenum < 50)
-        {
-            List<int> tmp = new List<int>();
-            for (int i = 0; i < 6; i++)
-            {
-                if (!GameManager.InGameDataManager.GetRareList(i))
-                {
-                    tmp.Add(i);
-                }
-            }
-            GameManager.InGameDataManager.HasRareItem = random.Next(0, tmp.Count);
-
-            BindEvent(GetButton((int)Buttons.Rare).gameObject, ShowRandomReward);
-        }
-        else if(rarenum < 100)
-        {
-            GetButton((int)Buttons.Rare).gameObject.SetActive(false);
-
-        }
-
+        
 
 
     }
-    void UpdateBranchAndPoint() 
+   
+    void UpdateBranchAndPoint()
     {
         GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
         GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.GoldBranch}";
@@ -137,10 +113,10 @@ public class MainUI : UI_Scene
     }
 
     #region Button
-    
+
     void ToGame(PointerEventData evt)
     {
-        
+
         GameManager.SoundManager.Play(Define.SFX.Start_01);//Start_01효과음
         GameManager.SceneManager.LoadScene(Define.Scenes.Game);
 
@@ -151,13 +127,14 @@ public class MainUI : UI_Scene
         GameManager.SceneManager.LoadScene(Define.Scenes.FlowersBook);
 
     }
-    
+
     void ShowRandomReward(PointerEventData evt)
     {
         if (!GetImage((int)Images.RandomReward).gameObject.activeSelf)
         {
+            GameManager.SoundManager.Play(Define.SFX.congrats_01); //congrats_01효과음
             GetImage((int)Images.RandomReward).gameObject.SetActive(true);
-            GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RareTileName), GameManager.InGameDataManager.HasRareItem)}";
+            GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RandomRewardData), GameManager.InGameDataManager.RandomRewardData)}";
 
         }
         else

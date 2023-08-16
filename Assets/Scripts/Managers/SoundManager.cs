@@ -7,6 +7,7 @@ public class SoundManager
 {
     /// <summary> 캐싱을 이용하면 효율적 </summary>
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sounds.MaxCount];
+
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
     public void init()
@@ -56,10 +57,18 @@ public class SoundManager
         Play(audioClip, Define.Sounds.SFX, volume);
     }
 
-    ///public void Stop(Define.Sounds 끌꺼)
-    ///{
-    ///
-    ///}
+
+
+
+    public void SetVolume(Define.Sounds type, float volume)
+    {
+        _audioSources[(int)type].volume = volume;
+    }
+    public float GetVolume(Define.Sounds type)
+    {
+        return _audioSources[(int)type].volume;
+    }
+
 
 
     /// <summary>
@@ -151,6 +160,21 @@ public class SoundManager
             if (bgmSource.isPlaying && bgmSource.clip != null && bgmSource.clip.name == bgmName)
             {
                 bgmSource.Stop();
+                break;
+            }
+        }
+    }
+
+    public void StopSFX(Define.SFX sfxType)
+    {
+        string sfxName = Enum.GetName(typeof(Define.SFX), sfxType);
+        string path = sfxName;  // Enum.GetName(typeof(Define.SFX), sfxType)를 path로 할당
+
+        foreach (AudioSource sfxSource in _audioSources)
+        {
+            if (sfxSource.isPlaying && sfxSource.clip != null && sfxSource.clip.name == sfxName)
+            {
+                sfxSource.Stop();
                 break;
             }
         }

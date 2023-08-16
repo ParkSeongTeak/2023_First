@@ -44,6 +44,7 @@ public class CutScene_Epilogue : UI_PopUp
         {
             GetImage(i).gameObject.SetActive(false);
         }
+        GetImage((int)Images.BG).gameObject.SetActive(true);
 
         BindEvent(GetButton((int)Buttons.CutScene_Epilogue).gameObject, Btn_CutScene_Prologue);
 

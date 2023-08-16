@@ -33,6 +33,7 @@ public class Init_Game : MonoBehaviour
             }
             else 
             {
+                GameManager.InGameDataManager.SetRandomReward();
                 Destroy(player);
                 GameManager.UIManager.ShowPopupUI<GameOverUI>();
             }

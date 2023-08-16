@@ -53,6 +53,7 @@ public class Page1 : UI_PopUp
         for (int Button = 0; Button < 12; Button++)
         {
             BindEvent(GetButton(Button).gameObject, Btn_Button);
+            //GetButton(Button).GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
         }
 
         BindEvent(GetButton((int)Buttons.Right).gameObject, Btn_Right);
@@ -61,6 +62,7 @@ public class Page1 : UI_PopUp
 
     void Btn_Button(PointerEventData evt)
     {
+        /// 
         GameManager.InGameDataManager.bookState.Btn_Button(evt);
     }
     

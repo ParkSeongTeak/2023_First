@@ -108,6 +108,8 @@ public class FlowerBudTile : Tile
     {
         _animator.enabled = false;
         JumpLeft = 0;
+
+        GameManager.SoundManager.StopSFX(Define.SFX.Jump_01);//Jump_01효과음 중지
         GameManager.SoundManager.Play(Define.SFX.Bloom_01);//Bloom_01효과음
         GameUI.Instance.BloomCnt(time);
         

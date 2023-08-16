@@ -58,6 +58,7 @@ public class GameUI : UI_Scene
             {
                 _clear = true;
                 GameManager.InGameDataManager.QuestIDX++;
+
             }
         }
     }
@@ -136,34 +137,6 @@ public class GameUI : UI_Scene
         GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
         GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
 
-        //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
-        /*
-        if (isJumpActive)
-        {
-            Debug.Log("JumpBtn눌림");
-            GameManager.InGameDataManager.NowState.JumpCnt++;
-            jump--;
-            GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
-            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
-        }
-        else
-        {
-            if (!TileController.IsMoving)
-            {
-                //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
-                TileController.Instance.BackGroundMove?.Invoke();
-                GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
-                GameManager.InGameDataManager.NowState.SkipCnt++;
-                skip--;
-                GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
-
-                TileController.Instance.MoveTiles();
-
-            }
-        }
-        */
-
-
     }
     void Btn_Skip(PointerEventData evt)
     {
@@ -183,33 +156,7 @@ public class GameUI : UI_Scene
             TileController.Instance.MoveTiles();
 
         }
-        //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
-        /*
-        if (isSkipActive)
-        {
-            if (!TileController.IsMoving)
-            {
-                //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
-                TileController.Instance.BackGroundMove?.Invoke();
-                GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
-                GameManager.InGameDataManager.NowState.SkipCnt++;
-                skip--;
-                GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
-
-                TileController.Instance.MoveTiles();
-
-            }
-        }
-        else
-        {
-            Debug.Log("JumpBtn눌림");
-
-            GameManager.InGameDataManager.NowState.JumpCnt++;
-            jump--;
-            GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
-            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
-        }
-        */
+       
 
     }
 
@@ -219,16 +166,13 @@ public class GameUI : UI_Scene
     /// <param name="plusTime_bloom"></param>
     public void BloomCnt(float plusTime_bloom)
     {
-
         GameUI.Instance.timeSlider.PlusTime(plusTime_bloom);
         GameManager.InGameDataManager.NowState.BloomCnt++;
         bloom--;
         GetText((int)Texts.BloomCnt).text = $"BloomCnt: {bloom}";
-
     }
 
     #region ItemEffect Area
-
 
     #region TimeFreezeItem
 
@@ -532,11 +476,7 @@ public class GameUI : UI_Scene
             }
             GameManager.InGameDataManager.NowState.LifeCnt = 2;
             PlusLifeItemIcon.SetActive(true);
-
-
         }
-
-
     }
 
     #endregion PlusLifeItem
