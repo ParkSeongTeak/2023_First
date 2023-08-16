@@ -39,6 +39,15 @@ public class Option : UI_PopUp
         BindEvent(GetButton((int)Buttons.CutScenePrologueShow).gameObject, Btn_CutScenePrologueShow);
         BindEvent(GetButton((int)Buttons.CutSceneEpilogueShow).gameObject, Btn_CutSceneEpilogueShow);
 
+
+        if (GameManager.InGameDataManager.NeedToShowCutScene_prologue)
+        {
+            GetButton((int)Buttons.CutScenePrologueShow).gameObject.SetActive(false);
+        }
+        if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue)
+        {
+            GetButton((int)Buttons.CutSceneEpilogueShow).gameObject.SetActive(false);
+        }
         GameManager.SoundManager.SetVolume(Define.Sounds.BGM, GameManager.InGameDataManager.BGMVolume);
         GameManager.SoundManager.SetVolume(Define.Sounds.SFX, GameManager.InGameDataManager.SFXVolume);
 
