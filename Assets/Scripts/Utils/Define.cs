@@ -307,4 +307,26 @@ public class Define
 
         MaxCount
     }
+
+    public enum RandomRewardData
+    {
+        깽깽이풀,
+        주걱댕강나무,
+        히어리,
+        산작약,
+        너도바람꽃,
+        금새우난,
+
+        GoldBranch1,
+        GoldBranch2,
+        GoldBranch3,
+        Branch2,
+        Branch4,
+        Branch6,
+        Branch8,
+
+       
+
+    }
+
 }

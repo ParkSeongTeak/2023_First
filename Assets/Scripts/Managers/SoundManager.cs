@@ -7,6 +7,7 @@ public class SoundManager
 {
     /// <summary> Ä³½ÌÀ» ÀÌ¿ëÇÏ¸é È¿À²Àû </summary>
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sounds.MaxCount];
+
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
     public void init()
@@ -56,10 +57,18 @@ public class SoundManager
         Play(audioClip, Define.Sounds.SFX, volume);
     }
 
-    ///public void Stop(Define.Sounds ²ø²¨)
-    ///{
-    ///
-    ///}
+
+
+
+    public void SetVolume(Define.Sounds type, float volume)
+    {
+        _audioSources[(int)type].volume = volume;
+    }
+    public float GetVolume(Define.Sounds type)
+    {
+        return _audioSources[(int)type].volume;
+    }
+
 
 
     /// <summary>

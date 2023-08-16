@@ -68,7 +68,7 @@ public class TimeSlider : MonoBehaviour
                 {
                     GameManager.SoundManager.Play(Define.SFX.GameOver_01);//GameOverÈ¿°úÀ½
                     GameManager.UIManager.ShowPopupUI<GameOverUI>();
-
+                    GameManager.InGameDataManager.SetRandomReward();
                     gameOver = true;
                    
                 }

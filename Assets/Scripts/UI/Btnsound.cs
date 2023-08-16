@@ -15,10 +15,7 @@ public class Btnsound : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
     public void sfx0Play()
     {
         audioSource.GetComponent<AudioSource>().PlayOneShot(sfx[0]);

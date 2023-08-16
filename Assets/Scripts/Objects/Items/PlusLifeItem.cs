@@ -25,7 +25,7 @@ public class PlusLifeItem : Item
         }
         //gameUI.LifeIcon.SetActive(false);
 
-        //소리 코드 
+        //소리 코드 소리가 어떤 소리냐 하면 Life 깎일때 나는 소리가 이상하게 들린다는거죠???
 
         //gameUI.LifeIcon = icon;
 
