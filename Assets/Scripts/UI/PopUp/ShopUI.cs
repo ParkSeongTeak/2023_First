@@ -76,6 +76,7 @@ public class ShopUI : UI_PopUp
             && GameManager.InGameDataManager.GoldBranch >= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch)
         {
             Debug.Log("you can buy it!");
+            GameManager.SoundManager.Play(Define.SFX.congrats02_03);//congrats02_03효과음
             GameManager.InGameDataManager.Branch -= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch;
             GameManager.InGameDataManager.GoldBranch -= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch;
             GameManager.InGameDataManager.saveData();
@@ -83,12 +84,14 @@ public class ShopUI : UI_PopUp
             ClosePopupUI();
         }
         else
+            GameManager.SoundManager.Play(Define.SFX.Error_01);//Error_01효과음
             Debug.Log("you cant buy it...");
 
     }
 
     void Btn_Delete(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         ClosePopupUI();
 
     }

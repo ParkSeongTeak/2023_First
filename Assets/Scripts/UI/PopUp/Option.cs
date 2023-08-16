@@ -52,17 +52,19 @@ public class Option : UI_PopUp
     }
     void Btn_ESC(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.UIManager.ClosePopupUI();
     }
     void Btn_CutScenePrologueShow(PointerEventData evt)
     {
-
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.UIManager.ShowPopupUI<CutScene_Prologue>();
     }
 
 
     void Btn_CutSceneEpilogueShow(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.UIManager.ShowPopupUI<CutScene_Epilogue>();
 
     }
