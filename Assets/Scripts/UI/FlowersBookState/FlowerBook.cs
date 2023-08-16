@@ -18,6 +18,7 @@ public abstract class FlowerBook : UI_PopUp
     protected int have;
     protected string _koreanFlowerName;
     public abstract string KoreanFlowerName { get; set; }
+    //public abstract Sprite 필요한이미지 { get; set; }
 
     public virtual int GetBranch()
     {

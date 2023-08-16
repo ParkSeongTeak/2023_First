@@ -20,6 +20,7 @@ public class MainUI : UI_Scene
         GotoGameButton,
         SkinTab,
         Random,
+        RandomRewardBtn,
     }
 
     enum Texts
@@ -63,6 +64,7 @@ public class MainUI : UI_Scene
         BindEvent(GetButton((int)Buttons.SkinTab).gameObject, ToFlowersBook);
         BindEvent(GetButton((int)Buttons.OptionButton).gameObject, ShowOption);
         BindEvent(GetButton((int)Buttons.Random).gameObject, ShowRandomReward);
+        BindEvent(GetButton((int)Buttons.RandomRewardBtn).gameObject, RandomRewardBtn);
 
 
         GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
@@ -138,7 +140,9 @@ public class MainUI : UI_Scene
         {
             GameManager.SoundManager.Play(Define.SFX.congrats_01); //congrats_01효과음
             GetImage((int)Images.RandomReward).gameObject.SetActive(true);
-            GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RandomRewardData), GameManager.InGameDataManager.RandomRewardData)}";
+            GetText((int)Texts.RandomRewardTxt).text = $"확인비(확인 안해도 획득가능) brance5 ";
+
+
 
         }
         else
@@ -154,6 +158,18 @@ public class MainUI : UI_Scene
         GameManager.UIManager.ShowPopupUI<Option>();
     }
 
-
+    void RandomRewardBtn(PointerEventData evt)
+    {
+        if (GameManager.InGameDataManager.Branch > 5)
+        {
+            GameManager.InGameDataManager.Branch -= 5;
+            GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RandomRewardData), GameManager.InGameDataManager.RandomRewardData)}";
+            GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
+            GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.GoldBranch}";
+            GetText((int)Texts.MaxPoint).text = $"{GameManager.InGameDataManager.MaxPoint}";
+            GetButton((int)Buttons.RandomRewardBtn).gameObject.SetActive(false);
+        }
+        
+    }
     #endregion
 }
