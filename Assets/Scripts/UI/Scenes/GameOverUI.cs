@@ -143,6 +143,7 @@ public class GameOverUI : UI_PopUp
         // ÀÏ¹Ý ºê·»Ä¡;
         GameManager.InGameDataManager.Branch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
         GameManager.InGameDataManager.saveData();
+        GameManager.InGameDataManager.SetRandomReward();
     }
 
     #endregion
