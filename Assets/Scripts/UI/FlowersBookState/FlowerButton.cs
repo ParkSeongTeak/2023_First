@@ -50,7 +50,7 @@ public class FlowerButton : MonoBehaviour
 
     public FlowerBook GetFlowerUI()
     {
-        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
+        GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
         return FlowerUI;
     }
 }
