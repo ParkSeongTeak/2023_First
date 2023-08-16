@@ -9,7 +9,7 @@ public class UIAnimation : MonoBehaviour
     Image _image;
 
     Sprite[] _spriteArray;
-    float m_Speed = .2f;
+    float m_Speed = .1f;
     private int m_IndexSprite;
     
 
