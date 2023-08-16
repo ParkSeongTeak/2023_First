@@ -121,7 +121,7 @@ public class Define
         click_01,//완
         Start_01,//MainUI에서 사용
         click_02,//
-        congrats_01,
+        congrats_01,//MainUI에서 사용
         /*congrats02_01,
         congrats02_02,*///보류> 사용 예정X
         congrats02_03,//Shop UI에서사용 완

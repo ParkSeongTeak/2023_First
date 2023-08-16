@@ -132,6 +132,7 @@ public class MainUI : UI_Scene
     {
         if (!GetImage((int)Images.RandomReward).gameObject.activeSelf)
         {
+            GameManager.SoundManager.Play(Define.SFX.congrats_01); //congrats_01È¿°úÀ½
             GetImage((int)Images.RandomReward).gameObject.SetActive(true);
             GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RandomRewardData), GameManager.InGameDataManager.RandomRewardData)}";
 
