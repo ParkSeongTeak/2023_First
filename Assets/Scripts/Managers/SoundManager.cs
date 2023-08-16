@@ -149,4 +149,25 @@ public class SoundManager
         }
         _audioClips.Clear();
     }
+
+    public void StopBGM(Define.BGM bgmType)
+    {
+        string bgmName = Enum.GetName(typeof(Define.BGM), bgmType);
+        string path = bgmName;  // Enum.GetName(typeof(Define.BGM), bgmType)를 path로 할당
+
+        foreach (AudioSource bgmSource in _audioSources)
+        {
+            if (bgmSource.isPlaying && bgmSource.clip != null && bgmSource.clip.name == bgmName)
+            {
+                bgmSource.Stop();
+                break;
+            }
+        }
+    }
+
+
+
+
+
+
 }

@@ -118,7 +118,7 @@ public class FlowersBookUI : UI_Scene
     }
     void Btn_Back(PointerEventData evt)
     {
-        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
+        GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
         GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookInfo;
         GameManager.SceneManager.LoadScene(Define.Scenes.Main);
 

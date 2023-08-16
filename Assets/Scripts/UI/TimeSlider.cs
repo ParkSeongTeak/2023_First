@@ -67,6 +67,8 @@ public class TimeSlider : MonoBehaviour
                 if (!gameOver)
                 {
                     GameManager.SoundManager.Play(Define.SFX.GameOver_01);//GameOverÈ¿°úÀ½
+                    GameManager.SoundManager.StopBGM(Define.BGM.ºí¶ó½æÄÄÆÛ´Ï_01);
+                    Debug.Log("¸ØÃã");
                     GameManager.UIManager.ShowPopupUI<GameOverUI>();
                     GameManager.InGameDataManager.SetRandomReward();
                     gameOver = true;

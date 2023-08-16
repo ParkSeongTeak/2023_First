@@ -32,6 +32,8 @@ public class WitheredFlowersTile : Tile
             {
                 TileController.Instance.DestoryTile(this);
                 GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02È¿°úÀ½
+                GameManager.SoundManager.StopBGM(Define.BGM.ºí¶ó½æÄÄÆÛ´Ï_01);
+                Debug.Log("¸ØÃã");
             }
         }
 

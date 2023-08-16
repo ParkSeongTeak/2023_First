@@ -79,6 +79,8 @@ public abstract class FlowerBook : UI_PopUp
 
         Bind<Button>(typeof(Buttons));
         BindEvent(GetButton((int)Buttons.Delete).gameObject, Btn_Delete);
+
+
         
         System.Type tmpClassType = this.GetType();
         _branch = GameManager.InGameDataManager.FlowerPriceHandler[tmpClassType.Name].Branch;
@@ -94,6 +96,7 @@ public abstract class FlowerBook : UI_PopUp
 
     protected void Btn_Delete(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01È¿°úÀ½
         ClosePopupUI();
     }
 

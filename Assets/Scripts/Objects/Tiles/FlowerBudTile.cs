@@ -85,6 +85,8 @@ public class FlowerBudTile : Tile
                 {
                     TileController.Instance.DestoryTile(this);
                     GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02효과음
+                    GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);
+                    Debug.Log("멈춤");
                 }
             }
 

@@ -17,7 +17,11 @@ public class GameOver : MonoBehaviour
     {
         if (_gameOverMenu != null)
         {
+            GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);
+
             _gameOverMenu.SetActive(true);
+            
+
         }
     }
 
