@@ -199,6 +199,7 @@ public class Define
         tile_rare6_blm,
         MaxCount
     }
+   
     public enum FlowerBudConvert  //blm 파일들만 넣어놓기
     {
         icon_magnolia1,

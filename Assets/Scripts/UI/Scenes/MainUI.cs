@@ -78,9 +78,9 @@ public class MainUI : UI_Scene
         //QuestNum
         GetText((int)Texts.QuestNum).text = $"Quest {GameManager.InGameDataManager.QuestIDX}";
 
-        GetText((int)Texts.JumpCnt).text = $"Jump {GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Jump}";
-        GetText((int)Texts.SkipCnt).text = $"Skip {GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Skip}";
-        GetText((int)Texts.BloomCnt).text = $"Bloom {GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Bloom}";
+        GetText((int)Texts.JumpCnt).text = $"{GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Jump}";
+        GetText((int)Texts.SkipCnt).text = $"{GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Skip}";
+        GetText((int)Texts.BloomCnt).text = $"{GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Bloom}";
 
 
         GetImage((int)Images.Flower1).sprite = GameManager.InGameDataManager.UseFlowerSprites[0];
