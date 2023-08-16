@@ -79,7 +79,65 @@ public class GameOverUI : UI_PopUp
         if (GameUI.Instance.Clear)
         {
             GameManager.InGameDataManager.GoldBranch += GameUI.Instance.ClearReward_GoldBranch;
-            
+            switch (GameManager.InGameDataManager.RandomRewardData)
+            {
+                case 0:
+                    GameManager.InGameDataManager.SetRareListTrue(GameManager.InGameDataManager.RandomRewardData);
+                    break;
+                case 1:
+                    GameManager.InGameDataManager.SetRareListTrue(GameManager.InGameDataManager.RandomRewardData);
+                    break;
+                case 2:
+                    GameManager.InGameDataManager.SetRareListTrue(GameManager.InGameDataManager.RandomRewardData);
+
+                    break;
+                case 3:
+                    GameManager.InGameDataManager.SetRareListTrue(GameManager.InGameDataManager.RandomRewardData);
+
+                    break;
+                case 4:
+                    GameManager.InGameDataManager.SetRareListTrue(GameManager.InGameDataManager.RandomRewardData);
+
+                    break;
+                case 5:
+                    GameManager.InGameDataManager.SetRareListTrue(GameManager.InGameDataManager.RandomRewardData);
+                    
+                    break;
+
+                case 6:
+
+                    GameManager.InGameDataManager.GoldBranch += 1;
+                    break;
+                case 7:
+                    GameManager.InGameDataManager.GoldBranch += 2;
+
+                    break;
+                case 8:
+                    GameManager.InGameDataManager.GoldBranch += 3;
+
+                    break;
+
+
+                case 9:
+                    GameManager.InGameDataManager.Branch += 2;
+
+                    break;
+                case 10:
+                    GameManager.InGameDataManager.Branch += 4;
+
+                    break;
+                case 11:
+                    GameManager.InGameDataManager.Branch += 6;
+
+                    break;
+                case 12:
+                    GameManager.InGameDataManager.Branch += 8;
+
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         // ÀÏ¹Ý ºê·»Ä¡;
