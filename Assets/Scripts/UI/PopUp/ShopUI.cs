@@ -22,6 +22,7 @@ public class ShopUI : UI_PopUp
         KoreanName,
         Branch,
         GoldBranch,
+        FlowerName,
     }
     
     void Start()
@@ -61,10 +62,10 @@ public class ShopUI : UI_PopUp
 
         if(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch != -1 || GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch != -1)
         {
-            GetText((int)Texts.KoreanName).text = $"한국어 이름: {KoreanName}";
+            GetText((int)Texts.KoreanName).text = $"{KoreanName}";
 
-            GetText((int)Texts.Branch).text = $"Branch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch}";
-            GetText((int)Texts.GoldBranch).text = $"GoldBranch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch}";
+            GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch}";
+            GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch}";
         }
         else
         {

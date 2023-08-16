@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class tile_cherryblossom2_blm : FlowerBook
 {
 
-    public override string KoreanFlowerName { get { _koreanFlowerName = "Ã¼¸®ºí¶ó½æ2"; return _koreanFlowerName; } set => throw new System.NotImplementedException(); }
+    public override string KoreanFlowerName { get { _koreanFlowerName = "º¢²É"; return _koreanFlowerName; } set => throw new System.NotImplementedException(); }
 
     public override Define.FlowerTypes GetFlowerType()
     {

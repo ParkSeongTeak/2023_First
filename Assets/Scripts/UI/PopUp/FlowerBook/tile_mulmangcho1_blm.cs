@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class tile_mulmangcho1_blm : FlowerBook
 {
-    public override string KoreanFlowerName { get { _koreanFlowerName = "여기다 쓰세요. 확인?"; return _koreanFlowerName; } set => throw new System.NotImplementedException(); }
+    public override string KoreanFlowerName { get { _koreanFlowerName = "물망초"; return _koreanFlowerName; } set => throw new System.NotImplementedException(); }
 
     public override Define.FlowerTypes GetFlowerType()
     {

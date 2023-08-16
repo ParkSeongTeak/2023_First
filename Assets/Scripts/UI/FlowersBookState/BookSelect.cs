@@ -10,8 +10,6 @@ public class BookSelect : BookState
     public override void Btn_Button(PointerEventData evt)
     {
         FlowerBook Button_ = evt.selectedObject.GetComponent<FlowerButton>().GetFlowerUI();
-        
-       
 
         if (Button_.GetHave())
         {
