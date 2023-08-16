@@ -156,6 +156,21 @@ public class SoundManager
         }
     }
 
+    public void StopSFX(Define.SFX sfxType)
+    {
+        string sfxName = Enum.GetName(typeof(Define.SFX), sfxType);
+        string path = sfxName;  // Enum.GetName(typeof(Define.SFX), sfxType)를 path로 할당
+
+        foreach (AudioSource sfxSource in _audioSources)
+        {
+            if (sfxSource.isPlaying && sfxSource.clip != null && sfxSource.clip.name == sfxName)
+            {
+                sfxSource.Stop();
+                break;
+            }
+        }
+    }
+
 
 
 

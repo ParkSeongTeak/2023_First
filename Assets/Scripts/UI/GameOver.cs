@@ -18,7 +18,7 @@ public class GameOver : MonoBehaviour
         if (_gameOverMenu != null)
         {
             GameManager.SoundManager.StopBGM(Define.BGM.∫Ì∂ÛΩÊƒƒ∆€¥œ_01);
-
+            Debug.Log("∏ÿ√„");
             _gameOverMenu.SetActive(true);
             
 
