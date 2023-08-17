@@ -160,7 +160,7 @@ public class GameOverUI : UI_PopUp
         GameManager.InGameDataManager.Branch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
         addBranch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
 
-        GameManager.InGameDataManager.MaxPoint = GameManager.InGameDataManager.NowState.BloomCnt;
+       
         GameManager.InGameDataManager.saveData();
         GameManager.InGameDataManager.SetRandomReward();
         string rarename = rare == -1 ? "다음 기회에!" : Enum.GetName(typeof(Define.RandomRewardData),rare);

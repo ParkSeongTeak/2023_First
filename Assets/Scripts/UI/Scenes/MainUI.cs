@@ -138,9 +138,9 @@ public class MainUI : UI_Scene
     {
         if (!GetImage((int)Images.RandomReward).gameObject.activeSelf)
         {
-            GameManager.SoundManager.Play(Define.SFX.congrats_01); //congrats_01효과음
+            GameManager.SoundManager.Play(Define.SFX.click_02); //click_01효과음
             GetImage((int)Images.RandomReward).gameObject.SetActive(true);
-            GetText((int)Texts.RandomRewardTxt).text = $"확인비(확인 안해도 획득가능) brance5 ";
+            GetText((int)Texts.RandomRewardTxt).text = $"확인비(확인 안해도 획득가능) brance - 5 ";
 
 
 

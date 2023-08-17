@@ -36,8 +36,8 @@ public class GameUI : UI_Scene
         clearRwrdData.ClearReward_GoldBranch = GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].ClearReward_GoldBranch;
     }
 
-    Vector3 jumpVec;
-    Vector3 skipVec;
+    public Vector3 jumpVec;
+    public Vector3 skipVec;
 
     #endregion Data
 
@@ -107,9 +107,11 @@ public class GameUI : UI_Scene
         
         _timeSlider = Util.FindChild(gameObject, "Timeslider", true).GetComponent<TimeSlider>();
 
-        jumpVec = GetButton((int)Buttons.JumpBtn).transform.position;
-        skipVec = GetButton((int)Buttons.SkipBtn).transform.position;
-
+        //jumpVec = GetButton((int)Buttons.JumpBtn).transform.position;
+        jumpVec = GetButton((int)Buttons.JumpBtn).transform.localPosition;
+        Debug.Log("jumpVec" + jumpVec);
+        skipVec = GetButton((int)Buttons.SkipBtn).transform.localPosition;
+        Debug.Log("skipVec" + skipVec);
     }
 
     public bool isJumpActive { get; set; } = true;
@@ -140,6 +142,8 @@ public class GameUI : UI_Scene
     }
     void Btn_Skip(PointerEventData evt)
     {
+
+        
 
         GameManager.SoundManager.Play(Define.SFX.Skip_01);
 
@@ -231,8 +235,7 @@ public class GameUI : UI_Scene
         if (isSkipJumpSwapEffectActive == false)    //효과 적용중아님  
         {
             isSkipJumpSwapEffectActive = true;
-            //isJumpActive = false;
-            //isSkipActive = false;
+            
 
             SkipJumpSwapItemCoroutine = StartCoroutine(isCounting());
         }
@@ -265,8 +268,8 @@ public class GameUI : UI_Scene
             SkipJumpSwapItemIcon = GameManager.ResourceManager.Instantiate("ItemTypes/icon_SkipJumpSwap");
         }
 
-        GetButton((int)Buttons.JumpBtn).transform.position = skipVec;
-        GetButton((int)Buttons.SkipBtn).transform.position = jumpVec;
+        GetButton((int)Buttons.JumpBtn).transform.localPosition = skipVec;
+        GetButton((int)Buttons.SkipBtn).transform.localPosition = jumpVec;
 
 
         SkipJumpSwapItemIcon.SetActive(true);
