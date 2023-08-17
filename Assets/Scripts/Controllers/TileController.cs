@@ -98,11 +98,12 @@ public class TileController : MonoBehaviour
             #endregion PoolingGenerate
 
             #region GetTileSprites
+
             string[] flowersSpritesStr = Enum.GetNames(typeof(Define.FlowerTypes));
             _instance._flowerSprites = new Sprite[(int)Define.FlowerTypes.MaxCount];
             for(int i = 0 ; i< (int)Define.FlowerTypes.MaxCount; i++)
             {
-                _instance._flowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{flowersSpritesStr[i]}"); 
+                _instance._flowerSprites[i] = GameManager.ResourceManager.Load<Sprite>($"Sprites/Flowers/{flowersSpritesStr[i]}"); 
                 if(_instance._flowerSprites[i] == null)
                 {
                     Debug.Log($"_instance.{flowersSpritesStr[i]} NULL");
@@ -112,7 +113,7 @@ public class TileController : MonoBehaviour
             _instance._leafSprites = new Sprite[(int)Define.LeafTypes.MaxCount];
             for (int i = 0; i < (int)Define.LeafTypes.MaxCount; i++)
             {
-                _instance._leafSprites[i] = Resources.Load<Sprite>($"Sprites/Leaves/{leavesSpritesStr[i]}");
+                _instance._leafSprites[i] = GameManager.ResourceManager.Load<Sprite>($"Sprites/Leaves/{leavesSpritesStr[i]}");
                 if (_instance._leafSprites[i] == null)
                 {
                     Debug.Log("_instance.Leaves[(int)i] NULL");
@@ -123,7 +124,7 @@ public class TileController : MonoBehaviour
             _instance._witheredFlowersTileSprites = new Sprite[(int)Define.WitheredFlowersTileTypes.MaxCount];
             for (int i = 0; i < (int)Define.WitheredFlowersTileTypes.MaxCount; i++)
             {
-                _instance._witheredFlowersTileSprites[i] = Resources.Load<Sprite>($"Sprites/WitheredFlowersTileTypes/{witheredFlowersTileTypesStr[i]}");
+                _instance._witheredFlowersTileSprites[i] = GameManager.ResourceManager.Load<Sprite>($"Sprites/WitheredFlowersTileTypes/{witheredFlowersTileTypesStr[i]}");
                 if (_instance._witheredFlowersTileSprites[i] == null)
                 {
                     Debug.Log("_instance.WitheredFlowersTileTypes[(int)i] NULL");
@@ -135,7 +136,7 @@ public class TileController : MonoBehaviour
             _instance._bonusSprites = new Sprite[(int)Define.BonusTileTypes.MaxCount];
             for (int i = 0; i < (int)Define.BonusTileTypes.MaxCount; i++)
             {
-                _instance._bonusSprites[i] = Resources.Load<Sprite>($"Sprites/BonusTiles/{BonusTileTypesStr[i]}");
+                _instance._bonusSprites[i] = GameManager.ResourceManager.Load<Sprite>($"Sprites/BonusTiles/{BonusTileTypesStr[i]}");
                 if (_instance._bonusSprites[i] == null)
                 {
                     Debug.Log("_instance.BonusTileTypesStr[(int)i] NULL");

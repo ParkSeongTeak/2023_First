@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class tile_tulip_2 : FlowerBook
 {
+    public override string KoreanFlowerName { get { _koreanFlowerName = "Æ«¸³"; return _koreanFlowerName; } set => throw new System.NotImplementedException(); }
+
     public override Define.FlowerTypes GetFlowerType()
     {
 

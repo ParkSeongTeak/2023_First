@@ -168,7 +168,7 @@ public class InGameDataManager
         System.Random random = new System.Random();
         int rarenum = random.Next(0, 100);
         int setData = 0;
-        if (rarenum < 1)
+        if (rarenum < 1 )
         {
             setData = 0;
         }

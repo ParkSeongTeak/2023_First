@@ -18,8 +18,11 @@ public class ShopUI : UI_PopUp
 
     enum Texts
     {
+
+        KoreanName,
         Branch,
         GoldBranch,
+        FlowerName,
     }
     
     void Start()
@@ -44,10 +47,13 @@ public class ShopUI : UI_PopUp
     }
     public void SetUI(FlowerBook flowerBook)
     {
+
+
         Init();
         _flowerBook = flowerBook;
         System.Type tmpClassType = flowerBook.GetType();
         _flowerName = tmpClassType.Name;
+        string KoreanName = flowerBook.KoreanFlowerName;
 
         Debug.Log(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch);
 
@@ -56,8 +62,10 @@ public class ShopUI : UI_PopUp
 
         if(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch != -1 || GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch != -1)
         {
-            GetText((int)Texts.Branch).text = $"Branch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch}";
-            GetText((int)Texts.GoldBranch).text = $"GoldBranch: {GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch}";
+            GetText((int)Texts.KoreanName).text = $"{KoreanName}";
+
+            GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch}";
+            GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch}";
         }
         else
         {
@@ -76,6 +84,7 @@ public class ShopUI : UI_PopUp
             && GameManager.InGameDataManager.GoldBranch >= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch)
         {
             Debug.Log("you can buy it!");
+            GameManager.SoundManager.Play(Define.SFX.congrats02_03);//congrats02_03효과음
             GameManager.InGameDataManager.Branch -= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch;
             GameManager.InGameDataManager.GoldBranch -= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch;
             GameManager.InGameDataManager.saveData();
@@ -83,12 +92,14 @@ public class ShopUI : UI_PopUp
             ClosePopupUI();
         }
         else
+            GameManager.SoundManager.Play(Define.SFX.Error_01);//Error_01효과음
             Debug.Log("you cant buy it...");
 
     }
 
     void Btn_Delete(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         ClosePopupUI();
 
     }

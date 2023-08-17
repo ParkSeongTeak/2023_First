@@ -20,6 +20,7 @@ public class MainUI : UI_Scene
         GotoGameButton,
         SkinTab,
         Random,
+        RandomRewardBtn,
     }
 
     enum Texts
@@ -63,6 +64,7 @@ public class MainUI : UI_Scene
         BindEvent(GetButton((int)Buttons.SkinTab).gameObject, ToFlowersBook);
         BindEvent(GetButton((int)Buttons.OptionButton).gameObject, ShowOption);
         BindEvent(GetButton((int)Buttons.Random).gameObject, ShowRandomReward);
+        BindEvent(GetButton((int)Buttons.RandomRewardBtn).gameObject, RandomRewardBtn);
 
 
         GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
@@ -72,9 +74,9 @@ public class MainUI : UI_Scene
         //QuestNum
         GetText((int)Texts.QuestNum).text = $"Quest {GameManager.InGameDataManager.QuestIDX}";
 
-        GetText((int)Texts.JumpCnt).text = $"Jump {GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Jump}";
-        GetText((int)Texts.SkipCnt).text = $"Skip {GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Skip}";
-        GetText((int)Texts.BloomCnt).text = $"Bloom {GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Bloom}";
+        GetText((int)Texts.JumpCnt).text = $"{GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Jump}";
+        GetText((int)Texts.SkipCnt).text = $"{GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Skip}";
+        GetText((int)Texts.BloomCnt).text = $"{GameManager.InGameDataManager.ClearRwrdHandler[GameManager.InGameDataManager.QuestIDX].Bloom}";
 
 
         GetImage((int)Images.Flower1).sprite = GameManager.InGameDataManager.UseFlowerSprites[0];
@@ -118,7 +120,10 @@ public class MainUI : UI_Scene
     {
 
         GameManager.SoundManager.Play(Define.SFX.Start_01);//Start_01효과음
+        GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);//블라썸컴퍼니_01정지
+        GameManager.SoundManager.Play(Define.BGM.블라썸_꽃도감);//블라썸_꽃도감
         GameManager.SceneManager.LoadScene(Define.Scenes.Game);
+       
 
     }
     void ToFlowersBook(PointerEventData evt)
@@ -126,14 +131,18 @@ public class MainUI : UI_Scene
         GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.SceneManager.LoadScene(Define.Scenes.FlowersBook);
 
+
     }
 
     void ShowRandomReward(PointerEventData evt)
     {
         if (!GetImage((int)Images.RandomReward).gameObject.activeSelf)
         {
+            GameManager.SoundManager.Play(Define.SFX.congrats_01); //congrats_01효과음
             GetImage((int)Images.RandomReward).gameObject.SetActive(true);
-            GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RandomRewardData), GameManager.InGameDataManager.RandomRewardData)}";
+            GetText((int)Texts.RandomRewardTxt).text = $"확인비(확인 안해도 획득가능) brance5 ";
+
+
 
         }
         else
@@ -149,6 +158,18 @@ public class MainUI : UI_Scene
         GameManager.UIManager.ShowPopupUI<Option>();
     }
 
-
+    void RandomRewardBtn(PointerEventData evt)
+    {
+        if (GameManager.InGameDataManager.Branch > 5)
+        {
+            GameManager.InGameDataManager.Branch -= 5;
+            GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RandomRewardData), GameManager.InGameDataManager.RandomRewardData)}";
+            GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
+            GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.GoldBranch}";
+            GetText((int)Texts.MaxPoint).text = $"{GameManager.InGameDataManager.MaxPoint}";
+            GetButton((int)Buttons.RandomRewardBtn).gameObject.SetActive(false);
+        }
+        
+    }
     #endregion
 }

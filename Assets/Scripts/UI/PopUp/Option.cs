@@ -39,6 +39,15 @@ public class Option : UI_PopUp
         BindEvent(GetButton((int)Buttons.CutScenePrologueShow).gameObject, Btn_CutScenePrologueShow);
         BindEvent(GetButton((int)Buttons.CutSceneEpilogueShow).gameObject, Btn_CutSceneEpilogueShow);
 
+
+        if (GameManager.InGameDataManager.NeedToShowCutScene_prologue)
+        {
+            GetButton((int)Buttons.CutScenePrologueShow).gameObject.SetActive(false);
+        }
+        if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue)
+        {
+            GetButton((int)Buttons.CutSceneEpilogueShow).gameObject.SetActive(false);
+        }
         GameManager.SoundManager.SetVolume(Define.Sounds.BGM, GameManager.InGameDataManager.BGMVolume);
         GameManager.SoundManager.SetVolume(Define.Sounds.SFX, GameManager.InGameDataManager.SFXVolume);
 
@@ -52,17 +61,19 @@ public class Option : UI_PopUp
     }
     void Btn_ESC(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.UIManager.ClosePopupUI();
     }
     void Btn_CutScenePrologueShow(PointerEventData evt)
     {
-
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.UIManager.ShowPopupUI<CutScene_Prologue>();
     }
 
 
     void Btn_CutSceneEpilogueShow(PointerEventData evt)
     {
+        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.UIManager.ShowPopupUI<CutScene_Epilogue>();
 
     }
