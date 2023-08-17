@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class tile_rose3_blm : FlowerBook
 {
     public override string KoreanFlowerName { get { _koreanFlowerName = "Àå¹Ì"; return _koreanFlowerName; } set => throw new System.NotImplementedException(); }
-
+    public override Sprite FlowerIcon { get { _flowerIcon = GameManager.ResourceManager.Load<Sprite>($"Sprites/Flower_Icon/tile_rose3_blm"); return _flowerIcon; } set => throw new System.NotImplementedException(); }
 
     public override Define.FlowerTypes GetFlowerType()
     {

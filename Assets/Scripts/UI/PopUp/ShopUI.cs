@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using Unity.VisualScripting;
 
 public class ShopUI : UI_PopUp
 {
 
     string _flowerName;
     FlowerBook _flowerBook;
+
+
     enum Buttons
     {
         Buy,
@@ -22,8 +26,15 @@ public class ShopUI : UI_PopUp
         KoreanName,
         Branch,
         GoldBranch,
-        FlowerName,
+        FlowerIcon,
+
     }
+
+    enum Images
+    {
+        Flower,
+    }
+
     
     void Start()
     {
@@ -37,13 +48,12 @@ public class ShopUI : UI_PopUp
         //Object 바인드
         Bind<Button>(typeof(Buttons));
         Bind<TMP_Text>(typeof(Texts));
+        Bind<Image>(typeof(Images));
 
         BindEvent(GetButton((int)Buttons.Delete).gameObject, Btn_Delete);
         BindEvent(GetButton((int)Buttons.Buy).gameObject, Btn_Buy);
 
 
-        
-        
     }
     public void SetUI(FlowerBook flowerBook)
     {
@@ -54,25 +64,33 @@ public class ShopUI : UI_PopUp
         System.Type tmpClassType = flowerBook.GetType();
         _flowerName = tmpClassType.Name;
         string KoreanName = flowerBook.KoreanFlowerName;
+        Sprite FlowerIcon = flowerBook.FlowerIcon;
 
         Debug.Log(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch);
 
         Debug.Log(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch);
         
 
+
         if(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch != -1 || GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch != -1)
         {
             GetText((int)Texts.KoreanName).text = $"{KoreanName}";
-
             GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch}";
             GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch}";
+            GetImage((int)Images.Flower).sprite = FlowerIcon;
+
+
         }
         else
         {
-            GetText((int)Texts.Branch).text = "이 상품은 레어상품입니다.";
-            GetText((int)Texts.GoldBranch).text = "";
+            GetText((int)Texts.KoreanName).text = $"{KoreanName}";
+            GetText((int)Texts.Branch).text = "X";
+            GetText((int)Texts.GoldBranch).text = "X";
+            GetImage((int)Images.Flower).sprite = FlowerIcon;
 
             GetButton((int)Buttons.Buy).gameObject.SetActive(false);
+
+            //에러 사운드
         }
 
 
