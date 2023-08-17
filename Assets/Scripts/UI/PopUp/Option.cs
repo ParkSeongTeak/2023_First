@@ -85,11 +85,13 @@ public class Option : UI_PopUp
         {
             volume = Get<Slider>((int)Sliders.BGM).value;
             GameManager.InGameDataManager.BGMVolume = volume;
+            
         }
         else
         {
             volume = Get<Slider>((int)Sliders.SFX).value;
             GameManager.InGameDataManager.SFXVolume = volume;
+            
 
         }
 

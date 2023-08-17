@@ -83,25 +83,25 @@ public class PlayerController : MonoBehaviour
     }
 
     Coroutine UnbeatCoroutine;
-    public void Unbeatable(float time = 10f)
+    public void Unbeatable()
     {
-        if (GameUI.Instance.isUnbeatable)   //true상태
-        {
-            UnbeatCoroutine = StartCoroutine(UnbeatAnim(anims.Idle_unbeatable, time));
-        }
-       
+        //if (GameUI.Instance.isUnbeatable)   //true상태
+        //{
+        //    //UnbeatCoroutine = StartCoroutine(UnbeatAnim(anims.Idle_unbeatable, time));
+        //
+        //    string str = Enum.GetName(typeof(anims), anims.Idle_unbeatable);
+        //    _animator.SetBool($"{str}Bool", true);
+        //}
+
+        string str = Enum.GetName(typeof(anims), anims.Idle_unbeatable);
+        _animator.SetBool($"{str}Bool", true);
     }
     public void UnbeatableEnd()
     {
-        if(UnbeatCoroutine != null)
-        {
-            StopCoroutine(UnbeatCoroutine);
-        }
         string str = Enum.GetName(typeof(anims), anims.Idle_unbeatable);
         _animator.SetBool($"{str}Bool", false);
         //isUnbeatAnim = false;
-
-
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -154,20 +154,20 @@ public class PlayerController : MonoBehaviour
 
     //bool isUnbeatAnim = false;
 
-    IEnumerator UnbeatAnim(anims anim, float time = 10f)
-    {
-        //무적 중복 적용 시 코루틴을 끊고 재시작해야 하는데, 동시 출력을 막으려고 2~3중으로 if 문을 걸어 에러가 남
-
-        //if (!isUnbeatAnim)
-        //{
-        //isUnbeatAnim = true;
-        string str = Enum.GetName(typeof(anims), anim);
-        _animator.SetBool($"{str}Bool", true);
-        yield return new WaitForSeconds(time);
-        _animator.SetBool($"{str}Bool", false);
-        //isUnbeatAnim = false;
-
-        //}
-    }
+    //IEnumerator UnbeatAnim(anims anim, float time = 10f)
+    //{
+    //    //무적 중복 적용 시 코루틴을 끊고 재시작해야 하는데, 동시 출력을 막으려고 2~3중으로 if 문을 걸어 에러가 남
+    //
+    //    //if (!isUnbeatAnim)
+    //    //{
+    //    //isUnbeatAnim = true;
+    //    string str = Enum.GetName(typeof(anims), anim);
+    //    _animator.SetBool($"{str}Bool", true);
+    //    yield return new WaitForSeconds(time);
+    //    _animator.SetBool($"{str}Bool", false);
+    //    //isUnbeatAnim = false;
+    //
+    //    //}
+    //}
 
 }

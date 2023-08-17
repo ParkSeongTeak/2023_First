@@ -123,9 +123,14 @@ public class InGameDataManager
 
     #region Branch ,Point, Reward 관련 Data
 
-    public int Branch { get { return PlayerPrefs.GetInt("Branch", 1000); } set { PlayerPrefs.SetInt("Branch", value); } }
-    public int GoldBranch { get { return PlayerPrefs.GetInt("GoldBranch", 1000); } set { PlayerPrefs.SetInt("GoldBranch", value); } }
-    public int MaxPoint { get; set; }
+    int _branch;
+    public int Branch { get { return _branch; } set { PlayerPrefs.SetInt("Branch", value); _branch = value; } }
+
+    int _goldBranch;
+    public int GoldBranch { get { return _goldBranch; } set { PlayerPrefs.SetInt("GoldBranch", value); _goldBranch = value; }}
+
+    int _maxPoint;
+    public int MaxPoint { get { return _maxPoint; } set { PlayerPrefs.SetInt("MaxPoint", value); _maxPoint = value; } }
     Action _updateBranchAndPoint = null; 
 
     public Action UpdateBranchAndPointAction { get { return _updateBranchAndPoint; } set { _updateBranchAndPoint = value; } }
@@ -148,7 +153,7 @@ public class InGameDataManager
         }
         for (int i = 0; i < useFlowerNum; i++)
         {
-            _useFlowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{flowersSpritesStr[i]}");
+            _useFlowerSprites[i] = GameManager.ResourceManager.Load<Sprite>($"Sprites/Flower_Icon/{flowersSpritesStr[i]}");
             if (_useFlowerSprites[i] == null)
             {
                 Debug.Log("_instance._flowerSprites[(int)i] NULL");
@@ -270,8 +275,8 @@ public class InGameDataManager
     #endregion
 
 
-
-    public int QuestIDX { get { return PlayerPrefs.GetInt("QUESTINDEX",1); }  set { PlayerPrefs.SetInt("QUESTINDEX", value);} }
+    int _questIDX;
+    public int QuestIDX { get { return _questIDX; }  set { PlayerPrefs.SetInt("QUESTINDEX", value); _questIDX = value; } }
     
     // Start is called before the first frame update
     public GameObject _player;
@@ -282,14 +287,18 @@ public class InGameDataManager
     #region Initiate
     public void init()
     {
-        MaxPoint = PlayerPrefs.GetInt("MaxPoint", 460);
+        _questIDX = PlayerPrefs.GetInt("QUESTINDEX", 1);
+        _branch = PlayerPrefs.GetInt("Branch", 0);
+        _goldBranch = PlayerPrefs.GetInt("GoldBranch", 0);
+        _maxPoint = PlayerPrefs.GetInt("MaxPoint", 0);
+
         _flowerPriceHandler = Util.ParseJson<FlowerPriceHandler>();
         _clearRwrdHandler = Util.ParseJson<ClearRwrdHandler>();
         SelectMode = false;
 
-        UseFlowerList[0] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[0]", (int)FlowerTypes.icon_magnolia1);
-        UseFlowerList[1] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[1]", (int)FlowerTypes.icon_magnolia2); 
-        UseFlowerList[2] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[2]", (int)FlowerTypes.icon_magnolia3);
+        UseFlowerList[0] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[0]", (int)FlowerTypes.tile_cherryblossom1_blm);
+        UseFlowerList[1] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[1]", (int)FlowerTypes.tile_cherryblossom2_blm); 
+        UseFlowerList[2] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[2]", (int)FlowerTypes.tile_cherryblossom3_blm);
 
         string[] flowersSpritesStr = new string[useFlowerNum];
 
@@ -299,7 +308,8 @@ public class InGameDataManager
         }
         for (int i = 0; i < useFlowerNum; i++)
         {
-            _useFlowerSprites[i] = Resources.Load<Sprite>($"Sprites/Flowers/{flowersSpritesStr[i]}");
+            _useFlowerSprites[i] = GameManager.ResourceManager.Load<Sprite>($"Sprites/Flower_Icon/{flowersSpritesStr[i]}");
+
             if (_useFlowerSprites[i] == null)
             {
                 Debug.Log("_instance._flowerSprites[(int)i] NULL");

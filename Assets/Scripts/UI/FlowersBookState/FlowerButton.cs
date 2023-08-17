@@ -27,19 +27,23 @@ public class FlowerButton : MonoBehaviour
     public void UIUpdate()
     {
         System.Type tmpClassType = FlowerUI.GetType();
-
+        
         if (!FlowerUI.GetHave())
         {
+            
             this.gameObject.GetComponent<Image>().color = DontHave;
         }
         else
         {
+
             this.gameObject.GetComponent<Image>().color = Have;
             
             foreach(Define.FlowerTypes flowerType in FlowersBookUI.GetSelectQueue())
             {
-                if(Enum.GetName(typeof(Define.FlowerTypes), flowerType ) == FlowerUI.GetType().Name)
+         
+                if (Enum.GetName(typeof(Define.FlowerTypes), flowerType ) == FlowerUI.GetType().Name)
                 {
+
                     this.gameObject.GetComponent<Image>().color = Pick;
                 }
 

@@ -27,7 +27,10 @@ public class State
     public int BloomCnt
     {
         get { return _bloomCnt; }
-        set { _bloomCnt = value; }
+        set { 
+            _bloomCnt = value;
+            if (_bloomCnt > GameManager.InGameDataManager.MaxPoint) { GameManager.InGameDataManager.MaxPoint = _bloomCnt; }
+        }
     }
     public const float Reward_Bloom_Weight = 0.2f;
 

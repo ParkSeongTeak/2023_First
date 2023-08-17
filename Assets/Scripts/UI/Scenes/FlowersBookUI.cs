@@ -90,6 +90,7 @@ public class FlowersBookUI : UI_Scene
     {
         GameManager.SoundManager.Play(Define.SFX.click_02);//click_02È¿°úÀ½
         GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookSelect;
+        GetButton((int)Buttons.Select).GetComponent<Image>().color = new Color(0.6f, 0.6f, 0.6f, 1f);
     }
     void Btn_Save(PointerEventData evt)
     {
@@ -110,6 +111,7 @@ public class FlowersBookUI : UI_Scene
         }
         GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookInfo;
 
+        GetButton((int)Buttons.Select).GetComponent<Image>().color = Color.white;
     }
     void Btn_Back(PointerEventData evt)
     {
@@ -129,12 +131,12 @@ public class FlowersBookUI : UI_Scene
         {
             PlayerPrefs.SetInt($"{Enum.GetName(typeof(FlowerTypes),Flower)}Have", 0);
         }
-        PlayerPrefs.SetInt("Branch", 500);
-        PlayerPrefs.SetInt("GoldBranch", 40);
-        PlayerPrefs.SetInt("MaxPoint", 360);
-        PlayerPrefs.SetInt("UseFlowerList[0]", (int)FlowerTypes.icon_magnolia1);
-        PlayerPrefs.SetInt("UseFlowerList[1]", (int)FlowerTypes.icon_magnolia2);
-        PlayerPrefs.SetInt("UseFlowerList[2]", (int)FlowerTypes.icon_magnolia3);
+        PlayerPrefs.SetInt("Branch", 5000000);
+        PlayerPrefs.SetInt("GoldBranch", 5000000);
+        PlayerPrefs.SetInt("MaxPoint", 0);
+        PlayerPrefs.SetInt("UseFlowerList[0]", (int)FlowerTypes.tile_cherryblossom1_blm);
+        PlayerPrefs.SetInt("UseFlowerList[1]", (int)FlowerTypes.tile_cherryblossom2_blm);
+        PlayerPrefs.SetInt("UseFlowerList[2]", (int)FlowerTypes.tile_cherryblossom3_blm);
         PlayerPrefs.SetInt("QUESTINDEX", 1);
         GameManager.InGameDataManager.NeedToShowCutScene_prologue = true;
         GameManager.InGameDataManager.NeedToShowCutScene_epilogue = true;

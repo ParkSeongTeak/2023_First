@@ -27,7 +27,12 @@ public class SoundManager
             }
 
             _audioSources[(int)Define.Sounds.BGM].loop = true;
+            SetVolume(Define.Sounds.BGM, GameManager.InGameDataManager.BGMVolume);
+            SetVolume(Define.Sounds.SFX, GameManager.InGameDataManager.SFXVolume);
+            Debug.Log($"BGNVolue : {GameManager.InGameDataManager.BGMVolume}    SFXVolume : {GameManager.InGameDataManager.SFXVolume}");
+
         }
+        /*
         else
         {
             string[] soundNames = System.Enum.GetNames(typeof(Define.Sounds));
@@ -40,7 +45,7 @@ public class SoundManager
             _audioSources[(int)Define.Sounds.BGM].loop = true;
 
         }
-
+        */
 
     }
 
@@ -50,11 +55,11 @@ public class SoundManager
     /// <param name="SFXSound"> Define.SFX Enum 에서 가져오기를 바람 </param>
     /// <param name="volume"></param>
 
-    public void Play(Define.SFX SFXSound, float volume = 1.0f)
+    public void Play(Define.SFX SFXSound)
     {
         string path = Enum.GetName(typeof(Define.SFX), SFXSound);
         AudioClip audioClip = GetOrAddAudioClip(path, Define.Sounds.SFX);
-        Play(audioClip, Define.Sounds.SFX, volume);
+        Play(audioClip, Define.Sounds.SFX);
     }
 
 
@@ -76,14 +81,14 @@ public class SoundManager
     /// </summary>
     /// <param name="BGMSound">Define.BGM Enum 에서 가져오기를 바람 </param>
     /// <param name="volume"></param>
-    public void Play(Define.BGM BGMSound, float volume = 1.0f)
+    public void Play(Define.BGM BGMSound)
     {
         string path = Enum.GetName(typeof(Define.BGM), BGMSound);
         AudioClip audioClip = GetOrAddAudioClip(path, Define.Sounds.BGM);
-        Play(audioClip, Define.Sounds.BGM, volume);
+        Play(audioClip, Define.Sounds.BGM);
     }
 
-    public void Play(AudioClip audioClip, Define.Sounds type = Define.Sounds.SFX, float volume = 1.0f)
+    public void Play(AudioClip audioClip, Define.Sounds type = Define.Sounds.SFX)
     {
         if (audioClip == null)
             return;
@@ -94,14 +99,12 @@ public class SoundManager
             if (audioSource.isPlaying)
                 audioSource.Stop();
 
-            audioSource.volume = volume;
             audioSource.clip = audioClip;
             audioSource.Play();
         }
         else
         {
             AudioSource audioSource = _audioSources[(int)Define.Sounds.SFX];
-            audioSource.volume = volume;
             audioSource.PlayOneShot(audioClip);
         }
     }
@@ -149,6 +152,7 @@ public class SoundManager
         }
         _audioClips.Clear();
     }
+
 
     public void StopBGM(Define.BGM bgmType)
     {

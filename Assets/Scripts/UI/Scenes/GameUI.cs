@@ -376,7 +376,7 @@ public class GameUI : UI_Scene
     {
 
         _timeSlider.StopTimer();
-        GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Unbeatable(delay+3);
+        GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Unbeatable();
         GameManager.InGameDataManager.NowUnbeat = true;
         if(UnbeatableItemIcon== null)
         {

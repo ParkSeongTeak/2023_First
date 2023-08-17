@@ -161,15 +161,15 @@ public class Define
     }
     public enum FlowerTypes  //blm 파일들만 넣어놓기
     {
+        tile_cherryblossom1_blm,
+        tile_cherryblossom2_blm,
+        tile_cherryblossom3_blm,
         icon_magnolia1,
         icon_magnolia2,
         icon_magnolia3,
         tile_canola1_blm,
         tile_canola2_blm,
         tile_canola3_blm,
-        tile_cherryblossom1_blm,
-        tile_cherryblossom2_blm,
-        tile_cherryblossom3_blm,
         tile_mulmangcho1_blm,
         tile_mulmangcho2_blm,
         tile_mulmangcho3_blm,
@@ -202,15 +202,16 @@ public class Define
    
     public enum FlowerBudConvert  //blm 파일들만 넣어놓기
     {
+
+        tile_cherryblossom1_blm,
+        tile_cherryblossom2_blm,
+        tile_cherryblossom3_blm,
         icon_magnolia1,
         icon_magnolia2,
         icon_magnolia3,
         tile_canola1_blm,
         tile_canola2_blm,
         tile_canola3_blm,
-        tile_cherryblossom1_blm,
-        tile_cherryblossom2_blm,
-        tile_cherryblossom3_blm,
         tile_mulmangcho1_blm,
         tile_mulmangcho2_blm,
         tile_mulmangcho3_blm,

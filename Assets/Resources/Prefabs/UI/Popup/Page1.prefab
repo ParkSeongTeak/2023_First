@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79831fc14ce298e44a2ec9db74dea9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlowerUI: {fileID: 0}
+  FlowerUI: {fileID: 5126189792612198712, guid: 0d9783e16757f6240a475b8286b71326, type: 3}
 --- !u!1 &1297972599531900018
 GameObject:
   m_ObjectHideFlags: 0

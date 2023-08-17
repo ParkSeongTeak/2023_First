@@ -10,19 +10,35 @@ using static Define;
 public class Page1 : UI_PopUp
 {
 
-    
+    enum Images
+    {
+        picture1,
+        picture2,
+        picture3,
+        picture4,
+        picture5,
+        picture6,
+        picture7,
+        picture8,
+        picture9,
+        picture10,
+        picture11,
+        picture12,
+
+    }
 
     enum Buttons 
     {
+
+        tile_cherryblossom1_blm,
+        tile_cherryblossom2_blm,
+        tile_cherryblossom3_blm,
         icon_magnolia1,
         icon_magnolia2,
         icon_magnolia3,
         tile_canola1_blm,
         tile_canola2_blm,
         tile_canola3_blm,
-        tile_cherryblossom1_blm,    
-        tile_cherryblossom2_blm,
-        tile_cherryblossom3_blm,
         tile_mulmangcho1_blm,
         tile_mulmangcho2_blm,
         tile_mulmangcho3_blm,
@@ -44,9 +60,9 @@ public class Page1 : UI_PopUp
         //Object πŸ¿ŒµÂ
         Bind<Button>(typeof(Buttons));
 
-        PlayerPrefs.SetInt($"icon_magnolia1Have", 1);
-        PlayerPrefs.SetInt($"icon_magnolia2Have", 1);
-        PlayerPrefs.SetInt($"icon_magnolia3Have", 1);
+        PlayerPrefs.SetInt($"tile_cherryblossom1_blmHave", 1);
+        PlayerPrefs.SetInt($"tile_cherryblossom2_blmHave", 1);
+        PlayerPrefs.SetInt($"tile_cherryblossom3_blmHave", 1);
 
 
 

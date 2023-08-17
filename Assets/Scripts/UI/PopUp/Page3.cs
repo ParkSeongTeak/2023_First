@@ -6,6 +6,22 @@ using UnityEngine.UI;
 
 public class Page3 : UI_PopUp
 {
+    enum Images
+    {
+        picture1,
+        picture2,
+        picture3,
+        picture4,
+        picture5,
+        picture6,
+        picture7,
+        picture8,
+        picture9,
+        picture10,
+        picture11,
+        picture12,
+
+    }
     enum Buttons
     {
         tile_tulip_1,
