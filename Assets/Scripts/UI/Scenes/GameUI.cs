@@ -134,8 +134,12 @@ public class GameUI : UI_Scene
 
 
         Debug.Log("JumpBtn´­¸²");
-        GameManager.InGameDataManager.NowState.JumpCnt++;
-        jump--;
+        if(GameManager.InGameDataManager.Player.GetComponent<PlayerController>().OnTile.GetType() != typeof(WitheredFlowersTile))
+        {
+            GameManager.InGameDataManager.NowState.JumpCnt++;
+            jump--;
+        }
+        
         GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
         GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
 
@@ -284,8 +288,8 @@ public class GameUI : UI_Scene
 
         SkipJumpSwapItemIcon.SetActive(false);
 
-        GetButton((int)Buttons.JumpBtn).transform.position = jumpVec;
-        GetButton((int)Buttons.SkipBtn).transform.position = skipVec;
+        GetButton((int)Buttons.JumpBtn).transform.localPosition = jumpVec;
+        GetButton((int)Buttons.SkipBtn).transform.localPosition = skipVec;
     }
 
     #endregion SkipJumpSwapItem

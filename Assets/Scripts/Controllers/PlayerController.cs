@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public const float SPEED = 0.15f; 
     bool _canJump;
     Tile _onTile;
+    public Tile OnTile { get { return _onTile; } }
     [SerializeField]
     Animator _animator;
     bool _isUnbeatable;

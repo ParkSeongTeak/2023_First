@@ -7,6 +7,7 @@ public class SoundManager
 {
     /// <summary> 캐싱을 이용하면 효율적 </summary>
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sounds.MaxCount];
+    public AudioSource[] AudioSources { get { return _audioSources; } }
 
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
@@ -32,20 +33,7 @@ public class SoundManager
             Debug.Log($"BGNVolue : {GameManager.InGameDataManager.BGMVolume}    SFXVolume : {GameManager.InGameDataManager.SFXVolume}");
 
         }
-        /*
-        else
-        {
-            string[] soundNames = System.Enum.GetNames(typeof(Define.Sounds));
-            for (int i = 0; i < soundNames.Length - 1; i++)
-            {
-                GameObject go = root.transform.Find(soundNames[i]).gameObject;
-                _audioSources[i] = go.GetComponent<AudioSource>();
-            }
-
-            _audioSources[(int)Define.Sounds.BGM].loop = true;
-
-        }
-        */
+       
 
     }
 

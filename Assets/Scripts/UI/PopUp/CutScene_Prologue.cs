@@ -34,6 +34,7 @@ public class CutScene_Prologue : UI_PopUp
         Init();
 
     }
+    Coroutine Coroutine;
 
     public override void Init()
     {
@@ -50,16 +51,21 @@ public class CutScene_Prologue : UI_PopUp
         GetImage((int)Images.BG).gameObject.SetActive(true);
 
         BindEvent(GetButton((int)Buttons.CutScene_Prologue).gameObject, Btn_CutScene_Prologue);
+        Coroutine = StartCoroutine(Btn_CutScene_Prologue_Auto());
 
+        GameManager.SoundManager.AudioSources[(int)Define.Sounds.BGM].mute = true;
 
     }
     Images CutScene = (Images)1;
     void Btn_CutScene_Prologue(PointerEventData evt)
     {
-        if(CutScene == Images.BG)
+        StopCoroutine(Coroutine);
+
+        if (CutScene == Images.BG)
         {
             GameManager.InGameDataManager.NeedToShowCutScene_prologue = false;
             ClosePopupUI();
+            GameManager.SoundManager.AudioSources[(int)Define.Sounds.BGM].mute = false;
             return;
         }
 
@@ -80,6 +86,43 @@ public class CutScene_Prologue : UI_PopUp
         }
 
         CutScene++;
-    }
+        Coroutine = StartCoroutine(Btn_CutScene_Prologue_Auto());
 
+    }
+    IEnumerator Btn_CutScene_Prologue_Auto()
+    {
+        bool end = false;
+        while (!end)
+        {
+            yield return new WaitForSeconds(1.4f);
+            if (CutScene == Images.BG)
+            {
+                GameManager.InGameDataManager.NeedToShowCutScene_prologue = false;
+                end = true;
+                GameManager.SoundManager.AudioSources[(int)Define.Sounds.BGM].mute = false;
+
+                ClosePopupUI();
+                
+            }
+
+            GetImage((int)CutScene).gameObject.SetActive(true);
+            if (CutScene == Images.CutScene_prologue2_1)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    GetImage(i)?.gameObject.SetActive(false);
+                }
+            }
+            if (CutScene == Images.CutScene_prologue3_1)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    GetImage(i)?.gameObject.SetActive(false);
+                }
+            }
+
+            CutScene++;
+        }
+
+    }
 }
