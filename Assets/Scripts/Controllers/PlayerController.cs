@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
         
         if (_canJump | isJumperItem)
         {
+
+            GameManager.SoundManager.Play(Define.SFX.Jump_01);
             //점프키 누르면 어쩌구 저쩌구
             _canJump = false;
             //GameManager.InGameDataManager.NowState.JumpCnt++;
@@ -111,6 +113,7 @@ public class PlayerController : MonoBehaviour
         {
             _canJump = true;
             _onTile = collision.transform.GetComponent<Tile>();
+            TileController.IsMoving = false;
         }
 
     }

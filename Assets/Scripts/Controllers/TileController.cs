@@ -323,12 +323,12 @@ public class TileController : MonoBehaviour
         {
             if (_instance._nowGeneratedTiles[i] != null)
             {
-                _instance._nowGeneratedTiles[i].MoveNext(i);
+                _instance._nowGeneratedTiles[i]?.MoveNext(i);
             }
             
         }
         //맨 앞 지워줌
-        _instance.DestoryTile(_instance._nowGeneratedTiles[0]);
+        _instance.DestoryTile(_instance?._nowGeneratedTiles[0]);
         StartCoroutine(WaitTime());
         GeneratedTile();
         

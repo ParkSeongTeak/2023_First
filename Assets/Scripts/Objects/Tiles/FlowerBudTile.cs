@@ -33,9 +33,6 @@ public class FlowerBudTile : Tile
         if (JumpLeft != 0)
         {
             _animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/{AnimName}");
-            //_animator.enabled = false;
-            //gameObject.GetComponent<SpriteRenderer>().sprite = GameManager.ResourceManager.Load<Sprite>($"Sprites/FlowerBudTiles/{AnimName}");
-            //Debug.Log($"Sprites/FlowerBudTiles/{AnimName}  //  {gameObject.GetComponent<SpriteRenderer>().sprite?.name}");
 
 
             _animator.Play(_animationClip?.name);
@@ -83,6 +80,7 @@ public class FlowerBudTile : Tile
                 }
                 else
                 {
+                    TileController.IsMoving = true;
                     TileController.Instance.DestoryTile(this);
                     GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02효과음
                     GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);

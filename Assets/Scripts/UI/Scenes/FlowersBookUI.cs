@@ -35,7 +35,7 @@ public class FlowersBookUI : UI_Scene
     {
         FlowerTypes dequeue = _selectQueue.Dequeue();
         FlowerButton[] flowerButtons = FindObjectsOfType<FlowerButton>();
-        Debug.Log(flowerButtons.Length);
+        //Debug.Log(flowerButtons.Length);
 
         foreach (FlowerButton fb in flowerButtons)
         {

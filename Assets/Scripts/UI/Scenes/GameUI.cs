@@ -111,23 +111,22 @@ public class GameUI : UI_Scene
 
         //jumpVec = GetButton((int)Buttons.JumpBtn).transform.position;
         jumpVec = GetButton((int)Buttons.JumpBtn).transform.localPosition;
-        Debug.Log("jumpVec" + jumpVec);
+        //Debug.Log("jumpVec" + jumpVec);
         skipVec = GetButton((int)Buttons.SkipBtn).transform.localPosition;
-        Debug.Log("skipVec" + skipVec);
+        //Debug.Log("skipVec" + skipVec);
 
-        GameManager.InputManager.InputAction -= JumpBtnKey;
         GameManager.InputManager.InputAction += JumpBtnKey;
-
-        GameManager.InputManager.InputAction -= SkipBtnKey;
         GameManager.InputManager.InputAction += SkipBtnKey;
+
 
     }
 
     public void JumpBtnKey()
     {
-
+        int idx = 0;
         if (Input.GetKeyDown(KeyCode.J))
         {
+            Debug.Log($"{idx++}");
             Btn_Jump_ForKey();
         }
     }
@@ -144,33 +143,28 @@ public class GameUI : UI_Scene
 
         // 실제로 점프가 되는 상황 에서만! 점프 사운드가 나는게 맞냐?
         // 버튼을 누르면 무조껀 사운드는 나고 점프가 되냐 마냐는 사운드 알바는 아니다. 
-
-        GameManager.SoundManager.Play(Define.SFX.Jump_01);
-
-
-
-        Debug.Log("JumpBtn눌림");
-        if (GameManager.InGameDataManager.Player.GetComponent<PlayerController>().OnTile.GetType() != typeof(WitheredFlowersTile))
+        
+        //GameManager.SoundManager.Play(Define.SFX.Jump_01);
+        if (!TileController.IsMoving)
         {
-            GameManager.InGameDataManager.NowState.JumpCnt++;
-            jump--;
+            Debug.Log("JumpBtn눌림");
+            if (GameManager.InGameDataManager.Player.GetComponent<PlayerController>().OnTile.GetType() == typeof(FlowerBudTile))
+            {
+                GameManager.InGameDataManager.NowState.JumpCnt++;
+                jump--;
+            }
+
+            GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
+            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
         }
-
-        GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
-        GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
-
     }
 
     void Btn_Skip_ForKey()
     {
-
-
-
-        GameManager.SoundManager.Play(Define.SFX.Skip_01);
-
         //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
         if (!TileController.IsMoving)
         {
+            GameManager.SoundManager.Play(Define.SFX.Skip_01);
             //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
             TileController.Instance.BackGroundMove?.Invoke();
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
@@ -179,9 +173,7 @@ public class GameUI : UI_Scene
             GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
 
             TileController.Instance.MoveTiles();
-
         }
-
 
     }
 
@@ -196,36 +188,33 @@ public class GameUI : UI_Scene
 
     void Btn_Jump(PointerEventData evt)
     {
-
         // 실제로 점프가 되는 상황 에서만! 점프 사운드가 나는게 맞냐?
         // 버튼을 누르면 무조껀 사운드는 나고 점프가 되냐 마냐는 사운드 알바는 아니다. 
 
-        GameManager.SoundManager.Play(Define.SFX.Jump_01);
-
-
-
-        Debug.Log("JumpBtn눌림");
-        if(GameManager.InGameDataManager.Player.GetComponent<PlayerController>().OnTile.GetType() != typeof(WitheredFlowersTile))
+        //GameManager.SoundManager.Play(Define.SFX.Jump_01);
+        if (!TileController.IsMoving)
         {
-            GameManager.InGameDataManager.NowState.JumpCnt++;
-            jump--;
-        }
-        
-        GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
-        GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
+            Debug.Log("JumpBtn눌림");
+            if (GameManager.InGameDataManager.Player.GetComponent<PlayerController>().OnTile.GetType() == typeof(FlowerBudTile))
+            {
+                GameManager.InGameDataManager.NowState.JumpCnt++;
+                jump--;
+            }
 
+            GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
+            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
+        }
     }
     
     void Btn_Skip(PointerEventData evt)
     {
-
-        
-
-        GameManager.SoundManager.Play(Define.SFX.Skip_01);
+        //GameManager.SoundManager.Play(Define.SFX.Skip_01);
 
         //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
         if (!TileController.IsMoving)
         {
+
+            GameManager.SoundManager.Play(Define.SFX.Skip_01);
             //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
             TileController.Instance.BackGroundMove?.Invoke();
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
@@ -364,6 +353,18 @@ public class GameUI : UI_Scene
         GetButton((int)Buttons.SkipBtn).transform.localPosition = skipVec;
     }
 
+
+    void EndSkipJumpSwap()
+    {
+        StopCoroutine(SkipJumpSwapItemCoroutine);
+        isSkipJumpSwapEffectActive = false;
+        
+        SkipJumpSwapItemIcon?.SetActive(false);
+
+        GetButton((int)Buttons.JumpBtn).transform.localPosition = jumpVec;
+        GetButton((int)Buttons.SkipBtn).transform.localPosition = skipVec;
+    }
+
     #endregion SkipJumpSwapItem
 
     ///
@@ -418,6 +419,20 @@ public class GameUI : UI_Scene
     }
 
 
+    void EndHideRemainJump()
+    {
+
+        StopCoroutine(HideRemainJumpItemCoroutine);
+        isHideActive = false;
+        if (Obstacle != null)
+        {
+            Destroy(Obstacle);
+        }
+
+    }
+
+
+
     #endregion HideRemainJumpItem
 
     #region UnbeatableItem
@@ -454,6 +469,9 @@ public class GameUI : UI_Scene
     private IEnumerator ResumeUnbeatableAfterDelay(float delay = 10f)
     {
 
+        EndSkipJumpSwap();
+        EndHideRemainJump();
+
         _timeSlider.StopTimer();
         GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Unbeatable();
         GameManager.InGameDataManager.NowUnbeat = true;
@@ -471,6 +489,7 @@ public class GameUI : UI_Scene
         UnbeatableItemIcon.SetActive(false);//아이콘 제거
         GameManager.InGameDataManager.Player.GetComponent<PlayerController>().UnbeatableEnd();
     }
+
 
 
     public void PlusTime()

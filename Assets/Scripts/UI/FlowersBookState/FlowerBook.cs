@@ -12,6 +12,8 @@ public abstract class FlowerBook : UI_PopUp
 
     FlowerButton _myFlowerButton;
     Define.FlowerTypes _flowerType;
+    public Define.FlowerTypes FlowerType { get { return _flowerType; } }
+
     protected int _branch;
     protected int _goldBranch;
 

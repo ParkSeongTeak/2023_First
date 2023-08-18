@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Define;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class FlowerButton : MonoBehaviour
 {
@@ -22,7 +24,16 @@ public class FlowerButton : MonoBehaviour
     }
     public void SelectModeDequeue()
     {
-        this.gameObject.GetComponent<Image>().color = Have;
+        //this.gameObject.GetComponent<Image>().color = Have;
+
+        Define.FlowerBookIMG tmp = (Define.FlowerBookIMG)Enum.Parse(typeof(FlowerTypes), FlowerUI.GetType().Name);
+        Debug.Log($" {(FlowerTypes)Enum.Parse(typeof(FlowerTypes), FlowerUI.GetType().Name)} ");
+
+        GetComponent<Image>().sprite = GameManager.ResourceManager.Load<Sprite>($"Sprites/NoOutLine/{Enum.GetName(typeof(Define.FlowerBookIMG), tmp)}");
+
+
+
+
     }
     public void UIUpdate()
     {
@@ -43,8 +54,11 @@ public class FlowerButton : MonoBehaviour
          
                 if (Enum.GetName(typeof(Define.FlowerTypes), flowerType ) == FlowerUI.GetType().Name)
                 {
+                    Define.FlowerBookIMG tmp = (Define.FlowerBookIMG)Enum.Parse(typeof(FlowerTypes), FlowerUI.GetType().Name);
+                    Debug.Log($" {(FlowerTypes)Enum.Parse(typeof(FlowerTypes), FlowerUI.GetType().Name)} ");
 
-                    this.gameObject.GetComponent<Image>().color = Pick;
+                    GetComponent<Image>().sprite = GameManager.ResourceManager.Load<Sprite>($"Sprites/OutLine/{Enum.GetName(typeof(Define.FlowerBookIMG), tmp)}");
+                    //this.gameObject.GetComponent<Image>().color = Pick;
                 }
 
             }

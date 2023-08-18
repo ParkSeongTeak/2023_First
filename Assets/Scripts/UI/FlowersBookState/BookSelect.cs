@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Define;
 
 public class BookSelect : BookState
 {
@@ -18,7 +20,13 @@ public class BookSelect : BookState
             Color color = new Color(1, 1, 1, 0.5f);
             //Color color = new Color(0.1f, 0.1f, 0.1f, 1f);
 
-            evt.selectedObject.GetComponent<Image>().color = color;
+            Define.FlowerBookIMG tmp = (Define.FlowerBookIMG)Enum.Parse(typeof(FlowerTypes), Button_.GetType().Name);
+            Debug.Log($" {(FlowerTypes)Enum.Parse(typeof(FlowerTypes), Button_.GetType().Name)} ");
+            
+            evt.selectedObject.GetComponent<Image>().sprite = GameManager.ResourceManager.Load<Sprite>($"Sprites/OutLine/{Enum.GetName(typeof(Define.FlowerBookIMG), tmp)}");
+            
+
+            //evt.selectedObject.GetComponent<Image>().color = color;
 
 
         }
