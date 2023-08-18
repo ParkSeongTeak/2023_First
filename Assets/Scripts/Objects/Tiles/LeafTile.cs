@@ -25,10 +25,10 @@ public class LeafTile : Tile
     void OnEnable()
     {
         itemPosition = transform.position;
-        float probability = 0.2f;
+        float probability = 0.28f;
         itemworked = false;
 
-        //if (UnityEngine.Random.value < probability)
+        if (UnityEngine.Random.value < probability)
         {
             Define.Items randomItem = (Define.Items)UnityEngine.Random.Range(0, (int)Define.Items.MaxCount);
 
@@ -58,40 +58,40 @@ public class LeafTile : Tile
 
     public override void JumpOnMe()
     {
-        if (!itemworked)
-        {
-            GameManager.InGameDataManager.NowState.JumpCnt--;
-        }
-        else
-        {
-            if (jumpnum >= 0)
-            {
-                jumpnum--;
-                if (jumpnum > -1)
-                {
-                    transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.CosmosFlowerSprites[jumpnum];
-                }
-                if (jumpnum == -1)
-                {
-                    transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[flowernum];
-                    GameManager.InGameDataManager.NowState.BloomCnt++;
-                }
-            }
-            else
-            {
-                if (GameManager.InGameDataManager.NowState.LifeCnt != 1)
-                {
-                    GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //格见 酒捞袍 家葛 : 酒捞能 秦力
-                    GameManager.InGameDataManager.NowState.LifeCnt--;                       //格见 别烙
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-
-                itemworked = false;
-            }
-        }
+        //if (!itemworked)
+        //{
+        //    GameManager.InGameDataManager.NowState.JumpCnt--;
+        //}
+        //else
+        //{
+        //    if (jumpnum >= 0)
+        //    {
+        //        jumpnum--;
+        //        if (jumpnum > -1)
+        //        {
+        //            transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.CosmosFlowerSprites[jumpnum];
+        //        }
+        //        if (jumpnum == -1)
+        //        {
+        //            transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[flowernum];
+        //            GameManager.InGameDataManager.NowState.BloomCnt++;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (GameManager.InGameDataManager.NowState.LifeCnt != 1)
+        //        {
+        //            GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //格见 酒捞袍 家葛 : 酒捞能 秦力
+        //            GameManager.InGameDataManager.NowState.LifeCnt--;                       //格见 别烙
+        //        }
+        //        else
+        //        {
+        //            Destroy(gameObject);
+        //        }
+        //
+        //        itemworked = false;
+        //    }
+        //}
     }
     public override void SkipOnMe()
     {

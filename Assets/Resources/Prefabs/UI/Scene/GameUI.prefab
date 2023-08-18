@@ -1709,6 +1709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08069ae79b6f54147885ae59249724c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpVec: {x: 0, y: 0, z: 0}
+  skipVec: {x: 0, y: 0, z: 0}
   freezeDuration: 5
   unbeatableDuration: 10
 --- !u!1 &4447020521860640706
