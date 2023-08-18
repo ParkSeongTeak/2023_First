@@ -130,7 +130,7 @@ public class Define
         Falling_02,//WitheredFlowerTile에서 사용
         GameOver_01,//타임슬라이드 스크립트에서 사용 
         GlassBreak,//플러스라이프아이템 스크립트에서 사용
-        //Mumble_01,하드모드 없으므로 사용X
+        Mumble_01,//하드모드 없으므로 사용X
         Page_01,//Pag_01,02,03에서 사용
 
         MaxCount
