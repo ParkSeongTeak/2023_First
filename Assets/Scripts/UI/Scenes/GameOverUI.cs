@@ -65,6 +65,7 @@ public class GameOverUI : UI_PopUp
     void ToMain(PointerEventData evt)
     {
         GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
+        GameManager.SoundManager.Play(Define.BGM.블라썸컴퍼니_01);//블라썸컴퍼니_01
         GameManager.SceneManager.LoadScene(Define.Scenes.Main);
 
     }
