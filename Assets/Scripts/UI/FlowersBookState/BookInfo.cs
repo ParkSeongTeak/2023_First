@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static Define;
 
 public class BookInfo : BookState
 {
+    
     public override void Btn_Button(PointerEventData evt)
     {
 
@@ -17,11 +19,10 @@ public class BookInfo : BookState
         }
         else
         {
-            
+
             ShopUI shopUI = GameManager.UIManager.ShowPopupUI<ShopUI>();
             shopUI.SetUI(Button_);
-        
-        
+
         }
 
     }

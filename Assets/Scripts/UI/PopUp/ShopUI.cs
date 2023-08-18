@@ -79,16 +79,24 @@ public class ShopUI : UI_PopUp
             GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch}";
             GetImage((int)Images.Flower).sprite = FlowerIcon;
 
+            GameObject _warning = GameObject.Find("Warning");
+            _warning.SetActive(false);
+
 
         }
         else
         {
-            GetText((int)Texts.KoreanName).text = $"{KoreanName}";
-            GetText((int)Texts.Branch).text = "X";
-            GetText((int)Texts.GoldBranch).text = "X";
-            GetImage((int)Images.Flower).sprite = FlowerIcon;
-
+            GetText((int)Texts.KoreanName).gameObject.SetActive(false);
+            GetText((int)Texts.Branch).gameObject.SetActive(false);
+            GetText((int)Texts.GoldBranch).gameObject.SetActive(false);
+            GetImage((int)Images.Flower).gameObject.SetActive(false);
             GetButton((int)Buttons.Buy).gameObject.SetActive(false);
+
+            GameObject _branchIcon = GameObject.Find("Branch_icon");
+            GameObject _goldenbranchIcon = GameObject.Find("GoldenBranch_icon");
+
+            _branchIcon.SetActive(false);
+            _goldenbranchIcon.SetActive(false);
 
             //에러 사운드
         }
