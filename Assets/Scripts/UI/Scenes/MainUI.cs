@@ -92,10 +92,12 @@ public class MainUI : UI_Scene
         {
             GameManager.InGameDataManager.SetRandomReward();
             GameManager.UIManager.ShowPopupUI<CutScene_Prologue>();
+            GameManager.SoundManager.Play(Define.SFX.Mumble_01);//Mumble_01 효과음
         }
         if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue && GameManager.InGameDataManager.QuestIDX >= InGameDataManager.EPILOGUE)
         {
             GameManager.UIManager.ShowPopupUI<CutScene_Epilogue>();
+
         }
             
         GameManager.InGameDataManager.RandomRewardData = GameManager.InGameDataManager.GetRandomReward();
@@ -129,6 +131,8 @@ public class MainUI : UI_Scene
     void ToFlowersBook(PointerEventData evt)
     {
         GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
+        GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);//블라썸컴퍼니_01정지
+        GameManager.SoundManager.Play(Define.BGM.블라썸_꽃도감);//블라썸_꽃도감
         GameManager.SceneManager.LoadScene(Define.Scenes.FlowersBook);
 
 

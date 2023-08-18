@@ -59,8 +59,7 @@ public class FlowersBookUI : UI_Scene
     void Start()
     {
         Init();
-        GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);//블라썸컴퍼니_01정지
-        GameManager.SoundManager.Play(Define.BGM.블라썸_꽃도감);//블라썸_꽃도감
+      
     }
 
     public override void Init()
