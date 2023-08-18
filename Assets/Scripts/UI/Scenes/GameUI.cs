@@ -98,6 +98,8 @@ public class GameUI : UI_Scene
         BindEvent(GetButton((int)Buttons.JumpBtn).gameObject, Btn_Jump);
         BindEvent(GetButton((int)Buttons.SkipBtn).gameObject, Btn_Skip);
 
+        
+
         JsonDeepCopy();
 
         GetText((int)Texts.ScoreTxt).text = $"QUEST: {clearRwrdData.Quest}";
@@ -112,6 +114,75 @@ public class GameUI : UI_Scene
         Debug.Log("jumpVec" + jumpVec);
         skipVec = GetButton((int)Buttons.SkipBtn).transform.localPosition;
         Debug.Log("skipVec" + skipVec);
+
+        GameManager.InputManager.InputAction -= JumpBtnKey;
+        GameManager.InputManager.InputAction += JumpBtnKey;
+
+        GameManager.InputManager.InputAction -= SkipBtnKey;
+        GameManager.InputManager.InputAction += SkipBtnKey;
+
+    }
+
+    public void JumpBtnKey()
+    {
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Btn_Jump_ForKey();
+        }
+    }
+
+    public void SkipBtnKey()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Btn_Skip_ForKey();
+        }
+    }
+    void Btn_Jump_ForKey()
+    {
+
+        // 실제로 점프가 되는 상황 에서만! 점프 사운드가 나는게 맞냐?
+        // 버튼을 누르면 무조껀 사운드는 나고 점프가 되냐 마냐는 사운드 알바는 아니다. 
+
+        GameManager.SoundManager.Play(Define.SFX.Jump_01);
+
+
+
+        Debug.Log("JumpBtn눌림");
+        if (GameManager.InGameDataManager.Player.GetComponent<PlayerController>().OnTile.GetType() != typeof(WitheredFlowersTile))
+        {
+            GameManager.InGameDataManager.NowState.JumpCnt++;
+            jump--;
+        }
+
+        GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
+        GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
+
+    }
+
+    void Btn_Skip_ForKey()
+    {
+
+
+
+        GameManager.SoundManager.Play(Define.SFX.Skip_01);
+
+        //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
+        if (!TileController.IsMoving)
+        {
+            //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
+            TileController.Instance.BackGroundMove?.Invoke();
+            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
+            GameManager.InGameDataManager.NowState.SkipCnt++;
+            skip--;
+            GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
+
+            TileController.Instance.MoveTiles();
+
+        }
+
+
     }
 
     public bool isJumpActive { get; set; } = true;
@@ -144,6 +215,7 @@ public class GameUI : UI_Scene
         GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
 
     }
+    
     void Btn_Skip(PointerEventData evt)
     {
 
