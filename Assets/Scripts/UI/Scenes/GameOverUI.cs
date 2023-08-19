@@ -11,6 +11,7 @@ public class GameOverUI : UI_PopUp
     {
         RetryBtn,
         MainBtn,
+        GameEndBtn,
     }
     enum Texts
     {
@@ -46,7 +47,8 @@ public class GameOverUI : UI_PopUp
 
         BindEvent(GetButton((int)Buttons.RetryBtn).gameObject, ToGame);
         BindEvent(GetButton((int)Buttons.MainBtn).gameObject, ToMain);
-        
+        BindEvent(GetButton((int)Buttons.GameEndBtn).gameObject, GameEnd);
+
 
         GetText((int)Texts.JumpScore).text = $"{GameManager.InGameDataManager.NowState.JumpCnt}";
         GetText((int)Texts.SkipScore).text = $"{GameManager.InGameDataManager.NowState.SkipCnt}";
@@ -69,6 +71,11 @@ public class GameOverUI : UI_PopUp
         GameManager.SceneManager.LoadScene(Define.Scenes.Main);
 
     }
+    void GameEnd(PointerEventData evt)
+    {
+        Application.Quit();
+    }
+
     #endregion
 
     #region Reward

@@ -51,7 +51,7 @@ public class FlowersBookUI : UI_Scene
         Select,
         Save,
         Back,
-        Reset,
+        //Reset,
 
     }
 
@@ -73,7 +73,7 @@ public class FlowersBookUI : UI_Scene
         BindEvent(GetButton((int)Buttons.Select).gameObject, Btn_Select);
         BindEvent(GetButton((int)Buttons.Save).gameObject, Btn_Save);
         BindEvent(GetButton((int)Buttons.Back).gameObject, Btn_Back);
-        BindEvent(GetButton((int)Buttons.Reset).gameObject, Btn_Reset);
+        //BindEvent(GetButton((int)Buttons.Reset).gameObject, Btn_Reset);
 
         _selectQueue.Clear();
         foreach (FlowerTypes flower in GameManager.InGameDataManager.UseFlowerList)

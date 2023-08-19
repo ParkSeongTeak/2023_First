@@ -135,7 +135,7 @@ public class GameUI : UI_Scene
 
     public void SkipBtnKey()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKey(KeyCode.K))
         {
             Btn_Skip_Action();
         }

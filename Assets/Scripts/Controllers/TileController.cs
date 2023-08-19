@@ -53,6 +53,10 @@ public class TileController : MonoBehaviour
     #region BackGround ≈Î¡¶
     public Action BackGroundMove { get; set; }
     public Vector3 DeltaMove { get; set; }
+    
+    public BackGround[] BackGrounds { get; set; } = new BackGround[3];
+    public int BackGroundIDX { get; set; } = 2;
+
     #endregion
 
     #region TileSmoothMove

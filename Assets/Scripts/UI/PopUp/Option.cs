@@ -11,7 +11,7 @@ public class Option : UI_PopUp
         ESC,
         CutScenePrologueShow,
         CutSceneEpilogueShow,
-
+        GameEnd,
     }
 
     enum Sliders
@@ -38,7 +38,7 @@ public class Option : UI_PopUp
         BindEvent(GetButton((int)Buttons.ESC).gameObject, Btn_ESC);
         BindEvent(GetButton((int)Buttons.CutScenePrologueShow).gameObject, Btn_CutScenePrologueShow);
         BindEvent(GetButton((int)Buttons.CutSceneEpilogueShow).gameObject, Btn_CutSceneEpilogueShow);
-
+        BindEvent(GetButton((int)Buttons.GameEnd).gameObject, GameEnd);
 
         if (GameManager.InGameDataManager.NeedToShowCutScene_prologue)
         {
@@ -97,5 +97,10 @@ public class Option : UI_PopUp
 
         GameManager.SoundManager.SetVolume(Sound, volume);
 
+    }
+
+    void GameEnd(PointerEventData evt)
+    {
+        Application.Quit();
     }
 }

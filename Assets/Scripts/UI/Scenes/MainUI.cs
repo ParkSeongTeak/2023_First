@@ -46,7 +46,7 @@ public class MainUI : UI_Scene
     {
         Init();
     }
-
+    bool Show = false;
     
     public override void Init()
     {
@@ -148,8 +148,15 @@ public class MainUI : UI_Scene
         {
             GameManager.SoundManager.Play(Define.SFX.click_01); //click_01효과음
             GetImage((int)Images.RandomReward).gameObject.SetActive(true);
-            GetText((int)Texts.RandomRewardTxt).text = $"확인비(확인 안해도 획득가능) brance - 5 ";
+            if (!Show)
+            {
+                GetText((int)Texts.RandomRewardTxt).text = $"확인비(확인 안해도 획득가능) brance - 5 ";
 
+            }
+            else
+            {
+                GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RandomRewardData), GameManager.InGameDataManager.RandomRewardData)}";
+            }
 
 
         }
@@ -168,8 +175,9 @@ public class MainUI : UI_Scene
 
     void RandomRewardBtn(PointerEventData evt)
     {
-        if (GameManager.InGameDataManager.Branch > 5)
+        if (GameManager.InGameDataManager.Branch > 5 && !Show)
         {
+            Show = true;
             GameManager.SoundManager.Play(Define.SFX.click_01); //click_01효과음
             GameManager.InGameDataManager.Branch -= 5;
             GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RandomRewardData), GameManager.InGameDataManager.RandomRewardData)}";

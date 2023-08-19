@@ -23,10 +23,16 @@ public class UIAnimation : MonoBehaviour
     
     IEnumerator Func_PlayAnimUI()
     {
+        int index = 1;
         while (true)
         {
             yield return new WaitForSeconds(m_Speed);
-            
+            _image.sprite = GameManager.ResourceManager.Load<Sprite>($"Sprites/Character/idle{index++}");
+            if (index >= 7) 
+            { 
+                index = 1; 
+            }
+
         }
     }
     // Start is called before the first frame update
