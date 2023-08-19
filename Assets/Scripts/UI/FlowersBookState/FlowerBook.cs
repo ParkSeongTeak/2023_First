@@ -104,9 +104,14 @@ public abstract class FlowerBook : UI_PopUp
 
     protected void Btn_Delete(PointerEventData evt)
     {
-        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
+        GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
         ClosePopupUI();
     }
+
+
+
+
+
 
     #endregion
 }

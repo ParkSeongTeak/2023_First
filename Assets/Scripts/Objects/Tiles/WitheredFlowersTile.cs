@@ -16,7 +16,13 @@ public class WitheredFlowersTile : Tile
     {
         if (!GameManager.InGameDataManager.NowUnbeat)
         {
-            if (GameManager.InGameDataManager.NowState.LifeCnt == 2)
+            if (GameManager.InGameDataManager.NowState.LifeCnt > 2)
+            {
+                GameManager.InGameDataManager.NowState.LifeCnt--;                       //格见 别烙
+                GameManager.SoundManager.Play(Define.SFX.GlassBreak);
+
+            }
+            else if (GameManager.InGameDataManager.NowState.LifeCnt == 2)
             {
                 GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //格见 酒捞袍 家葛 : 酒捞能 秦力
                 GameManager.InGameDataManager.NowState.LifeCnt = 1;                       //格见 别烙
@@ -30,11 +36,10 @@ public class WitheredFlowersTile : Tile
             }
             else
             {
-                TileController.IsMoving = true;
-                TileController.Instance.DestoryTile(this);
+
+                TileController.Instance.TileBreak(this);
                 GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02瓤苞澜
                 GameManager.SoundManager.StopBGM(Define.BGM.喉扼芥哪欺聪_01);
-                Debug.Log("肛勉");
             }
         }
 

@@ -98,7 +98,7 @@ public class ShopUI : UI_PopUp
             _branchIcon.SetActive(false);
             _goldenbranchIcon.SetActive(false);
 
-            //에러 사운드
+            
         }
 
 
@@ -118,14 +118,14 @@ public class ShopUI : UI_PopUp
             ClosePopupUI();
         }
         else
-            GameManager.SoundManager.Play(Define.SFX.Error_01);//Error_01효과음
-            Debug.Log("you cant buy it...");
+            GameManager.SoundManager.Play(Define.SFX.Error_01);//Error_01효과음  //에러 사운드
+        Debug.Log("you cant buy it...");
 
     }
 
     void Btn_Delete(PointerEventData evt)
     {
-        GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
+        GameManager.SoundManager.Play(Define.SFX.click_02);//click_02효과음
         ClosePopupUI();
 
     }

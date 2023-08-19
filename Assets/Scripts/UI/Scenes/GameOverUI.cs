@@ -80,6 +80,7 @@ public class GameOverUI : UI_PopUp
         int rare = -1;
         if (GameUI.Instance.Clear)
         {
+            GameManager.SoundManager.Play(Define.SFX.congrats_01); //congrats_01효과음
             GameManager.InGameDataManager.GoldBranch += GameUI.Instance.ClearReward_GoldBranch;
             addGoldBranch += GameUI.Instance.ClearReward_GoldBranch;
             
@@ -166,6 +167,7 @@ public class GameOverUI : UI_PopUp
         GameManager.InGameDataManager.SetRandomReward();
         string rarename = rare == -1 ? "다음 기회에!" : Enum.GetName(typeof(Define.RandomRewardData),rare);
         GetText((int)Texts.RewardText).text = $"나뭇가지:{addBranch} 황금가지:{addGoldBranch} 레어꽃:{rarename}";
+
     }
 
     #endregion

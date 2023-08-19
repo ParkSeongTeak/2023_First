@@ -10,7 +10,6 @@ public class icon_magnolia2 : FlowerBook
     public override Sprite FlowerIcon { get { _flowerIcon = GameManager.ResourceManager.Load<Sprite>($"Sprites/Flower_Icon/icon_magnolia2"); return _flowerIcon; } set => throw new System.NotImplementedException(); }
     public override Define.FlowerTypes GetFlowerType()
     {
-
         return Define.FlowerTypes.icon_magnolia2;
     }
 
