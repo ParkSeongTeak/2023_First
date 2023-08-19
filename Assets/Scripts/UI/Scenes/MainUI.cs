@@ -122,8 +122,8 @@ public class MainUI : UI_Scene
     {
 
         GameManager.SoundManager.Play(Define.SFX.Start_01);//Start_01효과음
-        GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);//블라썸컴퍼니_01정지
-        GameManager.SoundManager.Play(Define.BGM.블라썸_꽃도감);//블라썸_꽃도감
+        GameManager.SoundManager.StopBGM(Define.BGM.블라썸_꽃도감);//블라썸_꽃도감정지
+        GameManager.SoundManager.Play(Define.BGM.블라썸컴퍼니_01);//블라썸컴퍼니_01
         GameManager.SceneManager.LoadScene(Define.Scenes.Game);
        
 
