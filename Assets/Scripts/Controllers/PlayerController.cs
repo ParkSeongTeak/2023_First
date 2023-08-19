@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     //const float _jumpForce = 17f;
     public const float SPEED = 0.15f; 
     bool _canJump;
+    public bool CanJump { get { return _canJump; } }
     Tile _onTile;
     public Tile OnTile { get { return _onTile; } }
     [SerializeField]
@@ -48,12 +49,18 @@ public class PlayerController : MonoBehaviour
         ///
     }
 
-
     public void Jump(float jumpForce = 17f, bool isJumperItem = false)
     {
         
         if (_canJump | isJumperItem)
         {
+            if (OnTile.GetType() == typeof(FlowerBudTile))
+            {
+                Debug.Log("JumpBtn눌림");
+                GameManager.InGameDataManager.NowState.JumpCnt += 1;
+                GameUI.Instance.jump--;
+            }
+
 
             GameManager.SoundManager.Play(Define.SFX.Jump_01);
             //점프키 누르면 어쩌구 저쩌구
@@ -88,14 +95,7 @@ public class PlayerController : MonoBehaviour
     Coroutine UnbeatCoroutine;
     public void Unbeatable()
     {
-        //if (GameUI.Instance.isUnbeatable)   //true상태
-        //{
-        //    //UnbeatCoroutine = StartCoroutine(UnbeatAnim(anims.Idle_unbeatable, time));
-        //
-        //    string str = Enum.GetName(typeof(anims), anims.Idle_unbeatable);
-        //    _animator.SetBool($"{str}Bool", true);
-        //}
-
+        
         string str = Enum.GetName(typeof(anims), anims.Idle_unbeatable);
         _animator.SetBool($"{str}Bool", true);
     }
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         string str = Enum.GetName(typeof(anims), anims.Idle_unbeatable);
         _animator.SetBool($"{str}Bool", false);
-        //isUnbeatAnim = false;
+        
         
     }
 
@@ -113,7 +113,9 @@ public class PlayerController : MonoBehaviour
         {
             _canJump = true;
             _onTile = collision.transform.GetComponent<Tile>();
-            TileController.IsMoving = false;
+            //TileController.IsMoving = false;
+            
+
         }
 
     }
@@ -122,25 +124,7 @@ public class PlayerController : MonoBehaviour
 
     GameObject newTile;
 
- 
-    private void Restart()
-    {
-        TileController tileController = TileController.Instance;
-
-        if (tileController != null)
-        {
-          
-            List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
-
-            for (int i = 3; i <= 13; i++)
-            {
-                Tile tile = nowGeneratedTiles[i];
-
-                TileController.Instance.MoveTiles();
-            }
-        }
-    }
-
+    
 
     IEnumerator AnimPlay(anims anim,float time = 0.33f)
     {
@@ -156,22 +140,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //bool isUnbeatAnim = false;
-
-    //IEnumerator UnbeatAnim(anims anim, float time = 10f)
-    //{
-    //    //무적 중복 적용 시 코루틴을 끊고 재시작해야 하는데, 동시 출력을 막으려고 2~3중으로 if 문을 걸어 에러가 남
-    //
-    //    //if (!isUnbeatAnim)
-    //    //{
-    //    //isUnbeatAnim = true;
-    //    string str = Enum.GetName(typeof(anims), anim);
-    //    _animator.SetBool($"{str}Bool", true);
-    //    yield return new WaitForSeconds(time);
-    //    _animator.SetBool($"{str}Bool", false);
-    //    //isUnbeatAnim = false;
-    //
-    //    //}
-    //}
-
+  
 }

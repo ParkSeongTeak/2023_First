@@ -23,7 +23,7 @@ public class GameUI : UI_Scene
     public bool Clear { get { return _clear; } }
     TimeSlider _timeSlider;
     public TimeSlider timeSlider { get { return _timeSlider; } }
-    int jump { get { return clearRwrdData.Jump; } set { clearRwrdData.Jump = value > 0 ? value : 0; ClearCheck(); } }
+    public int jump { get { return clearRwrdData.Jump; } set { clearRwrdData.Jump = value > 0 ? value : 0; ClearCheck(); } }
     int skip { get { return clearRwrdData.Skip; } set { clearRwrdData.Skip = value > 0 ? value : 0; ClearCheck(); } }
     int bloom { get { return clearRwrdData.Bloom; } set { clearRwrdData.Bloom = value > 0 ? value : 0; ClearCheck(); } }
     public int ClearReward_GoldBranch { get { return clearRwrdData.ClearReward_GoldBranch; } }
@@ -57,7 +57,10 @@ public class GameUI : UI_Scene
             if (jump == 0 && skip == 0 && bloom == 0)
             {
                 _clear = true;
-                GameManager.InGameDataManager.QuestIDX++;
+                if (GameManager.InGameDataManager.QuestIDX < GameManager.InGameDataManager.LastQueset)
+                {
+                    GameManager.InGameDataManager.QuestIDX++;
+                }
 
             }
         }
@@ -123,11 +126,10 @@ public class GameUI : UI_Scene
 
     public void JumpBtnKey()
     {
-        int idx = 0;
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKey(KeyCode.J))
         {
-            Debug.Log($"{idx++}");
-            Btn_Jump_ForKey();
+            Btn_Jump_Action();
+            Btn_Skip_Action();
         }
     }
 
@@ -135,34 +137,26 @@ public class GameUI : UI_Scene
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Btn_Skip_ForKey();
+            Btn_Skip_Action();
         }
     }
-    void Btn_Jump_ForKey()
+    void Btn_Jump_Action()
     {
 
         // 실제로 점프가 되는 상황 에서만! 점프 사운드가 나는게 맞냐?
         // 버튼을 누르면 무조껀 사운드는 나고 점프가 되냐 마냐는 사운드 알바는 아니다. 
         
         //GameManager.SoundManager.Play(Define.SFX.Jump_01);
-        if (!TileController.IsMoving)
+        if (!TileController.IsMoving )
         {
-            Debug.Log("JumpBtn눌림");
-            if (GameManager.InGameDataManager.Player.GetComponent<PlayerController>().OnTile.GetType() == typeof(FlowerBudTile))
-            {
-                GameManager.InGameDataManager.NowState.JumpCnt++;
-                jump--;
-            }
-
-            GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
         }
     }
 
-    void Btn_Skip_ForKey()
+    void Btn_Skip_Action()
     {
         //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
-        if (!TileController.IsMoving)
+        if (!TileController.IsMoving && GameManager.InGameDataManager.Player.GetComponent<PlayerController>().CanJump)
         {
             GameManager.SoundManager.Play(Define.SFX.Skip_01);
             //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
@@ -188,45 +182,12 @@ public class GameUI : UI_Scene
 
     void Btn_Jump(PointerEventData evt)
     {
-        // 실제로 점프가 되는 상황 에서만! 점프 사운드가 나는게 맞냐?
-        // 버튼을 누르면 무조껀 사운드는 나고 점프가 되냐 마냐는 사운드 알바는 아니다. 
-
-        //GameManager.SoundManager.Play(Define.SFX.Jump_01);
-        if (!TileController.IsMoving)
-        {
-            Debug.Log("JumpBtn눌림");
-            if (GameManager.InGameDataManager.Player.GetComponent<PlayerController>().OnTile.GetType() == typeof(FlowerBudTile))
-            {
-                GameManager.InGameDataManager.NowState.JumpCnt++;
-                jump--;
-            }
-
-            GetText((int)Texts.JumpCnt).text = $"Jump: {jump}";
-            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
-        }
+        Btn_Jump_Action();
     }
     
     void Btn_Skip(PointerEventData evt)
     {
-        //GameManager.SoundManager.Play(Define.SFX.Skip_01);
-
-        //버튼 자체가 위치를 바꾸는 게 맞는다고 합니다.
-        if (!TileController.IsMoving)
-        {
-
-            GameManager.SoundManager.Play(Define.SFX.Skip_01);
-            //Background move라는 Action(Delegate 즉 대행자의 일종)에 값이 있으면 실행 BackGround에서 대행자가 처리할 일을 더 해 준다.
-            TileController.Instance.BackGroundMove?.Invoke();
-            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Skip();
-            GameManager.InGameDataManager.NowState.SkipCnt++;
-            skip--;
-            GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
-
-            TileController.Instance.MoveTiles();
-
-        }
-       
-
+        Btn_Skip_Action();
     }
 
     /// <summary>
@@ -356,10 +317,15 @@ public class GameUI : UI_Scene
 
     void EndSkipJumpSwap()
     {
-        StopCoroutine(SkipJumpSwapItemCoroutine);
+        if(SkipJumpSwapItemCoroutine != null)
+        {
+            StopCoroutine(SkipJumpSwapItemCoroutine);
+        }
         isSkipJumpSwapEffectActive = false;
-        
-        SkipJumpSwapItemIcon?.SetActive(false);
+        if(SkipJumpSwapItemIcon != null)
+        {
+            SkipJumpSwapItemIcon?.SetActive(false);
+        }
 
         GetButton((int)Buttons.JumpBtn).transform.localPosition = jumpVec;
         GetButton((int)Buttons.SkipBtn).transform.localPosition = skipVec;
@@ -421,8 +387,11 @@ public class GameUI : UI_Scene
 
     void EndHideRemainJump()
     {
+        if (HideRemainJumpItemCoroutine != null)
+        {
+            StopCoroutine(HideRemainJumpItemCoroutine);
 
-        StopCoroutine(HideRemainJumpItemCoroutine);
+        }
         isHideActive = false;
         if (Obstacle != null)
         {
@@ -511,7 +480,7 @@ public class GameUI : UI_Scene
 
         if (tileController != null)
         {
-            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump(35f,true);
+            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump(42f,true);
 
             List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
             JumperItem = StartCoroutine(DontFall());
@@ -526,17 +495,6 @@ public class GameUI : UI_Scene
                 skip--;
                 GetText((int)Texts.SkipCnt).text = $"Skip: {skip}";
 
-
-                if (tile.TileType == Define.TileType.FlowerTypes)
-                {
-                    // UI에도 적용 필요
-                    //GameUI.Instance.BloomCnt();
-
-                }
-                else if (tile.TileType == Define.TileType.BonusTileTypes)
-                {
-                    //after confirm
-                }
                 // 2) 이 함수에서 List 의 맨 앞 [0]번을 삭제 즉 전체 List의 index 가 한칸 앞으로 이동 == 이 함수 호출 이후 다음에 올 [3]은 기존 list의 [4]
                 TileController.Instance.MoveTiles();    
             }
@@ -574,6 +532,11 @@ public class GameUI : UI_Scene
             }
             GameManager.InGameDataManager.NowState.LifeCnt = 2;
             PlusLifeItemIcon.SetActive(true);
+        }
+        else
+        {
+            GameManager.InGameDataManager.NowState.LifeCnt ++;
+
         }
     }
 

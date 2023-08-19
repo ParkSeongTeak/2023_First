@@ -94,7 +94,7 @@ public class MainUI : UI_Scene
             GameManager.UIManager.ShowPopupUI<CutScene_Prologue>();
             GameManager.SoundManager.Play(Define.SFX.Mumble_01);//Mumble_01 È¿°úÀ½
         }
-        if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue && GameManager.InGameDataManager.QuestIDX >= InGameDataManager.EPILOGUE)
+        if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue && GameManager.InGameDataManager.QuestIDX >= InGameDataManager.EPILOGUE && !GameManager.InGameDataManager.NeedToShowCutScene_prologue)
         {
             GameManager.UIManager.ShowPopupUI<CutScene_Epilogue>();
 

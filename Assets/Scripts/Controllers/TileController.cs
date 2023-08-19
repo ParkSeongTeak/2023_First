@@ -318,8 +318,8 @@ public class TileController : MonoBehaviour
     public void MoveTiles()
     {
         IsMoving = true;
-        
-        for(int i = 1; i < _tileNum; i++)
+        StartCoroutine(WaitTime());
+        for (int i = 1; i < _tileNum; i++)
         {
             if (_instance._nowGeneratedTiles[i] != null)
             {
@@ -329,16 +329,23 @@ public class TileController : MonoBehaviour
         }
         //¸Ç ¾Õ Áö¿öÁÜ
         _instance.DestoryTile(_instance?._nowGeneratedTiles[0]);
-        StartCoroutine(WaitTime());
+        
         GeneratedTile();
         
         
     }
-    
-    
+
+    public void TileBreak(Tile tile)
+    {
+        tile.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+        tile.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
     public void DestoryTile(Tile tile)
     {
         tile.gameObject.SetActive(false);
+        tile.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+        tile.GetComponent<BoxCollider2D>().enabled = true;
         PoolingStack[tile.TileType].Push(tile);
         int idx = _instance._nowGeneratedTiles.IndexOf(tile);
         _instance._nowGeneratedTiles.RemoveAt(idx);
