@@ -92,7 +92,7 @@ public class MainUI : UI_Scene
         {
             GameManager.InGameDataManager.SetRandomReward();
             GameManager.UIManager.ShowPopupUI<CutScene_Prologue>();
-            GameManager.SoundManager.Play(Define.SFX.Mumble_01);//Mumble_01 효과음
+            //GameManager.SoundManager.Play(Define.SFX.Mumble_01);//Mumble_01 효과음
         }
         if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue && GameManager.InGameDataManager.QuestIDX >= InGameDataManager.EPILOGUE)
         {
