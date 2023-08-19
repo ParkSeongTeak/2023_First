@@ -78,13 +78,13 @@ public class Page1 : UI_PopUp
 
     void Btn_Button(PointerEventData evt)
     {
-        /// 
+        ///
         GameManager.InGameDataManager.bookState.Btn_Button(evt);
     }
     
     void Btn_Right(PointerEventData evt)
     {
-
+        
         ClosePopupUI();
         GameManager.SoundManager.Play(Define.SFX.Page_01);//Page_01È¿°úÀ½
         GameManager.UIManager.ShowPopupUI<Page2>();

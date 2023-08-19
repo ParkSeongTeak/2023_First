@@ -18,7 +18,6 @@ public class UIAnimation : MonoBehaviour
     void Init()
     {
         _image = GetComponent<Image>();
-        _spriteArray = Resources.LoadAll<Sprite>("Sprites/Character/Idle");
         StartCoroutine(Func_PlayAnimUI());
     }
     
@@ -27,13 +26,7 @@ public class UIAnimation : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(m_Speed);
-            if (m_IndexSprite >= _spriteArray.Length)
-            {
-                m_IndexSprite = 0;
-
-            }
-            _image.sprite = _spriteArray[m_IndexSprite];
-            m_IndexSprite += 1;
+            
         }
     }
     // Start is called before the first frame update
