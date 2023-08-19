@@ -133,6 +133,9 @@ public class MainUI : UI_Scene
         GameManager.SoundManager.Play(Define.SFX.click_01);//click_01효과음
         GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);//블라썸컴퍼니_01정지
         GameManager.SoundManager.Play(Define.BGM.블라썸_꽃도감);//블라썸_꽃도감
+       // GameManager.SoundManager.BGM.(블라썸_꽃도감).volume = 0.5f; // 0에서 1 사이의 값으로 조절
+
+        
         GameManager.SceneManager.LoadScene(Define.Scenes.FlowersBook);
 
 
@@ -142,7 +145,7 @@ public class MainUI : UI_Scene
     {
         if (!GetImage((int)Images.RandomReward).gameObject.activeSelf)
         {
-            GameManager.SoundManager.Play(Define.SFX.click_02); //click_01효과음
+            GameManager.SoundManager.Play(Define.SFX.click_02); //click_02효과음
             GetImage((int)Images.RandomReward).gameObject.SetActive(true);
             GetText((int)Texts.RandomRewardTxt).text = $"확인비(확인 안해도 획득가능) brance - 5 ";
 

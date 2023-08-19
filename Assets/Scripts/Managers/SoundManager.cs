@@ -62,6 +62,11 @@ public class SoundManager
         return _audioSources[(int)type].volume;
     }
 
+    public float GetVolumeBGM(Define.BGM bgmType)
+    {
+        return _audioSources[(int)bgmType].volume;
+    }
+
 
 
     /// <summary>
