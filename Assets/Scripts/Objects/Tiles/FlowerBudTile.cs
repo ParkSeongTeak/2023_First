@@ -69,7 +69,13 @@ public class FlowerBudTile : Tile
         {
             if (!GameManager.InGameDataManager.NowUnbeat)
             {
-                if (GameManager.InGameDataManager.NowState.LifeCnt == 2)
+                if (GameManager.InGameDataManager.NowState.LifeCnt > 2)
+                {
+                    GameManager.InGameDataManager.NowState.LifeCnt --;                       //목숨 깎임
+                    GameManager.SoundManager.Play(Define.SFX.GlassBreak);
+
+                }
+                else if (GameManager.InGameDataManager.NowState.LifeCnt == 2)
                 {
                     GameManager.UIManager.ShowSceneUI<GameUI>().LifeIcon.SetActive(false);  //목숨 아이템 소모 : 아이콘 해제
                     GameManager.InGameDataManager.NowState.LifeCnt = 1;                       //목숨 깎임
@@ -80,8 +86,7 @@ public class FlowerBudTile : Tile
                 }
                 else
                 {
-                    TileController.IsMoving = true;
-                    TileController.Instance.DestoryTile(this);
+                    TileController.Instance.TileBreak(this);
                     GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02효과음
                     GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);
                     Debug.Log("멈춤");

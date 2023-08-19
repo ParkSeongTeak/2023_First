@@ -278,6 +278,8 @@ public class InGameDataManager
     int _questIDX;
     public int QuestIDX { get { return _questIDX; }  set { PlayerPrefs.SetInt("QUESTINDEX", value); _questIDX = value; } }
     
+    public int LastQueset { get; private set; }
+
     // Start is called before the first frame update
     public GameObject _player;
     public GameObject Player { get { return _player; } }
@@ -294,6 +296,7 @@ public class InGameDataManager
 
         _flowerPriceHandler = Util.ParseJson<FlowerPriceHandler>();
         _clearRwrdHandler = Util.ParseJson<ClearRwrdHandler>();
+        LastQueset = _clearRwrdHandler._clearRwrdHandler.Count-1;
         SelectMode = false;
 
         UseFlowerList[0] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[0]", (int)FlowerTypes.tile_cherryblossom1_blm);
