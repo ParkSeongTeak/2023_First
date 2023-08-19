@@ -132,6 +132,11 @@ public class Define
         GlassBreak,//플러스라이프아이템 스크립트에서 사용
         Mumble_01,//하드모드 없으므로 사용X
         Page_01,//Pag_01,02,03에서 사용
+        Alarm_03,
+        TornBag_05,
+        OpenDoor,
+        PaperOnFloor,
+        Thunder,
 
         MaxCount
     }

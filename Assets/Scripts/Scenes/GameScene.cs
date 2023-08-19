@@ -20,6 +20,8 @@ public class GameScene : MonoBehaviour
 
         GameManager.InGameDataManager.NowState.GameDataClear();
 
+        ///여기 건들지 말 것 위에는 원래 있던 거
+
         // GameManager으로 BGM 음량 정보 가져오기
         bgmAudioSource = GetComponent<AudioSource>();
         if (bgmAudioSource == null)
