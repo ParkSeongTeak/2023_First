@@ -102,6 +102,7 @@ public class MainUI : UI_Scene
             
         GameManager.InGameDataManager.RandomRewardData = GameManager.InGameDataManager.GetRandomReward();
 
+        
         GetImage((int)Images.RandomReward).gameObject.SetActive(false);
         
 
@@ -145,7 +146,7 @@ public class MainUI : UI_Scene
     {
         if (!GetImage((int)Images.RandomReward).gameObject.activeSelf)
         {
-            GameManager.SoundManager.Play(Define.SFX.click_02); //click_02효과음
+            GameManager.SoundManager.Play(Define.SFX.click_01); //click_01효과음
             GetImage((int)Images.RandomReward).gameObject.SetActive(true);
             GetText((int)Texts.RandomRewardTxt).text = $"확인비(확인 안해도 획득가능) brance - 5 ";
 
@@ -169,6 +170,7 @@ public class MainUI : UI_Scene
     {
         if (GameManager.InGameDataManager.Branch > 5)
         {
+            GameManager.SoundManager.Play(Define.SFX.click_01); //click_01효과음
             GameManager.InGameDataManager.Branch -= 5;
             GetText((int)Texts.RandomRewardTxt).text = $"{Enum.GetName(typeof(RandomRewardData), GameManager.InGameDataManager.RandomRewardData)}";
             GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
