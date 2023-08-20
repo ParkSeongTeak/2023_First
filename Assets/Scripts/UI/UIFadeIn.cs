@@ -42,11 +42,18 @@ public class UIFadeIn : MonoBehaviour
             _title.color = color;
 
             title.transform.position += new Vector3(0, 0.2f, 0);
+
+            if ((0.5 <= percent) && (percent < 0.51))
+            {
+                playButton.SetActive(true);
+                StartCoroutine(PlayButtonFadeIn(0, 1));
+            }
+
             yield return null;
+
+           
         }
 
-        playButton.SetActive(true);
-        StartCoroutine(PlayButtonFadeIn(0, 1));
 
     }
 
