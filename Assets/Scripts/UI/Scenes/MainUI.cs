@@ -70,6 +70,9 @@ public class MainUI : UI_Scene
         BindEvent(GetButton((int)Buttons.RandomRewardBtn).gameObject, RandomRewardBtn);
         BindEvent(GetButton((int)Buttons.GameEnd).gameObject, GameEnd);
         BindEvent(GetButton((int)Buttons.RandomOff).gameObject, ShowRandomReward);
+        
+        BindEvent(GetButton((int)Buttons.InfoButton).gameObject, ShowInfo);
+
 
         GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
         GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.GoldBranch}";
@@ -196,5 +199,12 @@ public class MainUI : UI_Scene
     {
         GameManager.UIManager.ShowPopupUI<GameEndPopup>();
     }
+
+
+    void ShowInfo(PointerEventData evt)
+    {
+        GameManager.UIManager.ShowPopupUI<HelpPopup>();
+    }
+
     #endregion
 }

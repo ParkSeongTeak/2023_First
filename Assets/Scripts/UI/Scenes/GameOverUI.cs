@@ -173,7 +173,8 @@ public class GameOverUI : UI_PopUp
             }
             // 일반 브렌치;
             GameManager.InGameDataManager.Branch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
-            addBranch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
+            int _branch = (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
+            //addBranch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
 
 
 
@@ -183,17 +184,19 @@ public class GameOverUI : UI_PopUp
             GameManager.InGameDataManager.SetRandomReward();
             string rarename = rare == -1 ? RandomReward : Enum.GetName(typeof(Define.RandomRewardData), rare);
             //나뭇가지 : n   황금가지 : n   랜덤보상 RR
-            GetText((int)Texts.RewardText).text = $"나뭇가지 {addBranch}   황금가지 {addGoldBranch}   + {rarename}";
+            GetText((int)Texts.RewardText).text = $"나뭇가지 {_branch}   황금가지 {addGoldBranch}   + {rarename}";
         }
         else //클리어 못함
         {
+            int _branch = (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
+
             GameManager.InGameDataManager.Branch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
             addBranch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
 
             GameManager.InGameDataManager.saveData();
             GameManager.InGameDataManager.SetRandomReward();
             //나뭇가지 : n   황금가지 : n   랜덤보상 RR
-            GetText((int)Texts.RewardText).text = $"나뭇가지 {addBranch}   황금가지 {addGoldBranch}";
+            GetText((int)Texts.RewardText).text = $"나뭇가지 {_branch}   황금가지 {addGoldBranch}";
         }
         
 

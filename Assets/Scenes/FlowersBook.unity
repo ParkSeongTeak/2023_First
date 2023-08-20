@@ -270,6 +270,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2366383790108470204, guid: b451f6cd54e06eb4daca3cfe95938600, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3099955454329127272, guid: b451f6cd54e06eb4daca3cfe95938600, type: 3}
       propertyPath: m_Name
       value: FlowersBookUI

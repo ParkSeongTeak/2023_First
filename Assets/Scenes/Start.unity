@@ -423,14 +423,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -470
       objectReference: {fileID: 0}
-    - target: {fileID: 5369522637243486444, guid: 7d8a7ade6c1dfcd4a9e0e98251de66d7, type: 3}
-      propertyPath: title
-      value: 
-      objectReference: {fileID: 970743517}
-    - target: {fileID: 5369522637243486444, guid: 7d8a7ade6c1dfcd4a9e0e98251de66d7, type: 3}
-      propertyPath: playButton
-      value: 
-      objectReference: {fileID: 1548387622}
     - target: {fileID: 6969764910245440270, guid: 7d8a7ade6c1dfcd4a9e0e98251de66d7, type: 3}
       propertyPath: title
       value: 
@@ -440,7 +432,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1548387622}
     m_RemovedComponents:
-    - {fileID: 5369522637243486444, guid: 7d8a7ade6c1dfcd4a9e0e98251de66d7, type: 3}
     - {fileID: 6969764910245440270, guid: 7d8a7ade6c1dfcd4a9e0e98251de66d7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7d8a7ade6c1dfcd4a9e0e98251de66d7, type: 3}
 --- !u!224 &968333813 stripped

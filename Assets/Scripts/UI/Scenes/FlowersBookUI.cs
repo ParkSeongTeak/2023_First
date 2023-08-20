@@ -130,9 +130,9 @@ public class FlowersBookUI : UI_Scene
         {
             PlayerPrefs.SetInt($"{Enum.GetName(typeof(FlowerTypes),Flower)}Have", 0);
         }
-        PlayerPrefs.SetInt("Branch", 5000000);
-        PlayerPrefs.SetInt("GoldBranch", 5000000);
-        PlayerPrefs.SetInt("MaxPoint", 0);
+        PlayerPrefs.SetInt("Branch", 300);
+        PlayerPrefs.SetInt("GoldBranch", 200);
+        PlayerPrefs.SetInt("MaxPoint", 35);
         PlayerPrefs.SetInt("UseFlowerList[0]", (int)FlowerTypes.tile_cherryblossom1_blm);
         PlayerPrefs.SetInt("UseFlowerList[1]", (int)FlowerTypes.tile_cherryblossom2_blm);
         PlayerPrefs.SetInt("UseFlowerList[2]", (int)FlowerTypes.tile_cherryblossom3_blm);
