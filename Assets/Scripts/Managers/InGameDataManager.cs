@@ -170,68 +170,68 @@ public class InGameDataManager
     {
 
         System.Random random = new System.Random();
-        int rarenum = random.Next(0, 100);
+        int rarenum = random.Next(0, 200);
         int setData = 0;
-        if (rarenum < 1 )
+        if (rarenum < 3 )
         {
             setData = 0;
         }
-        else if (rarenum < 2)
+        else if (rarenum < 6)
         {
             setData = 1;
 
         }
-        else if (rarenum < 3)
+        else if (rarenum < 9)
         {
             setData = 2;
 
         }
-        else if (rarenum < 4)
+        else if (rarenum < 12)
         {
             setData = 3;
 
         }
-        else if (rarenum < 5)
+        else if (rarenum < 15)
         {
             setData = 4;
 
         }
-        else if (rarenum < 6)
+        else if (rarenum < 18)
         {
             setData = 5;
 
         }
-        else if (rarenum < 14)
+        else if (rarenum < 34)
         {
             setData = 6;
 
         }
-        else if (rarenum < 18)
+        else if (rarenum < 42)
         {
             setData = 7;
 
         }
-        else if (rarenum < 20)
+        else if (rarenum < 46)
         {
             setData = 8;
 
         }
-        else if (rarenum < 60)
+        else if (rarenum < 122)
         {
             setData = 9;
 
         }
-        else if (rarenum < 80)
+        else if (rarenum < 160)
         {
             setData = 10;
 
         }
-        else if (rarenum < 93)
+        else if (rarenum < 186)
         {
             setData = 11;
 
         }
-        else if (rarenum < 100)
+        else if (rarenum < 200)
         {
             setData = 12;
         }
