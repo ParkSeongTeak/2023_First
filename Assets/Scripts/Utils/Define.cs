@@ -326,13 +326,13 @@ public class Define
         너도바람꽃,
         금새우난,
 
-        GoldBranch1,
-        GoldBranch2,
-        GoldBranch3,
-        Branch2,
-        Branch4,
-        Branch6,
-        Branch8,
+        황금가지1,
+        황금가지2,
+        황금가지3,
+        나뭇가지2,
+        나뭇가지4,
+        나뭇가지6,
+        나뭇가지8,
 
        
 

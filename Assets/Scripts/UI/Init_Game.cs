@@ -20,11 +20,11 @@ public class Init_Game : MonoBehaviour
     }
 
     GameObject restartTile;
-
+    bool gameOver = false;  
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
+        if (!gameOver)
         {
             if (player.transform.position.y > -9)
             {
@@ -33,7 +33,8 @@ public class Init_Game : MonoBehaviour
             }
             else 
             {
-                Destroy(player);
+                gameOver = true;
+                //Destroy(player);
                 GameManager.UIManager.ShowPopupUI<GameOverUI>();
             }
         }

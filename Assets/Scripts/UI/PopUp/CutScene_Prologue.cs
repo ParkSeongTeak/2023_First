@@ -98,7 +98,7 @@ public class CutScene_Prologue : UI_PopUp
         //GameManager.SoundManager.Play(Define.SFX.Alarm_03);//Alarm_03 È¿°úÀ½
         while (!end)
         {
-            yield return new WaitForSeconds(1.4f);
+            yield return new WaitForSeconds(2.0f);
             if (CutScene == Images.BG)
             {
                 GameManager.InGameDataManager.NeedToShowCutScene_prologue = false;

@@ -67,6 +67,8 @@ public class CutScene_Epilogue : UI_PopUp
         }
 
         GetImage((int)CutScene).gameObject.SetActive(true);
+        // SFX Àç»ý
+        PlaySFXForImage(CutScene);
         if (CutScene == Images.CutScene_epilogue2_1)
         {
             for (int i = 0; i < 3; i++)
@@ -84,7 +86,7 @@ public class CutScene_Epilogue : UI_PopUp
         bool end = false;
         while (!end)
         {
-            yield return new WaitForSeconds(1.4f);
+            yield return new WaitForSeconds(2.0f);
             if (CutScene == Images.BG)
             {
                 GameManager.InGameDataManager.NeedToShowCutScene_epilogue = false;

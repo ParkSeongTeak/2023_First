@@ -484,7 +484,7 @@ public class GameUI : UI_Scene
 
         if (tileController != null)
         {
-            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump(42f,true);
+            GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump(39f, true);
 
             List<Tile> nowGeneratedTiles = tileController.NowGeneratedTiles;
             JumperItem = StartCoroutine(DontFall());

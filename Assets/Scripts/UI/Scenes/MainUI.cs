@@ -98,10 +98,9 @@ public class MainUI : UI_Scene
             GameManager.UIManager.ShowPopupUI<CutScene_Prologue>();
             //GameManager.SoundManager.Play(Define.SFX.Mumble_01);//Mumble_01 효과음
         }
-        if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue && GameManager.InGameDataManager.QuestIDX >= InGameDataManager.EPILOGUE && !GameManager.InGameDataManager.NeedToShowCutScene_prologue)
+        if (GameManager.InGameDataManager.NeedToShowCutScene_epilogue && GameManager.InGameDataManager.QuestIDX >= GameManager.InGameDataManager.LastQueset - 1 && !GameManager.InGameDataManager.NeedToShowCutScene_prologue)
         {
             GameManager.UIManager.ShowPopupUI<CutScene_Epilogue>();
-
         }
             
         GameManager.InGameDataManager.RandomRewardData = GameManager.InGameDataManager.GetRandomReward();
@@ -154,7 +153,7 @@ public class MainUI : UI_Scene
             GetImage((int)Images.RandomReward).gameObject.SetActive(true);
             if (!Show)
             {
-                GetText((int)Texts.RandomRewardTxt).text = $"확인비(확인 안해도 획득가능) brance - 5 ";
+                GetText((int)Texts.RandomRewardTxt).text = $"5개 소모하기";
 
             }
             else
@@ -195,7 +194,7 @@ public class MainUI : UI_Scene
 
     void GameEnd(PointerEventData evt)
     {
-        Application.Quit();
+        GameManager.UIManager.ShowPopupUI<GameEndPopup>();
     }
     #endregion
 }

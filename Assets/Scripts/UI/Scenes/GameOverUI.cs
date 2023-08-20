@@ -76,7 +76,7 @@ public class GameOverUI : UI_PopUp
     }
     void GameEnd(PointerEventData evt)
     {
-        Application.Quit();
+        GameManager.UIManager.ShowPopupUI<GameEndPopup>();
     }
 
     #endregion
@@ -88,7 +88,8 @@ public class GameOverUI : UI_PopUp
         int addGoldBranch = 0;
         int addBranch = 0;
         int rare = -1;
-        if (GameUI.Instance.Clear)
+        string RandomReward = "";
+        if (GameUI.Instance.Clear)//클리어 함
         {
             GameManager.SoundManager.Play(Define.SFX.congrats_01); //congrats_01효과음
             GameManager.InGameDataManager.GoldBranch += GameUI.Instance.ClearReward_GoldBranch;
@@ -129,54 +130,72 @@ public class GameOverUI : UI_PopUp
                 case 6:
 
                     GameManager.InGameDataManager.GoldBranch += 1;
-                    addGoldBranch += 1; 
+                    addGoldBranch += 1;
+                    RandomReward = $"황금가지 {1}";
                     break;
                 case 7:
                     GameManager.InGameDataManager.GoldBranch += 2;
                     addGoldBranch += 2;
-
+                    RandomReward = $"황금가지 {2}";
                     break;
                 case 8:
                     GameManager.InGameDataManager.GoldBranch += 3;
                     addGoldBranch += 3;
-
+                    RandomReward = $"황금가지 {3}";
                     break;
 
 
                 case 9:
                     GameManager.InGameDataManager.Branch += 2;
                     addBranch += 2;
+                    RandomReward = $"나뭇가지 {2}";
                     break;
                 case 10:
                     GameManager.InGameDataManager.Branch += 4;
                     addBranch += 4;
 
+                    RandomReward = $"나뭇가지 {4}";
                     break;
                 case 11:
                     GameManager.InGameDataManager.Branch += 6;
                     addBranch += 6;
 
+                    RandomReward = $"나뭇가지 {6}";
                     break;
                 case 12:
                     GameManager.InGameDataManager.Branch += 8;
                     addBranch += 8;
 
+                    RandomReward = $"나뭇가지 {8}";
                     break;
                 default:
                     break;
             }
+            // 일반 브렌치;
+            GameManager.InGameDataManager.Branch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
+            addBranch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
 
+
+
+            Debug.Log(GameManager.InGameDataManager.RandomRewardData);
+
+            GameManager.InGameDataManager.saveData();
+            GameManager.InGameDataManager.SetRandomReward();
+            string rarename = rare == -1 ? RandomReward : Enum.GetName(typeof(Define.RandomRewardData), rare);
+            //나뭇가지 : n   황금가지 : n   랜덤보상 RR
+            GetText((int)Texts.RewardText).text = $"나뭇가지 {addBranch}   황금가지 {addGoldBranch}   + {rarename}";
         }
+        else //클리어 못함
+        {
+            GameManager.InGameDataManager.Branch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
+            addBranch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
 
-        // 일반 브렌치;
-        GameManager.InGameDataManager.Branch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
-        addBranch += (int)(GameManager.InGameDataManager.NowState.BloomCnt * State.Reward_Bloom_Weight);
-
-       
-        GameManager.InGameDataManager.saveData();
-        GameManager.InGameDataManager.SetRandomReward();
-        string rarename = rare == -1 ? "다음 기회에!" : Enum.GetName(typeof(Define.RandomRewardData),rare);
-        GetText((int)Texts.RewardText).text = $"나뭇가지:{addBranch} 황금가지:{addGoldBranch} 레어꽃:{rarename}";
+            GameManager.InGameDataManager.saveData();
+            GameManager.InGameDataManager.SetRandomReward();
+            //나뭇가지 : n   황금가지 : n   랜덤보상 RR
+            GetText((int)Texts.RewardText).text = $"나뭇가지 {addBranch}   황금가지 {addGoldBranch}";
+        }
+        
 
     }
 

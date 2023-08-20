@@ -33,7 +33,6 @@ public class WitheredFlowersTile : Tile
             }
             else
             {
-
                 TileController.Instance.TileBreak(this);
                 GameManager.SoundManager.Play(Define.SFX.Falling_02);//Falling_02효과음
                 GameManager.SoundManager.StopBGM(Define.BGM.블라썸컴퍼니_01);

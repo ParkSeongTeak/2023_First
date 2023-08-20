@@ -102,7 +102,6 @@ public class InGameDataManager
             }
         }
     }
-    public const int EPILOGUE = 3;
     public bool NeedToShowCutScene_epilogue
     {
         get { return PlayerPrefs.GetInt("NeedToShowCutScene_epilogue", 0) == 0; }
@@ -297,6 +296,7 @@ public class InGameDataManager
         _flowerPriceHandler = Util.ParseJson<FlowerPriceHandler>();
         _clearRwrdHandler = Util.ParseJson<ClearRwrdHandler>();
         LastQueset = _clearRwrdHandler._clearRwrdHandler.Count-1;
+        
         SelectMode = false;
 
         UseFlowerList[0] = (FlowerTypes)PlayerPrefs.GetInt("UseFlowerList[0]", (int)FlowerTypes.tile_cherryblossom1_blm);

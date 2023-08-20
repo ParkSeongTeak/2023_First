@@ -29,8 +29,14 @@ public class FlowerBudTile : Tile
         {
             Debug.Log($"null :: Animation/FlowerBudAnims/{AnimName}");
         }
+        if (JumpLeft != 0 && (MyFlowerType == FlowerTypes.icon_magnolia2 || MyFlowerType == FlowerTypes.tile_rare2_blm || MyFlowerType == FlowerTypes.tile_cherryblossom2_blm || MyFlowerType == FlowerTypes.tile_rare4_blm || MyFlowerType == FlowerTypes.tile_rare5_blm || MyFlowerType == FlowerTypes.tile_silverbell1_blm || MyFlowerType == FlowerTypes.tile_tulip_1 || MyFlowerType == FlowerTypes.tile_violet2))
+        {
+            _animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/White_bud{JumpLeft}");
 
-        if (JumpLeft != 0)
+            _animator.Play(_animationClip?.name);
+        }
+
+        else if (JumpLeft != 0)
         {
             _animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/{AnimName}");
 
@@ -54,10 +60,23 @@ public class FlowerBudTile : Tile
 
             string AnimName = $"{Enum.GetName(typeof(Define.FlowerTypes), MyFlowerType)}{JumpLeft}";
             Debug.Log(AnimName);
-            _animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/{AnimName}");
-            _animator.Play(_animationClip?.name);
-            
-            
+
+            if ((MyFlowerType == FlowerTypes.icon_magnolia2 || MyFlowerType == FlowerTypes.tile_rare2_blm || MyFlowerType == FlowerTypes.tile_cherryblossom2_blm || MyFlowerType == FlowerTypes.tile_rare4_blm || MyFlowerType == FlowerTypes.tile_rare5_blm || MyFlowerType == FlowerTypes.tile_silverbell1_blm || MyFlowerType == FlowerTypes.tile_tulip_1 || MyFlowerType == FlowerTypes.tile_violet2))
+            {
+                _animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/White_bud{JumpLeft}");
+                _animator.Play(_animationClip?.name);
+            }
+
+            else 
+            {
+                _animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/{AnimName}");
+                _animator.Play(_animationClip?.name);
+            }
+
+            //_animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/{AnimName}");
+            //_animator.Play(_animationClip?.name);
+
+
             if (JumpLeft == 0)
             {
                 //transform.GetComponent<SpriteRenderer>().sprite = TileController.Instance.FlowerSprites[(int)MyFlowerType];
