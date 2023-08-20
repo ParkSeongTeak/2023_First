@@ -50,6 +50,7 @@ public class CutScene_Prologue : UI_PopUp
         }
         GetImage((int)Images.BG).gameObject.SetActive(true);
 
+        GameManager.SoundManager.Play(Define.SFX.Alarm_03);//Alarm_03 효과음
         BindEvent(GetButton((int)Buttons.CutScene_Prologue).gameObject, Btn_CutScene_Prologue);
         Coroutine = StartCoroutine(Btn_CutScene_Prologue_Auto());
 
@@ -68,9 +69,11 @@ public class CutScene_Prologue : UI_PopUp
             GameManager.SoundManager.AudioSources[(int)Define.Sounds.BGM].mute = false;
             return;
         }
-
+        
         GetImage((int)CutScene).gameObject.SetActive(true);
-        if(CutScene == Images.CutScene_prologue2_1)
+        PlaySFXForImage(CutScene);//수정한 부분 조심하자!
+
+        if (CutScene == Images.CutScene_prologue2_1)
         {
             for(int i = 0; i < 3; i++)
             {
@@ -92,7 +95,7 @@ public class CutScene_Prologue : UI_PopUp
     IEnumerator Btn_CutScene_Prologue_Auto()
     {
         bool end = false;
-        GameManager.SoundManager.Play(Define.SFX.Alarm_03);//Alarm_03 효과음
+        //GameManager.SoundManager.Play(Define.SFX.Alarm_03);//Alarm_03 효과음
         while (!end)
         {
             yield return new WaitForSeconds(1.4f);

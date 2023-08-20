@@ -7,7 +7,12 @@ public class BonusTile : Tile
 {
     public Define.BonusTileTypes MyBonusType { get; set; }
     public int num = 0;
-    
+
+
+    private void OnEnable()
+    {
+        num = 0;
+    }
     public override void Init()
     {
         MyBonusType = TileController.Instance.SetBonusType();

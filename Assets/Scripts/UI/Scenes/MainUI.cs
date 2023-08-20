@@ -20,7 +20,10 @@ public class MainUI : UI_Scene
         GotoGameButton,
         SkinTab,
         Random,
+        GameEnd,
+        RandomOff,
         RandomRewardBtn,
+
     }
 
     enum Texts
@@ -65,7 +68,8 @@ public class MainUI : UI_Scene
         BindEvent(GetButton((int)Buttons.OptionButton).gameObject, ShowOption);
         BindEvent(GetButton((int)Buttons.Random).gameObject, ShowRandomReward);
         BindEvent(GetButton((int)Buttons.RandomRewardBtn).gameObject, RandomRewardBtn);
-
+        BindEvent(GetButton((int)Buttons.GameEnd).gameObject, GameEnd);
+        BindEvent(GetButton((int)Buttons.RandomOff).gameObject, ShowRandomReward);
 
         GetText((int)Texts.Branch).text = $"{GameManager.InGameDataManager.Branch}";
         GetText((int)Texts.GoldBranch).text = $"{GameManager.InGameDataManager.GoldBranch}";
@@ -187,6 +191,11 @@ public class MainUI : UI_Scene
             GetButton((int)Buttons.RandomRewardBtn).gameObject.SetActive(false);
         }
         
+    }
+
+    void GameEnd(PointerEventData evt)
+    {
+        Application.Quit();
     }
     #endregion
 }

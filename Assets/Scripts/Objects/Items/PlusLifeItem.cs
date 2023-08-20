@@ -11,29 +11,6 @@ public class PlusLifeItem : Item
     GameObject icon;
     static GameUI gameUI;
 
-    void Start()
-    {
-        //icon = Instantiate(Icon);
-        if(gameUI == null)
-        {
-            gameUI = GameManager.UIManager.ShowSceneUI<GameUI>();
-        }
-        if (gameUI.LifeIcon == null)
-        {
-            gameUI.LifeIcon = Instantiate(Icon);
-        }
-        gameUI.LifeIcon.SetActive(false);
-
-        //소리 코드 소리가 어떤 소리냐 하면 Life 깎일때 나는 소리가 이상하게 들린다는거죠???
-
-        //gameUI.LifeIcon = icon;
-
-
-
-
-    }
-    
-
     public override void OnTriggerStay2D(Collider2D collision)
     {
         

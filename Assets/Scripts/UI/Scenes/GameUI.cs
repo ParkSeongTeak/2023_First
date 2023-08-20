@@ -11,7 +11,9 @@ using UnityEditor;
 
 public class GameUI : UI_Scene
 {
-    public static GameUI Instance { get; private set; }
+
+    static GameUI _instance;
+    public static GameUI Instance { get { if (_instance == null) { Debug.Log("GameUI._instance == null"); } else { Debug.Log("Good GameUI._instance"); } return _instance; } private set { _instance = value; } }
     GameUI() { }
 
 
@@ -23,7 +25,7 @@ public class GameUI : UI_Scene
     public bool Clear { get { return _clear; } }
     TimeSlider _timeSlider;
     public TimeSlider timeSlider { get { return _timeSlider; } }
-    public int jump { get { return clearRwrdData.Jump; } set { clearRwrdData.Jump = value > 0 ? value : 0; ClearCheck(); } }
+    public int jump { get { return clearRwrdData.Jump; } set { clearRwrdData.Jump = value > 0 ? value : 0; ClearCheck(); GetText((int)Texts.JumpCnt).text = $"Jump: {jump}"; } }
     int skip { get { return clearRwrdData.Skip; } set { clearRwrdData.Skip = value > 0 ? value : 0; ClearCheck(); } }
     int bloom { get { return clearRwrdData.Bloom; } set { clearRwrdData.Bloom = value > 0 ? value : 0; ClearCheck(); } }
     public int ClearReward_GoldBranch { get { return clearRwrdData.ClearReward_GoldBranch; } }
@@ -89,10 +91,12 @@ public class GameUI : UI_Scene
     {
         base.Init();
 
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+        Instance = this;
+        //if (Instance == null)
+        //{
+        //    Instance = this;
+        //}
+        TileController.IsMoving = false;
         //Object πŸ¿ŒµÂ
         Bind<Button>(typeof(Buttons));
         Bind<TMP_Text>(typeof(Texts));
@@ -120,6 +124,7 @@ public class GameUI : UI_Scene
 
         GameManager.InputManager.InputAction += JumpBtnKey;
         GameManager.InputManager.InputAction += SkipBtnKey;
+        //GameManager.InGameDataManager.NowState.LifeCnt = 1;
 
 
     }
@@ -150,6 +155,7 @@ public class GameUI : UI_Scene
         if (!TileController.IsMoving )
         {
             GameManager.InGameDataManager.Player.GetComponent<PlayerController>().Jump();
+            
         }
     }
 
@@ -175,8 +181,6 @@ public class GameUI : UI_Scene
     public bool isSkipActive { get; set; } = true;
 
 
-    GameObject Lifeicon;
-    public GameObject LifeIcon { get { return Lifeicon; } set { Lifeicon = value; } }
 
 
 
@@ -199,7 +203,7 @@ public class GameUI : UI_Scene
         GameUI.Instance.timeSlider.PlusTime(plusTime_bloom);
         GameManager.InGameDataManager.NowState.BloomCnt++;
         bloom--;
-        GetText((int)Texts.BloomCnt).text = $"BloomCnt: {bloom}";
+        GetText((int)Texts.BloomCnt).text = $"Bloom: {bloom}";
     }
 
     #region ItemEffect Area

@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public const float SPEED = 0.15f; 
     bool _canJump;
     public bool CanJump { get { return _canJump; } }
-    Tile _onTile;
+    Tile _onTile { get { return TileController.Instance.NowGeneratedTiles[3]; } }
     public Tile OnTile { get { return _onTile; } }
     [SerializeField]
     Animator _animator;
@@ -112,17 +112,13 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.tag == "Flower")
         {
             _canJump = true;
-            _onTile = collision.transform.GetComponent<Tile>();
+            //_onTile = collision.transform.GetComponent<Tile>();
             //TileController.IsMoving = false;
             
 
         }
 
     }
-
-    
-
-    GameObject newTile;
 
     
 
