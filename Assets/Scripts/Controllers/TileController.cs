@@ -11,7 +11,7 @@ public class TileController : MonoBehaviour
     /// <summary>
     /// ¿Ø¿œ«— Controller
     /// </summary>
-    static TileController _instance = new TileController();
+    static TileController _instance;
     public static TileController Instance { get { init(); return _instance; } }
 
 
@@ -176,7 +176,7 @@ public class TileController : MonoBehaviour
             _instance.DeltaMove = new Vector3(0.5f, 0, 0);
             IsMoving = false;
             #endregion
-}
+        }       
     }
 
     GameObject GeneratedTile(int tilePos = _tileNum-1)
@@ -373,5 +373,6 @@ public class TileController : MonoBehaviour
         yield return new WaitForSeconds(overTime);
         IsMoving = false;
     }
+
 
 }
