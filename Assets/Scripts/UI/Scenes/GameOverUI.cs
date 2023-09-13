@@ -178,7 +178,6 @@ public class GameOverUI : UI_PopUp
 
 
 
-            Debug.Log(GameManager.InGameDataManager.RandomRewardData);
 
             GameManager.InGameDataManager.saveData();
             GameManager.InGameDataManager.SetRandomReward();

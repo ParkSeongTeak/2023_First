@@ -55,6 +55,10 @@ public class TileController : MonoBehaviour
     public Vector3 DeltaMove { get; set; }
     
     public BackGround[] BackGrounds { get; set; } = new BackGround[3];
+    public Vector3[] BackGroundsVec { get; set; } = new Vector3[3];
+    public Vector3 Distance { get; set; }
+
+
     public int BackGroundIDX { get; set; } = 2;
 
     #endregion

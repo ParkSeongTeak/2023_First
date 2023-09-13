@@ -13,7 +13,7 @@ public class GameUI : UI_Scene
 {
 
     static GameUI _instance;
-    public static GameUI Instance { get { if (_instance == null) { Debug.Log("GameUI._instance == null"); } else { Debug.Log("Good GameUI._instance"); } return _instance; } private set { _instance = value; } }
+    public static GameUI Instance { get {  return _instance; } private set { _instance = value; } }
     GameUI() { }
 
 
@@ -49,6 +49,7 @@ public class GameUI : UI_Scene
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         _animator = Util.FindChild<Animator>(gameObject, "PlayerAnim");
     }
 
@@ -116,16 +117,12 @@ public class GameUI : UI_Scene
         
         _timeSlider = Util.FindChild(gameObject, "Timeslider", true).GetComponent<TimeSlider>();
 
-        //jumpVec = GetButton((int)Buttons.JumpBtn).transform.position;
         jumpVec = GetButton((int)Buttons.JumpBtn).transform.localPosition;
-        //Debug.Log("jumpVec" + jumpVec);
         skipVec = GetButton((int)Buttons.SkipBtn).transform.localPosition;
-        //Debug.Log("skipVec" + skipVec);
-
+        
         GameManager.InputManager.InputAction += JumpBtnKey;
         GameManager.InputManager.InputAction += SkipBtnKey;
-        //GameManager.InGameDataManager.NowState.LifeCnt = 1;
-
+        
 
     }
 
@@ -216,7 +213,6 @@ public class GameUI : UI_Scene
 
     public void TimeFreeze()
     {
-        Debug.Log("TimeFreezeSTart");
         if (isTimeFrozen == false) //만약 istumefrozen이 작동할 수 없다면
         {
             _timeSlider.StopTimer();
@@ -245,7 +241,6 @@ public class GameUI : UI_Scene
 
         _timeSlider.ResetSpeed();
 
-        Debug.Log("END TimeFreezeItem ");
 
     }
 
@@ -274,7 +269,6 @@ public class GameUI : UI_Scene
 
             StopCoroutine(SkipJumpSwapItemCoroutine);
 
-            Debug.Log("재시작");
 
             isSkipJumpSwapEffectActive = true;
             //isJumpActive = false;
@@ -421,7 +415,6 @@ public class GameUI : UI_Scene
     /// </summary>
     public void Unbeatable()
     {
-        Debug.Log("Unbeatable() 시작");
         if (_isUnbeatable == false)
         {
             _isUnbeatable = true;

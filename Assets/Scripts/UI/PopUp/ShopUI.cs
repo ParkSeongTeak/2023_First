@@ -26,7 +26,7 @@ public class ShopUI : UI_PopUp
         KoreanName,
         Branch,
         GoldBranch,
-        FlowerIcon,
+        Warning,
 
     }
 
@@ -66,12 +66,7 @@ public class ShopUI : UI_PopUp
         string KoreanName = flowerBook.KoreanFlowerName;
         Sprite FlowerIcon = flowerBook.FlowerIcon;
 
-        Debug.Log(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch);
-
-        Debug.Log(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch);
         
-
-
         if(GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch != -1 || GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch != -1)
         {
             GetText((int)Texts.KoreanName).text = $"{KoreanName}";
@@ -109,7 +104,6 @@ public class ShopUI : UI_PopUp
         if (GameManager.InGameDataManager.Branch >= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch 
             && GameManager.InGameDataManager.GoldBranch >= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch)
         {
-            Debug.Log("you can buy it!");
             GameManager.SoundManager.Play(Define.SFX.congrats02_03);//congrats02_03효과음
             GameManager.InGameDataManager.Branch -= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].Branch;
             GameManager.InGameDataManager.GoldBranch -= GameManager.InGameDataManager.FlowerPriceHandler[_flowerName].GoldBranch;
@@ -119,8 +113,7 @@ public class ShopUI : UI_PopUp
         }
         else
             GameManager.SoundManager.Play(Define.SFX.Error_01);//Error_01효과음  //에러 사운드
-        Debug.Log("you cant buy it...");
-
+        
     }
 
     void Btn_Delete(PointerEventData evt)

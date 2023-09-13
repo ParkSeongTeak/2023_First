@@ -29,6 +29,7 @@ public class Util
     /// <returns></returns>
     public static handler ParseJson<handler>(string path = null, string handle = null, bool ConvertToDic = true) where handler : Handler
     {
+
         if (string.IsNullOrEmpty(path))
         {
             string name = typeof(handler).Name;
@@ -49,11 +50,9 @@ public class Util
             Debug.LogError($"Can't load json : {path}");
             return default(handler);
         }
-        string json = jsonTxt.text;
-        
-        handler parseJsonToList = JsonUtility.FromJson<handler>($"{{\"{handle}\" : {json} }}");
+        handler parseJsonToList = JsonUtility.FromJson<handler>($"{{\"{handle}\" : {jsonTxt.text} }}");
 
-
+        Resources.UnloadAsset(jsonTxt);
         if (ConvertToDic) { parseJsonToList.ConvertToDic(); } 
         return parseJsonToList;
         

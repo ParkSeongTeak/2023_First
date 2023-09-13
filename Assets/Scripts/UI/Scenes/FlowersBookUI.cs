@@ -80,7 +80,6 @@ public class FlowersBookUI : UI_Scene
         {
             _selectQueue.Enqueue(flower);
         }
-        Debug.Log($"_selectQueue.Count {_selectQueue.Count} ");
     }
 
     #region Button Event
@@ -106,7 +105,10 @@ public class FlowersBookUI : UI_Scene
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log($"selectQueue Count Error {_selectQueue.Count}");
+#endif 
+
         }
         GameManager.InGameDataManager.bookState = GameManager.InGameDataManager.bookInfo;
 

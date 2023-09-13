@@ -30,8 +30,7 @@ public class SoundManager
             _audioSources[(int)Define.Sounds.BGM].loop = true;
             SetVolume(Define.Sounds.BGM, GameManager.InGameDataManager.BGMVolume);
             SetVolume(Define.Sounds.SFX, GameManager.InGameDataManager.SFXVolume);
-            Debug.Log($"BGNVolue : {GameManager.InGameDataManager.BGMVolume}    SFXVolume : {GameManager.InGameDataManager.SFXVolume}");
-
+            
         }
        
 
