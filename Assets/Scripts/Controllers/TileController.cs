@@ -16,7 +16,6 @@ public class TileController : MonoBehaviour
 
 
     #region 받아온 이미지들   
-    // 여기 있으면 안될듯?
     Sprite[] _flowerSprites;
     Sprite[] _leafSprites;
     Sprite[] _witheredFlowersTileSprites;
