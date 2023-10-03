@@ -5,7 +5,7 @@ using UnityEngine;
 using static Define;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class Tile : MonoBehaviour
+public abstract class Tile : MonoBehaviour
 {
     /// <summary>
     /// ���� �� 
@@ -43,15 +43,9 @@ public class Tile : MonoBehaviour
         Init();
     }
 
-    public virtual void Init()
-    {
+    public abstract void Init();
 
-    }
-    public virtual void JumpOnMe() 
-    {
-        
-    }
-
+    public abstract void JumpOnMe();
     public virtual void SkipOnMe()
     {
         

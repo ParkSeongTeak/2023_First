@@ -26,7 +26,6 @@ public class BackGround : MonoBehaviour
         if(TileController.Instance.BackGrounds[0] != null && TileController.Instance.BackGrounds[1] != null)
         {
             TileController.Instance.Distance = TileController.Instance.BackGrounds[1].transform.position - TileController.Instance.BackGrounds[0].transform.position;
-            Debug.Log("TileController.Instance.Distance " +TileController.Instance.Distance);
         }
 
     }

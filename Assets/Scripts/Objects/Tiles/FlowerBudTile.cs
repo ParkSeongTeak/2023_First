@@ -25,10 +25,6 @@ public class FlowerBudTile : Tile
         JumpLeft = (int)FlowerJumpType + 1;
         string AnimName = $"{Enum.GetName(typeof(Define.FlowerTypes), MyFlowerType)}{JumpLeft}";
 
-        if (_animator == null)
-        {
-            Debug.Log($"null :: Animation/FlowerBudAnims/{AnimName}");
-        }
         if (JumpLeft != 0 && (MyFlowerType == FlowerTypes.icon_magnolia2 || MyFlowerType == FlowerTypes.tile_rare2_blm || MyFlowerType == FlowerTypes.tile_cherryblossom2_blm || MyFlowerType == FlowerTypes.tile_rare4_blm || MyFlowerType == FlowerTypes.tile_rare5_blm || MyFlowerType == FlowerTypes.tile_silverbell1_blm || MyFlowerType == FlowerTypes.tile_tulip_1 || MyFlowerType == FlowerTypes.tile_violet2))
         {
             _animationClip = GameManager.ResourceManager.Load<AnimationClip>($"Animation/FlowerBudAnims/White_bud{JumpLeft}");
@@ -59,7 +55,7 @@ public class FlowerBudTile : Tile
             JumpLeft--;
 
             string AnimName = $"{Enum.GetName(typeof(Define.FlowerTypes), MyFlowerType)}{JumpLeft}";
-            Debug.Log(AnimName);
+            
 
             if ((MyFlowerType == FlowerTypes.icon_magnolia2 || MyFlowerType == FlowerTypes.tile_rare2_blm || MyFlowerType == FlowerTypes.tile_cherryblossom2_blm || MyFlowerType == FlowerTypes.tile_rare4_blm || MyFlowerType == FlowerTypes.tile_rare5_blm || MyFlowerType == FlowerTypes.tile_silverbell1_blm || MyFlowerType == FlowerTypes.tile_tulip_1 || MyFlowerType == FlowerTypes.tile_violet2))
             {

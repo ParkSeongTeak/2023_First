@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
         {
             if (OnTile.GetType() == typeof(FlowerBudTile))
             {
-                Debug.Log("JumpBtn´­¸²");
                 GameManager.InGameDataManager.NowState.JumpCnt += 1;
                 GameUI.Instance.jump--;
             }
