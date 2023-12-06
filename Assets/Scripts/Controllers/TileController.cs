@@ -9,13 +9,13 @@ using static Define;
 public class TileController : MonoBehaviour
 {
     /// <summary>
-    /// À¯ÀÏÇÑ Controller
+    /// ìœ ì¼í•œ Controller
     /// </summary>
     static TileController _instance;
     public static TileController Instance { get { init(); return _instance; } }
 
 
-    #region ¹Ş¾Æ¿Â ÀÌ¹ÌÁöµé   
+    #region ë°›ì•„ì˜¨ ì´ë¯¸ì§€ë“¤   
     Sprite[] _flowerSprites;
     Sprite[] _leafSprites;
     Sprite[] _witheredFlowersTileSprites;
@@ -29,9 +29,9 @@ public class TileController : MonoBehaviour
     public Sprite[] CosmosFlowerSprites { get { return _cosmosFlowerSprites; } }
 
 
-    #endregion ¹Ş¾Æ¿Â ÀÌ¹ÌÁöµé
+    #endregion ë°›ì•„ì˜¨ ì´ë¯¸ì§€ë“¤
 
-    #region Tile À§Ä¡Á¤º¸ °ü·Ã
+    #region Tile ìœ„ì¹˜ì •ë³´ ê´€ë ¨
     const int _tileNum = 15;
     Vector3[] _tilePosition = new Vector3[_tileNum];
     public Vector3[] TilePosition { get { return _tilePosition; } }
@@ -41,15 +41,15 @@ public class TileController : MonoBehaviour
     float _referenceDist = 3f;
     #endregion
 
-    #region Áö±İGenerated Tileµé
+    #region ì§€ê¸ˆGenerated Tileë“¤
 
  
     List<Tile> _nowGeneratedTiles = new List<Tile>();
     public List<Tile> NowGeneratedTiles { get { return _nowGeneratedTiles; } }
 
-    #endregion Áö±İGenerated Tileµé
+    #endregion ì§€ê¸ˆGenerated Tileë“¤
 
-    #region BackGround ÅëÁ¦
+    #region BackGround í†µì œ
     public Action BackGroundMove { get; set; }
     public Vector3 DeltaMove { get; set; }
     
@@ -63,7 +63,7 @@ public class TileController : MonoBehaviour
     #endregion
 
     #region TileSmoothMove
-    //À®À®ÀÌ ¿òÁ÷ÀÌ´Â ¼Óµµ
+    //ìœ™ìœ™ì´ ì›€ì§ì´ëŠ” ì†ë„
     public const float OVERTIME = PlayerController.SPEED;
     public static bool IsMoving { get; set; }
 
@@ -73,11 +73,11 @@ public class TileController : MonoBehaviour
     static Dictionary<TileType, Stack<Tile>> _poolingStack = new Dictionary<TileType, Stack<Tile>>();
     public static Dictionary<TileType, Stack<Tile>> PoolingStack { get { return _poolingStack; }}
     
-    /// TileType => TileType.Flower == > Stack<Tile>Áß ¾î¶² °´Ã¼
-    /// ÀÚµ¿Â÷ Å° => BMW 16°¡ ¼­¿ï 6743 ==> ÀÚµ¿Â÷ => BMW 16°¡ ¼­¿ï 6743 
+    /// TileType => TileType.Flower == > Stack<Tile>ì¤‘ ì–´ë–¤ ê°ì²´
+    /// ìë™ì°¨ í‚¤ => BMW 16ê°€ ì„œìš¸ 6743 ==> ìë™ì°¨ => BMW 16ê°€ ì„œìš¸ 6743 
 
     /// <summary>
-    /// Á¸ÀçÇÔÀ» º¸ÀåÇÔ
+    /// ì¡´ì¬í•¨ì„ ë³´ì¥í•¨
     /// </summary>
     /// 
 
@@ -184,7 +184,6 @@ public class TileController : MonoBehaviour
 
     GameObject GeneratedTile(int tilePos = _tileNum-1)
     {
-        //TileType generateType = (TileType)UnityEngine.Random.RandomRange(0, (int)TileType.MaxCount);
         TileType generateType;
         int Random = UnityEngine.Random.RandomRange(0,100);
 
@@ -334,7 +333,7 @@ public class TileController : MonoBehaviour
             }
             
         }
-        //¸Ç ¾Õ Áö¿öÁÜ
+        //ë§¨ ì• ì§€ì›Œì¤Œ
         _instance.DestoryTile(_instance?._nowGeneratedTiles[0]);
         
         GeneratedTile();
