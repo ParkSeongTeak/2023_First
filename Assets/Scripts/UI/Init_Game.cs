@@ -16,7 +16,6 @@ public class Init_Game : MonoBehaviour
         GameManager.InGameDataManager.CreatePlayer();
         GameManager.UIManager.ShowSceneUI<GameUI>();
         player = GameObject.FindWithTag("WingWing");
-
     }
 
     GameObject restartTile;
